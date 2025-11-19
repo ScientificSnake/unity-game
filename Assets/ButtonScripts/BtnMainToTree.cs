@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Andrew
 {
@@ -11,6 +12,8 @@ namespace Andrew
 
         public void OnClick() {
             Debug.Log(message: "Tree button clicked by user");
+            SceneManager.LoadScene(sceneName: "BoonTree");
+
         }
         
     }
