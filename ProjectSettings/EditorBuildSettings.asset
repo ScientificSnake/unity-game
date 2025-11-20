@@ -8,5 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mainmenu.unity
     guid: 0782d8dcf575e894fb9826b1258d7dc0
+  - enabled: 1
+    path: Assets/Scenes/BoonTree.unity
+    guid: 9a6ed80094fc9fb4c908ed74f91162c1
+  - enabled: 1
+    path: Assets/Scenes/MapScreen.unity
+    guid: 1212225c7bb9cf44bb3e7088440caea7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

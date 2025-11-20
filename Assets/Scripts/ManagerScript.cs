@@ -7,6 +7,16 @@ public class ManagerScript : MonoBehaviour
     public static int BoonCredits;
     public static int HighestLevelCompleted;
 
+    #region Currect Boon configuration data
+    public static List<string> UnlockedBoons = new List<string>();
+
+    public static Dictionary<string, bool> IsBoonPurchased = new Dictionary<string, bool>  // THIS INCLUDES ALL THE BOONS AND WHETHER THEY HAVE BEEN PURCHASED OR NOT
+    {
+        { "TestBoon1", false}
+    };
+
+    #endregion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
