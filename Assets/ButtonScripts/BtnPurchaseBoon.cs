@@ -51,12 +51,12 @@ public class BtnPurchaseBoon : MonoBehaviour
     // Update is called once per frame
     public void Onclick()
     {
-        print("attempting purchase");
+        //print("attempting purchase");
         bool DepenciesMet = ManagerScript.Instance.AreNodeDependciesMet(SelectedNodeDependencies);
 
-        print($"Depencies met :{DepenciesMet}");
-        print($"Selcted node disabled : {SelectedNodeDisabled.ToString()}");
-        print($"Enough money : {(ManagerScript.TechCredits >= SelectedNodePrice).ToString()}");
+        //print($"Depencies met :{DepenciesMet}");
+        //print($"Selcted node disabled : {SelectedNodeDisabled.ToString()}");
+        //print($"Enough money : {(ManagerScript.TechCredits >= SelectedNodePrice).ToString()}");
         if ((ManagerScript.TechCredits >= SelectedNodePrice) && (SelectedNodeDisabled is false) && DepenciesMet)  // First check if you have enough money to purchase
         {
             ManagerScript.TechCredits -= SelectedNodePrice;
