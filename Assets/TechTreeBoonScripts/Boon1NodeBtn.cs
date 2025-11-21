@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boon1NodeBtn : MonoBehaviour
 {
@@ -11,12 +13,16 @@ public class Boon1NodeBtn : MonoBehaviour
     public BoonInfoDisplayTitle TargetTitleDisplay;
     public UpdateBoonBodyTextDisplay TargetBodyDisplay;
 
+    public static List<string> DependentBoonsSysNames = new List<string>
+    {
+    };
+
     public void OnSelect()
     {
         TargetTitleDisplay.UpdateDisplay(Title);
         TargetBodyDisplay.UpdateBodytext(BodyText);
 
-        PurchaseButton.SetButtonValues(SysName, Price);
+        PurchaseButton.SetButtonValues(SysName, Price, DependentBoonsSysNames);
     }
 
     void Start()

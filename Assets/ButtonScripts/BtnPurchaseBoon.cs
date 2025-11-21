@@ -1,13 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BtnPurchaseBoon : MonoBehaviour
 {
-    private static string SelectedBoonSysName;
-    private static int SelectedBoonPrice;
-    public static bool SelectedBoonDisabled;
+    private static string SelectedNodeSysName;
+    private static int SelectedNodePrice;
+    public static bool SelectedNodeDisabled;
+    public static List<string> SelectedNodeDependencies;
 
     public Button ThisButton;
     public BoonCreditDisplayUpdater CreditDisplay;
@@ -21,47 +23,57 @@ public class BtnPurchaseBoon : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetButtonValues(string SysName, int Price)
+    public void SetButtonValues(string SysName, int Price, List<string> Dependencies)
     {
         gameObject.SetActive(true);
-        SelectedBoonSysName = SysName;
-        SelectedBoonPrice = Price;
-        SelectedBoonDisabled = ManagerScript.IsBoonPurchased[SysName];
 
-        if (SelectedBoonDisabled)
+        SelectedNodeDependencies = Dependencies;
+        SelectedNodeSysName = SysName;
+        SelectedNodePrice = Price;
+        SelectedNodeDisabled = ManagerScript.Instance.IsNodePurchased(SysName);
+
+        bool DependenciesMet = ManagerScript.Instance.AreNodeDependciesMet(Dependencies);
+
+        if (SelectedNodeDisabled)
         {
-            ThisButton.interactable = false;
-
             DisplayText.UpdateButtonText("Already Purchased");
         }
-        else
+        else if (DependenciesMet is false)
         {
-            ThisButton.interactable = true;
-            DisplayText.UpdateButtonText($"Purchase for {SelectedBoonPrice} units");
+            DisplayText.UpdateButtonText("Purchase Dependencies first!");
+        }
+        else if ((SelectedNodeDisabled is false) && (DependenciesMet))
+        {
+            DisplayText.UpdateButtonText($"Purchase for {SelectedNodePrice} units");
         }
     }
 
     // Update is called once per frame
     public void Onclick()
     {
-        // First check if you have enough money to purchase
-        if ((ManagerScript.BoonCredits >= SelectedBoonPrice) && SelectedBoonDisabled is false)
-        {
-            ManagerScript.BoonCredits -= SelectedBoonPrice;
+        print("attempting purchase");
+        bool DepenciesMet = ManagerScript.Instance.AreNodeDependciesMet(SelectedNodeDependencies);
 
-            ManagerScript.UnlockedBoons.Add(SelectedBoonSysName);
+        print($"Depencies met :{DepenciesMet}");
+        print($"Selcted node disabled : {SelectedNodeDisabled.ToString()}");
+        print($"Enough money : {(ManagerScript.TechCredits >= SelectedNodePrice).ToString()}");
+        if ((ManagerScript.TechCredits >= SelectedNodePrice) && (SelectedNodeDisabled is false) && DepenciesMet)  // First check if you have enough money to purchase
+        {
+            ManagerScript.TechCredits -= SelectedNodePrice;
+
+            ManagerScript.UnlockedBoons.Add(SelectedNodeSysName);
 
             CreditDisplay.UpdateBoonCreditText();
             DisplayText.UpdateButtonText("Already Purchased");
 
-            ManagerScript.IsBoonPurchased[SelectedBoonSysName] = true;
-            SelectedBoonDisabled = true;
+            ManagerScript.Instance.PurchaseNode(SelectedNodeSysName);
+            SelectedNodeDisabled = true;
         }
-        else if (SelectedBoonDisabled)
+        else if (SelectedNodeDisabled)
         {
             print("Already purchased you should display some gui element now ");
         }
-        else if (ManagerScript.BoonCredits < SelectedBoonPrice)
+        else if (ManagerScript.TechCredits < SelectedNodePrice)
         {
             print("You do not have enough money you should probably put some gui element on the screen about now");
         }

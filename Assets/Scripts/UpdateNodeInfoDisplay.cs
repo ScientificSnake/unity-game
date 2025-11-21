@@ -8,7 +8,6 @@ public class BoonInfoDisplayTitle : MonoBehaviour
 
     public void UpdateDisplay(string title)
     {
-        print(ManagerScript.BoonCredits);
         this.BoonInfoTitle.text = title;
     }
 
