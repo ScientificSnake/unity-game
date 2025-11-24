@@ -87,6 +87,18 @@ public class TechData : MonoBehaviour
                 "SI-290 Swallow",
                 new string[] {"BasicHullNode"}   // this some stupid positional argument type shi
                 )
+        },
+        {
+            "ScorpionHullNode",
+            new TechNode(
+                "ScorpionHullNode",
+                "HullOption",
+                NodeMutationFunctions.ApplySecondHull,
+                100,
+                "An experimental hull with a the new XD-130 drive system, allowing it to dash short distances",
+                "XSF-347 Scorpion",
+                new string[] {"SecondHullNode"} // same positional argument tysh
+            )
         }
     };
     #endregion
@@ -100,6 +112,11 @@ public class TechData : MonoBehaviour
         }
 
         public static void ApplySecondHull()
+        {
+            Debug.Log("test applied second hull");
+        }
+
+        public static void ApplyScorpionHull()
         {
             Debug.Log("test applied second hull");
         }
