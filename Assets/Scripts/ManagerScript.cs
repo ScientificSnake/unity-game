@@ -33,6 +33,14 @@ public class ManagerScript : MonoBehaviour
 
     #endregion
 
+    #region Level initialization
+
+
+
+
+    #endregion
+
+
     #region Save and Load
 
     public void Save(ref ManagerSaveData data)

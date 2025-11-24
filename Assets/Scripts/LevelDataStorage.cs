@@ -5,10 +5,12 @@ using NUnit.Framework.Constraints;
     using System.Linq;
 using System.Transactions;
 using UnityEngine;
-    using static TechData;
+using static TechData;
 
 public class LevelDataStorage
 {
+
+
     public static float DifficultyDeviationTolerance = 0.1f;
     public static int RoundGenMaxTrys = 100;
 

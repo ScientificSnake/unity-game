@@ -80,9 +80,7 @@ public class TechData : MonoBehaviour
             DependencyNodes = dependencyNodes ?? Array.Empty<string>();
 
             IsNodePurchased = false;
-
         }
-
     }
 
     public static Dictionary<string, TechNode> NodeDataDict = new()
