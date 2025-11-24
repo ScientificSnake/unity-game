@@ -72,7 +72,7 @@ public class TechData : MonoBehaviour
                 "HullOption",
                 NodeMutationFunctions.ApplyBasicHull,
                 30,
-                "The Basic Hull Type for your spacecraft - John of all Trades \n\nOne could call this the bricks of the PLF Navy Carrier Regiments. The PLF Navy uses this for all kinds of missions, such as in-atmosphere strikes or basic fleet defense.",
+                "The basic hull type for your spacecraft - John of all Trades \n\nOne could call this the bricks of the PLF Navy Carrier Regiments. The PLF Navy uses this for all kinds of missions, such as in-atmosphere strikes or basic fleet defense.",
                 "SF-170 Lynchpin"
                 )
         },
@@ -95,9 +95,21 @@ public class TechData : MonoBehaviour
                 "HullOption",
                 NodeMutationFunctions.ApplyScorpionHull,
                 100,
-                "An experimental hull with a the new XD-130 drive system, allowing it to dash short distances.\n\nThis one was a spitball project made by the higher ups after [INSERT FACTORY NAME] came up with that dash drive system. Very few prototypes were made because of the price, but it's capable enough that it's very rarely used as a defense fighter. However, to be able to house this equipment and keep its maneuverability it is very fragile, so it's only put into the hands of vetaran pilots.",
+                "An experimental hull with a the new XD-130 drive system, allowing it to dash short distances.\n\nThis one was a spitball project made by the higher ups after Wraith Industries came up with that dash drive system. Very few prototypes were made because of the price, but it's capable enough that it's very rarely used as a defense fighter. However, to be able to house this equipment and keep its maneuverability it is very fragile, so it's only put into the hands of vetaran pilots.",
                 "XSF-347 Scorpion",
                 new string[] {"SecondHullNode"} // same positional argument tysh
+            )
+        },
+        {
+            "TrophyHullNode",
+            new TechNode(
+                "TrophyHullNode",
+                "HullOption",
+                NodeMutationFunctions.ApplyTrophyHull,
+                100,
+                "A cargo hull with the ability to carry 2 light fighter drones, due to an improved control computer and added space.\n\nAfter the [INSERT CIVIL WAR], the higher ups wanted a way to muster more force to cover more area. After the same competition that resulted in the dash drive concept, Pilen Technologies came up with the Enhanced Capability Trophy Upgrade, or ECTU. This allowed the Trophy to carry 2 light fighter drones, give it the ability to act as an extension of carrier wings.",
+                "SLC-111C Trophy",
+                new string[] {"SecondHullNode"} // positional arg tysh
             )
         }
     };
@@ -118,7 +130,11 @@ public class TechData : MonoBehaviour
 
         public static void ApplyScorpionHull()
         {
-            Debug.Log("test applied second hull");
+            Debug.Log("test applied scorpion hull");
+        }
+        public static void ApplyTrophyHull()
+        {
+            Debug.Log("test applied trophy hull");
         }
     #endregion
     }
