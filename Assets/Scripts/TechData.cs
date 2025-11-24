@@ -72,7 +72,7 @@ public class TechData : MonoBehaviour
                 "HullOption",
                 NodeMutationFunctions.ApplyBasicHull,
                 30,
-                "The Basic Hull Type for your spacecraft - John of all Trades",
+                "The Basic Hull Type for your spacecraft - John of all Trades \n\nOne could call this the bricks of the PLF Navy Carrier Regiments. The PLF Navy uses this for all kinds of missions, such as in-atmosphere strikes or basic fleet defense.",
                 "SF-170 Lynchpin"
                 )
         },
@@ -83,7 +83,7 @@ public class TechData : MonoBehaviour
                 "HullOption",
                 NodeMutationFunctions.ApplySecondHull,
                 67,
-                "A faster more agile hull with lower base health and more (instability)",
+                "A faster more agile hull with lower base health and more (instability)\n\nIf the Lynchpin is the bricks, then the Swallow is the mortar. The PLF Navy uses this as a basic interdictor fighter, and occasionally they strap fuel pods onto it and use it for escort missions.",
                 "SI-290 Swallow",
                 new string[] {"BasicHullNode"}   // this some stupid positional argument type shi
                 )
@@ -95,7 +95,7 @@ public class TechData : MonoBehaviour
                 "HullOption",
                 NodeMutationFunctions.ApplyScorpionHull,
                 100,
-                "An experimental hull with a the new XD-130 drive system, allowing it to dash short distances",
+                "An experimental hull with a the new XD-130 drive system, allowing it to dash short distances.\n\nThis one was a spitball project made by the higher ups after [INSERT FACTORY NAME] came up with that dash drive system. Very few prototypes were made because of the price, but it's capable enough that it's very rarely used as a defense fighter. However, to be able to house this equipment and keep its maneuverability it is very fragile, so it's only put into the hands of vetaran pilots.",
                 "XSF-347 Scorpion",
                 new string[] {"SecondHullNode"} // same positional argument tysh
             )
