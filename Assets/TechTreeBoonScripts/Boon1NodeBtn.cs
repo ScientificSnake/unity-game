@@ -1,32 +1,30 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Boon1NodeBtn : MonoBehaviour
 {
-    private static string Title = "Boon 1 placeholder";
-    private static string BodyText = "Insane multi line description about the cost and features";
-    private static string SysName = "TestBoon1";
-    private static int Price = 30;
+    private static string Title;
+    private static string BodyText;
+    private static string SysName = "BasicHullNode";
 
     public BtnPurchaseBoon PurchaseButton;
     public BoonInfoDisplayTitle TargetTitleDisplay;
     public UpdateBoonBodyTextDisplay TargetBodyDisplay;
 
-    public static List<string> DependentBoonsSysNames = new List<string>
-    {
-    };
+    public static Array DependentBoonsSysNames;
 
     public void OnSelect()
     {
         TargetTitleDisplay.UpdateDisplay(Title);
         TargetBodyDisplay.UpdateBodytext(BodyText);
 
-        PurchaseButton.SetButtonValues(SysName, Price, DependentBoonsSysNames);
+        PurchaseButton.SetButtonValues(SysName);
     }
 
     void Start()
     {
-        // Boon1Purchased =
+        DependentBoonsSysNames = TechData.NodeDataDict[SysName].DependencyNodes;
+        Title = TechData.NodeDataDict[SysName].DisplayTitle;
+        BodyText = TechData.NodeDataDict[SysName].DisplayText;
     }
 }

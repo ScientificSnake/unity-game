@@ -8,7 +8,7 @@ public class BoonCreditDisplayUpdater : MonoBehaviour
 
     public void UpdateBoonCreditText()
     {
-        this.BoonCreditText.text = (ManagerScript.TechCredits).ToString();
+        this.BoonCreditText.text = (TechData.TechCredits).ToString();
     }
 
 

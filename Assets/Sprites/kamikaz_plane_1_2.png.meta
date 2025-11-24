@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cc3b68e9d3c54a44ab9231cbb65ef834
+guid: f8d8adc486e5a204faafe210bae15e6a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2835850074602544981
-    second: Upgrades (1)_0
+      213: -2772008533384759699
+    second: kamikaz_plane_1_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Upgrades (1)_0
+      name: kamikaz_plane_1_2_0
       rect:
         serializedVersion: 2
-        x: 1036
-        y: 961
-        width: 4098
-        height: 1400
+        x: 203
+        y: 170
+        width: 1626
+        height: 862
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 55f13fc2e96fa5720800000000000000
-      internalID: 2835850074602544981
+      spriteID: d66ff35fce8d789d0800000000000000
+      internalID: -2772008533384759699
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Upgrades (1)_0: 2835850074602544981
+      kamikaz_plane_1_2_0: -2772008533384759699
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

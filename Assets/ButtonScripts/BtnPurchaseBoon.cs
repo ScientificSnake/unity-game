@@ -9,7 +9,6 @@ public class BtnPurchaseBoon : MonoBehaviour
     private static string SelectedNodeSysName;
     private static int SelectedNodePrice;
     public static bool SelectedNodeDisabled;
-    public static List<string> SelectedNodeDependencies;
 
     public Button ThisButton;
     public BoonCreditDisplayUpdater CreditDisplay;
@@ -23,16 +22,18 @@ public class BtnPurchaseBoon : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void SetButtonValues(string SysName, int Price, List<string> Dependencies)
+    public void SetButtonValues(string SysName)
     {
         gameObject.SetActive(true);
-
-        SelectedNodeDependencies = Dependencies;
         SelectedNodeSysName = SysName;
-        SelectedNodePrice = Price;
-        SelectedNodeDisabled = ManagerScript.Instance.IsNodePurchased(SysName);
 
-        bool DependenciesMet = ManagerScript.Instance.AreNodeDependciesMet(Dependencies);
+        Array dependencies = TechData.NodeDataDict[SysName].DependencyNodes;
+        int price = TechData.NodeDataDict[SysName].Price;
+
+        SelectedNodeDisabled = TechData.Instance.IsNodePurchased(SysName);
+        SelectedNodePrice = TechData.NodeDataDict[SysName].Price;
+
+        bool DependenciesMet = TechData.Instance.AreNodeDependciesMet(SysName);
 
         if (SelectedNodeDisabled)
         {
@@ -52,28 +53,24 @@ public class BtnPurchaseBoon : MonoBehaviour
     public void Onclick()
     {
         //print("attempting purchase");
-        bool DepenciesMet = ManagerScript.Instance.AreNodeDependciesMet(SelectedNodeDependencies);
-
-        //print($"Depencies met :{DepenciesMet}");
-        //print($"Selcted node disabled : {SelectedNodeDisabled.ToString()}");
-        //print($"Enough money : {(ManagerScript.TechCredits >= SelectedNodePrice).ToString()}");
-        if ((ManagerScript.TechCredits >= SelectedNodePrice) && (SelectedNodeDisabled is false) && DepenciesMet)  // First check if you have enough money to purchase
+        bool DepenciesMet = TechData.Instance.AreNodeDependciesMet(SelectedNodeSysName);
+        if ((TechData.TechCredits >= SelectedNodePrice) && (SelectedNodeDisabled is false) && DepenciesMet)  // First check if you have enough money to purchase
         {
-            ManagerScript.TechCredits -= SelectedNodePrice;
+            TechData.TechCredits -= SelectedNodePrice;
 
-            ManagerScript.UnlockedBoons.Add(SelectedNodeSysName);
+            TechData.NodeDataDict[SelectedNodeSysName].IsNodePurchased = true;
 
             CreditDisplay.UpdateBoonCreditText();
             DisplayText.UpdateButtonText("Already Purchased");
 
-            ManagerScript.Instance.PurchaseNode(SelectedNodeSysName);
+            TechData.Instance.PurchaseNode(SelectedNodeSysName);
             SelectedNodeDisabled = true;
         }
         else if (SelectedNodeDisabled)
         {
             print("Already purchased you should display some gui element now ");
         }
-        else if (ManagerScript.TechCredits < SelectedNodePrice)
+        else if (TechData.TechCredits < SelectedNodePrice)
         {
             print("You do not have enough money you should probably put some gui element on the screen about now");
         }
