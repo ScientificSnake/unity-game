@@ -22,6 +22,7 @@ public class ManagerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        TechData.TechCredits = 100;
     }
     #endregion
 

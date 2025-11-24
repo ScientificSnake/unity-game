@@ -5,39 +5,19 @@ using UnityEngine;
 
 public class TechData : MonoBehaviour
 {
-    #region global initialization and singleton set up
-    public static TechData Instance { get; private set; }
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    void Start()
-    {
-        TechCredits = 100;
-    }
-
-    #endregion
     public static int TechCredits;
 
-    public bool IsNodePurchased(string sysname)
+    public static bool IsNodePurchased(string sysname)
     {
         return NodeDataDict[sysname].IsNodePurchased;
     }
-    public void PurchaseNode(string sysname)
+    public static void PurchaseNode(string sysname)
     {
         NodeDataDict[sysname].IsNodePurchased = true;
     }
 
 
-    public bool AreNodeDependciesMet(string sysName)
+    public static bool AreNodeDependciesMet(string sysName)
     {
         Array dependencies = TechData.NodeDataDict[sysName].DependencyNodes;
 

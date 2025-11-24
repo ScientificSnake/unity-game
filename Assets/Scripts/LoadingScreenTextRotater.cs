@@ -11,22 +11,25 @@ public class LoadingScreenTextRotater : MonoBehaviour
 
     private int tipIndex;
 
-    private readonly string[] LoadingTips = {
+    private string[] LoadingTips = {
         "Stealing Nearest Power Source",
-        "Doing something on the Calc (short for calculator)"
+        "Doing something on the Calc (short for calculator)",
+        "Digging in my butt"
     };
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        ShufflerNonMono.Shuffle(LoadingTips);
+
         Debug.Log("starting loading screen");
-        tipIndex = 0;
+        tipIndex = UnityEngine.Random.Range(0, LoadingTips.Length);
         SetDisplayText(LoadingTips[tipIndex]);
-        StartCoroutine(textRotater());
+        StartCoroutine(TextRotater());
     }
 
-    IEnumerator textRotater()
+    IEnumerator TextRotater()
     {
         while (_shouldRepeat)
         {
