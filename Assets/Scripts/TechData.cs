@@ -93,7 +93,7 @@ public class TechData : MonoBehaviour
             new TechNode(
                 "ScorpionHullNode",
                 "HullOption",
-                NodeMutationFunctions.ApplySecondHull,
+                NodeMutationFunctions.ApplyScorpionHull,
                 100,
                 "An experimental hull with a the new XD-130 drive system, allowing it to dash short distances",
                 "XSF-347 Scorpion",
