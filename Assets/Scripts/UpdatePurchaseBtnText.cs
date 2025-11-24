@@ -6,7 +6,6 @@ public class UpdatePurchaseBtnText : MonoBehaviour
 
     public void UpdateButtonText(string text)
     {
-        print($"Updating boon purchase button text with args {text}");
         ThisBtnText.text = text;
     }
 

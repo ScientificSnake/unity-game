@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManagerScript : MonoBehaviour
 {
@@ -35,8 +36,30 @@ public class ManagerScript : MonoBehaviour
 
     #region Level initialization
 
+    public static void EnterLevel(string sysName)
+    {
+        if (!(LevelDataStorage.LevelDataDict.ContainsKey(sysName)))
+        {
+            Debug.Log($"Level \" {sysName} \"  could not be found as a a keyin LevelDataStorage.LevelDataDict");
+        }
+        else // sys name was found
+        {
+            // First things first lets move scenes and get that juicy loading screen up
+
+            SceneManager.LoadScene(sceneName: "arena");
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // reset
+
+            // For loading screen prefab or additively loaded scene? I think panel will work
 
 
+            LevelDataStorage.LevelData targetLevelData = LevelDataStorage.LevelDataDict[sysName];
+
+            LevelDataStorage.LevelManager currentLevelManager = new (targetLevelData,
+                                                                     TechData.NodeDataDict);
+
+        }
+    }
 
     #endregion
 

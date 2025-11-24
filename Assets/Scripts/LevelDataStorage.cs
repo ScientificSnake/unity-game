@@ -12,7 +12,7 @@ public class LevelDataStorage
 
 
     public static float DifficultyDeviationTolerance = 0.1f;
-    public static int RoundGenMaxTrys = 100;
+    public static int RoundGenMaxTrys = 100;  // The lion does not concern himself with a 100% chance of level generation
 
     public class LevelManager // This is the actual object that will be created and returned when entering a level
     {
@@ -164,19 +164,21 @@ public class LevelDataStorage
             //  Round count index starts at 0
             List<Dictionary<int, List<Action>>> RoundList = new();
 
-            
-
-
-            for (int i = 0; i < leveldata.RoundCount; i++)
+            for (int round = 0; round < leveldata.RoundCount; round++)
             {
-                float targetDifc = leveldata.DifficultyFunc(i);
+                if (!(leveldata.PresetRounds.ContainsKey(round)))  // IF round is not preset round use this code to generate a round    
+                {
+                    float targetDifc = leveldata.DifficultyFunc(round);
 
-                Dictionary<int, List<Action>> round = GenerateRound(targetDifc, leveldata.DifficultyEventDict);
-                RoundList.Add(round);
+                    Dictionary<int, List<Action>> roundSched = GenerateRound(targetDifc, leveldata.DifficultyEventDict);
+                    RoundList.Add(roundSched);
+                }
+                else  // Round is a preset
+                {
+                    RoundList.Add(leveldata.PresetRounds[round]);
+                }
             }
             Rounds = RoundList;
-
-            
         }
     }
     public class LevelData
