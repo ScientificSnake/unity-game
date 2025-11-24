@@ -9,8 +9,6 @@ using static TechData;
 
 public class LevelDataStorage
 {
-
-
     public static float DifficultyDeviationTolerance = 0.1f;
     public static int RoundGenMaxTrys = 100;  // The lion does not concern himself with a 100% chance of level generation
 

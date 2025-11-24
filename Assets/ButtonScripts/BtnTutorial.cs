@@ -6,17 +6,6 @@ public class BtnTutorial : MonoBehaviour
 
     public void OnClick()
     {
-
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        ManagerScript.Instance.EnterLevel("Tutorial");
     }
 }

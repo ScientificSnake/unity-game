@@ -36,8 +36,10 @@ public class ManagerScript : MonoBehaviour
 
     #region Level initialization
 
-    public static void EnterLevel(string sysName)
+    public void EnterLevel(string sysName)
     {
+        Debug.Log("attempting to enter arena scene");
+
         if (!(LevelDataStorage.LevelDataDict.ContainsKey(sysName)))
         {
             Debug.Log($"Level \" {sysName} \"  could not be found as a a keyin LevelDataStorage.LevelDataDict");
@@ -45,10 +47,8 @@ public class ManagerScript : MonoBehaviour
         else // sys name was found
         {
             // First things first lets move scenes and get that juicy loading screen up
+            StartCoroutine(LoadLevelRoutine("arena"));
 
-            SceneManager.LoadScene(sceneName: "arena");
-
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // reset
 
             // For loading screen prefab or additively loaded scene? I think panel will work
 
@@ -59,6 +59,16 @@ public class ManagerScript : MonoBehaviour
                                                                      TechData.NodeDataDict);
 
         }
+    }
+
+    private IEnumerator<string> LoadLevelRoutine(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+
+        // wait 1 frame
+        yield return null;
+
+        LoadingScreen.Instance.Enable();
     }
 
     #endregion

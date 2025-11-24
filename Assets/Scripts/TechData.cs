@@ -104,7 +104,8 @@ public class TechData : MonoBehaviour
                 NodeMutationFunctions.ApplySecondHull,
                 67,
                 "A faster more agile hull with lower base health and more (instability)",
-                "SI-290 Swallow"
+                "SI-290 Swallow",
+                new string[] {"BasicHullNode"}   // this some stupid positional argument type shi
                 )
         }
     };
