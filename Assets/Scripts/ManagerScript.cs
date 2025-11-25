@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEditor.Analytics;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -45,6 +46,7 @@ public class ManagerScript : MonoBehaviour
     void Start()
     {
         TechData.TechCredits = 300;
+        TechData.NodeDataDict["BasicHullNode"].IsNodePurchased = true; // start with a basic hull
     }
     #endregion
 
@@ -106,7 +108,8 @@ public class ManagerScript : MonoBehaviour
 
     public void SpawnPrefab(GameObject prefab, Vector2 position, Transform parentTransform)
     {
-        (Instantiate(prefab, position, Quaternion.identity) as GameObject).transform.parent = parentTransform;
+        GameObject newGameObj = Instantiate(prefab, position, Quaternion.identity);
+        newGameObj.transform.SetParent(parentTransform, false);
     }
 
     public Dictionary<string, GameObject> SysNameToPrefabObj;
