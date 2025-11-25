@@ -37,7 +37,7 @@ public class BtnPurchaseBoon : MonoBehaviour
 
         if (SelectedNodeDisabled)
         {
-            DisplayText.UpdateButtonText("Already Purchased");
+            DisplayText.UpdateButtonText("Already Owned");
         }
         else if (DependenciesMet is false)
         {
@@ -61,7 +61,7 @@ public class BtnPurchaseBoon : MonoBehaviour
             TechData.NodeDataDict[SelectedNodeSysName].IsNodePurchased = true;
 
             CreditDisplay.UpdateBoonCreditText();
-            DisplayText.UpdateButtonText("Already Purchased");
+            DisplayText.UpdateButtonText("Already Owned");
 
             TechData.PurchaseNode(SelectedNodeSysName);
             SelectedNodeDisabled = true;
