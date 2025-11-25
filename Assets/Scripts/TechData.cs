@@ -106,10 +106,22 @@ public class TechData : MonoBehaviour
                 "TrophyHullNode",
                 "HullOption",
                 NodeMutationFunctions.ApplyTrophyHull,
-                100,
+                125,
                 "A cargo hull with the ability to carry 2 light fighter drones, due to an improved control computer and added space.\n\nAfter the [INSERT CIVIL WAR], the higher ups wanted a way to muster more force to cover more area. After the same competition that resulted in the dash drive concept, Pilen Technologies came up with the Enhanced Capability Trophy Upgrade, or ECTU. This allowed the Trophy to carry 2 light fighter drones, give it the ability to act as an extension of carrier wings.",
                 "SLC-111C Trophy",
                 new string[] {"SecondHullNode"} // positional arg tysh
+            )
+        },
+        {
+            "RavenHullNode",
+            new TechNode(
+                "RavenHullNode",
+                "HullOption",
+                NodeMutationFunctions.ApplyRavenHull,
+                150,
+                "A fighter equipped with a cloaking pod that allows it to deceive the enemy for a limited period of time.\n\nSome of the scientists at Wraith Industries came up with this cloaking tech after putting a part from their dash drive in the microwave \"for science\". At the same time they were prototyping a multirole capable of operating bot in and out of the atmosphere with minimal changes, so the techs decided to merge the tech and make the Raven. The general public, me included, thought that it would be too expensive to go into full production, but the higher ups saw the potential in it and gave Wraith a contract to produce it at the same scale as the Lynchpin.",
+                "SFS-362Raven",
+                new string[] {"TrophyHullNode", "ScorpionHullNode"} // positional arg tysh
             )
         }
     };
@@ -135,6 +147,10 @@ public class TechData : MonoBehaviour
         public static void ApplyTrophyHull()
         {
             Debug.Log("test applied trophy hull");
+        }
+        public static void ApplyRavenHull()
+        {
+            Debug.Log("test applied raven hull");
         }
     #endregion
     }

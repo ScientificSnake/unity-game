@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class ScorpionBtnScript : MonoBehaviour
+public class RavenBtnScript : MonoBehaviour
 {
     private static string Title;
     private static string BodyText;
-    private static string SysName = "ScorpionHullNode";
+    private static string SysName = "RavenHullNode";
 
     public BtnPurchaseBoon PurchaseButton;
     public BoonInfoDisplayTitle TargetTitleDisplay;
