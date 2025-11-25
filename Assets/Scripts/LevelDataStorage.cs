@@ -4,6 +4,7 @@ using NUnit.Framework.Constraints;
     using System.Collections.Generic;
     using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.ExceptionServices;
 using System.Transactions;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -208,10 +209,46 @@ public class LevelDataStorage
                 // pick 3 from the possible
                 // and use the 3 layout
 
+                string[] selectedHullOptions;
+
+                if (howManyHullOptions >= 3)
+                {
+                    ShufflerNonMono.Shuffle(HullOptions.ToArray());
+
+                    selectedHullOptions = new string[] { HullOptions[0], HullOptions[1], HullOptions[2] };
+                }
+                else
+                {
+                    selectedHullOptions = HullOptions.ToArray();
+                }
+
+                string firstTargetSysName = selectedHullOptions[0];
+                Vector2 firstPositionVector = new(260.25f, 510);
+                GameObject firstPrefab = ManagerScript.Instance.SysNameToPrefabObj[firstTargetSysName];
+                ManagerScript.Instance.SpawnPrefab(firstPrefab, firstPositionVector, parentTransform);
+
+                string secondTargetSysName = selectedHullOptions[1];
+                Vector2 secondPositionVector = new(520.5f, 510);
+                GameObject secondPrefab = ManagerScript.Instance.SysNameToPrefabObj[secondTargetSysName];
+                ManagerScript.Instance.SpawnPrefab(secondPrefab, secondPositionVector, parentTransform);
+
+                string thirdTargetSysName = selectedHullOptions[2];
+                Vector2 thirdPositionVector = new(780.75f, 510);
+                GameObject thirdPrefab = ManagerScript.Instance.SysNameToPrefabObj[thirdTargetSysName];
+                ManagerScript.Instance.SpawnPrefab(thirdPrefab, thirdPositionVector, parentTransform);
             }
-            else if (howManyHullOptions == 2)
+            else if (howManyHullOptions == 2) // layout for 2
             {
-                // layout for 2
+                string firstTargetSysName = HullOptions[0];
+                Vector2 firstPositionvector = new Vector2(347, 510);
+                GameObject firstPrefab = ManagerScript.Instance.SysNameToPrefabObj[firstTargetSysName];
+                ManagerScript.Instance.SpawnPrefab(firstPrefab, firstPositionvector, parentTransform);
+
+                string secondTargetSysName = HullOptions[1];
+                Vector2 secondPositionVector = new Vector2(694, 510);
+                GameObject secondPrefab = ManagerScript.Instance.SysNameToPrefabObj[secondTargetSysName];
+                ManagerScript.Instance.SpawnPrefab(secondPrefab, secondPositionVector, parentTransform);
+
             }
             else // layout for 1
             {
@@ -219,7 +256,7 @@ public class LevelDataStorage
 
                 string targetSysName = HullOptions[0];
 
-                Vector2 positionVector = new Vector2(520, 293);
+                Vector2 positionVector = new Vector2(520.5f, 510);
 
                 if (ManagerScript.Instance == null)
                 {
@@ -241,7 +278,8 @@ public class LevelDataStorage
                     return;
                 }
 
-                ManagerScript.Instance.SpawnPrefab(prefab, positionVector, parentTransform);     }
+                ManagerScript.Instance.SpawnPrefab(prefab, positionVector, parentTransform);
+            }
         }
     }
     public class LevelData

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Analytics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ManagerScript : MonoBehaviour
 {
@@ -23,17 +24,27 @@ public class ManagerScript : MonoBehaviour
         SysNameToPrefabObj = new Dictionary<string, GameObject>()
         {
             {
-            "BasicHullNode",
-            Instance.BasicHullBtnPrefab
+                "BasicHullNode",
+                Instance.BasicHullBtnPrefab
+            },
+            {
+                "SecondHullNode",
+                Instance.FastHullBtnPrefab
+            },
+            {
+                "ScorpionHullNode",
+                Instance.ScorpionHullBtnPrefab
+            },
+            {
+                "TrophyHullNode",
+                Instance.TrophyHullBtnPrefab
             }
         };
-
-
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        TechData.TechCredits = 100;
+        TechData.TechCredits = 300;
     }
     #endregion
 
@@ -78,16 +89,25 @@ public class ManagerScript : MonoBehaviour
     #region Prefab gameobject fields
 
     public GameObject BasicHullBtnPrefab;
-    // public GameObject FastHullBtnPrefab;
-    // public GameObject ScorpionHullBtnPrefab;
+    public GameObject FastHullBtnPrefab;
+    public GameObject ScorpionHullBtnPrefab;
+    public GameObject TrophyHullBtnPrefab;
 
     #endregion
+
+    #region Sprite game object fields
+    public Sprite basicCosmicBg;
+    #endregion
+
+    public void ChangeBackground(Image Canvas, Sprite Background)
+    {
+        Canvas.sprite = Background;
+    }
 
     public void SpawnPrefab(GameObject prefab, Vector2 position, Transform parentTransform)
     {
         (Instantiate(prefab, position, Quaternion.identity) as GameObject).transform.parent = parentTransform;
     }
-
 
     public Dictionary<string, GameObject> SysNameToPrefabObj;
 

@@ -667,6 +667,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   BasicHullBtnPrefab: {fileID: 2266318952917954788, guid: b1b138d95bfe27343b0d69c188f1573b, type: 3}
+  FastHullBtnPrefab: {fileID: 2802660104900250834, guid: eb2afa6c93fec7041a629622e9f1c769, type: 3}
+  ScorpionHullBtnPrefab: {fileID: 5426184494944193483, guid: 5e78b1bf23b9cc64bba390a668e40f7a, type: 3}
 --- !u!1 &1360741382
 GameObject:
   m_ObjectHideFlags: 0
