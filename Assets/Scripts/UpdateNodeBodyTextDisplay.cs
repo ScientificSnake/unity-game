@@ -7,7 +7,7 @@ public class UpdateBoonBodyTextDisplay : MonoBehaviour
     public TextMeshProUGUI BodyText;
     public void UpdateBodytext(string BodyTextInput)
     {
-        this.BodyText.text = BodyTextInput;
+        BodyText.text = BodyTextInput;
     }
 
 

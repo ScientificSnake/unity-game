@@ -666,6 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ae66952b3d56a429c4a7ac45c80ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  BasicHullBtnPrefab: {fileID: 2266318952917954788, guid: b1b138d95bfe27343b0d69c188f1573b, type: 3}
 --- !u!1 &1360741382
 GameObject:
   m_ObjectHideFlags: 0

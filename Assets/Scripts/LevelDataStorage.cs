@@ -3,17 +3,24 @@ using NUnit.Framework.Constraints;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Transactions;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static TechData;
 
 public class LevelDataStorage
 {
+    public static System.Random random = new();
+
     public static float DifficultyDeviationTolerance = 0.1f;
     public static int RoundGenMaxTrys = 100;  // The lion does not concern himself with a 100% chance of level generation
 
     public class LevelManager // This is the actual object that will be created and returned when entering a level
     {
+
+        public int CurrentRound = 0;
         public List<Dictionary<int, List<Action>>> Rounds;
         public float CurrentScalingMult;
         public List<string> HullOptions; // sys names for active hull option
@@ -38,7 +45,7 @@ public class LevelDataStorage
         public static KeyValuePair<Action, int> GetRandomEventFromDict(Dictionary<Action, int> dict)
         {
             List<Action> keys = dict.Keys.ToList();
-            int randomIndex = UnityEngine.Random.Range(0, keys.Count);
+            int randomIndex = random.Next(keys.Count);
 
             Action randomKey = keys[randomIndex];
 
@@ -93,7 +100,7 @@ public class LevelDataStorage
         {
             List<Action> actionList = new();
 
-            foreach(KeyValuePair<Action,int> kvp in kvp_list)
+            foreach (KeyValuePair<Action, int> kvp in kvp_list)
             {
                 actionList.Add(kvp.Key);
             }
@@ -140,14 +147,25 @@ public class LevelDataStorage
 
             foreach (Action action in chosenActionCombination)
             {
-                int randomTime = UnityEngine.Random.Range(0, 31);
-                timeActionDict[randomTime].Add(action);
+                int randomTime = random.Next(31);
+
+                if (timeActionDict.ContainsKey(randomTime))
+                {
+                    timeActionDict[randomTime].Add(action);
+                } else
+                {
+                    timeActionDict[randomTime] = new List<Action>();
+                    timeActionDict[randomTime].Add(action);
+                }
             }
 
             return timeActionDict;
         }
         #endregion
 
+        /// <summary>
+        /// Level ManagerConstructor
+        /// </summary>
         public LevelManager(LevelData leveldata, Dictionary<string, TechNode> nodeData)
         {
             List<string> enabledNodes = PurchasedBoons(nodeData);
@@ -177,6 +195,53 @@ public class LevelDataStorage
                 }
             }
             Rounds = RoundList;
+        }
+
+        public void DisplayHullSelectionMenu(Transform parentTransform)
+        {
+            Debug.Log("Displaying hull selection menu at least im trying to ");
+
+            // first determine how many possible hulls there are
+            int howManyHullOptions = HullOptions.Count;
+            if (howManyHullOptions >= 3)
+            {
+                // pick 3 from the possible
+                // and use the 3 layout
+
+            }
+            else if (howManyHullOptions == 2)
+            {
+                // layout for 2
+            }
+            else // layout for 1
+            {
+                // would iterate of over each but there is only 1
+
+                string targetSysName = HullOptions[0];
+
+                Vector2 positionVector = new Vector2(520, 293);
+
+                if (ManagerScript.Instance == null)
+                {
+                    Debug.LogError("ERROR: ManagerScript.Instance is null!");
+                    return;
+                }
+
+                if (!ManagerScript.Instance.SysNameToPrefabObj.ContainsKey(targetSysName))
+                {
+                    Debug.LogError($"ERROR: Dictionary does not contain key: {targetSysName}");
+                    return;
+                }
+
+                // Check if the value itself is null
+                GameObject prefab = ManagerScript.Instance.SysNameToPrefabObj[targetSysName];
+                if (prefab == null)
+                {
+                    Debug.LogError($"ERROR: Prefab assigned to key {targetSysName} in dictionary is null!");
+                    return;
+                }
+
+                ManagerScript.Instance.SpawnPrefab(prefab, positionVector, parentTransform);     }
         }
     }
     public class LevelData

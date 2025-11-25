@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor.Analytics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,16 @@ public class ManagerScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SysNameToPrefabObj = new Dictionary<string, GameObject>()
+        {
+            {
+            "BasicHullNode",
+            Instance.BasicHullBtnPrefab
+            }
+        };
+
+
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +48,8 @@ public class ManagerScript : MonoBehaviour
 
     #region Level initialization
 
+    public static LevelDataStorage.LevelManager CurrentLevelManagerInstance;
+
     public void EnterLevel(string sysName)
     {
         Debug.Log("attempting to enter arena scene");
@@ -47,29 +60,46 @@ public class ManagerScript : MonoBehaviour
         }
         else // sys name was found
         {
+            LevelDataStorage.LevelData targetLevelData = LevelDataStorage.LevelDataDict[sysName];
+            CurrentLevelManagerInstance = new LevelDataStorage.LevelManager(targetLevelData, TechData.NodeDataDict);
+
+            LoadingScreen.Instance.Enable();
+
             // First things first lets move scenes and get that juicy loading screen up
             StartCoroutine(LoadLevelRoutine("arena"));
 
+            //LoadingScreen.Instance.Disable();
 
-            // For loading screen prefab or additively loaded scene? I think panel will work
-
-
-            LevelDataStorage.LevelData targetLevelData = LevelDataStorage.LevelDataDict[sysName];
-
-            LevelDataStorage.LevelManager currentLevelManager = new (targetLevelData,
-                                                                     TechData.NodeDataDict);
+            //CurrentLevelManagerInstance.DisplayHullSelectionMenu();
 
         }
     }
 
+    #region Prefab gameobject fields
+
+    public GameObject BasicHullBtnPrefab;
+    // public GameObject FastHullBtnPrefab;
+    // public GameObject ScorpionHullBtnPrefab;
+
+    #endregion
+
+    public void SpawnPrefab(GameObject prefab, Vector2 position, Transform parentTransform)
+    {
+        (Instantiate(prefab, position, Quaternion.identity) as GameObject).transform.parent = parentTransform;
+    }
+
+
+    public Dictionary<string, GameObject> SysNameToPrefabObj;
+
     private IEnumerator<string> LoadLevelRoutine(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
-        // wait 1 frame
-        yield return null;
-
-        LoadingScreen.Instance.Enable();
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        LoadingScreen.Instance.Disable();
     }
 
     #endregion
