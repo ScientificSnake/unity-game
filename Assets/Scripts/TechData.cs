@@ -122,7 +122,7 @@ public class TechData : MonoBehaviour
                 "HullOption",
                 HullStatsMutationFunctions.ApplyRavenHull,
                 150,
-                "A fighter equipped with a cloaking pod that allows it to deceive the enemy for a limited period of time.\n\nSome of the scientists at Wraith Industries came up with this cloaking tech after putting a part from their dash drive in the microwave \"for science\". At the same time they were prototyping a multirole capable of operating bot in and out of the atmosphere with minimal changes, so the techs decided to merge the tech and make the Raven. The general public, me included, thought that it would be too expensive to go into full production, but the higher ups saw the potential in it and gave Wraith a contract to produce it at the same scale as the Lynchpin.",
+                "A fighter equipped with a cloaking pod that allows it to deceive the enemy for a limited period of time.\n\nSome of the scientists at Wraith Industries came up with this cloaking tech after putting a part from their dash drive in the microwave \"for science\". At the same time they were prototyping a multirole capable of operating both in and out of the atmosphere with minimal changes, so the techs decided to merge the tech and make the Raven. The general public, me included, thought that it would be too expensive to go into full production, but the higher ups saw the potential in it and gave Wraith a contract to produce it at the same scale as the Lynchpin.",
                 "SFS-362Raven",
                 new string[] {"TrophyHullNode", "ScorpionHullNode"} // positional arg tysh
             )
@@ -137,11 +137,18 @@ public class TechData : MonoBehaviour
         {
             Debug.Log("Test applied basic hull");
 
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)  // OH YEAH REFERENCE MUTATION
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)  // OH YEAH REFERENCE MUTATION
             {
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 36; // degress per second 
-                BaseStats["Acceleration"] = 20;  // SUBJECT TO FURTHER CHANGE pixels per second^2
+                BaseStats["Acceleration"] = 20;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["ReverseAcceleration"] = 5; //^ but in reverse (reverse thrust)
+                BaseStats["ScaleFactor"] = 1; //hull size scale factor
+                //Special abilities
+                BaseStats["DashAbility"] = 0;
+                BaseStats["StealthAbility"] = 0;
+                BaseStats["CarrierAbility"] = 0;
+                BaseStats["WeaponSelection"] = 1; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
             }
 
         }
@@ -149,9 +156,19 @@ public class TechData : MonoBehaviour
         public static void ApplySecondHull(object BaseStatsObj)
         {
             Debug.Log("test applied second hull");
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)
             {
                 print("detected dict object");
+                BaseStats["Health"] = 85; // yeah no we ain't doin no fucking module health
+                BaseStats["MaxTurnRate"] = 40; // degress per second 
+                BaseStats["Acceleration"] = 27;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["ReverseAcceleration"] = 7.5f; //^ but in reverse (reverse thrust)
+                BaseStats["ScaleFactor"] = 0.9f; //hull size scale factor
+                //Special abilities
+                BaseStats["DashAbility"] = 0;
+                BaseStats["StealthAbility"] = 0;
+                BaseStats["CarrierAbility"] = 0;
+                BaseStats["WeaponSelection"] = 1; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
             }
             else { print("argument not dictionary<string, int>"); }
         }
@@ -159,27 +176,58 @@ public class TechData : MonoBehaviour
         public static void ApplyScorpionHull(object BaseStatsObj)
         {
             Debug.Log("test applied scorpion hull");
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)
             {
                 print("detected dict objec");
+                BaseStats["Health"] = 75; // yeah no we ain't doin no fucking module health
+                BaseStats["MaxTurnRate"] = 45; // degress per second 
+                BaseStats["Acceleration"] = 25;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["ReverseAcceleration"] = 10; //^ but in reverse (reverse thrust)
+                BaseStats["ScaleFactor"] = 1; //hull size scale factor
+                //Special abilities
+                BaseStats["DashAbility"] = 1;
+                BaseStats["StealthAbility"] = 0;
+                BaseStats["CarrierAbility"] = 0;
+                BaseStats["WeaponSelection"] = 2; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
             }
         }
         public static void ApplyTrophyHull(object BaseStatsObj)
         {
             Debug.Log("test applied trophy hull");
 
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)
             {
                 print("detected dict object");
+                BaseStats["Health"] = 110; // yeah no we ain't doin no fucking module health
+                BaseStats["MaxTurnRate"] = 27; // degress per second 
+                BaseStats["Acceleration"] = 15;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["ReverseAcceleration"] = 2.5f; //^ but in reverse (reverse thrust)
+                BaseStats["ScaleFactor"] = 1.5f; //hull size scale factor
+                //Special abilities
+                BaseStats["DashAbility"] = 0;
+                BaseStats["StealthAbility"] = 0;
+                BaseStats["CarrierAbility"] = 1;
+                BaseStats["WeaponSelection"] = 3; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
             }
         }
         public static void ApplyRavenHull(object BaseStatsObj)
         {
             Debug.Log("test applied raven hull");
-        }
-        public static void ApplyRavenHull()
-        {
-            Debug.Log("test applied raven hull");
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)
+            {
+                print("detected dict object");
+                BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
+                BaseStats["MaxTurnRate"] = 38; // degress per second 
+                BaseStats["Acceleration"] = 23;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["ReverseAcceleration"] = 6; //^ but in reverse (reverse thrust)
+                BaseStats["ScaleFactor"] = 1.1f; //hull size scale factor
+                //Special abilities
+                BaseStats["DashAbility"] = 0;
+                BaseStats["StealthAbility"] = 1;
+                BaseStats["CarrierAbility"] = 0;
+                BaseStats["WeaponSelection"] = 2; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
+            }
+            
         }
     #endregion
     }
