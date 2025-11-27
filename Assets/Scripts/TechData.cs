@@ -177,6 +177,10 @@ public class TechData : MonoBehaviour
         {
             Debug.Log("test applied raven hull");
         }
+        public static void ApplyRavenHull()
+        {
+            Debug.Log("test applied raven hull");
+        }
     #endregion
     }
 }

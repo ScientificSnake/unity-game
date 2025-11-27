@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class ScorpionBtnScript : MonoBehaviour
+public class RavenBtnScript : MonoBehaviour
 {
     private static string Title;
     private static string BodyText;
-    private static string SysName = "ScorpionHullNode";
+    private static string SysName = "RavenHullNode";
 
     public BtnPurchaseBoon PurchaseButton;
     public BoonInfoDisplayTitle TargetTitleDisplay;
@@ -23,8 +23,8 @@ public class ScorpionBtnScript : MonoBehaviour
 
     void Start()
     {
-        DependentBoonsSysNames = TechData.HullOptionsDataDict[SysName].DependencyNodes;
-        Title = TechData.HullOptionsDataDict[SysName].DisplayTitle;
-        BodyText = TechData.HullOptionsDataDict[SysName].DisplayText;
+        DependentBoonsSysNames = TechData.NodeDataDict[SysName].DependencyNodes;
+        Title = TechData.NodeDataDict[SysName].DisplayTitle;
+        BodyText = TechData.NodeDataDict[SysName].DisplayText;
     }
 }
