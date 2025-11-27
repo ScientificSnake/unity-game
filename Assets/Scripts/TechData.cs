@@ -137,7 +137,7 @@ public class TechData : MonoBehaviour
         {
             Debug.Log("Test applied basic hull");
 
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)  // OH YEAH REFERENCE MUTATION
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)  // OH YEAH REFERENCE MUTATION
             {
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 36; // degress per second 
@@ -156,13 +156,13 @@ public class TechData : MonoBehaviour
         public static void ApplySecondHull(object BaseStatsObj)
         {
             Debug.Log("test applied second hull");
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)
             {
                 print("detected dict object");
                 BaseStats["Health"] = 85; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 40; // degress per second 
                 BaseStats["Acceleration"] = 27;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["ReverseAcceleration"] = 7.5; //^ but in reverse (reverse thrust)
+                BaseStats["ReverseAcceleration"] = 7; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = .9; //hull size scale factor
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
@@ -176,7 +176,7 @@ public class TechData : MonoBehaviour
         public static void ApplyScorpionHull(object BaseStatsObj)
         {
             Debug.Log("test applied scorpion hull");
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)
             {
                 print("detected dict objec");
                 BaseStats["Health"] = 75; // yeah no we ain't doin no fucking module health
@@ -195,13 +195,13 @@ public class TechData : MonoBehaviour
         {
             Debug.Log("test applied trophy hull");
 
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)
             {
                 print("detected dict object");
                 BaseStats["Health"] = 110; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 27; // degress per second 
                 BaseStats["Acceleration"] = 15;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["ReverseAcceleration"] = 2.5; //^ but in reverse (reverse thrust)
+                BaseStats["ReverseAcceleration"] = 2; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1.5; //hull size scale factor
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
@@ -213,7 +213,7 @@ public class TechData : MonoBehaviour
         public static void ApplyRavenHull(object BaseStatsObj)
         {
             Debug.Log("test applied raven hull");
-            if (BaseStatsObj is Dictionary<string, int> BaseStats)
+            if (BaseStatsObj is Dictionary<string, float> BaseStats)
             {
                 print("detected dict object");
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
