@@ -1,0 +1,75 @@
+{
+    "version": 1,
+    "name": "InArenaControls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "fa740a02-11e0-41b8-9b32-e2c5db3a9c8b",
+            "actions": [
+                {
+                    "name": "LShift",
+                    "type": "PassThrough",
+                    "id": "273aa178-46ea-44e7-a223-fe4e8fff3b4c",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LControl",
+                    "type": "PassThrough",
+                    "id": "8fe55271-de13-4199-8467-3750bee87196",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LAlt",
+                    "type": "PassThrough",
+                    "id": "a7a0cfb7-4884-4496-9a2b-9708da1ec7b5",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "47575d02-fa29-4f79-b901-67c42cb0e1ab",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LShift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "256398d9-a93b-4dd5-9f87-cad7aa33b216",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3af16b46-d4da-4afb-86fe-6c8e9fa6aad1",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LAlt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
