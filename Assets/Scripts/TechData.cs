@@ -122,7 +122,7 @@ public class TechData : MonoBehaviour
                 "HullOption",
                 HullStatsMutationFunctions.ApplyRavenHull,
                 150,
-                "A fighter equipped with a cloaking pod that allows it to deceive the enemy for a limited period of time.\n\nSome of the scientists at Wraith Industries came up with this cloaking tech after putting a part from their dash drive in the microwave \"for science\". At the same time they were prototyping a multirole capable of operating bot in and out of the atmosphere with minimal changes, so the techs decided to merge the tech and make the Raven. The general public, me included, thought that it would be too expensive to go into full production, but the higher ups saw the potential in it and gave Wraith a contract to produce it at the same scale as the Lynchpin.",
+                "A fighter equipped with a cloaking pod that allows it to deceive the enemy for a limited period of time.\n\nSome of the scientists at Wraith Industries came up with this cloaking tech after putting a part from their dash drive in the microwave \"for science\". At the same time they were prototyping a multirole capable of operating both in and out of the atmosphere with minimal changes, so the techs decided to merge the tech and make the Raven. The general public, me included, thought that it would be too expensive to go into full production, but the higher ups saw the potential in it and gave Wraith a contract to produce it at the same scale as the Lynchpin.",
                 "SFS-362Raven",
                 new string[] {"TrophyHullNode", "ScorpionHullNode"} // positional arg tysh
             )
