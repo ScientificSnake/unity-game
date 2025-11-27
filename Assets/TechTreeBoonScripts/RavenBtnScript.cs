@@ -23,8 +23,8 @@ public class RavenBtnScript : MonoBehaviour
 
     void Start()
     {
-        DependentBoonsSysNames = TechData.NodeDataDict[SysName].DependencyNodes;
-        Title = TechData.NodeDataDict[SysName].DisplayTitle;
-        BodyText = TechData.NodeDataDict[SysName].DisplayText;
+        DependentBoonsSysNames = TechData.HullOptionsDataDict[SysName].DependencyNodes;
+        Title = TechData.HullOptionsDataDict[SysName].DisplayTitle;
+        BodyText = TechData.HullOptionsDataDict[SysName].DisplayText;
     }
 }
