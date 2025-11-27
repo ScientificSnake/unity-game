@@ -669,6 +669,10 @@ MonoBehaviour:
   BasicHullBtnPrefab: {fileID: 2266318952917954788, guid: b1b138d95bfe27343b0d69c188f1573b, type: 3}
   FastHullBtnPrefab: {fileID: 2802660104900250834, guid: eb2afa6c93fec7041a629622e9f1c769, type: 3}
   ScorpionHullBtnPrefab: {fileID: 5426184494944193483, guid: 5e78b1bf23b9cc64bba390a668e40f7a, type: 3}
+  TrophyHullBtnPrefab: {fileID: 6630928121461323855, guid: 78bed78f35202b84eb91f96d2458eadc, type: 3}
+  CarrierSpritePrefab: {fileID: 5923273127070203140, guid: 99eb7966f29d8f94c8bcf240045ee41b, type: 3}
+  BasicHullSpritePrefab: {fileID: 8234525873093033350, guid: 423caeeaa76695947bcd0afb71a78b72, type: 3}
+  basicCosmicBg: {fileID: 0}
 --- !u!1 &1360741382
 GameObject:
   m_ObjectHideFlags: 0

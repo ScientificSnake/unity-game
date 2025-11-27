@@ -27,11 +27,10 @@ public class BtnPurchaseBoon : MonoBehaviour
         gameObject.SetActive(true);
         SelectedNodeSysName = SysName;
 
-        Array dependencies = TechData.NodeDataDict[SysName].DependencyNodes;
-        int price = TechData.NodeDataDict[SysName].Price;
+        Array dependencies = TechData.HullOptionsDataDict[SysName].DependencyNodes;
 
         SelectedNodeDisabled = TechData.IsNodePurchased(SysName);
-        SelectedNodePrice = TechData.NodeDataDict[SysName].Price;
+        SelectedNodePrice = TechData.HullOptionsDataDict[SysName].Price;
 
         bool DependenciesMet = TechData.AreNodeDependciesMet(SysName);
 
@@ -58,7 +57,7 @@ public class BtnPurchaseBoon : MonoBehaviour
         {
             TechData.TechCredits -= SelectedNodePrice;
 
-            TechData.NodeDataDict[SelectedNodeSysName].IsNodePurchased = true;
+            TechData.HullOptionsDataDict[SelectedNodeSysName].IsNodePurchased = true;
 
             CreditDisplay.UpdateBoonCreditText();
             DisplayText.UpdateButtonText("Already Owned");

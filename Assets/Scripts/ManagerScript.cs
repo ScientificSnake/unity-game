@@ -46,7 +46,7 @@ public class ManagerScript : MonoBehaviour
     void Start()
     {
         TechData.TechCredits = 300;
-        TechData.NodeDataDict["BasicHullNode"].IsNodePurchased = true; // start with a basic hull
+        TechData.HullOptionsDataDict["BasicHullNode"].IsNodePurchased = true; // start with a basic hull
     }
     #endregion
 
@@ -74,12 +74,12 @@ public class ManagerScript : MonoBehaviour
         else // sys name was found
         {
             LevelDataStorage.LevelData targetLevelData = LevelDataStorage.LevelDataDict[sysName];
-            CurrentLevelManagerInstance = new LevelDataStorage.LevelManager(targetLevelData, TechData.NodeDataDict);
+            CurrentLevelManagerInstance = new LevelDataStorage.LevelManager(targetLevelData, TechData.HullOptionsDataDict);
 
             LoadingScreen.Instance.Enable();
 
             // First things first lets move scenes and get that juicy loading screen up
-            StartCoroutine(LoadLevelRoutine("arena"));
+            StartCoroutine(LoadLevelRoutine("hullSelection"));
 
             //LoadingScreen.Instance.Disable();
 
@@ -94,6 +94,8 @@ public class ManagerScript : MonoBehaviour
     public GameObject FastHullBtnPrefab;
     public GameObject ScorpionHullBtnPrefab;
     public GameObject TrophyHullBtnPrefab;
+    public GameObject CarrierSpritePrefab;
+    public GameObject BasicHullSpritePrefab;
 
     #endregion
 
@@ -106,10 +108,11 @@ public class ManagerScript : MonoBehaviour
         Canvas.sprite = Background;
     }
 
-    public void SpawnPrefab(GameObject prefab, Vector2 position, Transform parentTransform)
+    public GameObject SpawnPrefab(GameObject prefab, Vector2 position, Transform parentTransform)
     {
         GameObject newGameObj = Instantiate(prefab, position, Quaternion.identity);
         newGameObj.transform.SetParent(parentTransform, false);
+        return newGameObj;
     }
 
     public Dictionary<string, GameObject> SysNameToPrefabObj;
@@ -133,22 +136,22 @@ public class ManagerScript : MonoBehaviour
     public void Save(ref ManagerSaveData data)
     {
         data.TechCredits = TechData.TechCredits;
-        data.NodeDataDict = TechData.NodeDataDict;
+        data.HullOptionsDataDict = TechData.HullOptionsDataDict;
     }
 
     public void Load(ManagerSaveData data)
     {
         TechData.TechCredits = data.TechCredits;
-        TechData.NodeDataDict = data.NodeDataDict;
+        TechData.HullOptionsDataDict = data.HullOptionsDataDict;
 
-        foreach (var item in data.NodeDataDict)
+        foreach (var item in data.HullOptionsDataDict)
         {
             string sysName = item.Key;
             bool isPurchased = item.Value.IsNodePurchased;
 
-            if (TechData.NodeDataDict.ContainsKey(sysName))
+            if (TechData.HullOptionsDataDict.ContainsKey(sysName))
             {
-                TechData.NodeDataDict[sysName].IsNodePurchased = isPurchased;
+                TechData.HullOptionsDataDict[sysName].IsNodePurchased = isPurchased;
             }
         }
     }
@@ -162,5 +165,5 @@ public struct ManagerSaveData
 {
     public int TechCredits;
     public List<string> UnlockedBoons;
-    public Dictionary<string, TechData.TechNode> NodeDataDict;
+    public Dictionary<string, TechData.TechNode> HullOptionsDataDict;
 }

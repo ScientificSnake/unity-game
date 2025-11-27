@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BasicHullPrefabScript : MonoBehaviour
+public class FinishHullSelectionBtn : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,5 +12,10 @@ public class BasicHullPrefabScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnClick()
+    {
+        ManagerScript.CurrentLevelManagerInstance.FinishHullSelection();
     }
 }

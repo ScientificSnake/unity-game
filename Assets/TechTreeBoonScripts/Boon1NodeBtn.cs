@@ -5,7 +5,7 @@ public class Boon1NodeBtn : MonoBehaviour
 {
     private static string Title;
     private static string BodyText;
-    private static string SysName = "BasicHullNode";
+    private readonly static string SysName = "BasicHullNode";
 
     public BtnPurchaseBoon PurchaseButton;
     public BoonInfoDisplayTitle TargetTitleDisplay;
@@ -23,8 +23,8 @@ public class Boon1NodeBtn : MonoBehaviour
 
     void Start()
     {
-        DependentBoonsSysNames = TechData.NodeDataDict[SysName].DependencyNodes;
-        Title = TechData.NodeDataDict[SysName].DisplayTitle;
-        BodyText = TechData.NodeDataDict[SysName].DisplayText;
+        DependentBoonsSysNames = TechData.HullOptionsDataDict[SysName].DependencyNodes;
+        Title = TechData.HullOptionsDataDict[SysName].DisplayTitle;
+        BodyText = TechData.HullOptionsDataDict[SysName].DisplayText;
     }
 }

@@ -8,8 +8,8 @@ using System.Runtime.ExceptionServices;
 using System.Transactions;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-using static TechData;
 
 public class LevelDataStorage
 {
@@ -28,19 +28,19 @@ public class LevelDataStorage
         public List<string> MajorBoonPool; // sys names for active major boons
         public List<string> StatNodes;
 
-        private static List<string> PurchasedBoons(Dictionary<string, TechNode> nodes)
+        private static List<string> PurchasedTechNodes(Dictionary<string, TechData.TechNode> nodes)
         {
-            List<string> purchasedBoonSysNames = new();
+            List<string> PurchasedTechNodesysNames = new();
 
-            foreach (TechNode node in nodes.Values)
+            foreach (TechData.TechNode node in nodes.Values)
             {
                 if (node.IsNodePurchased == true)
                 {
-                    purchasedBoonSysNames.Add(node.SysName);
+                    PurchasedTechNodesysNames.Add(node.SysName);
                 }
             }
 
-            return purchasedBoonSysNames;
+            return PurchasedTechNodesysNames;
         }
 
         public static KeyValuePair<Action, int> GetRandomEventFromDict(Dictionary<Action, int> dict)
@@ -54,10 +54,11 @@ public class LevelDataStorage
         }
 
         /// <summary>
+        /// [DEPRECIATED]
         ///  Sorts the enabled nodes into the current types : HullOption, Global Stat Boost, MajorBoon
         ///  Returns an array of [Hulloption, stat boost, majorboon] boons respectively
         /// </summary>
-        private static List<string>[] SortNodeTypes(Dictionary<string, TechNode> nodeData, List<string> targetNodes)
+        private static List<string>[] SortNodeTypes(Dictionary<string, TechData.TechNode> nodeData, List<string> targetNodes)
         {
             List<string> statNodes = new();
             List<string> hullOptions = new();
@@ -167,15 +168,15 @@ public class LevelDataStorage
         /// <summary>
         /// Level ManagerConstructor
         /// </summary>
-        public LevelManager(LevelData leveldata, Dictionary<string, TechNode> nodeData)
+        public LevelManager(LevelData leveldata, Dictionary<string, TechData.TechNode> nodeData)
         {
-            List<string> enabledNodes = PurchasedBoons(nodeData);
-            List<string>[] sortedNodes = SortNodeTypes(nodeData, enabledNodes);
+            List<string> enabledTechNodes = PurchasedTechNodes(nodeData);
+            // List<string>[] sortedNodes = SortNodeTypes(nodeData, enabledNodes);
 
-            // constants for indexing sortedNodes
-            HullOptions = sortedNodes[0];
-            StatNodes = sortedNodes[1];
-            MajorBoonPool = sortedNodes[2];
+            // constants for indexing sortedNodes DEPRECIATED
+            HullOptions = enabledTechNodes;
+            //StatNodes = sortedNodes[1]; DEPRECIATED
+            //MajorBoonPool = sortedNodes[2]; DEPRECIATED
             CurrentScalingMult = 1;
 
             //  Round count index starts at 0
@@ -223,29 +224,29 @@ public class LevelDataStorage
                 }
 
                 string firstTargetSysName = selectedHullOptions[0];
-                Vector2 firstPositionVector = new(480, 270);
+                Vector2 firstPositionVector = new(480, 360);
                 GameObject firstPrefab = ManagerScript.Instance.SysNameToPrefabObj[firstTargetSysName];
                 ManagerScript.Instance.SpawnPrefab(firstPrefab, firstPositionVector, parentTransform);
 
                 string secondTargetSysName = selectedHullOptions[1];
-                Vector2 secondPositionVector = new(0, 270);
+                Vector2 secondPositionVector = new(0, 360);
                 GameObject secondPrefab = ManagerScript.Instance.SysNameToPrefabObj[secondTargetSysName];
                 ManagerScript.Instance.SpawnPrefab(secondPrefab, secondPositionVector, parentTransform);
 
                 string thirdTargetSysName = selectedHullOptions[2];
-                Vector2 thirdPositionVector = new(-480, 270);
+                Vector2 thirdPositionVector = new(-480, 360);
                 GameObject thirdPrefab = ManagerScript.Instance.SysNameToPrefabObj[thirdTargetSysName];
                 ManagerScript.Instance.SpawnPrefab(thirdPrefab, thirdPositionVector, parentTransform);
             }
             else if (howManyHullOptions == 2) // layout for 2
             {
                 string firstTargetSysName = HullOptions[0];
-                Vector2 firstPositionvector = new Vector2(-320, 270);
+                Vector2 firstPositionvector = new Vector2(-320, 360);
                 GameObject firstPrefab = ManagerScript.Instance.SysNameToPrefabObj[firstTargetSysName];
                 ManagerScript.Instance.SpawnPrefab(firstPrefab, firstPositionvector, parentTransform);
 
                 string secondTargetSysName = HullOptions[1];
-                Vector2 secondPositionVector = new Vector2(320, 270);
+                Vector2 secondPositionVector = new Vector2(320, 360);
                 GameObject secondPrefab = ManagerScript.Instance.SysNameToPrefabObj[secondTargetSysName];
                 ManagerScript.Instance.SpawnPrefab(secondPrefab, secondPositionVector, parentTransform);
 
@@ -256,7 +257,7 @@ public class LevelDataStorage
 
                 string targetSysName = HullOptions[0];
 
-                Vector2 positionVector = new Vector2(0, 270);
+                Vector2 positionVector = new(0, 360);
 
                 if (ManagerScript.Instance == null)
                 {
@@ -280,6 +281,39 @@ public class LevelDataStorage
 
                 ManagerScript.Instance.SpawnPrefab(prefab, positionVector, parentTransform);
             }
+
+            Vector2 carrierPosition = new(0, -220);
+
+            GameObject CarrierObject = ManagerScript.Instance.SpawnPrefab(ManagerScript.Instance.CarrierSpritePrefab, carrierPosition, parentTransform);
+            Vector3 carrierscale = new(14, 14, 1);
+            CarrierObject.transform.localScale = carrierscale;
+        }
+
+        public string selectedHull;
+
+        public Dictionary<string, float> LiveStats;
+
+        public Dictionary<string, float> BaseStats = new(); // Will be populated by the hull stats
+
+        public void FinishHullSelection()
+        {
+            try
+            {
+                string targetSysName = selectedHull;
+
+                Action<Dictionary<string, float>> targetMutationFunc = TechData.HullOptionsDataDict[targetSysName].MutationFunc;
+
+                // populate BaseStats Dictionary 
+                targetMutationFunc(BaseStats);
+
+                SceneManager.LoadScene("Arena");
+            }
+            catch
+            {
+                Debug.Log("you probably need to actually click a hull option dumbass");
+            }
+
+
         }
     }
     public class LevelData
