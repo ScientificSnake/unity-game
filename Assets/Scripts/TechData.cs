@@ -162,8 +162,8 @@ public class TechData : MonoBehaviour
                 BaseStats["Health"] = 85; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 40; // degress per second 
                 BaseStats["Acceleration"] = 27;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["ReverseAcceleration"] = 7.5; //^ but in reverse (reverse thrust)
-                BaseStats["ScaleFactor"] = .9; //hull size scale factor
+                BaseStats["ReverseAcceleration"] = 7.5f; //^ but in reverse (reverse thrust)
+                BaseStats["ScaleFactor"] = 0.9f; //hull size scale factor
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 0;
@@ -201,8 +201,8 @@ public class TechData : MonoBehaviour
                 BaseStats["Health"] = 110; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 27; // degress per second 
                 BaseStats["Acceleration"] = 15;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["ReverseAcceleration"] = 2.5; //^ but in reverse (reverse thrust)
-                BaseStats["ScaleFactor"] = 1.5; //hull size scale factor
+                BaseStats["ReverseAcceleration"] = 2.5f; //^ but in reverse (reverse thrust)
+                BaseStats["ScaleFactor"] = 1.5f; //hull size scale factor
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 0;
@@ -220,7 +220,7 @@ public class TechData : MonoBehaviour
                 BaseStats["MaxTurnRate"] = 38; // degress per second 
                 BaseStats["Acceleration"] = 23;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["ReverseAcceleration"] = 6; //^ but in reverse (reverse thrust)
-                BaseStats["ScaleFactor"] = 1.1; //hull size scale factor
+                BaseStats["ScaleFactor"] = 1.1f; //hull size scale factor
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 1;
