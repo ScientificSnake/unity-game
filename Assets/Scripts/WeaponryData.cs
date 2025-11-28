@@ -1,44 +1,50 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Sebastian{
-
-/*weapons to add:
-27mm autocannon
-25mm rotary autocannon
-12.7mm machine gun
-missile
-rocket pod
-*/
-public class WeaponryData
+namespace Sebastian
 {
-    public class Weapon
-    {
-        public int fireRate;//RPM
-        public Action SpawnPrefab;
 
-        public Weapon(int RPM, Action<Vector2, Vector2, float> SpawnTS)
-        {
-            fireRate = RPM;
-            SpawnPrefab = SpawnTS;
-        }
-    }
-    public static class WeaponryActions
+    /*weapons to add:
+    27mm autocannon
+    25mm rotary autocannon
+    12.7mm machine gun
+    missile
+    rocket pod
+    */
+    public class WeaponryData
     {
-        public void diddlingMethod(Vector2 pos, Vector2 veloc, float rotation)
+        public class Weapon
         {
-            veloc.magnitude += 2;
-            //GameObject prefab = ManagerScript.Instance.
-            GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
-            orphan.transform.Rotate(0,0,rotation);
+            public int fireRate;//RPM
+            public Action<Vector2, Vector2, float> SpawnPrefab;
+
+            public Weapon(int RPM, Action<Vector2, Vector2, float> SpawnTS)
+            {
+                fireRate = RPM;
+                SpawnPrefab = SpawnTS;
+            }
         }
-    }
-    public static Dictionary<int, Weapon> = new() {
+        public static class WeaponryActions
         {
-            //27mm
-            1, new Weapon(500, diddlingMethod())
+            public static void diddlingMethod(Vector2 pos, Vector2 veloc, float rotation)
+            {
+                Vector2 newVeloVector = veloc.normalized * (veloc.magnitude + 2);
+                GameObject prefab = ManagerScript.Instance.BasicBulletPrefab;
+                GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
+                orphan.transform.Rotate(0, 0, rotation);
+            }
         }
+
+        public static Dictionary<int, Weapon> WeaponDict = new()
+        {
+            {
+                //27mm
+                1,
+                new Weapon(500, WeaponryActions.diddlingMethod)
+            }
+        };
     }
-}
 }
 /*
 public float bulletScale;//Scale factor

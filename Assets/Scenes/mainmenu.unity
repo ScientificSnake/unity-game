@@ -673,6 +673,7 @@ MonoBehaviour:
   CarrierSpritePrefab: {fileID: 5923273127070203140, guid: 99eb7966f29d8f94c8bcf240045ee41b, type: 3}
   BasicHullSpritePrefab: {fileID: 8234525873093033350, guid: 423caeeaa76695947bcd0afb71a78b72, type: 3}
   LynchpinPlayerHullObjPrefab: {fileID: 5457092128639579156, guid: ea2bd599f4b86b649a15ab298d584ac9, type: 3}
+  BasicBulletPrefab: {fileID: 2627414494034220773, guid: f812b477fd820c245a55ca3420cf235d, type: 3}
   basicCosmicBg: {fileID: 0}
 --- !u!1 &1360741382
 GameObject:

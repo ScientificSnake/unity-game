@@ -105,6 +105,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject CarrierSpritePrefab;
     public GameObject BasicHullSpritePrefab;
     public GameObject LynchpinPlayerHullObjPrefab;
+    public GameObject BasicBulletPrefab;
 
     #endregion
 
