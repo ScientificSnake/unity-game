@@ -17,9 +17,11 @@ namespace Sebastian
         public class Weapon
         {
             public int fireRate;//RPM
-            public Action<Vector2, Vector2, float> SpawnPrefab;
+            public float MuzzleVelocity;
 
-            public Weapon(int RPM, Action<Vector2, Vector2, float> SpawnTS)
+            public Action<Vector2, Vector2, float, float, float> SpawnPrefab;
+
+            public Weapon(int RPM, Action<Vector2, Vector2, float, float, float> SpawnTS)
             {
                 fireRate = RPM;
                 SpawnPrefab = SpawnTS;
@@ -27,12 +29,12 @@ namespace Sebastian
         }
         public static class WeaponryActions
         {
-            public static void diddlingMethod(Vector2 pos, Vector2 veloc, float rotation)
+            public static void diddlingMethod(Vector2 pos, Vector2 Parentveloc, float ParentRotation, float MuzzleVelo, float Accuracy)
             {
-                Vector2 newVeloVector = veloc.normalized * (veloc.magnitude + 2);
+                Vector2 newVeloVector = Parentveloc.normalized * (Parentveloc.magnitude + 2);
                 GameObject prefab = ManagerScript.Instance.BasicBulletPrefab;
                 GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
-                orphan.transform.Rotate(0, 0, rotation);
+                orphan.transform.Rotate(0, 0, ParentRotation);
             }
         }
 

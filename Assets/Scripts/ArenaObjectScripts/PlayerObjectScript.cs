@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Processors;
 using UnityEngine.UIElements;
+using System.Collections.Generic;
 
 public class PlayerObjectScript : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerObjectScript : MonoBehaviour
     public float throttle;  // Pre deadzone throttle  Clamped at 100 and -30
 
     public Vector2 velocity;
+    public float Health;
 
     public InArenaControls inputManager;
     private void OnEnable()
@@ -166,9 +168,16 @@ public class PlayerObjectScript : MonoBehaviour
     {
         velocity.x = 0;
         velocity.y = 0;
-        maxAcceleration = 0.05f;
+
+        // initialize stats based on what hull is chosen
+
+        Dictionary<string, float> baseStats = ManagerScript.CurrentLevelManagerInstance.BaseStats;
+        string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
+
+        maxTurnSpeedDPS = baseStats["MaxTurnRate"];
+        maxAcceleration = baseStats["Acceleration"] / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
+
         maxReverseAcceleration = -0.01f;
-        maxTurnSpeedDPS = 180;
     }
 
     private void FixedUpdate()
