@@ -115,6 +115,12 @@ public class ManagerScript : MonoBehaviour
         return newGameObj;
     }
 
+    public GameObject SpawnOrphan(GameObject prefab, Vector2 position)
+    {
+        GameObject newGameObj = Instantiate(prefab, position, Quaternion.identity);
+        return newGameObj;
+    }
+
     public Dictionary<string, GameObject> SysNameToPrefabObj;
 
     private IEnumerator<string> LoadLevelRoutine(string sceneName)
