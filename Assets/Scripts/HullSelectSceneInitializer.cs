@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ArenaSceneInitializer : MonoBehaviour
+public class HullSelectSceneInitializer : MonoBehaviour
 {
     public GameObject RootCanvas;
 

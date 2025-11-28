@@ -13,7 +13,8 @@ public class CameraFollowScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GameObject PlayerGO = GameObject.FindWithTag("Player");
+        PlayerReference = PlayerGO.GetComponent<PlayerObjectScript>();
     }
 
     private void MoveX(float distance, bool useDeltaTime=false)

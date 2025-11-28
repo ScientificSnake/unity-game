@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/hullSelection.unity
     guid: a4b88fa202a59724b920edd7908aac0b
+  - enabled: 1
+    path: Assets/Scenes/Arena.unity
+    guid: 106ff5f2379d7eb4db76867fe2136161
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ad47888528e837c4e8a8a1fe4387d755, type: 3}
   m_UseUCBPForAssetBundles: 0

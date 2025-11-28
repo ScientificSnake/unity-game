@@ -166,9 +166,8 @@ public class PlayerObjectScript : MonoBehaviour
     {
         velocity.x = 0;
         velocity.y = 0;
-
-        maxAcceleration = 0.005f;
-        maxReverseAcceleration = -0.001f;
+        maxAcceleration = 0.05f;
+        maxReverseAcceleration = -0.01f;
         maxTurnSpeedDPS = 180;
     }
 

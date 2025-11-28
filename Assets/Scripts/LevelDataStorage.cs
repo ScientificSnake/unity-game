@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
     using System;
@@ -20,7 +21,7 @@ public class LevelDataStorage
 
     public class LevelManager // This is the actual object that will be created and returned when entering a level
     {
-
+        public LevelData RootLevelData;
         public int CurrentRound = 0;
         public List<Dictionary<int, List<Action>>> Rounds;
         public float CurrentScalingMult;
@@ -170,6 +171,7 @@ public class LevelDataStorage
         /// </summary>
         public LevelManager(LevelData leveldata, Dictionary<string, TechData.TechNode> nodeData)
         {
+            RootLevelData = leveldata;
             List<string> enabledTechNodes = PurchasedTechNodes(nodeData);
             // List<string>[] sortedNodes = SortNodeTypes(nodeData, enabledNodes);
 
@@ -295,25 +297,13 @@ public class LevelDataStorage
 
         public Dictionary<string, float> BaseStats = new(); // Will be populated by the hull stats
 
-        public void FinishHullSelection()
+        public void InstantiatePlayerObject()
         {
-            try
-            {
-                string targetSysName = selectedHull;
+            GameObject PlayerPrefabObj = ManagerScript.Instance.SysNameToPrefabPlayerObj[selectedHull];
 
-                Action<Dictionary<string, float>> targetMutationFunc = TechData.HullOptionsDataDict[targetSysName].MutationFunc;
+            Vector2 spawnPos = new(0, 0); // pull from level data maybe ?
 
-                // populate BaseStats Dictionary 
-                targetMutationFunc(BaseStats);
-
-                SceneManager.LoadScene("Arena");
-            }
-            catch
-            {
-                Debug.Log("you probably need to actually click a hull option dumbass");
-            }
-
-
+            ManagerScript.Instance.SpawnOrphan(PlayerPrefabObj, spawnPos);
         }
     }
     public class LevelData

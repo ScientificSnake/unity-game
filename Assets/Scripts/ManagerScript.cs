@@ -41,6 +41,14 @@ public class ManagerScript : MonoBehaviour
                 Instance.TrophyHullBtnPrefab
             }
         };
+
+        SysNameToPrefabPlayerObj = new()
+        {
+            {
+                "BasicHullNode",
+                Instance.LynchpinPlayerHullObjPrefab
+            }
+        };
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,7 +62,7 @@ public class ManagerScript : MonoBehaviour
 
     #region Currect Tech Tree configuration data
 
-    // Note : Node and boon are used interchangeble here and the really mean "Thing you can by off the tech tree", basic boons in the boon pool different.
+    // Note : Node and boon are used interchangeble here and the really mean "Thing you can buy off the tech tree", basic boons in the boon pool different.
 
 
     #endregion
@@ -96,6 +104,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject TrophyHullBtnPrefab;
     public GameObject CarrierSpritePrefab;
     public GameObject BasicHullSpritePrefab;
+    public GameObject LynchpinPlayerHullObjPrefab;
 
     #endregion
 
@@ -122,6 +131,27 @@ public class ManagerScript : MonoBehaviour
     }
 
     public Dictionary<string, GameObject> SysNameToPrefabObj;
+
+    public Dictionary<string, GameObject> SysNameToPrefabPlayerObj;
+
+    public void FinishHullSelection()
+    {
+        try
+        {
+            string targetSysName = CurrentLevelManagerInstance.selectedHull;
+
+            Action<Dictionary<string, float>> targetMutationFunc = TechData.HullOptionsDataDict[targetSysName].MutationFunc;
+
+            // populate BaseStats Dictionary 
+            targetMutationFunc(CurrentLevelManagerInstance.BaseStats);
+
+            SceneManager.LoadScene("Arena");
+        }
+        catch
+        {
+            Debug.Log("you probably need to actually click a hull option dumbass");
+        }
+    }
 
     private IEnumerator<string> LoadLevelRoutine(string sceneName)
     {

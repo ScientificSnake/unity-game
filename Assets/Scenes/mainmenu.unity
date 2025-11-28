@@ -672,6 +672,7 @@ MonoBehaviour:
   TrophyHullBtnPrefab: {fileID: 6630928121461323855, guid: 78bed78f35202b84eb91f96d2458eadc, type: 3}
   CarrierSpritePrefab: {fileID: 5923273127070203140, guid: 99eb7966f29d8f94c8bcf240045ee41b, type: 3}
   BasicHullSpritePrefab: {fileID: 8234525873093033350, guid: 423caeeaa76695947bcd0afb71a78b72, type: 3}
+  LynchpinPlayerHullObjPrefab: {fileID: 5457092128639579156, guid: ea2bd599f4b86b649a15ab298d584ac9, type: 3}
   basicCosmicBg: {fileID: 0}
 --- !u!1 &1360741382
 GameObject:
