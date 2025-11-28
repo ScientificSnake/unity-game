@@ -4,11 +4,8 @@ using NUnit.Framework.Constraints;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.ExceptionServices;
-using System.Transactions;
-using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -216,12 +213,13 @@ public class LevelDataStorage
 
                 if (howManyHullOptions >= 3)
                 {
-                    ShufflerNonMono.Shuffle(HullOptions.ToArray());
-
-                    selectedHullOptions = new string[] { HullOptions[0], HullOptions[1], HullOptions[2] };
+                    string[] shuffledOptions = HullOptions.ToArray();
+                    ShufflerNonMono.Shuffle(shuffledOptions);
+                    Debug.Log("3+ hull options");
+                    selectedHullOptions = new string[] { shuffledOptions[0], shuffledOptions[1], shuffledOptions[2] };
                 }
                 else
-                {
+                { 
                     selectedHullOptions = HullOptions.ToArray();
                 }
 
@@ -299,7 +297,7 @@ public class LevelDataStorage
 
         public void InstantiatePlayerObject()
         {
-            GameObject PlayerPrefabObj = ManagerScript.Instance.SysNameToPrefabPlayerObj[selectedHull];
+            GameObject PlayerPrefabObj = ManagerScript.Instance.PlayerHullObjPrefab;
 
             Vector2 spawnPos = new(0, 0); // pull from level data maybe ?
 

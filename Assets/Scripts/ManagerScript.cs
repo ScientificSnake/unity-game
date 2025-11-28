@@ -1,7 +1,6 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Analytics;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -39,27 +38,44 @@ public class ManagerScript : MonoBehaviour
             {
                 "TrophyHullNode",
                 Instance.TrophyHullBtnPrefab
+            },
+            {
+                "RavenHullNode",
+                Instance.RavenHullBtnPrefab
             }
         };
 
-        SysNameToPrefabPlayerObj = new()
+        SpriteDict = new Dictionary<string, Sprite>()
         {
             {
                 "BasicHullNode",
-                Instance.LynchpinPlayerHullObjPrefab
+                Instance.LynchpinSprite
+            },
+            {
+                "SecondHullNode",
+                Instance.SwallowSprite
+            },
+            {
+                "ScorpionHullNode",
+                Instance.ScorpionSprite
+            },
+            {
+                "TrophyHullNode",
+                Instance.TrohpySprite
+            },
+            {
+                "RavenHullNode",
+                Instance.RavenSprite
             }
         };
+
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        TechData.TechCredits = 300;
+        TechData.TechCredits = 500;
         TechData.HullOptionsDataDict["BasicHullNode"].IsNodePurchased = true; // start with a basic hull
     }
     #endregion
-
-    // public static int HighestLevelCompleted;
-
     #region Currect Tech Tree configuration data
 
     // Note : Node and boon are used interchangeble here and the really mean "Thing you can buy off the tech tree", basic boons in the boon pool different.
@@ -101,16 +117,22 @@ public class ManagerScript : MonoBehaviour
     public GameObject BasicHullBtnPrefab;
     public GameObject FastHullBtnPrefab;
     public GameObject ScorpionHullBtnPrefab;
+    public GameObject RavenHullBtnPrefab;
     public GameObject TrophyHullBtnPrefab;
+
     public GameObject CarrierSpritePrefab;
     public GameObject BasicHullSpritePrefab;
-    public GameObject LynchpinPlayerHullObjPrefab;
+    public GameObject PlayerHullObjPrefab;
     public GameObject BasicBulletPrefab;
 
     #endregion
 
     #region Sprite game object fields
-    public Sprite basicCosmicBg;
+    public Sprite LynchpinSprite;
+    public Sprite ScorpionSprite;
+    public Sprite SwallowSprite;
+    public Sprite TrohpySprite;
+    public Sprite RavenSprite;
     #endregion
 
     public void ChangeBackground(Image Canvas, Sprite Background)
@@ -133,13 +155,15 @@ public class ManagerScript : MonoBehaviour
 
     public Dictionary<string, GameObject> SysNameToPrefabObj;
 
-    public Dictionary<string, GameObject> SysNameToPrefabPlayerObj;
+    public Dictionary<string, Sprite> SpriteDict;
 
     public void FinishHullSelection()
     {
         try
         {
             string targetSysName = CurrentLevelManagerInstance.selectedHull;
+
+            print($"Target sysname is {targetSysName}");
 
             Action<Dictionary<string, float>> targetMutationFunc = TechData.HullOptionsDataDict[targetSysName].MutationFunc;
 
@@ -148,13 +172,14 @@ public class ManagerScript : MonoBehaviour
 
             SceneManager.LoadScene("Arena");
         }
-        catch
+        catch (Exception e)
         {
             Debug.Log("you probably need to actually click a hull option dumbass");
+            Debug.Log(e.ToString());
         }
     }
 
-    private IEnumerator<string> LoadLevelRoutine(string sceneName)
+    private IEnumerator LoadLevelRoutine(string sceneName)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 

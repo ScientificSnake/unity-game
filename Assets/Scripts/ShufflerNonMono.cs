@@ -1,26 +1,29 @@
+using Newtonsoft.Json.Linq;
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public static class ShufflerNonMono
-{ // yo this code may be ai but
-    /// <summary>
-    /// Shuffles a generic array using the Fisher-Yates algorithm.
-    /// </summary>
-    /// <typeparam name="T">The type of elements in the array.</typeparam>
-    /// <param name="array">The array to be shuffled.</param>
+{
+    private static System.Random _rng;
+
+    static ShufflerNonMono()
+    {
+        _rng = new System.Random();
+    }
+
     public static void Shuffle<T>(T[] array)
     {
-        // Use Unity's Random class for consistent behavior within the engine
-        System.Random random = new();
 
-        for (int i = array.Length - 1; i > 0; i--)
+        Debug.Log("SHuffling array");
+
+        int n = array.Length;
+        while (n > 1)
         {
-            // Pick a random index from 0 to i
-            int randomIndex = random.Next(0, i + 1);
-
-            // Swap the element at the current index with the element at the random index
-            T temp = array[i];
-            array[i] = array[randomIndex];
-            array[randomIndex] = temp;
+            int k = _rng.Next(n--);
+            T temp = array[n];
+            array[n] = array[k];
+            array[k] = temp;
         }
     }
 }

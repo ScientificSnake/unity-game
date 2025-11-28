@@ -21,6 +21,7 @@ public class LoadingScreenTextRotater : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         ShufflerNonMono.Shuffle(LoadingTips);
 
         Debug.Log("starting loading screen");

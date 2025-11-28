@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4279435871662034018}
   - component: {fileID: 7949098207971252772}
   - component: {fileID: 2158350818045253282}
+  - component: {fileID: 1777052879512064036}
   m_Layer: 5
   m_Name: SwallowHullBtnPrefab
   m_TagString: Untagged
@@ -119,4 +120,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7949098207971252772}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1777052879512064036}
+        m_TargetAssemblyTypeName: SwallowHullSelectBtnScript, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1777052879512064036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2802660104900250834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42a3125e8fae384286232939558c7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  HullOptionSysName: SecondHullOption
