@@ -84,6 +84,8 @@ public class PlayerObjectScript : MonoBehaviour
                 print(SpawnMainWeaponPrefabAction.ToString());
 
                 LastFireTimeStamp = now;
+
+                rb.linearVelocity + (transform.right * -CurrentMainWeaponParams.RecoilForce);
             }
         }
     }

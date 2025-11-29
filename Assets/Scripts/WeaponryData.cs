@@ -38,6 +38,7 @@ namespace Sebastian
             public Vector2 SpawnPos;
             public float ParentZRotation;
             public float MaxDegreeError;
+            public float RecoilForce;
 
             // ^^ Shared parameters that every weapon has
 
@@ -122,21 +123,21 @@ namespace Sebastian
                 //27mm
                 1,
                 new Weapon(WeaponryActions.BasicBulletSpawnAction,
-                    new WeaponParameters {RPM = 500, MaxDegreeError = 2, MuzzleVelo = 200}
+                    new WeaponParameters {RPM = 500, MaxDegreeError = 2, MuzzleVelo = 200, RecoilForce = 5}
                 )
             },
             {
                 //25mm rotary  less accurate
                 2,
                 new Weapon(WeaponryActions.BasicBulletSpawnAction,
-                    new WeaponParameters {RPM = 1500, MaxDegreeError = 10, MuzzleVelo = 200}
+                    new WeaponParameters {RPM = 1500, MaxDegreeError = 10, MuzzleVelo = 200, RecoilForce = 2}
                 )
             },
             {
                 // ze rocket
                 3,
                 new Weapon(WeaponryActions.BasicRocketSpawn,
-                    new WeaponParameters {RPM = 30, MaxDegreeError = 4, AcceleratioRate = 500, FuelSeconds = 5}
+                    new WeaponParameters {RPM = 30, MaxDegreeError = 4, AcceleratioRate = 500, FuelSeconds = 5, RecoilForce = 0}
                 )
             }
         };
