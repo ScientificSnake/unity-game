@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UI;
 
 namespace Sebastian
 {
@@ -17,24 +19,29 @@ namespace Sebastian
         public class Weapon
         {
             public int fireRate;//RPM
-            public float MuzzleVelocity;
+            public float BaseMuzzleVelocity;
 
             public Action<Vector2, Vector2, float, float, float> SpawnPrefab;
 
-            public Weapon(int RPM, Action<Vector2, Vector2, float, float, float> SpawnTS)
+            public Weapon(int RPM, Action<Vector2, Vector2, float, float, float> SpawnTS, float baseMuzzleVelocity)
             {
                 fireRate = RPM;
                 SpawnPrefab = SpawnTS;
+                BaseMuzzleVelocity = baseMuzzleVelocity;
             }
         }
         public static class WeaponryActions
         {
-            public static void diddlingMethod(Vector2 pos, Vector2 Parentveloc, float ParentRotation, float MuzzleVelo, float Accuracy)
+            public static void BasicBulletSpawnAction(Vector2 pos, Vector2 Parentveloc, float ParentRotation, float MuzzleVelo, float Accuracy)
             {
-                Vector2 newVeloVector = Parentveloc.normalized * (Parentveloc.magnitude + 2);
+                Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(ParentRotation * Mathf.Deg2Rad), Mathf.Sin(ParentRotation * Mathf.Deg2Rad)) * MuzzleVelo;
+
+                Vector2 newVeloVector = VelocityFromMuzzle + Parentveloc;
                 GameObject prefab = ManagerScript.Instance.BasicBulletPrefab;
                 GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
                 orphan.transform.Rotate(0, 0, ParentRotation);
+                BulletBehavior OrphanBulletScript = orphan.GetComponent<BulletBehavior>();
+                OrphanBulletScript.velocity = newVeloVector;
             }
         }
 
@@ -43,7 +50,7 @@ namespace Sebastian
             {
                 //27mm
                 1,
-                new Weapon(500, WeaponryActions.diddlingMethod)
+                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 30)
             }
         };
     }

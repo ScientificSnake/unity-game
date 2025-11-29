@@ -118,6 +118,15 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LClick"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""3de614cb-42ae-4aa2-9d71-7d9dab077a79"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -153,6 +162,17 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
                     ""action"": ""LAlt"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6628b42a-e904-4783-97d8-f2d7cb2a209c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         m_Player_LShift = m_Player.FindAction("LShift", throwIfNotFound: true);
         m_Player_LControl = m_Player.FindAction("LControl", throwIfNotFound: true);
         m_Player_LAlt = m_Player.FindAction("LAlt", throwIfNotFound: true);
+        m_Player_LClick = m_Player.FindAction("LClick", throwIfNotFound: true);
     }
 
     ~@InArenaControls()
@@ -247,6 +268,7 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LShift;
     private readonly InputAction m_Player_LControl;
     private readonly InputAction m_Player_LAlt;
+    private readonly InputAction m_Player_LClick;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -270,6 +292,10 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/LAlt".
         /// </summary>
         public InputAction @LAlt => m_Wrapper.m_Player_LAlt;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/LClick".
+        /// </summary>
+        public InputAction @LClick => m_Wrapper.m_Player_LClick;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -305,6 +331,9 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
             @LAlt.started += instance.OnLAlt;
             @LAlt.performed += instance.OnLAlt;
             @LAlt.canceled += instance.OnLAlt;
+            @LClick.started += instance.OnLClick;
+            @LClick.performed += instance.OnLClick;
+            @LClick.canceled += instance.OnLClick;
         }
 
         /// <summary>
@@ -325,6 +354,9 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
             @LAlt.started -= instance.OnLAlt;
             @LAlt.performed -= instance.OnLAlt;
             @LAlt.canceled -= instance.OnLAlt;
+            @LClick.started -= instance.OnLClick;
+            @LClick.performed -= instance.OnLClick;
+            @LClick.canceled -= instance.OnLClick;
         }
 
         /// <summary>
@@ -386,5 +418,12 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLAlt(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLClick(InputAction.CallbackContext context);
     }
 }

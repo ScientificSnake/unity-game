@@ -149,6 +149,7 @@ public class ManagerScript : MonoBehaviour
 
     public GameObject SpawnOrphan(GameObject prefab, Vector2 position)
     {
+        print($"Spawning the orphan {prefab.ToString()}");
         GameObject newGameObj = Instantiate(prefab, position, Quaternion.identity);
         return newGameObj;
     }
