@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraFollowScript : MonoBehaviour
 {
-    private float CameraCircleRad = 1.5f;
-    private float LightCenteringRate = 0.5f;
+    private float CameraCircleRad = 50f;
+    private float LightCenteringRate;
     private float TrueDeadZone = 0.05f;
 
     public PlayerObjectScript PlayerReference;
@@ -54,6 +54,8 @@ public class CameraFollowScript : MonoBehaviour
         float magnitude = Mathf.Sqrt(xDist * xDist + yDist * yDist);
 
         //print($"X dist -> ({xDist}), Y dist -> ({yDist}), magnitude -> ({magnitude})");
+
+        LightCenteringRate = magnitude*0.75f;//distance camera moves to center per frame set to a quarter of the magnitude of camera distance from player distance
 
         float directedXDist = PlayerReference.transform.position.x - transform.position.x;
         float directedYDist = PlayerReference.gameObject.transform.position.y - transform.position.y;

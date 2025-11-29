@@ -141,7 +141,7 @@ public class TechData : MonoBehaviour
             {
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 90; // degress per second 
-                BaseStats["Acceleration"] = 10;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["Acceleration"] = 2;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["ReverseAcceleration"] = 5; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1; //hull size scale factor
                 //Special abilities
