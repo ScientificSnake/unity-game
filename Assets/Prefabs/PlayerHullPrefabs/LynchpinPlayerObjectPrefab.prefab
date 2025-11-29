@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2227943501449297362}
   - component: {fileID: 5303256463571235488}
   - component: {fileID: 1742737850102969581}
+  - component: {fileID: -7869956894437566275}
   m_Layer: 0
   m_Name: LynchpinPlayerObjectPrefab
   m_TagString: Player
@@ -109,6 +110,7 @@ MonoBehaviour:
   maxTurnSpeedDPS: 0
   MainWeaponRPM: 0
   MuzzleVelo: 0
+  MaxGunError: 0
   throttle: 0
   Velocity: {x: 0, y: 0}
   Health: 0
@@ -143,3 +145,30 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!50 &-7869956894437566275
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5457092128639579156}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

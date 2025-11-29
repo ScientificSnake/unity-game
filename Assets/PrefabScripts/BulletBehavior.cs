@@ -2,18 +2,14 @@ using UnityEngine;
 
 public class BulletBehavior : MonoBehaviour
 {
-    public Vector2 velocity;
+    public Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Vector3 didle = new(velocity.x, velocity.y, 0);
-        transform.position += didle;
+        rb = GetComponent<Rigidbody2D>();
+        rb.linearDamping = 0f;
+        rb.angularDamping = 0f;
+        rb.gravityScale = 0f;
     }
 }
 //haisdfgihhsbdfoyig

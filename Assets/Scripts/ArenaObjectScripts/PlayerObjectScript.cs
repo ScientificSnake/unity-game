@@ -12,8 +12,19 @@ using System.Linq;
 
 public class PlayerObjectScript : MonoBehaviour
 {
+    private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
+        rb.angularDamping = 0;
+        rb.linearDamping = 0;
+    }
+
+
+    public float Fuel;
     public float maxAcceleration; // acceleration at 100% throttle
-    public float maxReverseAcceleration;  // reverse acceleration at -30% throttle
     public float maxTurnSpeedDPS; // max turn speed in degrees per second
 
     public Action<Vector2, Vector2, float, float, float> SpawnMainWeaponPrefabAction;
@@ -24,15 +35,9 @@ public class PlayerObjectScript : MonoBehaviour
     private float LastFireTimeStamp;
 
     public float throttle;  // Pre deadzone throttle
-
-    public Vector2 Velocity;
     public float Health;
 
     public Camera mainCamera;
-
-    // Interpolation variables to fix stuttering
-    private Vector3 previousPosition;
-    private Vector3 currentPosition;
 
     public InArenaControls inputManager;
     private void OnEnable()
@@ -69,9 +74,9 @@ public class PlayerObjectScript : MonoBehaviour
                 // arguments for calling the function
 
                 float heading = transform.eulerAngles.z;
-                Vector2 pos = currentPosition; // Use currentPosition instead of transform.position
+                Vector2 pos = transform.position;
 
-                SpawnMainWeaponPrefabAction(pos, Velocity, heading, MuzzleVelo, MaxGunError);
+                SpawnMainWeaponPrefabAction(pos, rb.linearVelocity, heading, MuzzleVelo, MaxGunError);
 
                 LastFireTimeStamp = now;
             }
@@ -128,7 +133,7 @@ public class PlayerObjectScript : MonoBehaviour
     private void ApplyThrottle()
     {
         // dead zone
-        if (throttle > 15)
+        if (throttle > 15 && Fuel > 0)
         {
             float trueThrottleProportion = (throttle - 15) / 85;
 
@@ -138,24 +143,18 @@ public class PlayerObjectScript : MonoBehaviour
 
             Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad)*instantaneousAcceleration), (Mathf.Sin(heading_rad)*instantaneousAcceleration));
 
-            Velocity += instantaneousAccelerationVector;
+            rb.AddForce(instantaneousAccelerationVector);
+
+            float fuelUsage = trueThrottleProportion;
+            Fuel -= fuelUsage;
         }
-    }
-
-    private void ApplyVelocity()
-    {
-        Vector3 Velocity3d = new(Velocity.x, Velocity.y, 0);
-
-        // Store previous position before updating
-        previousPosition = currentPosition;
-        currentPosition += Velocity3d;
     }
 
     private void HeadingFollowMouse()
     {
         Vector2 mousePos = Input.mousePosition;
         
-        Vector2 screenPosition = mainCamera.WorldToScreenPoint(currentPosition);
+        Vector2 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
 
         // Calculate mouse angle from center
         Vector2 mouseOffset = new(mousePos.x - screenPosition.x, mousePos.y - screenPosition.y);
@@ -187,14 +186,7 @@ public class PlayerObjectScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Velocity.x = 0;
-        Velocity.y = 0;
-
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-        // Initialize positions
-        currentPosition = transform.position;
-        previousPosition = currentPosition;
 
         // initialize stats based on what hull is chosen
 
@@ -203,6 +195,8 @@ public class PlayerObjectScript : MonoBehaviour
 
         maxTurnSpeedDPS = baseStats["MaxTurnRate"];
         maxAcceleration = baseStats["Acceleration"] / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
+
+        Fuel = baseStats["BaseFuel"] * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
 
         #region Weapon intialization
 
@@ -222,16 +216,7 @@ public class PlayerObjectScript : MonoBehaviour
     {
         ThrottleControl();
         ApplyThrottle();
-        ApplyVelocity();
         HeadingFollowMouse();
         PollMainWeapon();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Interpolate visual position between physics updates
-        float t = (Time.time - Time.fixedTime) / Time.fixedDeltaTime;
-        transform.position = Vector3.Lerp(previousPosition, currentPosition, t);
     }
 }

@@ -141,9 +141,12 @@ public class TechData : MonoBehaviour
             {
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 90; // degress per second 
-                BaseStats["Acceleration"] = 2;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["Acceleration"] = 200;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["ReverseAcceleration"] = 5; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1; //hull size scale factor
+
+                BaseStats["BaseFuel"] = 60; // Fuel in full thrust seconds
+
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 0;
@@ -161,9 +164,10 @@ public class TechData : MonoBehaviour
                 print("detected dict object");
                 BaseStats["Health"] = 85; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 120; // degress per second 
-                BaseStats["Acceleration"] = 3.0f;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["Acceleration"] = 240f;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["ReverseAcceleration"] = 7.5f; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 0.9f; //hull size scale factor
+                BaseStats["BaseFuel"] = 60;
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 0;
@@ -181,9 +185,10 @@ public class TechData : MonoBehaviour
                 print("detected dict objec");
                 BaseStats["Health"] = 75; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 130; // degress per second 
-                BaseStats["Acceleration"] = 3.5f;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["Acceleration"] = 280f;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["ReverseAcceleration"] = 10; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1; //hull size scale factor
+                BaseStats["BaseFuel"] = 60;
                 //Special abilities
                 BaseStats["DashAbility"] = 1;
                 BaseStats["StealthAbility"] = 0;
@@ -200,9 +205,10 @@ public class TechData : MonoBehaviour
                 print("detected dict object");
                 BaseStats["Health"] = 110; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 60; // degress per second 
-                BaseStats["Acceleration"] = 0.5f;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["Acceleration"] = 150f;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["ReverseAcceleration"] = 2.5f; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1.5f; //hull size scale factor
+                BaseStats["BaseFuel"] = 100;
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 0;
@@ -218,9 +224,10 @@ public class TechData : MonoBehaviour
                 print("detected dict object");
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 95; // degress per second 
-                BaseStats["Acceleration"] = 2.5f;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["Acceleration"] = 250f;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["ReverseAcceleration"] = 6; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1.1f; //hull size scale factor
+                BaseStats["BaseFuel"] = 60;
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 1;

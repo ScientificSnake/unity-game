@@ -4,7 +4,7 @@ using UnityEngine;
 public class VelocityDisplayUpdater : MonoBehaviour
 {
     public TextMeshProUGUI textMeshProUGUI;
-    public PlayerObjectScript PlayerRef;
+    public Rigidbody2D PlayerRef;
 
     private bool playerFound = false;
 
@@ -16,7 +16,7 @@ public class VelocityDisplayUpdater : MonoBehaviour
             GameObject playerGO = GameObject.FindWithTag("Player");
             if (playerGO != null)
             {
-                PlayerRef = playerGO.GetComponent<PlayerObjectScript>();
+                PlayerRef = playerGO.GetComponent<Rigidbody2D>();
                 playerFound = true;
                 Debug.Log("Player found!");
             }
@@ -25,7 +25,7 @@ public class VelocityDisplayUpdater : MonoBehaviour
         // Update display
         if (textMeshProUGUI != null && PlayerRef != null)
         {
-            textMeshProUGUI.text = $"{PlayerRef.Velocity.magnitude.ToString("F2")} m/s";
+            textMeshProUGUI.text = $"{PlayerRef.linearVelocity.magnitude.ToString("F2")} m/s";
         }
     }
 }

@@ -73,8 +73,8 @@ namespace Sebastian
                 GameObject prefab = ManagerScript.Instance.BasicBulletPrefab;
                 GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
                 orphan.transform.Rotate(0, 0, trueRotation);
-                BulletBehavior OrphanBulletScript = orphan.GetComponent<BulletBehavior>();
-                OrphanBulletScript.velocity = newVeloVector;
+                Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
+                orphanBody.linearVelocity = newVeloVector;
             }
         }
 
@@ -83,12 +83,12 @@ namespace Sebastian
             {
                 //27mm
                 1,
-                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 25, 2)
+                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 250, 2)
             },
             {
                 //25mm rotary
                 2,
-                new Weapon(1500, WeaponryActions.BasicBulletSpawnAction, 20, 10)
+                new Weapon(1500, WeaponryActions.BasicBulletSpawnAction, 200, 10)
             }
         };
     }
