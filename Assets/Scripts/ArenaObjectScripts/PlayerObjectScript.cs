@@ -112,7 +112,7 @@ public class PlayerObjectScript : MonoBehaviour
             }
             else
             {
-                throttle++;
+                throttle+=5;
             }
         } 
 
@@ -124,7 +124,7 @@ public class PlayerObjectScript : MonoBehaviour
             }
             else
             {
-                throttle--;
+                throttle-=5;
             }
         }
 
@@ -206,7 +206,7 @@ public class PlayerObjectScript : MonoBehaviour
         maxAcceleration = baseStats["Acceleration"] / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
 
         rb.mass = baseStats["Mass"];
-
+        transform.localScale = new Vector3(baseStats["ScaleFactor"], baseStats["ScaleFactor"]);
         Fuel = baseStats["BaseFuel"] * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
 
         #region Weapon intialization
