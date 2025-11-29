@@ -40,7 +40,7 @@ namespace Sebastian
             public static float GetRandomError(float maxError)
             {
                 double random1tominus1 = (_random.NextDouble() * 2) - 1;
-                return (float) random1tominus1 * maxError;
+                return (float)random1tominus1 * maxError;
             }
             private static float GetNormalDistributedError(float maxError)
             {
@@ -65,7 +65,7 @@ namespace Sebastian
 
                 float randomOffsetFactor = GetNormalDistributedError(maxDegreeError);
 
-                float trueRotation = ParentRotation + (float) randomOffsetFactor;   
+                float trueRotation = ParentRotation + (float)randomOffsetFactor;
 
                 Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(trueRotation * Mathf.Deg2Rad), Mathf.Sin(trueRotation * Mathf.Deg2Rad)) * MuzzleVelo;
 
@@ -76,26 +76,21 @@ namespace Sebastian
                 BulletBehavior OrphanBulletScript = orphan.GetComponent<BulletBehavior>();
                 OrphanBulletScript.velocity = newVeloVector;
             }
-        }
 
-        public static Dictionary<int, Weapon> WeaponDict = new()
+            public static Dictionary<int, Weapon> WeaponDict = new()
         {
             {
                 //27mm
                 1,
-                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 25, 2)
+                new Weapon(650, WeaponryActions.BasicBulletSpawnAction, 25, 2)
             },
             {
                 //25mm rotary
                 2,
                 new Weapon(1500, WeaponryActions.BasicBulletSpawnAction, 20, 10)
+
             }
         };
+        }
     }
 }
-/*
-public float bulletScale;//Scale factor
-public bool guidance;//if it has or not
-public int bulletSpeed;//m/s
-public int damage;
-*/
