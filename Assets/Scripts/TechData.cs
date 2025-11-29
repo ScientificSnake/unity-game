@@ -140,8 +140,9 @@ public class TechData : MonoBehaviour
             if (BaseStatsObj is Dictionary<string, float> BaseStats)  // OH YEAH REFERENCE MUTATION
             {
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
-                BaseStats["MaxTurnRate"] = 90; // degress per second 
-                BaseStats["Acceleration"] = 200;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["MaxTurnRate"] = 100; // degress per second 
+                BaseStats["Acceleration"] = 12900;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats["Mass"] = 20000; //mass in kg f-15 weighs 20 tons gross weight
                 BaseStats["ReverseAcceleration"] = 5; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1; //hull size scale factor
 
