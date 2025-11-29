@@ -27,6 +27,8 @@ public class PlayerObjectScript : MonoBehaviour
     public Vector2 Velocity;
     public float Health;
 
+    public Camera mainCamera;
+
     public InArenaControls inputManager;
     private void OnEnable()
     {
@@ -154,9 +156,11 @@ public class PlayerObjectScript : MonoBehaviour
     private void HeadingFollowMouse()
     {
         Vector2 mousePos = Input.mousePosition;
+        
+        Vector2 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
 
         // Calculate mouse angle from center
-        Vector2 mouseOffset = new(mousePos.x - Screen.width / 2, mousePos.y - Screen.height / 2);
+        Vector2 mouseOffset = new(mousePos.x - screenPosition.x, mousePos.y - screenPosition.y);
         float targetAngle = Mathf.Atan2(mouseOffset.y, mouseOffset.x) * Mathf.Rad2Deg;
 
         // Calculate the shortest angular difference
@@ -189,6 +193,8 @@ public class PlayerObjectScript : MonoBehaviour
     {
         Velocity.x = 0;
         Velocity.y = 0;
+
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         // initialize stats based on what hull is chosen
 
