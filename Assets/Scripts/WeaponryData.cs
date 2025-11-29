@@ -40,7 +40,7 @@ namespace Sebastian
             public static float GetRandomError(float maxError)
             {
                 double random1tominus1 = (_random.NextDouble() * 2) - 1;
-                return (float) random1tominus1 * maxError;
+                return (float)random1tominus1 * maxError;
             }
             private static float GetNormalDistributedError(float maxError)
             {
@@ -65,7 +65,7 @@ namespace Sebastian
 
                 float randomOffsetFactor = GetNormalDistributedError(maxDegreeError);
 
-                float trueRotation = ParentRotation + (float) randomOffsetFactor;   
+                float trueRotation = ParentRotation + (float)randomOffsetFactor;
 
                 Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(trueRotation * Mathf.Deg2Rad), Mathf.Sin(trueRotation * Mathf.Deg2Rad)) * MuzzleVelo;
 
