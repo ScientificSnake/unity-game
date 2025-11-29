@@ -14,15 +14,19 @@ public class RocketBehavior : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0f;
+
+        print($"Newly inited rocket with velo : {rb.linearVelocity.ToString()}, acceleration {Acceleration}, fuel {Fuel}");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Fuel > 0)
+        if (Fuel > 0)   
         {
-            Vector2 currentVelo = rb.linearVelocity;
-            rb.AddForce(currentVelo.normalized * Acceleration);
+            Vector2 Direction = transform.right.normalized;
+
+            rb.AddForce(Direction * Acceleration);
             Fuel--;
         }
         if (Fuel == 0)

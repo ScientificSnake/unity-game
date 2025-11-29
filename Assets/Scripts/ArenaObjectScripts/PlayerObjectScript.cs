@@ -31,10 +31,6 @@ public class PlayerObjectScript : MonoBehaviour
     public Action<Sebastian.WeaponryData.WeaponParameters> SpawnMainWeaponPrefabAction;
     public WeaponryData.WeaponParameters CurrentMainWeaponParams;
 
-    public float MainWeaponRPM;
-    public float MuzzleVelo;
-    public float MaxGunError;
-
     private float LastFireTimeStamp;
 
     public float throttle;  // Pre deadzone throttle
@@ -61,9 +57,10 @@ public class PlayerObjectScript : MonoBehaviour
     {
         if (inputManager.Player.LClick.IsPressed())
         {
+
             // calculate wait time
 
-            float RPS = MainWeaponRPM / 60;
+            float RPS = CurrentMainWeaponParams.RPM / 60;
             float WaitTimeBetweenRounds = 1 / RPS;
 
             // Calculate difference between now and last firing
@@ -82,10 +79,9 @@ public class PlayerObjectScript : MonoBehaviour
                 CurrentMainWeaponParams.SpawnPos = pos;
                 CurrentMainWeaponParams.ParentZRotation = heading;
                 CurrentMainWeaponParams.ParentVelo = rb.linearVelocity;
-                CurrentMainWeaponParams.MaxDegreeError = MaxGunError;
-                CurrentMainWeaponParams.MuzzleVelo = MuzzleVelo;
 
                 SpawnMainWeaponPrefabAction(CurrentMainWeaponParams);
+                print(SpawnMainWeaponPrefabAction.ToString());
 
                 LastFireTimeStamp = now;
             }
@@ -112,7 +108,7 @@ public class PlayerObjectScript : MonoBehaviour
             }
             else
             {
-                throttle++;
+                throttle += 5;
             }
         } 
 
@@ -124,7 +120,7 @@ public class PlayerObjectScript : MonoBehaviour
             }
             else
             {
-                throttle--;
+                throttle -= 5;
             }
         }
 
@@ -202,10 +198,13 @@ public class PlayerObjectScript : MonoBehaviour
         Dictionary<string, float> baseStats = ManagerScript.CurrentLevelManagerInstance.BaseStats;
         string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
 
+        print($"{hullSysName}, is trying to initialize;");
+
         maxTurnSpeedDPS = baseStats["MaxTurnRate"];
         maxAcceleration = baseStats["Acceleration"] / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
 
-        rb.mass = baseStats["Mass"];
+        //rb.mass = baseStats["Mass"];
+        transform.localScale = new Vector3(baseStats["ScaleFactor"], baseStats["ScaleFactor"], baseStats["ScaleFactor"]);
 
         Fuel = baseStats["BaseFuel"] * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
 
@@ -214,14 +213,11 @@ public class PlayerObjectScript : MonoBehaviour
         int WeaponIndex = (int) baseStats["WeaponSelection"];
 
         Sebastian.WeaponryData.Weapon TargetWeapon = Sebastian.WeaponryData.WeaponDict[WeaponIndex];
+        print($"Target weapon with index {WeaponIndex}, {TargetWeapon}");
 
         SpawnMainWeaponPrefabAction = TargetWeapon.SpawnPrefab;
-        MuzzleVelo = TargetWeapon.BaseWeaponParams.MuzzleVelo;
-        MainWeaponRPM = TargetWeapon.BaseWeaponParams.RPM;
-        LastFireTimeStamp = Time.time;
-        MaxGunError = TargetWeapon.BaseWeaponParams.MaxDegreeError;
 
-        CurrentMainWeaponParams = new();
+        CurrentMainWeaponParams = TargetWeapon.BaseWeaponParams;
         #endregion
     }
 

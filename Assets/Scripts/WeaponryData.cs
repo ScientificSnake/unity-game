@@ -105,13 +105,14 @@ namespace Sebastian
 
                 GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, Params.SpawnPos);
                 Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
-                orphanBody.linearVelocity = Params.ParentVelo;
+
                 orphan.transform.Rotate(0, 0, trueRotation);
+                orphanBody.linearVelocity += Params.ParentVelo;
+
 
                 RocketBehavior rocketBehavior = orphan.GetComponent<RocketBehavior>();
                 rocketBehavior.Acceleration = Params.AcceleratioRate;
                 rocketBehavior.Fuel = Params.FuelSeconds * 40; // times forty for Seconds -> ticks
-
             }
         }
 
