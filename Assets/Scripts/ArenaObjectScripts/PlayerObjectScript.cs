@@ -198,14 +198,11 @@ public class PlayerObjectScript : MonoBehaviour
         Dictionary<string, float> baseStats = ManagerScript.CurrentLevelManagerInstance.BaseStats;
         string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
 
-        print($"{hullSysName}, is trying to initialize;");
-
         maxTurnSpeedDPS = baseStats["MaxTurnRate"];
         maxAcceleration = baseStats["Acceleration"] / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
 
-        //rb.mass = baseStats["Mass"];
-        transform.localScale = new Vector3(baseStats["ScaleFactor"], baseStats["ScaleFactor"], baseStats["ScaleFactor"]);
-
+        rb.mass = baseStats["Mass"];
+        transform.localScale = new Vector3(baseStats["ScaleFactor"], baseStats["ScaleFactor"]);
         Fuel = baseStats["BaseFuel"] * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
 
         #region Weapon intialization
@@ -213,7 +210,6 @@ public class PlayerObjectScript : MonoBehaviour
         int WeaponIndex = (int) baseStats["WeaponSelection"];
 
         Sebastian.WeaponryData.Weapon TargetWeapon = Sebastian.WeaponryData.WeaponDict[WeaponIndex];
-        print($"Target weapon with index {WeaponIndex}, {TargetWeapon}");
 
         SpawnMainWeaponPrefabAction = TargetWeapon.SpawnPrefab;
 
