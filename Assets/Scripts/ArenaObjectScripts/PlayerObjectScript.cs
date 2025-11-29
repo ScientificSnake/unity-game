@@ -29,6 +29,10 @@ public class PlayerObjectScript : MonoBehaviour
 
     public Camera mainCamera;
 
+    // Interpolation variables to fix stuttering
+    private Vector3 previousPosition;
+    private Vector3 currentPosition;
+
     public InArenaControls inputManager;
     private void OnEnable()
     {
@@ -64,7 +68,7 @@ public class PlayerObjectScript : MonoBehaviour
                 // arguments for calling the function
 
                 float heading = transform.eulerAngles.z;
-                Vector2 pos = transform.position;
+                Vector2 pos = currentPosition; // Use currentPosition instead of transform.position
                 float Accuracy = 1.0f;
 
                 SpawnMainWeaponPrefabAction(pos, Velocity, heading, MuzzleVelo, Accuracy);
@@ -128,19 +132,11 @@ public class PlayerObjectScript : MonoBehaviour
         {
             float trueThrottleProportion = (throttle - 15) / 85;
 
-            //print($"true throttle proportion is {trueThrottleProportion}");
-
             float instantaneousAcceleration = trueThrottleProportion * maxAcceleration;
-            //print($"max acceleration is {maxAcceleration}");
-            //print($"instant acceleration is {instantaneousAcceleration}");
 
             float heading_rad = DegToRadian(transform.eulerAngles.z);
 
             Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad)*instantaneousAcceleration), (Mathf.Sin(heading_rad)*instantaneousAcceleration));
-
-            //print($"Y component of instant acceleration is {Mathf.Asin(heading_rad)} x {instantaneousAcceleration}");
-            //print($"X component of instant acceleration is {Mathf.Acos(heading_rad)} x {instantaneousAcceleration}");
-            //print($"INSTANT ACCEL vector IS " + instantaneousAccelerationVector.ToString());
 
             Velocity += instantaneousAccelerationVector;
         }
@@ -150,14 +146,16 @@ public class PlayerObjectScript : MonoBehaviour
     {
         Vector3 Velocity3d = new(Velocity.x, Velocity.y, 0);
 
-        transform.position += Velocity3d;
+        // Store previous position before updating
+        previousPosition = currentPosition;
+        currentPosition += Velocity3d;
     }
 
     private void HeadingFollowMouse()
     {
         Vector2 mousePos = Input.mousePosition;
         
-        Vector2 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
+        Vector2 screenPosition = mainCamera.WorldToScreenPoint(currentPosition);
 
         // Calculate mouse angle from center
         Vector2 mouseOffset = new(mousePos.x - screenPosition.x, mousePos.y - screenPosition.y);
@@ -166,8 +164,6 @@ public class PlayerObjectScript : MonoBehaviour
         // Calculate the shortest angular difference
         float currentAngle = transform.eulerAngles.z;
         float headingMouseAngleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
-
-        //print($"Target angle: {targetAngle}, Current: {currentAngle}, Diff: {headingMouseAngleDiff}");
 
         // Calculate max rotation
         float maxDegreesPerTick = maxTurnSpeedDPS * Time.fixedDeltaTime;
@@ -195,6 +191,10 @@ public class PlayerObjectScript : MonoBehaviour
         Velocity.y = 0;
 
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        // Initialize positions
+        currentPosition = transform.position;
+        previousPosition = currentPosition;
 
         // initialize stats based on what hull is chosen
 
@@ -229,5 +229,8 @@ public class PlayerObjectScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Interpolate visual position between physics updates
+        float t = (Time.time - Time.fixedTime) / Time.fixedDeltaTime;
+        transform.position = Vector3.Lerp(previousPosition, currentPosition, t);
     }
-};
+}

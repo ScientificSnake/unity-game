@@ -107,8 +107,12 @@ MonoBehaviour:
   maxAcceleration: 0
   maxReverseAcceleration: -1
   maxTurnSpeedDPS: 0
+  MainWeaponRPM: 0
+  MuzzleVelo: 0
   throttle: 0
-  velocity: {x: 0, y: 0}
+  Velocity: {x: 0, y: 0}
+  Health: 0
+  mainCamera: {fileID: 0}
 --- !u!114 &1742737850102969581
 MonoBehaviour:
   m_ObjectHideFlags: 0
