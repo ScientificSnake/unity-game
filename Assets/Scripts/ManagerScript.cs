@@ -124,6 +124,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject BasicHullSpritePrefab;
     public GameObject PlayerHullObjPrefab;
     public GameObject BasicBulletPrefab;
+    public GameObject RocketPrefab;
 
     #endregion
 

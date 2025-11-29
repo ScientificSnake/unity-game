@@ -20,20 +20,34 @@ namespace Sebastian
     {
         public class Weapon
         {
-            public int fireRate;//RPM
-            public float BaseMuzzleVelocity;
-            public float BaseMaxDegreeError;
+            public WeaponParameters BaseWeaponParams;
 
-            public Action<Vector2, Vector2, float, float, float> SpawnPrefab;
+            public Action<WeaponParameters> SpawnPrefab;
 
-            public Weapon(int RPM, Action<Vector2, Vector2, float, float, float> SpawnTS, float baseMuzzleVelocity, float baseMaxDegreeError)
+            public Weapon(Action<WeaponParameters> SpawnTS, WeaponParameters baseWeaponParams)
             {
-                fireRate = RPM;
+                BaseWeaponParams = baseWeaponParams; 
                 SpawnPrefab = SpawnTS;
-                BaseMuzzleVelocity = baseMuzzleVelocity;
-                BaseMaxDegreeError = baseMaxDegreeError;
             }
         }
+
+        public class WeaponParameters
+        {
+            public float RPM;
+            public Vector2 ParentVelo;
+            public Vector2 SpawnPos;
+            public float ParentZRotation;
+            public float MaxDegreeError;
+
+            // ^^ Shared parameters that every weapon has
+
+            // Parameters that are unique to that sort of weapon eg Rocket having a fuel amount
+            // If they are not applicable 
+            public float MuzzleVelo;
+            public float AcceleratioRate;
+            public float FuelSeconds;
+        }
+
         public static class WeaponryActions
         {
             private static System.Random _random = new((int)System.DateTime.Now.Ticks);
@@ -58,10 +72,15 @@ namespace Sebastian
                 return (float)(standardNormal * maxError / 3.0);
             }
 
-            public static void BasicBulletSpawnAction(Vector2 pos, Vector2 Parentveloc, float ParentRotation, float MuzzleVelo, float maxDegreeError)
+            public static void BasicBulletSpawnAction(WeaponParameters Params)
             {
                 // Generate within random error
-                System.Random NewRandom = new((int)DateTime.Now.Ticks);  // maybe should use normal distribution so less offset values are more common
+
+                float ParentRotation = Params.ParentZRotation;
+                float maxDegreeError = Params.MaxDegreeError;
+                Vector2 Parentveloc = Params.ParentVelo;
+                Vector2 pos = Params.SpawnPos;
+                float MuzzleVelo = Params.MuzzleVelo;
 
                 float randomOffsetFactor = GetNormalDistributedError(maxDegreeError);
 
@@ -76,6 +95,24 @@ namespace Sebastian
                 Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
                 orphanBody.linearVelocity = newVeloVector;
             }
+
+            public static void BasicRocketSpawn(WeaponParameters Params)
+            {
+                float randomOffset = GetNormalDistributedError(Params.MaxDegreeError);
+                float trueRotation = Params.ParentZRotation + randomOffset;
+
+                GameObject prefab = ManagerScript.Instance.RocketPrefab;
+
+                GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, Params.SpawnPos);
+                Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
+                orphanBody.linearVelocity = Params.ParentVelo;
+                orphan.transform.Rotate(0, 0, trueRotation);
+
+                RocketBehavior rocketBehavior = orphan.GetComponent<RocketBehavior>();
+                rocketBehavior.Acceleration = Params.AcceleratioRate;
+                rocketBehavior.Fuel = Params.FuelSeconds * 40; // times forty for Seconds -> ticks
+
+            }
         }
 
         public static Dictionary<int, Weapon> WeaponDict = new()
@@ -83,12 +120,23 @@ namespace Sebastian
             {
                 //27mm
                 1,
-                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 250, 2)
+                new Weapon(WeaponryActions.BasicBulletSpawnAction,
+                    new WeaponParameters {RPM = 500, MaxDegreeError = 2, MuzzleVelo = 200}
+                )
             },
             {
-                //25mm rotary
+                //25mm rotary  less accurate
                 2,
-                new Weapon(1500, WeaponryActions.BasicBulletSpawnAction, 200, 10)
+                new Weapon(WeaponryActions.BasicBulletSpawnAction,
+                    new WeaponParameters {RPM = 1500, MaxDegreeError = 10, MuzzleVelo = 200}
+                )
+            },
+            {
+                // ze rocket
+                3,
+                new Weapon(WeaponryActions.BasicRocketSpawn,
+                    new WeaponParameters {RPM = 30, MaxDegreeError = 4, AcceleratioRate = 500, FuelSeconds = 5}
+                )
             }
         };
     }

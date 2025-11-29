@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System;
 using System.Linq;
+using Sebastian;
 
 public class PlayerObjectScript : MonoBehaviour
 {
@@ -27,7 +28,9 @@ public class PlayerObjectScript : MonoBehaviour
     public float maxAcceleration; // acceleration at 100% throttle
     public float maxTurnSpeedDPS; // max turn speed in degrees per second
 
-    public Action<Vector2, Vector2, float, float, float> SpawnMainWeaponPrefabAction;
+    public Action<Sebastian.WeaponryData.WeaponParameters> SpawnMainWeaponPrefabAction;
+    public WeaponryData.WeaponParameters CurrentMainWeaponParams;
+
     public float MainWeaponRPM;
     public float MuzzleVelo;
     public float MaxGunError;
@@ -76,7 +79,13 @@ public class PlayerObjectScript : MonoBehaviour
                 float heading = transform.eulerAngles.z;
                 Vector2 pos = transform.position;
 
-                SpawnMainWeaponPrefabAction(pos, rb.linearVelocity, heading, MuzzleVelo, MaxGunError);
+                CurrentMainWeaponParams.SpawnPos = pos;
+                CurrentMainWeaponParams.ParentZRotation = heading;
+                CurrentMainWeaponParams.ParentVelo = rb.linearVelocity;
+                CurrentMainWeaponParams.MaxDegreeError = MaxGunError;
+                CurrentMainWeaponParams.MuzzleVelo = MuzzleVelo;
+
+                SpawnMainWeaponPrefabAction(CurrentMainWeaponParams);
 
                 LastFireTimeStamp = now;
             }
@@ -196,6 +205,8 @@ public class PlayerObjectScript : MonoBehaviour
         maxTurnSpeedDPS = baseStats["MaxTurnRate"];
         maxAcceleration = baseStats["Acceleration"] / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
 
+        rb.mass = baseStats["Mass"];
+
         Fuel = baseStats["BaseFuel"] * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
 
         #region Weapon intialization
@@ -205,10 +216,12 @@ public class PlayerObjectScript : MonoBehaviour
         Sebastian.WeaponryData.Weapon TargetWeapon = Sebastian.WeaponryData.WeaponDict[WeaponIndex];
 
         SpawnMainWeaponPrefabAction = TargetWeapon.SpawnPrefab;
-        MuzzleVelo = TargetWeapon.BaseMuzzleVelocity;
-        MainWeaponRPM = TargetWeapon.fireRate;
+        MuzzleVelo = TargetWeapon.BaseWeaponParams.MuzzleVelo;
+        MainWeaponRPM = TargetWeapon.BaseWeaponParams.RPM;
         LastFireTimeStamp = Time.time;
-        MaxGunError = TargetWeapon.BaseMaxDegreeError;
+        MaxGunError = TargetWeapon.BaseWeaponParams.MaxDegreeError;
+
+        CurrentMainWeaponParams = new();
         #endregion
     }
 
