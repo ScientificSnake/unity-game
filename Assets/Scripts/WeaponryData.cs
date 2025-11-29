@@ -20,26 +20,38 @@ namespace Sebastian
         {
             public int fireRate;//RPM
             public float BaseMuzzleVelocity;
+            public float BaseMaxDegreeError;
 
             public Action<Vector2, Vector2, float, float, float> SpawnPrefab;
 
-            public Weapon(int RPM, Action<Vector2, Vector2, float, float, float> SpawnTS, float baseMuzzleVelocity)
+            public Weapon(int RPM, Action<Vector2, Vector2, float, float, float> SpawnTS, float baseMuzzleVelocity, float baseMaxDegreeError)
             {
                 fireRate = RPM;
                 SpawnPrefab = SpawnTS;
                 BaseMuzzleVelocity = baseMuzzleVelocity;
+                BaseMaxDegreeError = baseMaxDegreeError;
             }
         }
         public static class WeaponryActions
         {
-            public static void BasicBulletSpawnAction(Vector2 pos, Vector2 Parentveloc, float ParentRotation, float MuzzleVelo, float Accuracy)
+            public static void BasicBulletSpawnAction(Vector2 pos, Vector2 Parentveloc, float ParentRotation, float MuzzleVelo, float maxDegreeError)
             {
-                Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(ParentRotation * Mathf.Deg2Rad), Mathf.Sin(ParentRotation * Mathf.Deg2Rad)) * MuzzleVelo;
+                // Generate within random error
+                System.Random NewRandom = new((int)System.DateTime.Now.Ticks);  // maybe should use normal distribution so less offset values are more common
+
+                double randomOffsetFactor = NewRandom.NextDouble();
+                randomOffsetFactor *= 2;
+                randomOffsetFactor -= 1;
+                randomOffsetFactor *= maxDegreeError;
+
+                float trueRotation = ParentRotation + (float) randomOffsetFactor;   
+
+                Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(trueRotation * Mathf.Deg2Rad), Mathf.Sin(trueRotation * Mathf.Deg2Rad)) * MuzzleVelo;
 
                 Vector2 newVeloVector = VelocityFromMuzzle + Parentveloc;
                 GameObject prefab = ManagerScript.Instance.BasicBulletPrefab;
                 GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
-                orphan.transform.Rotate(0, 0, ParentRotation);
+                orphan.transform.Rotate(0, 0, trueRotation);
                 BulletBehavior OrphanBulletScript = orphan.GetComponent<BulletBehavior>();
                 OrphanBulletScript.velocity = newVeloVector;
             }
@@ -50,7 +62,7 @@ namespace Sebastian
             {
                 //27mm
                 1,
-                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 30)
+                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 30, 2)
             }
         };
     }
