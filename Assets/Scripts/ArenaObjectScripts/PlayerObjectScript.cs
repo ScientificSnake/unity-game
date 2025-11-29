@@ -19,6 +19,7 @@ public class PlayerObjectScript : MonoBehaviour
     public Action<Vector2, Vector2, float, float, float> SpawnMainWeaponPrefabAction;
     public float MainWeaponRPM;
     public float MuzzleVelo;
+    public float MaxGunError;
 
     private float LastFireTimeStamp;
 
@@ -69,9 +70,8 @@ public class PlayerObjectScript : MonoBehaviour
 
                 float heading = transform.eulerAngles.z;
                 Vector2 pos = currentPosition; // Use currentPosition instead of transform.position
-                float Accuracy = 1.0f;
 
-                SpawnMainWeaponPrefabAction(pos, Velocity, heading, MuzzleVelo, Accuracy);
+                SpawnMainWeaponPrefabAction(pos, Velocity, heading, MuzzleVelo, MaxGunError);
 
                 LastFireTimeStamp = now;
             }
@@ -214,6 +214,7 @@ public class PlayerObjectScript : MonoBehaviour
         MuzzleVelo = TargetWeapon.BaseMuzzleVelocity;
         MainWeaponRPM = TargetWeapon.fireRate;
         LastFireTimeStamp = Time.time;
+        MaxGunError = TargetWeapon.BaseMaxDegreeError;
         #endregion
     }
 
