@@ -83,7 +83,12 @@ namespace Sebastian
             {
                 //27mm
                 1,
-                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 30, 2)
+                new Weapon(500, WeaponryActions.BasicBulletSpawnAction, 25, 2)
+            },
+            {
+                //25mm rotary
+                2,
+                new Weapon(1500, WeaponryActions.BasicBulletSpawnAction, 20, 10)
             }
         };
     }
