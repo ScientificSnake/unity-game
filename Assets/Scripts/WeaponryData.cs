@@ -123,14 +123,14 @@ namespace Sebastian
                 //27mm
                 1,
                 new Weapon(WeaponryActions.BasicBulletSpawnAction,
-                    new WeaponParameters {RPM = 500, MaxDegreeError = 2, MuzzleVelo = 200, RecoilForce = 5}
+                    new WeaponParameters {RPM = 500, MaxDegreeError = 2, MuzzleVelo = 200, RecoilForce = 0.5f}
                 )
             },
             {
                 //25mm rotary  less accurate
                 2,
                 new Weapon(WeaponryActions.BasicBulletSpawnAction,
-                    new WeaponParameters {RPM = 1500, MaxDegreeError = 10, MuzzleVelo = 200, RecoilForce = 2}
+                    new WeaponParameters {RPM = 1500, MaxDegreeError = 10, MuzzleVelo = 200, RecoilForce = 0.2f}
                 )
             },
             {

@@ -28,6 +28,8 @@ public class PlayerObjectScript : MonoBehaviour
     public float maxAcceleration; // acceleration at 100% throttle
     public float maxTurnSpeedDPS; // max turn speed in degrees per second
 
+    public Vector2 Offset = new Vector2(20, 0);
+
     public Action<Sebastian.WeaponryData.WeaponParameters> SpawnMainWeaponPrefabAction;
     public WeaponryData.WeaponParameters CurrentMainWeaponParams;
 
@@ -53,6 +55,12 @@ public class PlayerObjectScript : MonoBehaviour
         throttle = 0;
     }
 
+    private Vector2 RotateVectorByAngle(Vector2 sourceVector, float angle)
+    {
+        Vector2 _rotatedVector = Quaternion.AngleAxis(angle, Vector3.forward) * sourceVector;
+        return _rotatedVector;
+    }
+
     private void PollMainWeapon()
     {
         if (inputManager.Player.LClick.IsPressed())
@@ -74,7 +82,10 @@ public class PlayerObjectScript : MonoBehaviour
                 // arguments for calling the function
 
                 float heading = transform.eulerAngles.z;
-                Vector2 pos = transform.position;
+
+                Vector2 rotatedOffset = RotateVectorByAngle(Offset, transform.eulerAngles.z);
+
+                Vector2 pos = new Vector2(transform.position.x, transform.position.y) + rotatedOffset;
 
                 CurrentMainWeaponParams.SpawnPos = pos;
                 CurrentMainWeaponParams.ParentZRotation = heading;
@@ -85,7 +96,13 @@ public class PlayerObjectScript : MonoBehaviour
 
                 LastFireTimeStamp = now;
 
-                rb.linearVelocity + (transform.right * -CurrentMainWeaponParams.RecoilForce);
+                Debug.Log($"Euler angle z is {transform.eulerAngles.z}");
+
+                float heading_rad = Mathf.Deg2Rad * transform.eulerAngles.z;
+
+                Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad) * CurrentMainWeaponParams.RecoilForce), (Mathf.Sin(heading_rad) * CurrentMainWeaponParams.RecoilForce));
+
+                rb.AddForce(instantaneousAccelerationVector);
             }
         }
     }
