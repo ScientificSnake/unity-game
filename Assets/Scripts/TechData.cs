@@ -142,7 +142,8 @@ public class TechData : MonoBehaviour
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 107; // degress per second 
                 BaseStats["Acceleration"] = 5000;  // SUBJECT TO FURTHER CHANGE neutons of thrust
-                BaseStats["Mass"] = 3; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
+                BaseStats["Mass"] = 2.5f; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
+
                 BaseStats["ScaleFactor"] = 1.75f; //hull size scale factor
 
                 BaseStats["BaseFuel"] = 60; // Fuel in full thrust seconds
@@ -165,7 +166,8 @@ public class TechData : MonoBehaviour
                 BaseStats["Health"] = 85; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 112; // degress per second 
                 BaseStats["Acceleration"] = 5000;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["Mass"] = 2;
+                BaseStats["Mass"] = 1.75f;
+
                 BaseStats["ScaleFactor"] = 1.9f; //hull size scale factor
                 BaseStats["BaseFuel"] = 50;
 
@@ -190,7 +192,8 @@ public class TechData : MonoBehaviour
                 BaseStats["Health"] = 75; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 130; // degress per second 
                 BaseStats["Acceleration"] = 6000f;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["Mass"] = 2;
+                BaseStats["ReverseAcceleration"] = 10; //^ but in reverse (reverse thrust)
+                BaseStats["Mass"] = 1.5f;
                 BaseStats["ScaleFactor"] = 1.25f; //hull size scale factor
                 BaseStats["BaseFuel"] = 50;
                 BaseStats["GunOffsetX"] = 20;
@@ -235,7 +238,8 @@ public class TechData : MonoBehaviour
                 BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 110; // degress per second 
                 BaseStats["Acceleration"] = 5500;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["Mass"] = 3.25f;
+                BaseStats["Mass"] = 2.75f;
+
                 BaseStats["ScaleFactor"] = 0.7f; //hull size scale factor
                 BaseStats["BaseFuel"] = 60;
                 BaseStats["GunOffsetX"] = 20;
