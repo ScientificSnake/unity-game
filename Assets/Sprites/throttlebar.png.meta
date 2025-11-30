@@ -1,0 +1,1001 @@
+fileFormatVersion: 2
+guid: 2118cd4fe17dbf24e9639e67894a948a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7914353957874915099
+    second: throttlebar_0
+  - first:
+      213: 3995757376549575078
+    second: throttlebar_1
+  - first:
+      213: 6372858793909020919
+    second: throttlebar_2
+  - first:
+      213: 2431371190910397875
+    second: throttlebar_3
+  - first:
+      213: 7922172025035125925
+    second: throttlebar_4
+  - first:
+      213: -2667398591196991598
+    second: throttlebar_5
+  - first:
+      213: -555688650427113838
+    second: throttlebar_6
+  - first:
+      213: 8602097191139307483
+    second: throttlebar_7
+  - first:
+      213: -6337061845179068835
+    second: throttlebar_8
+  - first:
+      213: -1791523107995445652
+    second: throttlebar_9
+  - first:
+      213: -6883950907704481289
+    second: throttlebar_10
+  - first:
+      213: 3343227218949848292
+    second: throttlebar_11
+  - first:
+      213: -7305735098940828266
+    second: throttlebar_12
+  - first:
+      213: -635925093553416362
+    second: throttlebar_13
+  - first:
+      213: -410411722396939201
+    second: throttlebar_14
+  - first:
+      213: -3633665891107286969
+    second: throttlebar_15
+  - first:
+      213: 8923143607278601945
+    second: throttlebar_16
+  - first:
+      213: 131853099752219654
+    second: throttlebar_17
+  - first:
+      213: -4242510151339745318
+    second: throttlebar_18
+  - first:
+      213: 4837133062770076689
+    second: throttlebar_19
+  - first:
+      213: 408623183869559948
+    second: throttlebar_20
+  - first:
+      213: 91292061465215251
+    second: throttlebar_21
+  - first:
+      213: 4524152113944579033
+    second: throttlebar_22
+  - first:
+      213: -5292230500241253370
+    second: throttlebar_23
+  - first:
+      213: -6900022793018504396
+    second: throttlebar_24
+  - first:
+      213: 9141923831570778819
+    second: throttlebar_25
+  - first:
+      213: 7784997192361958705
+    second: throttlebar_26
+  - first:
+      213: -817894877782555966
+    second: throttlebar_27
+  - first:
+      213: 3362121943976518500
+    second: throttlebar_28
+  - first:
+      213: -5754180227143914131
+    second: throttlebar_29
+  - first:
+      213: -1871602468146580364
+    second: throttlebar_30
+  - first:
+      213: -6114983883432818854
+    second: throttlebar_31
+  - first:
+      213: -6982716807136610800
+    second: throttlebar_32
+  - first:
+      213: -2230957169585219533
+    second: throttlebar_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: throttlebar_0
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 414
+        width: 1094
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e8a822e1019a2290800000000000000
+      internalID: -7914353957874915099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_1
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a952edd928c37730800000000000000
+      internalID: 3995757376549575078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_2
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 370
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f8eba6ee41f07850800000000000000
+      internalID: 6372858793909020919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_3
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bd25575737fdb120800000000000000
+      internalID: 2431371190910397875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_4
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a471c9bb7531fd60800000000000000
+      internalID: 7922172025035125925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_5
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f63512d1f7bfad0800000000000000
+      internalID: -2667398591196991598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_6
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29e5399dd1cc948f0800000000000000
+      internalID: -555688650427113838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_7
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf6e39c1d9c06770800000000000000
+      internalID: 8602097191139307483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_8
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5e8b66b3db3e08a0800000000000000
+      internalID: -6337061845179068835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_9
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c661705a93b3327e0800000000000000
+      internalID: -1791523107995445652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_10
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f9eb074f1b4770a0800000000000000
+      internalID: -6883950907704481289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_11
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ec3ce44177856e20800000000000000
+      internalID: 3343227218949848292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_12
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 695578c82a0dc9a90800000000000000
+      internalID: -7305735098940828266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_13
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 657ddf62f7dbc27f0800000000000000
+      internalID: -635925093553416362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_14
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3ccfd286bced4af0800000000000000
+      internalID: -410411722396939201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_15
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 740d810cf10a29dc0800000000000000
+      internalID: -3633665891107286969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_16
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 371
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d683af75df55db70800000000000000
+      internalID: 8923143607278601945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_17
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 370
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 604e34512bf64d100800000000000000
+      internalID: 131853099752219654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_18
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adfd761ce739f15c0800000000000000
+      internalID: -4242510151339745318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_19
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11c25b174e2f02340800000000000000
+      internalID: 4837133062770076689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_20
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c84c889ee98bba500800000000000000
+      internalID: 408623183869559948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_21
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 311827e65a5544100800000000000000
+      internalID: 91292061465215251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_22
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dbcf7da06409ce30800000000000000
+      internalID: 4524152113944579033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_23
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60cd1a346683e86b0800000000000000
+      internalID: -5292230500241253370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_24
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43b8800e3d13e30a0800000000000000
+      internalID: -6900022793018504396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_25
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ca4470f943aede70800000000000000
+      internalID: 9141923831570778819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_26
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 370
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13dd52423bdd90c60800000000000000
+      internalID: 7784997192361958705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_27
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 371
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c2c82a21f046a4f0800000000000000
+      internalID: -817894877782555966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_28
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46324424818a8ae20800000000000000
+      internalID: 3362121943976518500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_29
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 370
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6da283029b0520b0800000000000000
+      internalID: -5754180227143914131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_30
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 474f06da87bb606e0800000000000000
+      internalID: -1871602468146580364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_31
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a578fbc7e86332ba0800000000000000
+      internalID: -6114983883432818854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_32
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 371
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016f8775f08681f90800000000000000
+      internalID: -6982716807136610800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: throttlebar_33
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33813cd364c0a01e0800000000000000
+      internalID: -2230957169585219533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      throttlebar_0: -7914353957874915099
+      throttlebar_1: 3995757376549575078
+      throttlebar_10: -6883950907704481289
+      throttlebar_11: 3343227218949848292
+      throttlebar_12: -7305735098940828266
+      throttlebar_13: -635925093553416362
+      throttlebar_14: -410411722396939201
+      throttlebar_15: -3633665891107286969
+      throttlebar_16: 8923143607278601945
+      throttlebar_17: 131853099752219654
+      throttlebar_18: -4242510151339745318
+      throttlebar_19: 4837133062770076689
+      throttlebar_2: 6372858793909020919
+      throttlebar_20: 408623183869559948
+      throttlebar_21: 91292061465215251
+      throttlebar_22: 4524152113944579033
+      throttlebar_23: -5292230500241253370
+      throttlebar_24: -6900022793018504396
+      throttlebar_25: 9141923831570778819
+      throttlebar_26: 7784997192361958705
+      throttlebar_27: -817894877782555966
+      throttlebar_28: 3362121943976518500
+      throttlebar_29: -5754180227143914131
+      throttlebar_3: 2431371190910397875
+      throttlebar_30: -1871602468146580364
+      throttlebar_31: -6114983883432818854
+      throttlebar_32: -6982716807136610800
+      throttlebar_33: -2230957169585219533
+      throttlebar_4: 7922172025035125925
+      throttlebar_5: -2667398591196991598
+      throttlebar_6: -555688650427113838
+      throttlebar_7: 8602097191139307483
+      throttlebar_8: -6337061845179068835
+      throttlebar_9: -1791523107995445652
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
