@@ -157,9 +157,9 @@ public class PlayerObjectScript : MonoBehaviour
     private void ApplyThrottle()
     {
         // dead zone
-        if (throttle > 15 && Fuel > 0)
+        if (throttle > 0 && Fuel > 0)
         {
-            float trueThrottleProportion = (throttle - 15) / 85;
+            float trueThrottleProportion = (throttle/100);
 
             float instantaneousAcceleration = trueThrottleProportion * maxAcceleration;
 

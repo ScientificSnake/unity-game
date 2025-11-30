@@ -1,4 +1,6 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ThrottleLineMover : MonoBehaviour
 {
@@ -6,8 +8,16 @@ public class ThrottleLineMover : MonoBehaviour
     public PlayerObjectScript PlayerScript;
     public Camera mainCamera;
 
-    [SerializeField] float MaxX;
-    [SerializeField] float MinX;
+    Vector3 OriginalPosition;
+    public float ParentWidth;
+
+    private void Awake()
+    {
+        OriginalPosition = transform.localPosition;
+        GameObject ParentObj = transform.parent.gameObject;
+        ParentWidth = ParentObj.GetComponent<RectTransform>().sizeDelta.x;
+    }
+
 
     private void Update()
     {
@@ -20,14 +30,13 @@ public class ThrottleLineMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float throttleProportion = PlayerScript.throttle / 85;
+        float throttleProportion = (PlayerScript.throttle /100);
+        if (throttleProportion < 0)
+        {
+            throttleProportion = 0;
+        }
 
-        float targetX = (MaxX - MinX) * throttleProportion + MinX;
-
-        transform.position = mainCamera.ScreenToWorldPoint(new Vector3(targetX + 567.1f, 220-123.7f, 0));
-
-        print($"Target position pre world {new Vector3(targetX, 0, 0)}");
-        print($"Target positon post world {transform.position}");
-        print($"target x is {targetX}");
+        float targetX = (ParentWidth) * throttleProportion;
+        transform.localPosition = OriginalPosition + new Vector3(targetX, 0, 0);
     }
 }
