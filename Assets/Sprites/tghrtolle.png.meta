@@ -1,0 +1,1014 @@
+fileFormatVersion: 2
+guid: 62b00b80302f35b4aacc54e56bb81bd6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4599545292087291306
+    second: tghrtolle_0
+  - first:
+      213: 2862186700451266348
+    second: tghrtolle_1
+  - first:
+      213: -8330366854480790090
+    second: tghrtolle_2
+  - first:
+      213: 4188165969643540624
+    second: tghrtolle_3
+  - first:
+      213: 197175812637101330
+    second: tghrtolle_4
+  - first:
+      213: -7620302266430531355
+    second: tghrtolle_5
+  - first:
+      213: 6298485714828811777
+    second: tghrtolle_6
+  - first:
+      213: 2713171325091596078
+    second: tghrtolle_7
+  - first:
+      213: 7950715607760770672
+    second: tghrtolle_8
+  - first:
+      213: 4056102344461841804
+    second: tghrtolle_9
+  - first:
+      213: -516814424208268878
+    second: tghrtolle_10
+  - first:
+      213: -4291014995133547991
+    second: tghrtolle_11
+  - first:
+      213: 1822503222564471077
+    second: tghrtolle_12
+  - first:
+      213: -1141549917551972088
+    second: tghrtolle_13
+  - first:
+      213: -784955615658812964
+    second: tghrtolle_14
+  - first:
+      213: 4976436040041440291
+    second: tghrtolle_15
+  - first:
+      213: 2295223592743263885
+    second: tghrtolle_16
+  - first:
+      213: -881927578278655386
+    second: tghrtolle_17
+  - first:
+      213: -6444940822701378948
+    second: tghrtolle_18
+  - first:
+      213: -4306263366927447277
+    second: tghrtolle_19
+  - first:
+      213: -9198267070494644076
+    second: tghrtolle_20
+  - first:
+      213: 2087864834201018123
+    second: tghrtolle_21
+  - first:
+      213: -2010294124958400410
+    second: tghrtolle_22
+  - first:
+      213: 3682080833904386948
+    second: tghrtolle_23
+  - first:
+      213: 1701686820115186266
+    second: tghrtolle_24
+  - first:
+      213: 8379995406614713206
+    second: tghrtolle_25
+  - first:
+      213: -8831043465444704378
+    second: tghrtolle_26
+  - first:
+      213: 5627678745094197945
+    second: tghrtolle_27
+  - first:
+      213: -7471350949114282439
+    second: tghrtolle_28
+  - first:
+      213: -6356096092834538199
+    second: tghrtolle_29
+  - first:
+      213: -187510151763517026
+    second: tghrtolle_30
+  - first:
+      213: -3008102014151552466
+    second: tghrtolle_31
+  - first:
+      213: 7346480142966179755
+    second: tghrtolle_32
+  - first:
+      213: 5844251406107346323
+    second: tghrtolle_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tghrtolle_0
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 414
+        width: 1094
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aadee2fd21ed4df30800000000000000
+      internalID: 4599545292087291306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_1
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2fbe39b3a788b720800000000000000
+      internalID: 2862186700451266348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_2
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 370
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bdfbf56b77946c80800000000000000
+      internalID: -8330366854480790090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_3
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0909bf072ca5f1a30800000000000000
+      internalID: 4188165969643540624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_4
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21d888e5b528cb200800000000000000
+      internalID: 197175812637101330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_5
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e8dd48767f3f3690800000000000000
+      internalID: -7620302266430531355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_6
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10e5e370367b86750800000000000000
+      internalID: 6298485714828811777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_7
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e274cd6f1fe17a520800000000000000
+      internalID: 2713171325091596078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_8
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0761cb678bd965e60800000000000000
+      internalID: 7950715607760770672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_9
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c85f646979b2a4830800000000000000
+      internalID: 4056102344461841804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_10
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b1a446f408e3d8f0800000000000000
+      internalID: -516814424208268878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_11
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92ab031c8904374c0800000000000000
+      internalID: -4291014995133547991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_12
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 521c5fe5605da4910800000000000000
+      internalID: 1822503222564471077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_13
+      rect:
+        serializedVersion: 2
+        x: 844
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80130fee5666820f0800000000000000
+      internalID: -1141549917551972088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_14
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd95534c6074b15f0800000000000000
+      internalID: -784955615658812964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_15
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3242f1e463adf0540800000000000000
+      internalID: 4976436040041440291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_16
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 371
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8ede8d62b54adf10800000000000000
+      internalID: 2295223592743263885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_17
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 370
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66a841b4a83c2c3f0800000000000000
+      internalID: -881927578278655386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_18
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c727870f778fe86a0800000000000000
+      internalID: -6444940822701378948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_19
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31b030988441d34c0800000000000000
+      internalID: -4306263366927447277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_20
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4986ef975d0395080800000000000000
+      internalID: -9198267070494644076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_21
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0fd495310699fc10800000000000000
+      internalID: 2087864834201018123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_22
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 660ccc3f4200a14e0800000000000000
+      internalID: -2010294124958400410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_23
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 483252b8201691330800000000000000
+      internalID: 3682080833904386948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_24
+      rect:
+        serializedVersion: 2
+        x: 1245
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a520eef952b9d9710800000000000000
+      internalID: 1701686820115186266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_25
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 673dca65c69bb4470800000000000000
+      internalID: 8379995406614713206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_26
+      rect:
+        serializedVersion: 2
+        x: 1299
+        y: 370
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68f322ec1c4d17580800000000000000
+      internalID: -8831043465444704378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_27
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 371
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b21b5f7008891e40800000000000000
+      internalID: 5627678745094197945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_28
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93ef3cd85ed605890800000000000000
+      internalID: -7471350949114282439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_29
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 370
+        width: 29
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92d5954974c9ac7a0800000000000000
+      internalID: -6356096092834538199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_30
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e912b5ca284d56df0800000000000000
+      internalID: -187510151763517026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_31
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 371
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e221c5ed7231146d0800000000000000
+      internalID: -3008102014151552466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_32
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 371
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7c5f644c0f3f560800000000000000
+      internalID: 7346480142966179755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tghrtolle_33
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 370
+        width: 30
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3950b1f80b3fa1150800000000000000
+      internalID: 5844251406107346323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tghrtolle_0: 4599545292087291306
+      tghrtolle_1: 2862186700451266348
+      tghrtolle_10: -516814424208268878
+      tghrtolle_11: -4291014995133547991
+      tghrtolle_12: 1822503222564471077
+      tghrtolle_13: -1141549917551972088
+      tghrtolle_14: -784955615658812964
+      tghrtolle_15: 4976436040041440291
+      tghrtolle_16: 2295223592743263885
+      tghrtolle_17: -881927578278655386
+      tghrtolle_18: -6444940822701378948
+      tghrtolle_19: -4306263366927447277
+      tghrtolle_2: -8330366854480790090
+      tghrtolle_20: -9198267070494644076
+      tghrtolle_21: 2087864834201018123
+      tghrtolle_22: -2010294124958400410
+      tghrtolle_23: 3682080833904386948
+      tghrtolle_24: 1701686820115186266
+      tghrtolle_25: 8379995406614713206
+      tghrtolle_26: -8831043465444704378
+      tghrtolle_27: 5627678745094197945
+      tghrtolle_28: -7471350949114282439
+      tghrtolle_29: -6356096092834538199
+      tghrtolle_3: 4188165969643540624
+      tghrtolle_30: -187510151763517026
+      tghrtolle_31: -3008102014151552466
+      tghrtolle_32: 7346480142966179755
+      tghrtolle_33: 5844251406107346323
+      tghrtolle_4: 197175812637101330
+      tghrtolle_5: -7620302266430531355
+      tghrtolle_6: 6298485714828811777
+      tghrtolle_7: 2713171325091596078
+      tghrtolle_8: 7950715607760770672
+      tghrtolle_9: 4056102344461841804
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
