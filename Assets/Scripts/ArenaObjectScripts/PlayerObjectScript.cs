@@ -14,13 +14,15 @@ using Sebastian;
 public class PlayerObjectScript : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private PolygonCollider2D PolygonCollider;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.angularDamping = 0;
-        rb.linearDamping = 0;
+        rb.linearDamping = 0;        
     }
 
 
@@ -92,11 +94,8 @@ public class PlayerObjectScript : MonoBehaviour
                 CurrentMainWeaponParams.ParentVelo = rb.linearVelocity;
 
                 SpawnMainWeaponPrefabAction(CurrentMainWeaponParams);
-                print(SpawnMainWeaponPrefabAction.ToString());
 
                 LastFireTimeStamp = now;
-
-                Debug.Log($"Euler angle z is {transform.eulerAngles.z}");
 
                 float heading_rad = Mathf.Deg2Rad * transform.eulerAngles.z;
 
@@ -210,6 +209,19 @@ public class PlayerObjectScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        #region Collider setup
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        PolygonCollider = GetComponent<PolygonCollider2D>();
+        Destroy(PolygonCollider);
+
+        PolygonCollider2D collider = gameObject.AddComponent<PolygonCollider2D>();
+        collider.CreateFromSprite(spriteRenderer.sprite);
+        #endregion
+
+
+
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         // initialize stats based on what hull is chosen
