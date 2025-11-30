@@ -17,14 +17,10 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("BULLET -> YES A HITT");
-
         GameObject OtherGO = collision.gameObject;
 
         if (OtherGO.CompareTag("BasicSpacePirate"))
         {
-            print("Bullet -> we got a pirate ");
-
             BasicPirateDummyBehaviour Otherscript = OtherGO.GetComponent<BasicPirateDummyBehaviour>();
 
             Otherscript.ApplyDamage(Damage);

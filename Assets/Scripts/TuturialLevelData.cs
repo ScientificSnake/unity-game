@@ -41,6 +41,7 @@ public class TuturialLevelData
                     }
                 }
             }
-        }
+        },
+        new string[] {"BasicSpacePirate"}
         );
 }

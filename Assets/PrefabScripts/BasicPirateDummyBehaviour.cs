@@ -21,8 +21,6 @@ public class BasicPirateDummyBehaviour : MonoBehaviour
 
     public void ApplyDamage(float damage)
     {
-        Debug.Log("Enemy -> YES A HITT");
-
         Health -= damage;
         
         if (Health <= 0)

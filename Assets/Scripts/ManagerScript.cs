@@ -111,7 +111,7 @@ public class ManagerScript : MonoBehaviour
 
         }
     }
-
+    #endregion
     #region Prefab gameobject fields
 
     public GameObject BasicHullBtnPrefab;
@@ -136,6 +136,10 @@ public class ManagerScript : MonoBehaviour
     public Sprite RavenSprite;
     #endregion
 
+    public Dictionary<string, GameObject> SysNameToPrefabObj;
+
+    public Dictionary<string, Sprite> SpriteDict;
+
     public void ChangeBackground(Image Canvas, Sprite Background)
     {
         Canvas.sprite = Background;
@@ -154,10 +158,6 @@ public class ManagerScript : MonoBehaviour
         return newGameObj;
     }
 
-    public Dictionary<string, GameObject> SysNameToPrefabObj;
-
-    public Dictionary<string, Sprite> SpriteDict;
-
     public void FinishHullSelection()
     {
         try
@@ -172,12 +172,22 @@ public class ManagerScript : MonoBehaviour
             targetMutationFunc(CurrentLevelManagerInstance.BaseStats);
 
             SceneManager.LoadScene("Arena");
+
+            // start the first round
+            CurrentLevelManagerInstance.StartRoundRoutine();
+
         }
         catch (Exception e)
         {
             Debug.Log("you probably need to actually click a hull option dumbass");
             Debug.Log(e.ToString());
         }
+    }
+
+    public IEnumerator StartLastEnemySpawnTimer(int timeSeconds)
+    {
+        yield return new WaitForSeconds(timeSeconds);
+        CurrentLevelManagerInstance.LastEnemySpawned = true;
     }
 
     private IEnumerator LoadLevelRoutine(string sceneName)
@@ -191,7 +201,14 @@ public class ManagerScript : MonoBehaviour
         LoadingScreen.Instance.Disable();
     }
 
-    #endregion
+    /// <summary>
+    /// Returns how many objects with a certain tag remain in the scene
+    /// </summary>
+    /// <returns></returns>
+    public int HowManyObjectsWithTag(string Tag)
+    {
+        return GameObject.FindGameObjectsWithTag(Tag).Length;
+    }
 
 
     #region Save and Load

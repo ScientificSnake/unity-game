@@ -8,9 +8,13 @@ using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
-
+using System.Collections;
+using UnityEngine.UI;
 public class LevelDataStorage
 {
+    public const int LatestSpawnSecond = 15;
+
+
     public static System.Random random = new();
 
     public static float DifficultyDeviationTolerance = 0.1f;
@@ -49,38 +53,6 @@ public class LevelDataStorage
             Action randomKey = keys[randomIndex];
 
             return new KeyValuePair<Action, int>(randomKey, dict[randomKey]);
-        }
-
-        /// <summary>
-        /// [DEPRECIATED]
-        ///  Sorts the enabled nodes into the current types : HullOption, Global Stat Boost, MajorBoon
-        ///  Returns an array of [Hulloption, stat boost, majorboon] boons respectively
-        /// </summary>
-        private static List<string>[] SortNodeTypes(Dictionary<string, TechData.TechNode> nodeData, List<string> targetNodes)
-        {
-            List<string> statNodes = new();
-            List<string> hullOptions = new();
-            List<string> majorBoons = new();
-
-            foreach (string sysName in targetNodes)
-            {
-                string nodeType = nodeData[sysName].NodeType;
-                if (nodeType == "HullOption")  // Important use exact node type name
-                {
-                    hullOptions.Add(sysName);
-                }
-                else if (nodeType == "MajorBoon")
-                {
-                    majorBoons.Add(sysName);
-                }
-                else // Assume global stat now
-                {
-                    statNodes.Add(sysName);
-                }
-            }
-            List<string>[] sortedNodes = new List<string>[] { hullOptions, statNodes, majorBoons };
-
-            return sortedNodes;
         }
 
         #region Helper methods for round generation
@@ -147,7 +119,7 @@ public class LevelDataStorage
 
             foreach (Action action in chosenActionCombination)
             {
-                int randomTime = random.Next(31);
+                int randomTime = random.Next(LatestSpawnSecond);
 
                 if (timeActionDict.ContainsKey(randomTime))
                 {
@@ -172,10 +144,7 @@ public class LevelDataStorage
             List<string> enabledTechNodes = PurchasedTechNodes(nodeData);
             // List<string>[] sortedNodes = SortNodeTypes(nodeData, enabledNodes);
 
-            // constants for indexing sortedNodes DEPRECIATED
             HullOptions = enabledTechNodes;
-            //StatNodes = sortedNodes[1]; DEPRECIATED
-            //MajorBoonPool = sortedNodes[2]; DEPRECIATED
             CurrentScalingMult = 1;
 
             //  Round count index starts at 0
@@ -303,6 +272,50 @@ public class LevelDataStorage
 
             ManagerScript.Instance.SpawnOrphan(PlayerPrefabObj, spawnPos);
         }
+
+        public int RemainingEnemies;
+        public bool LastEnemySpawned;
+        public int PollTotalEnemies()
+        {
+            int totalEnemies = 0;
+
+            foreach (string Tag in RootLevelData.PossibleEnemyTags)
+            {
+                totalEnemies += ManagerScript.Instance.HowManyObjectsWithTag(Tag);
+            }
+            return totalEnemies;
+        }
+
+        public IEnumerator PeriodicallyCheckForEndOfRound(int Period)
+        {
+            bool enemiesRemain = true;
+            while (enemiesRemain)
+            {
+                yield return new WaitForSeconds(Period);
+                if (PollTotalEnemies() == 0 && LastEnemySpawned)
+                {
+                    enemiesRemain = false;
+                    EndRoundRoutine();
+                }
+            }
+        }
+
+        public void EndRoundRoutine()
+        {
+            Debug.Log("-------------------------------------- End of round test");
+        }
+        
+        public void StartRoundRoutine()
+        {
+            Dictionary<int, List<Action>> RoundDict = Rounds[CurrentRound];
+
+            // start co routine "timers" on the events
+
+
+            int localLatestSpawnTime = RoundDict.Keys.Max();
+            ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));
+            ManagerScript.Instance.StartCoroutine(PeriodicallyCheckForEndOfRound(2));  // wanted in 3 countries for this move :(
+        }
     }
     public class LevelData
     {
@@ -311,12 +324,16 @@ public class LevelDataStorage
         public Dictionary<Action, int> DifficultyEventDict { get; } // Action to corresponding difficulty
         public Dictionary<int, Dictionary<int, List<Action>>> PresetRounds { get; }  // (which round is preset) -> Dictionary of Time(seconds) -> Actions []
 
-        public LevelData(int roundCount, Func<int, int> difficultyFunc, Dictionary<Action, int> difficultyEventDict, Dictionary<int, Dictionary<int, List<Action>>> presetRounds)
+        public string[] PossibleEnemyTags { get; }
+
+        public LevelData(int roundCount, Func<int, int> difficultyFunc, Dictionary<Action, int> difficultyEventDict, Dictionary<int, Dictionary<int, List<Action>>> presetRounds,
+                         string[] possibleEnemyTags)
         {
             RoundCount = roundCount;
             DifficultyFunc = difficultyFunc;
             DifficultyEventDict = difficultyEventDict;
             PresetRounds = presetRounds;
+            PossibleEnemyTags = possibleEnemyTags;
         }
     }
 
