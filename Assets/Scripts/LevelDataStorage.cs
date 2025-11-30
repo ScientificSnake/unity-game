@@ -311,6 +311,8 @@ public class LevelDataStorage
 
             // start co routine "timers" on the events
 
+            Debug.Log($"Current Round is {RoundDict.ToString()}");
+
 
             int localLatestSpawnTime = RoundDict.Keys.Max();
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));

@@ -143,7 +143,6 @@ public class TechData : MonoBehaviour
                 BaseStats["MaxTurnRate"] = 107; // degress per second 
                 BaseStats["Acceleration"] = 5000;  // SUBJECT TO FURTHER CHANGE neutons of thrust
                 BaseStats["Mass"] = 3; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
-                BaseStats["ReverseAcceleration"] = 5; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1.75f; //hull size scale factor
 
                 BaseStats["BaseFuel"] = 60; // Fuel in full thrust seconds
@@ -167,9 +166,12 @@ public class TechData : MonoBehaviour
                 BaseStats["MaxTurnRate"] = 112; // degress per second 
                 BaseStats["Acceleration"] = 5000;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["Mass"] = 2;
-                BaseStats["ReverseAcceleration"] = 7.5f; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 1.9f; //hull size scale factor
                 BaseStats["BaseFuel"] = 50;
+
+                BaseStats["GunOffsetX"] = 20;
+                BaseStats["GunOffsetY"] = 0;
+
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 0;
@@ -188,10 +190,12 @@ public class TechData : MonoBehaviour
                 BaseStats["Health"] = 75; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 130; // degress per second 
                 BaseStats["Acceleration"] = 6000f;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["ReverseAcceleration"] = 10; //^ but in reverse (reverse thrust)
                 BaseStats["Mass"] = 2;
                 BaseStats["ScaleFactor"] = 1.25f; //hull size scale factor
                 BaseStats["BaseFuel"] = 50;
+                BaseStats["GunOffsetX"] = 20;
+                BaseStats["GunOffsetY"] = 0;
+
                 //Special abilities
                 BaseStats["DashAbility"] = 1;
                 BaseStats["StealthAbility"] = 0;
@@ -209,10 +213,12 @@ public class TechData : MonoBehaviour
                 BaseStats["Health"] = 110; // yeah no we ain't doin no fucking module health
                 BaseStats["MaxTurnRate"] = 80; // degress per second 
                 BaseStats["Acceleration"] = 4000;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["ReverseAcceleration"] = 2.5f; //^ but in reverse (reverse thrust)
                 BaseStats["Mass"] = 3f;
                 BaseStats["ScaleFactor"] = 1f; //hull size scale factor
                 BaseStats["BaseFuel"] = 100;
+                BaseStats["GunOffsetX"] = 45;  // bro is very large, rocket must be far infortn of him
+                BaseStats["GunOffsetY"] = 0;
+
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 0;
@@ -230,9 +236,11 @@ public class TechData : MonoBehaviour
                 BaseStats["MaxTurnRate"] = 110; // degress per second 
                 BaseStats["Acceleration"] = 5500;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats["Mass"] = 3.25f;
-                BaseStats["ReverseAcceleration"] = 6; //^ but in reverse (reverse thrust)
                 BaseStats["ScaleFactor"] = 0.7f; //hull size scale factor
                 BaseStats["BaseFuel"] = 60;
+                BaseStats["GunOffsetX"] = 20;
+                BaseStats["GunOffsetY"] = 0;
+
                 //Special abilities
                 BaseStats["DashAbility"] = 0;
                 BaseStats["StealthAbility"] = 1;

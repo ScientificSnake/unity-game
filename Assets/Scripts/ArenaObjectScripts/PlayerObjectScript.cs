@@ -30,7 +30,7 @@ public class PlayerObjectScript : MonoBehaviour
     public float maxAcceleration; // acceleration at 100% throttle
     public float maxTurnSpeedDPS; // max turn speed in degrees per second
 
-    public Vector2 Offset = new Vector2(20, 0);
+    public Vector2 Offset;
 
     public Action<Sebastian.WeaponryData.WeaponParameters> SpawnMainWeaponPrefabAction;
     public WeaponryData.WeaponParameters CurrentMainWeaponParams;
@@ -224,7 +224,7 @@ public class PlayerObjectScript : MonoBehaviour
 
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
-        // initialize stats based on what hull is chosen
+        #region initialize stats based on what hull is chosen
 
         Dictionary<string, float> baseStats = ManagerScript.CurrentLevelManagerInstance.BaseStats;
         string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
@@ -235,6 +235,10 @@ public class PlayerObjectScript : MonoBehaviour
         rb.mass = baseStats["Mass"];
         transform.localScale = new Vector3(baseStats["ScaleFactor"], baseStats["ScaleFactor"]);
         Fuel = baseStats["BaseFuel"] * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
+
+        Offset = new Vector2(baseStats["GunOffsetX"], baseStats["GunOffsetY"]);
+
+        #endregion
 
         #region Weapon intialization
 

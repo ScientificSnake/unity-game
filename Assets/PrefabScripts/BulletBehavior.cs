@@ -24,9 +24,9 @@ public class BulletBehavior : MonoBehaviour
             BasicPirateDummyBehaviour Otherscript = OtherGO.GetComponent<BasicPirateDummyBehaviour>();
 
             Otherscript.ApplyDamage(Damage);
-            // destroy self
-            Destroy(gameObject);
         }
+        // destroy self
+        Destroy(gameObject);
     }
 }
 //haisdfgihhsbdfoyig

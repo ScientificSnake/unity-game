@@ -118,6 +118,7 @@ namespace Sebastian
 
                 RocketBehavior rocketBehavior = orphan.GetComponent<RocketBehavior>();
                 rocketBehavior.Acceleration = Params.AcceleratioRate;
+                rocketBehavior.Damage = Params.Damage;
                 rocketBehavior.Fuel = Params.FuelSeconds * 40; // times forty for Seconds -> ticks
             }
         }

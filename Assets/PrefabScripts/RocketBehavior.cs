@@ -6,6 +6,7 @@ public class RocketBehavior : MonoBehaviour
     public float Acceleration;//rate at which the rocket accelerates
     private SpriteRenderer spriteRenderer;
     public Sprite newSprite;
+    public float Damage;
 
     public Rigidbody2D rb;
 
@@ -33,5 +34,22 @@ public class RocketBehavior : MonoBehaviour
         {
             spriteRenderer.sprite = newSprite;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print("ZE ROCKET HAS HIT ");
+
+
+        GameObject OtherGo = collision.gameObject;
+
+        if (OtherGo.CompareTag("BasicSpacePirate"))
+        {
+            BasicPirateDummyBehaviour OtherScript = OtherGo.GetComponent<BasicPirateDummyBehaviour>();
+
+            OtherScript.ApplyDamage(Damage);
+        }
+
+        Destroy(gameObject);
     }
 }
