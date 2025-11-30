@@ -39,6 +39,7 @@ namespace Sebastian
             public float ParentZRotation;
             public float MaxDegreeError;
             public float RecoilForce;
+            public float Damage;
 
             // ^^ Shared parameters that every weapon has
 
@@ -95,6 +96,10 @@ namespace Sebastian
                 orphan.transform.Rotate(0, 0, trueRotation);
                 Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
                 orphanBody.linearVelocity = newVeloVector;
+
+                BulletBehavior bulletScript = orphan.GetComponent<BulletBehavior>();
+
+                bulletScript.Damage = Params.Damage;
             }
 
             public static void BasicRocketSpawn(WeaponParameters Params)
@@ -123,21 +128,21 @@ namespace Sebastian
                 //27mm
                 1,
                 new Weapon(WeaponryActions.BasicBulletSpawnAction,
-                    new WeaponParameters {RPM = 500, MaxDegreeError = 2, MuzzleVelo = 200, RecoilForce = 0.5f}
+                    new WeaponParameters {RPM = 500, MaxDegreeError = 2, MuzzleVelo = 200, RecoilForce = 0.5f, Damage = 13}
                 )
             },
             {
                 //25mm rotary  less accurate
                 2,
                 new Weapon(WeaponryActions.BasicBulletSpawnAction,
-                    new WeaponParameters {RPM = 1500, MaxDegreeError = 10, MuzzleVelo = 200, RecoilForce = 0.2f}
+                    new WeaponParameters {RPM = 1500, MaxDegreeError = 10, MuzzleVelo = 200, RecoilForce = 0.2f, Damage = 11.5f}
                 )
             },
             {
                 // ze rocket
                 3,
                 new Weapon(WeaponryActions.BasicRocketSpawn,
-                    new WeaponParameters {RPM = 30, MaxDegreeError = 4, AcceleratioRate = 500, FuelSeconds = 5, RecoilForce = 0}
+                    new WeaponParameters {RPM = 30, MaxDegreeError = 4, AcceleratioRate = 500, FuelSeconds = 5, RecoilForce = 0, Damage = 155}
                 )
             }
         };

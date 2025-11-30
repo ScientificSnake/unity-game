@@ -704,9 +704,10 @@ GameObject:
   - component: {fileID: 1149180809}
   - component: {fileID: 1149180808}
   - component: {fileID: 1149180811}
+  - component: {fileID: 1149180812}
   m_Layer: 0
   m_Name: SpacePirateDummy
-  m_TagString: Untagged
+  m_TagString: BasicSpacePirate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -736,7 +737,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &1149180809
 SpriteRenderer:
@@ -1189,6 +1190,20 @@ PolygonCollider2D:
       - {x: 5.302735, y: 11.050351}
       - {x: 5.3320317, y: 11.050351}
   m_UseDelaunayMesh: 0
+--- !u!114 &1149180812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149180807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075d95e55e6fa9349a78effd0dd48071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  Health: 0
+  rb: {fileID: 0}
 --- !u!1 &1255859214
 GameObject:
   m_ObjectHideFlags: 0
