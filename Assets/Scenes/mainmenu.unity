@@ -675,6 +675,7 @@ MonoBehaviour:
   BasicHullSpritePrefab: {fileID: 8234525873093033350, guid: 423caeeaa76695947bcd0afb71a78b72, type: 3}
   PlayerHullObjPrefab: {fileID: 5457092128639579156, guid: ea2bd599f4b86b649a15ab298d584ac9, type: 3}
   BasicBulletPrefab: {fileID: 2627414494034220773, guid: f812b477fd820c245a55ca3420cf235d, type: 3}
+  RocketPrefab: {fileID: 1319892208821184728, guid: 6a80ec9715a52324eadbfa1e99635d04, type: 3}
   LynchpinSprite: {fileID: 2278735194727070721, guid: 197fd0fdec9c88d42832a90c318265b2, type: 3}
   ScorpionSprite: {fileID: -3303235448760210217, guid: 7039cd27fed551e4db3f9aa984bbadd3, type: 3}
   SwallowSprite: {fileID: -3384617665269950355, guid: 1f836cb789ab31141bfc04768c1c1f3e, type: 3}

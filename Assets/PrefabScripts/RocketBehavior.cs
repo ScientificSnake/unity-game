@@ -4,34 +4,34 @@ public class RocketBehavior : MonoBehaviour
 {
     public float Fuel;//time the rocket accelerates for
     public float Acceleration;//rate at which the rocket accelerates
-    public Vector2 velocity;
     private SpriteRenderer spriteRenderer;
     public Sprite newSprite;
+
+    public Rigidbody2D rb;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0f;
+
+        print($"Newly inited rocket with velo : {rb.linearVelocity.ToString()}, acceleration {Acceleration}, fuel {Fuel}");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 wierdDidle = new(velocity.x, velocity.y, 0);
-        accelerates();
-        transform.position += wierdDidle;
+        if (Fuel > 0)   
+        {
+            Vector2 Direction = transform.right.normalized;
+
+            rb.AddForce(Direction * Acceleration);
+            Fuel--;
+        }
         if (Fuel == 0)
         {
             spriteRenderer.sprite = newSprite;
-        }
-    }
-
-    private void accelerates()
-    {
-        
-        if(Fuel>0)
-        {
-            velocity = velocity.normalized * (velocity.magnitude + Acceleration);
-            Fuel --;
         }
     }
 }
