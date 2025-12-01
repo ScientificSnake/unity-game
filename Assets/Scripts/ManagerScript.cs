@@ -103,7 +103,7 @@ public class ManagerScript : MonoBehaviour
             LoadingScreen.Instance.Enable();
 
             // First things first lets move scenes and get that juicy loading screen up
-            StartCoroutine(LoadLevelRoutine("hullSelection"));
+            StartCoroutine(LoadSceneRoutine("hullSelection"));
 
             //LoadingScreen.Instance.Disable();
 
@@ -171,11 +171,7 @@ public class ManagerScript : MonoBehaviour
             // populate BaseStats Dictionary 
             targetMutationFunc(CurrentLevelManagerInstance.Stats);
 
-            SceneManager.LoadScene("Arena");
-
-            // start the first round
-            CurrentLevelManagerInstance.StartRoundRoutine();
-
+            StartCoroutine(LoadSceneRoutine("Arena"));
         }
         catch (Exception e)
         {
@@ -190,7 +186,7 @@ public class ManagerScript : MonoBehaviour
         CurrentLevelManagerInstance.LastEnemySpawned = true;
     }
 
-    private IEnumerator LoadLevelRoutine(string sceneName)
+    private IEnumerator LoadSceneRoutine(string sceneName)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 

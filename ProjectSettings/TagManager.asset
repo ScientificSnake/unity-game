@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BasicSpacePirate
   - Othertag
+  - RoundOverScreen
   layers:
   - Default
   - TransparentFX

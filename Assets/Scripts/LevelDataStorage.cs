@@ -316,16 +316,63 @@ public class LevelDataStorage
                     enemiesRemain = false;
                     EndRoundRoutine();
                 }
+                Debug.Log($"Checking for end of round. Enemies remaining: {PollTotalEnemies()} | Last Enemy Spawned: {LastEnemySpawned}");
             }
         }
 
         public void EndRoundRoutine()
         {
+            //set velo to 0
+
+            GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
+            Rigidbody2D PlayerRb = PlayerObj.GetComponent<Rigidbody2D>();
+            PlayerRb.linearVelocity = Vector2.zero;
+            PlayerRb.angularVelocity = 0;
+
+            // disable player inputs
+            PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
+            PlayerScript.inputManager.Disable();
+
+            // display round over screen
+            GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
+            SpriteRenderer RoundOverSpriteRenderer = RoundOverScreen.GetComponent<SpriteRenderer>();
+            Color color = RoundOverSpriteRenderer.color;
+
+            color.a = 1;
+            RoundOverSpriteRenderer.color = color;
+
             Debug.Log("-------------------------------------- End of round test");
         }
         
         public void StartRoundRoutine()
         {
+            ManagerScript.CurrentLevelManagerInstance.InstantiatePlayerObject();
+            GameObject PlayerObject = GameObject.FindWithTag("Player");
+            SpriteRenderer spriteRenderer = PlayerObject.GetComponent<SpriteRenderer>();
+
+            spriteRenderer.sprite = ManagerScript.Instance.SpriteDict[ManagerScript.CurrentLevelManagerInstance.selectedHull];
+
+
+
+            // hide the round over screen
+            Debug.Log("Start round routine triggered");
+            try
+            {
+                //GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
+
+                GameObject RoundOverScreen = GameObject.Find("Testpanel");
+
+                SpriteRenderer RoundOverSpriteRenderer = RoundOverScreen.GetComponent<SpriteRenderer>();
+                Color color = RoundOverSpriteRenderer.color;
+                color.a = 0;
+                RoundOverSpriteRenderer.color = color;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("ERROR: Could not find RoundOverScreen object in scene. Make sure there is a GameObject with the 'RoundOverScreen' tag assigned.");
+                return;
+            }
+
             Dictionary<int, List<Action>> RoundDict = Rounds[CurrentRound];
 
             // start co routine "timers" on the events
@@ -336,6 +383,8 @@ public class LevelDataStorage
             int localLatestSpawnTime = RoundDict.Keys.Max();
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));
             ManagerScript.Instance.StartCoroutine(PeriodicallyCheckForEndOfRound(2));  // wanted in 3 countries for this move :(
+
+
         }
     }
     public class LevelData

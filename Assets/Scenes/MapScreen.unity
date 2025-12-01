@@ -169,12 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -502,8 +502,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -281.68, y: -162}
-  m_SizeDelta: {x: 186.6395, y: 85.3912}
+  m_AnchoredPosition: {x: -363.96, y: -206}
+  m_SizeDelta: {x: 195.8375, y: 75.8784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1183400720
 MonoBehaviour:
@@ -648,8 +648,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 286, y: -162}
-  m_SizeDelta: {x: 2.7901, y: 1.4487}
+  m_AnchoredPosition: {x: 340.6573, y: -206}
+  m_SizeDelta: {x: 2.9498, y: 1.2343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1293998910
 MonoBehaviour:
@@ -673,7 +673,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 9016238006245917857, guid: 91bb7a922fcc5324397ba0cb2cdc8c4b, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
