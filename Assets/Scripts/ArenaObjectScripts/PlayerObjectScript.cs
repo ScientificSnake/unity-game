@@ -17,12 +17,15 @@ public class PlayerObjectScript : MonoBehaviour
     private PolygonCollider2D PolygonCollider;
     private SpriteRenderer spriteRenderer;
 
+    public float CollsionDamageMultiplier = 0.5f;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.angularDamping = 0;
-        rb.linearDamping = 0;        
+        rb.linearDamping = 0;
+        rb.freezeRotation = true;
     }
 
 
@@ -226,23 +229,25 @@ public class PlayerObjectScript : MonoBehaviour
 
         #region initialize stats based on what hull is chosen
 
-        Dictionary<string, float> baseStats = ManagerScript.CurrentLevelManagerInstance.BaseStats;
+        LevelDataStorage.LevelManager.BaseStats StartingStats = ManagerScript.CurrentLevelManagerInstance.Stats;
         string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
 
-        maxTurnSpeedDPS = baseStats["MaxTurnRate"];
-        maxAcceleration = baseStats["Acceleration"] / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
+        maxTurnSpeedDPS = StartingStats.MaxTurnRate;
+        maxAcceleration = StartingStats.Acceleration / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
 
-        rb.mass = baseStats["Mass"];
-        transform.localScale = new Vector3(baseStats["ScaleFactor"], baseStats["ScaleFactor"]);
-        Fuel = baseStats["BaseFuel"] * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
+        rb.mass = StartingStats.Mass;
+        transform.localScale = new Vector3(StartingStats.ScaleFactor, StartingStats.ScaleFactor);
+        Fuel = StartingStats.BaseFuel * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
 
-        Offset = new Vector2(baseStats["GunOffsetX"], baseStats["GunOffsetY"]);
+        Offset = StartingStats.GunOffset;
+
+        Health = StartingStats.Health;
 
         #endregion
 
         #region Weapon intialization
 
-        int WeaponIndex = (int) baseStats["WeaponSelection"];
+        int WeaponIndex = (int) StartingStats.WeaponSelection;
 
         Sebastian.WeaponryData.Weapon TargetWeapon = Sebastian.WeaponryData.WeaponDict[WeaponIndex];
 
@@ -259,4 +264,37 @@ public class PlayerObjectScript : MonoBehaviour
         HeadingFollowMouse();
         PollMainWeapon();
     }
+
+    #region Collision damage handling
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        float relativeVelocityMagnitude = collision.relativeVelocity.magnitude;
+
+        Health -= relativeVelocityMagnitude * CollsionDamageMultiplier;
+
+        Debug.Log("Player collided with " + collision.gameObject.name + " | Relative Velocity Magnitude: " + relativeVelocityMagnitude + " | New Health: " + Health);
+        HealthCheck();
+    }
+    #endregion
+
+    #region Health management and Damage application
+    public void ApplyDamage(float damageAmount)
+    {
+        Health -= damageAmount;
+        Debug.Log($"Player took {damageAmount} damage. New Health: {Health}");
+        HealthCheck();
+    }
+
+    private void HealthCheck()
+    {
+        if (Health <= 0)
+        {
+            Debug.Log("Player has been slimed!");
+            // Handle player destruction (e.g., trigger game over, respawn, etc.)
+        }
+    }
+
+    #endregion
+
 }

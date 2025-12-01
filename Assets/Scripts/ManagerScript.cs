@@ -166,10 +166,10 @@ public class ManagerScript : MonoBehaviour
 
             print($"Target sysname is {targetSysName}");
 
-            Action<Dictionary<string, float>> targetMutationFunc = TechData.HullOptionsDataDict[targetSysName].MutationFunc;
+            Action<LevelDataStorage.LevelManager.BaseStats> targetMutationFunc = TechData.HullOptionsDataDict[targetSysName].MutationFunc;
 
             // populate BaseStats Dictionary 
-            targetMutationFunc(CurrentLevelManagerInstance.BaseStats);
+            targetMutationFunc(CurrentLevelManagerInstance.Stats);
 
             SceneManager.LoadScene("Arena");
 

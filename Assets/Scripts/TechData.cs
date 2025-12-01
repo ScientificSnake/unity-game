@@ -137,22 +137,24 @@ public class TechData : MonoBehaviour
         {
             Debug.Log("Test applied basic hull");
 
-            if (BaseStatsObj is Dictionary<string, float> BaseStats)  // OH YEAH REFERENCE MUTATION
+            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)  // OH YEAH REFERENCE MUTATION
             {
-                BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
-                BaseStats["MaxTurnRate"] = 107; // degress per second 
-                BaseStats["Acceleration"] = 5000;  // SUBJECT TO FURTHER CHANGE neutons of thrust
-                BaseStats["Mass"] = 2.5f; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
+                BaseStats.Health = 100; // yeah no we ain't doin no fucking module health
+                BaseStats.MaxTurnRate = 107; // degress per second 
+                BaseStats.Acceleration = 5000;  // SUBJECT TO FURTHER CHANGE neutons of thrust
+                BaseStats.Mass = 2.5f; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
 
-                BaseStats["ScaleFactor"] = 1.75f; //hull size scale factor
+                BaseStats.ScaleFactor = 1.75f; //hull size scale factor
+                BaseStats.GunOffset = new Vector2(20, 0); //gun offset from center of hull sprite
 
-                BaseStats["BaseFuel"] = 60; // Fuel in full thrust seconds
+                BaseStats.BaseFuel = 60; // Fuel in full thrust seconds
 
                 //Special abilities
-                BaseStats["DashAbility"] = 0;
-                BaseStats["StealthAbility"] = 0;
-                BaseStats["CarrierAbility"] = 0;
-                BaseStats["WeaponSelection"] = 1; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
+                BaseStats.DashAbility = false;
+                BaseStats.StealthAbility = false;
+                BaseStats.CarrierAbility = false;
+                BaseStats.WeaponSelection = 1; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)'
+                BaseStats.SelectedWeapon = Sebastian.WeaponryData.WeaponDict[1];  // possible moving to this method instead
             }
 
         }
@@ -160,25 +162,23 @@ public class TechData : MonoBehaviour
         public static void ApplySecondHull(object BaseStatsObj)
         {
             Debug.Log("test applied second hull");
-            if (BaseStatsObj is Dictionary<string, float> BaseStats)
+            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
-                print("detected dict object");
-                BaseStats["Health"] = 85; // yeah no we ain't doin no fucking module health
-                BaseStats["MaxTurnRate"] = 112; // degress per second 
-                BaseStats["Acceleration"] = 5000;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["Mass"] = 1.75f;
+                // print("detected dict object");
+                BaseStats.Health = 85; // yeah no we ain't doin no fucking module health
+                BaseStats.MaxTurnRate = 112; // degress per second 
+                BaseStats.Acceleration = 5000;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats.Mass = 1.75f;
 
-                BaseStats["ScaleFactor"] = 1.9f; //hull size scale factor
-                BaseStats["BaseFuel"] = 50;
-
-                BaseStats["GunOffsetX"] = 20;
-                BaseStats["GunOffsetY"] = 0;
+                BaseStats.ScaleFactor = 1.9f; //hull size scale factor
+                BaseStats.BaseFuel = 50;
+                BaseStats.GunOffset = new Vector2(20, 0);
 
                 //Special abilities
-                BaseStats["DashAbility"] = 0;
-                BaseStats["StealthAbility"] = 0;
-                BaseStats["CarrierAbility"] = 0;
-                BaseStats["WeaponSelection"] = 1; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
+                BaseStats.DashAbility = false;
+                BaseStats.StealthAbility = false;
+                BaseStats.CarrierAbility = false;
+                BaseStats.WeaponSelection  = 1; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
             }
             else { print("argument not dictionary<string, int>"); }
         }
@@ -186,73 +186,70 @@ public class TechData : MonoBehaviour
         public static void ApplyScorpionHull(object BaseStatsObj)
         {
             Debug.Log("test applied scorpion hull");
-            if (BaseStatsObj is Dictionary<string, float> BaseStats)
+            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
                 print("detected dict objec");
-                BaseStats["Health"] = 75; // yeah no we ain't doin no fucking module health
-                BaseStats["MaxTurnRate"] = 130; // degress per second 
-                BaseStats["Acceleration"] = 6000f;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["ReverseAcceleration"] = 10; //^ but in reverse (reverse thrust)
-                BaseStats["Mass"] = 1.5f;
-                BaseStats["ScaleFactor"] = 1.25f; //hull size scale factor
-                BaseStats["BaseFuel"] = 50;
-                BaseStats["GunOffsetX"] = 20;
-                BaseStats["GunOffsetY"] = 0;
+                BaseStats.Health = 75; // yeah no we ain't doin no fucking module health
+                BaseStats.MaxTurnRate = 130; // degress per second 
+                BaseStats.Acceleration = 6000f;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats.ReverseAcceleration = 10; //^ but in reverse (reverse thrust)
+                BaseStats.Mass = 1.5f;
+                BaseStats.ScaleFactor = 1.25f; //hull size scale factor
+                BaseStats.BaseFuel = 50;
+                BaseStats.GunOffset = new Vector2(20, 0);
 
                 //Special abilities
-                BaseStats["DashAbility"] = 1;
-                BaseStats["StealthAbility"] = 0;
-                BaseStats["CarrierAbility"] = 0;
-                BaseStats["WeaponSelection"] = 2; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
+                BaseStats.DashAbility = true;
+                BaseStats.StealthAbility = false;
+                BaseStats.CarrierAbility = false;
+                BaseStats.WeaponSelection = 2; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
             }
         }
         public static void ApplyTrophyHull(object BaseStatsObj)
         {
             Debug.Log("test applied trophy hull");
 
-            if (BaseStatsObj is Dictionary<string, float> BaseStats)
+            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
                 print("detected dict object");
-                BaseStats["Health"] = 110; // yeah no we ain't doin no fucking module health
-                BaseStats["MaxTurnRate"] = 80; // degress per second 
-                BaseStats["Acceleration"] = 4000;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["Mass"] = 3f;
-                BaseStats["ScaleFactor"] = 1f; //hull size scale factor
-                BaseStats["BaseFuel"] = 100;
-                BaseStats["GunOffsetX"] = 45;  // bro is very large, rocket must be far infortn of him
-                BaseStats["GunOffsetY"] = 0;
+                BaseStats.Health = 110; // yeah no we ain't doin no fucking module health
+                BaseStats.MaxTurnRate = 80; // degress per second 
+                BaseStats.Acceleration = 4000;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats.Mass = 3f;
+                BaseStats.ScaleFactor = 1f; //hull size scale factor
+                BaseStats.BaseFuel = 100;
+                BaseStats.GunOffset = new Vector2(45, 0);  // bro is very large, rocket must be far infortn of him
 
                 //Special abilities
-                BaseStats["DashAbility"] = 0;
-                BaseStats["StealthAbility"] = 0;
-                BaseStats["CarrierAbility"] = 1;
-                BaseStats["WeaponSelection"] = 3; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
+                BaseStats.DashAbility = false;
+                BaseStats.StealthAbility = false;
+                BaseStats.CarrierAbility = true;
+                BaseStats.WeaponSelection = 3; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
             }
         }
         public static void ApplyRavenHull(object BaseStatsObj)
         {
             Debug.Log("test applied raven hull");
-            if (BaseStatsObj is Dictionary<string, float> BaseStats)
+            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
                 print("detected dict object");
-                BaseStats["Health"] = 100; // yeah no we ain't doin no fucking module health
-                BaseStats["MaxTurnRate"] = 110; // degress per second 
-                BaseStats["Acceleration"] = 5500;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats["Mass"] = 2.75f;
+                BaseStats.Health = 100; // yeah no we ain't doin no fucking module health
+                BaseStats.MaxTurnRate = 110; // degress per second 
+                BaseStats.Acceleration = 5500;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats.Mass = 2.75f;
 
-                BaseStats["ScaleFactor"] = 0.7f; //hull size scale factor
-                BaseStats["BaseFuel"] = 60;
-                BaseStats["GunOffsetX"] = 20;
-                BaseStats["GunOffsetY"] = 0;
+                BaseStats.ScaleFactor = 0.7f; //hull size scale factor
+                BaseStats.BaseFuel = 60;
+                BaseStats.GunOffset = new Vector2(20, 0);
 
                 //Special abilities
-                BaseStats["DashAbility"] = 0;
-                BaseStats["StealthAbility"] = 1;
-                BaseStats["CarrierAbility"] = 0;
-                BaseStats["WeaponSelection"] = 2; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
+                BaseStats.DashAbility = false;
+                BaseStats.StealthAbility = true;
+                BaseStats.CarrierAbility = false;
+                BaseStats.WeaponSelection = 2; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
             }
-            
+
         }
-    #endregion
+        #endregion
     }
 }

@@ -262,7 +262,26 @@ public class LevelDataStorage
 
         public Dictionary<string, float> LiveStats;
 
-        public Dictionary<string, float> BaseStats = new(); // Will be populated by the hull stats
+        public class BaseStats
+        {
+            public float Health;
+            public float MaxTurnRate;
+            public float Acceleration;
+            public float ReverseAcceleration;
+            public float Mass;
+            public float ScaleFactor;
+            public float BaseFuel;
+
+            public Vector2 GunOffset;
+
+            public bool DashAbility;
+            public bool StealthAbility;
+            public bool CarrierAbility;
+            public int WeaponSelection;
+            public Sebastian.WeaponryData.Weapon SelectedWeapon;
+        }
+
+        public BaseStats Stats = new(); // Will be populated by the hull stats
 
         public void InstantiatePlayerObject()
         {
