@@ -681,6 +681,11 @@ MonoBehaviour:
   SwallowSprite: {fileID: -3384617665269950355, guid: 1f836cb789ab31141bfc04768c1c1f3e, type: 3}
   TrohpySprite: {fileID: -3376404754720889478, guid: c0ff852cbf3a3ad48a6f1a4dbf71c824, type: 3}
   RavenSprite: {fileID: 658638481444860609, guid: 2caf931540bf71740a0a78934c3ba223, type: 3}
+  LynchpinThrusting: {fileID: -4325541955514232979, guid: 7dab4dcddf02adc4fb7e61bd9eafdfb1, type: 3}
+  ScorpionThrusting: {fileID: 0}
+  SwallowThrusting: {fileID: 0}
+  TrophyThrusting: {fileID: 0}
+  RavenThrusting: {fileID: -9086353283211051367, guid: 5310867317ac8d14cb832681ccaea1ea, type: 3}
 --- !u!1 &1360741382
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class PlayerObjectScript : MonoBehaviour
         rb.freezeRotation = true;
     }
 
-
+    #region public vars
     public float Fuel;
     public float maxAcceleration; // acceleration at 100% throttle
     public float maxTurnSpeedDPS; // max turn speed in degrees per second
@@ -46,6 +46,7 @@ public class PlayerObjectScript : MonoBehaviour
     public Camera mainCamera;
 
     public InArenaControls inputManager;
+    #endregion
     private void OnEnable()
     {
         inputManager = new InArenaControls();
@@ -212,6 +213,7 @@ public class PlayerObjectScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         #region Collider setup
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -223,8 +225,6 @@ public class PlayerObjectScript : MonoBehaviour
         collider.CreateFromSprite(spriteRenderer.sprite);
         #endregion
 
-
-
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         #region initialize stats based on what hull is chosen
@@ -234,14 +234,12 @@ public class PlayerObjectScript : MonoBehaviour
 
         maxTurnSpeedDPS = StartingStats.MaxTurnRate;
         maxAcceleration = StartingStats.Acceleration / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
-
         rb.mass = StartingStats.Mass;
         transform.localScale = new Vector3(StartingStats.ScaleFactor, StartingStats.ScaleFactor);
         Fuel = StartingStats.BaseFuel * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
-
         Offset = StartingStats.GunOffset;
-
         Health = StartingStats.Health;
+        
 
         #endregion
 

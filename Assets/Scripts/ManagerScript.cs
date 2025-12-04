@@ -134,6 +134,12 @@ public class ManagerScript : MonoBehaviour
     public Sprite SwallowSprite;
     public Sprite TrohpySprite;
     public Sprite RavenSprite;
+
+    public Sprite LynchpinThrusting;
+    public Sprite ScorpionThrusting;
+    public Sprite SwallowThrusting;
+    public Sprite TrophyThrusting;
+    public Sprite RavenThrusting;
     #endregion
 
     public Dictionary<string, GameObject> SysNameToPrefabObj;
