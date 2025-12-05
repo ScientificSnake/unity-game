@@ -141,6 +141,7 @@ public class LevelDataStorage
         public LevelManager(LevelData leveldata, Dictionary<string, TechData.TechNode> nodeData)
         {
             RootLevelData = leveldata;
+
             List<string> enabledTechNodes = PurchasedTechNodes(nodeData);
             // List<string>[] sortedNodes = SortNodeTypes(nodeData, enabledNodes);
 
@@ -394,16 +395,19 @@ public class LevelDataStorage
         public Dictionary<Action, int> DifficultyEventDict { get; } // Action to corresponding difficulty
         public Dictionary<int, Dictionary<int, List<Action>>> PresetRounds { get; }  // (which round is preset) -> Dictionary of Time(seconds) -> Actions []
 
+        public GameObject LayoutPrefab;
         public string[] PossibleEnemyTags { get; }
 
         public LevelData(int roundCount, Func<int, int> difficultyFunc, Dictionary<Action, int> difficultyEventDict, Dictionary<int, Dictionary<int, List<Action>>> presetRounds,
-                         string[] possibleEnemyTags)
+                         string[] possibleEnemyTags, GameObject layoutPrefab)
         {
             RoundCount = roundCount;
             DifficultyFunc = difficultyFunc;
             DifficultyEventDict = difficultyEventDict;
             PresetRounds = presetRounds;
             PossibleEnemyTags = possibleEnemyTags;
+            
+            LayoutPrefab = layoutPrefab;
         }
     }
 

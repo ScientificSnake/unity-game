@@ -686,6 +686,7 @@ MonoBehaviour:
   SwallowThrusting: {fileID: 0}
   TrophyThrusting: {fileID: 0}
   RavenThrusting: {fileID: -9086353283211051367, guid: 5310867317ac8d14cb832681ccaea1ea, type: 3}
+  TutorialLayoutPrefab: {fileID: 5312433997703605279, guid: aa6023fd9dfbd45429c6fba515b4adcd, type: 3}
 --- !u!1 &1360741382
 GameObject:
   m_ObjectHideFlags: 0

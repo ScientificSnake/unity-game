@@ -142,6 +142,12 @@ public class ManagerScript : MonoBehaviour
     public Sprite RavenThrusting;
     #endregion
 
+    #region Level Layout fields
+
+    public GameObject TutorialLayoutPrefab;
+
+    #endregion
+
     public Dictionary<string, GameObject> SysNameToPrefabObj;
 
     public Dictionary<string, Sprite> SpriteDict;

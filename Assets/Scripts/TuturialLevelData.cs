@@ -42,6 +42,7 @@ public class TuturialLevelData
                 }
             }
         },
-        new string[] {"BasicSpacePirate"}
+        new string[] { "BasicSpacePirate" },
+        ManagerScript.Instance.TutorialLayoutPrefab
         );
 }
