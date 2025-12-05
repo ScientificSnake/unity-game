@@ -25,7 +25,7 @@ public class VelocityDisplayUpdater : MonoBehaviour
         // Update display
         if (textMeshProUGUI != null && PlayerRef != null)
         {
-            textMeshProUGUI.text = $"{PlayerRef.linearVelocity.magnitude.ToString("F2")} m/s";
+            textMeshProUGUI.text = $"{((int) PlayerRef.linearVelocity.magnitude)} m/s";
         }
     }
 }
