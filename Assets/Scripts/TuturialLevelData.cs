@@ -43,6 +43,7 @@ public class TuturialLevelData
             }
         },
         new string[] { "BasicSpacePirate" },
-        ManagerScript.Instance.TutorialLayoutPrefab
+        new GameObject[] { ManagerScript.Instance.TutorialLayoutPrefab },
+        Endless: false
         );
 }

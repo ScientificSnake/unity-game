@@ -19,6 +19,7 @@ public class PlayerObjectScript : MonoBehaviour
 
     public float CollsionDamageMultiplier = 0.5f;
 
+    public LevelDataStorage.LevelManager.BaseStats BaseRoundStats;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -116,7 +117,7 @@ public class PlayerObjectScript : MonoBehaviour
     }
 
     private void OnDisable()
-    { 
+    {
         inputManager.Disable();
     }
 
@@ -132,7 +133,7 @@ public class PlayerObjectScript : MonoBehaviour
             {
                 throttle += 5;
             }
-        } 
+        }
 
         if (inputManager.Player.LControl.IsPressed())
         {
@@ -162,13 +163,13 @@ public class PlayerObjectScript : MonoBehaviour
         // dead zone
         if (throttle > 0 && Fuel > 0)
         {
-            float trueThrottleProportion = (throttle/100);
+            float trueThrottleProportion = (throttle / 100);
 
             float instantaneousAcceleration = trueThrottleProportion * maxAcceleration;
 
             float heading_rad = DegToRadian(transform.eulerAngles.z);
 
-            Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad)*instantaneousAcceleration), (Mathf.Sin(heading_rad)*instantaneousAcceleration));
+            Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad) * instantaneousAcceleration), (Mathf.Sin(heading_rad) * instantaneousAcceleration));
 
             rb.AddForce(instantaneousAccelerationVector);
 
@@ -180,7 +181,7 @@ public class PlayerObjectScript : MonoBehaviour
     private void HeadingFollowMouse()
     {
         Vector2 mousePos = Input.mousePosition;
-        
+
         Vector2 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
 
         // Calculate mouse angle from center
@@ -229,23 +230,17 @@ public class PlayerObjectScript : MonoBehaviour
 
         #region initialize stats based on what hull is chosen
 
-        LevelDataStorage.LevelManager.BaseStats StartingStats = ManagerScript.CurrentLevelManagerInstance.Stats;
+        BaseRoundStats = ManagerScript.CurrentLevelManagerInstance.Stats;
         string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
 
-        maxTurnSpeedDPS = StartingStats.MaxTurnRate;
-        maxAcceleration = StartingStats.Acceleration / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
-        rb.mass = StartingStats.Mass;
-        transform.localScale = new Vector3(StartingStats.ScaleFactor, StartingStats.ScaleFactor);
-        Fuel = StartingStats.BaseFuel * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
-        Offset = StartingStats.GunOffset;
-        Health = StartingStats.Health;
-        
+        ApplyRoundStats();
+
 
         #endregion
 
         #region Weapon intialization
 
-        int WeaponIndex = (int) StartingStats.WeaponSelection;
+        int WeaponIndex = (int)BaseRoundStats.WeaponSelection;
 
         Sebastian.WeaponryData.Weapon TargetWeapon = Sebastian.WeaponryData.WeaponDict[WeaponIndex];
 
@@ -253,6 +248,27 @@ public class PlayerObjectScript : MonoBehaviour
 
         CurrentMainWeaponParams = TargetWeapon.BaseWeaponParams;
         #endregion
+    }
+
+    public void ApplyRoundStats()
+    {
+        maxTurnSpeedDPS = BaseRoundStats.MaxTurnRate;
+        maxAcceleration = BaseRoundStats.Acceleration / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
+        rb.mass = BaseRoundStats.Mass;
+        transform.localScale = new Vector3(BaseRoundStats.ScaleFactor, BaseRoundStats.ScaleFactor);
+        Fuel = BaseRoundStats.BaseFuel * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
+        Offset = BaseRoundStats.GunOffset;
+        Health = BaseRoundStats.Health;
+    }
+
+    public void ResetRoundStats()
+    {
+        ApplyRoundStats();
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0;
+        throttle = 0;
+        Fuel = BaseRoundStats.BaseFuel;
+        transform.position = Vector3.zero;
     }
 
     private void FixedUpdate()

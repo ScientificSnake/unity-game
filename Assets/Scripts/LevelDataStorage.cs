@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEditor.SceneManagement;
 public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
@@ -344,7 +345,8 @@ public class LevelDataStorage
 
             Debug.Log("-------------------------------------- End of round test");
         }
-        
+
+        // Getoverhere start
         public void StartRoundRoutine()
         {
             ManagerScript.CurrentLevelManagerInstance.InstantiatePlayerObject();
@@ -380,6 +382,23 @@ public class LevelDataStorage
 
             Debug.Log($"Current Round is {RoundDict.ToString()}");
 
+            if (RootLevelData.IsEndless is false)
+            {
+                // first slime the previous layout
+                GameObject PreviousLayoutObj = GameObject.FindWithTag("MapLayoutTag");
+                ManagerScript.Destroy(PreviousLayoutObj);
+
+                ManagerScript.Instantiate(RootLevelData.LayoutPrefab[CurrentRound]);
+                // reset player position and velocity and health and fuel
+            }
+
+            GameObject Player = GameObject.FindWithTag("Player");
+
+            PlayerObjectScript PlayerScript = Player.GetComponent<PlayerObjectScript>();
+
+            PlayerScript.ResetRoundStats();
+            
+
 
             int localLatestSpawnTime = RoundDict.Keys.Max();
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));
@@ -390,16 +409,18 @@ public class LevelDataStorage
     }
     public class LevelData
     {
+        public bool IsEndless { get; } = false;
+
         public int RoundCount { get; }  // Number of rounds in level
         public Func<int, int> DifficultyFunc { get; }  // Round -> Difficulty for that round
         public Dictionary<Action, int> DifficultyEventDict { get; } // Action to corresponding difficulty
         public Dictionary<int, Dictionary<int, List<Action>>> PresetRounds { get; }  // (which round is preset) -> Dictionary of Time(seconds) -> Actions []
 
-        public GameObject LayoutPrefab;
+        public GameObject[] LayoutPrefab;
         public string[] PossibleEnemyTags { get; }
 
         public LevelData(int roundCount, Func<int, int> difficultyFunc, Dictionary<Action, int> difficultyEventDict, Dictionary<int, Dictionary<int, List<Action>>> presetRounds,
-                         string[] possibleEnemyTags, GameObject layoutPrefab)
+                         string[] possibleEnemyTags, GameObject[] layoutPrefab, bool Endless)
         {
             RoundCount = roundCount;
             DifficultyFunc = difficultyFunc;
