@@ -403,6 +403,7 @@ public class LevelDataStorage
             int localLatestSpawnTime = RoundDict.Keys.Max();
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));
             ManagerScript.Instance.StartCoroutine(PeriodicallyCheckForEndOfRound(2));  // wanted in 3 countries for this move :(
+            Debug.Log("started periodic enemy checking");
 
 
         }
