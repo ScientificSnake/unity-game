@@ -1,8 +1,11 @@
+using System.Xml;
 using UnityEngine;
+using UnityEngine.InputSystem.Utilities;
+using UnityEngine.U2D.IK;
 
 public class BackgroundManager : MonoBehaviour
 {
-    [SerializeField] private Vector2 initialOffset = new Vector2(-552.44355f, -176.6316f);
+    [SerializeField] private Vector2 FakeVeloOffset;
 
     [SerializeField] private GameObject C;
     [SerializeField] private GameObject L;
@@ -98,6 +101,7 @@ public class BackgroundManager : MonoBehaviour
     {
         PlayerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
         print($"width is {width}, height is {height}");
+        FakeVeloOffset = Vector2.zero;
     }
 
     private void FixedUpdate()
@@ -106,7 +110,22 @@ public class BackgroundManager : MonoBehaviour
         {
             PlayerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
         }
-        Vector2 distance = (Vector2)MainCam.transform.position - (Vector2) transform.position;
+
+        // Calculate background velocity as sqrt of player velocity magnitude
+        // This makes background move slower and caps the speed growth
+        float speedFactor = Mathf.Sqrt(PlayerRb.linearVelocity.magnitude);
+        Vector2 backgroundVelocity = PlayerRb.linearVelocity.normalized * speedFactor;
+
+        // Update the fake velocity offset
+        FakeVeloOffset += backgroundVelocity * Time.fixedDeltaTime;
+
+        print($"Fake velo offset is {FakeVeloOffset.ToString()}");
+
+        // Position background based on player position + offset
+        transform.position = (Vector2)PlayerRb.gameObject.transform.position - FakeVeloOffset;
+
+        // Check for shifting
+        Vector2 distance = (Vector2)MainCam.transform.position - (Vector2)transform.position;
 
         if (distance.x > width)
         {
@@ -124,7 +143,5 @@ public class BackgroundManager : MonoBehaviour
         {
             ShiftDown();
         }
-        Vector2 fakevelo = PlayerRb.linearVelocity - 2 * (PlayerRb.linearVelocity.normalized * Mathf.Sqrt(PlayerRb.linearVelocity.magnitude));
-        transform.transform.position += (Vector3) fakevelo * Time.fixedDeltaTime;
     }
 }
