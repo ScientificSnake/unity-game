@@ -224,22 +224,25 @@ public class ManagerScript : MonoBehaviour
     public void Save(ref ManagerSaveData data)
     {
         data.TechCredits = TechData.TechCredits;
-        data.HullOptionsDataDict = TechData.HullOptionsDataDict;
+
+        // Only save which nodes are purchased
+        data.PurchasedNodes = new Dictionary<string, bool>();
+        foreach (var item in TechData.HullOptionsDataDict)
+        {
+            data.PurchasedNodes[item.Key] = item.Value.IsNodePurchased;
+        }
     }
 
     public void Load(ManagerSaveData data)
     {
         TechData.TechCredits = data.TechCredits;
-        TechData.HullOptionsDataDict = data.HullOptionsDataDict;
 
-        foreach (var item in data.HullOptionsDataDict)
+        // Just restore the purchased status - the dictionary already exists with all the delegates intact
+        foreach (var item in data.PurchasedNodes)
         {
-            string sysName = item.Key;
-            bool isPurchased = item.Value.IsNodePurchased;
-
-            if (TechData.HullOptionsDataDict.ContainsKey(sysName))
+            if (TechData.HullOptionsDataDict.ContainsKey(item.Key))
             {
-                TechData.HullOptionsDataDict[sysName].IsNodePurchased = isPurchased;
+                TechData.HullOptionsDataDict[item.Key].IsNodePurchased = item.Value;
             }
         }
     }
@@ -248,10 +251,8 @@ public class ManagerScript : MonoBehaviour
 }
 
 [System.Serializable]
-
 public struct ManagerSaveData
 {
     public int TechCredits;
-    public List<string> UnlockedBoons;
-    public Dictionary<string, TechData.TechNode> HullOptionsDataDict;
+    public Dictionary<string, bool> PurchasedNodes;
 }
