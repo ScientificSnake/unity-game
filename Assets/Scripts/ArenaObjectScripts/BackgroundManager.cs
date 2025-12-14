@@ -119,7 +119,7 @@ public class BackgroundManager : MonoBehaviour
         // Update the fake velocity offset
         FakeVeloOffset += backgroundVelocity * Time.fixedDeltaTime;
 
-        print($"Fake velo offset is {FakeVeloOffset.ToString()}");
+        //print($"Fake velo offset is {FakeVeloOffset.ToString()}");
 
         // Position background based on player position + offset
         transform.position = (Vector2)PlayerRb.gameObject.transform.position - FakeVeloOffset;

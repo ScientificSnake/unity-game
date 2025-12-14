@@ -230,8 +230,8 @@ public class PlayerObjectScript : MonoBehaviour
 
         #region initialize stats based on what hull is chosen
 
-        BaseRoundStats = ManagerScript.CurrentLevelManagerInstance.Stats;
-        string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
+        // BaseRoundStats = ManagerScript.CurrentLevelManagerInstance.Stats;
+        // string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
 
         ApplyRoundStats();
 

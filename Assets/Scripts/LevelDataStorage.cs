@@ -396,9 +396,12 @@ public class LevelDataStorage
 
             PlayerObjectScript PlayerScript = Player.GetComponent<PlayerObjectScript>();
 
-            PlayerScript.ResetRoundStats();
-            
+            if (CurrentRound == 0)
+            {
+                PlayerScript.BaseRoundStats = Stats;
+            }
 
+            PlayerScript.ResetRoundStats();
 
             int localLatestSpawnTime = RoundDict.Keys.Max();
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));
