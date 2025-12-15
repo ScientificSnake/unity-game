@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Net.NetworkInformation;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Processors;
@@ -224,7 +223,12 @@ public class PlayerObjectScript : MonoBehaviour
         Destroy(PolygonCollider);
 
         PolygonCollider2D collider = gameObject.AddComponent<PolygonCollider2D>();
-        collider.CreateFromSprite(spriteRenderer.sprite);
+
+        // Unity 6 method for creating collider from sprite
+        List<Vector2> path = new List<Vector2>();
+        spriteRenderer.sprite.GetPhysicsShape(0, path);
+        collider.pathCount = 1;
+        collider.SetPath(0, path);
         #endregion
 
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
