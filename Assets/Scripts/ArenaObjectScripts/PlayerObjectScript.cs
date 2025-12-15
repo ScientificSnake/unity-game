@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Net.NetworkInformation;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Processors;
