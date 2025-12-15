@@ -212,12 +212,12 @@ public class LevelDataStorage
             else if (howManyHullOptions == 2) // layout for 2
             {
                 string firstTargetSysName = HullOptions[0];
-                Vector2 firstPositionvector = new Vector2(-320, 360);
+                Vector2 firstPositionvector = new(-320, 360);
                 GameObject firstPrefab = ManagerScript.Instance.SysNameToPrefabObj[firstTargetSysName];
                 ManagerScript.Instance.SpawnPrefab(firstPrefab, firstPositionvector, parentTransform);
 
                 string secondTargetSysName = HullOptions[1];
-                Vector2 secondPositionVector = new Vector2(320, 360);
+                Vector2 secondPositionVector = new(320, 360);
                 GameObject secondPrefab = ManagerScript.Instance.SysNameToPrefabObj[secondTargetSysName];
                 ManagerScript.Instance.SpawnPrefab(secondPrefab, secondPositionVector, parentTransform);
 
@@ -370,7 +370,7 @@ public class LevelDataStorage
                 color.a = 0;
                 RoundOverSpriteRenderer.color = color;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Debug.LogError("ERROR: Could not find RoundOverScreen object in scene. Make sure there is a GameObject with the 'RoundOverScreen' tag assigned.");
                 return;

@@ -145,6 +145,11 @@ namespace Sebastian
                 new Weapon(WeaponryActions.BasicRocketSpawn,
                     new WeaponParameters {RPM = 30, MaxDegreeError = 4, AcceleratioRate = 500, FuelSeconds = 5, RecoilForce = 0, Damage = 155}
                 )
+            },
+            {
+                4,
+                new Weapon(WeaponryActions.BasicBulletSpawnAction,
+                    new WeaponParameters {RPM = 30, MaxDegreeError = 0, MuzzleVelo = 200, Damage = 200})
             }
         };
     }
