@@ -218,12 +218,23 @@ public class PlayerObjectScript : MonoBehaviour
         #region Collider setup
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         PolygonCollider = GetComponent<PolygonCollider2D>();
-        Destroy(PolygonCollider);
 
-        PolygonCollider2D collider = gameObject.AddComponent<PolygonCollider2D>();
-        collider.CreateFromSprite(spriteRenderer.sprite);
+        if (spriteRenderer.sprite != null && PolygonCollider != null)
+        {
+            // 1. Get the number of paths defined in the Sprite Editor
+            int shapeCount = spriteRenderer.sprite.GetPhysicsShapeCount();
+            PolygonCollider.pathCount = shapeCount;
+
+            // 2. Transfer each path from the sprite to the collider
+            List<Vector2> pathPoints = new List<Vector2>();
+            for (int i = 0; i < shapeCount; i++)
+            {
+                pathPoints.Clear();
+                spriteRenderer.sprite.GetPhysicsShape(i, pathPoints);
+                PolygonCollider.SetPath(i, pathPoints.ToArray());
+            }
+        }
         #endregion
 
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
