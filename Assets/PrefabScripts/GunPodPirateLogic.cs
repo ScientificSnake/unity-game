@@ -7,7 +7,11 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
     private string State;
     public GameObject PlayerRef;
     public Rigidbody2D PlayerRb;
+    public Transform PlayerTransform;
     private float DetectionDistance = 200;
+    private bool SeesPlayer;
+
+    [SerializeField] 
 
     private Sebastian.WeaponryData.Weapon Weapon;
 
@@ -18,6 +22,23 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
     {
         Vector2 _rotatedVector = Quaternion.AngleAxis(angle, Vector3.forward) * sourceVector;
         return _rotatedVector;
+    }
+
+    private void CheckSeesPlayer()
+    {
+        Vector2 directionToPlayer = PlayerTransform.position - transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, DetectionDistance);
+
+        print($"Hit {hit.collider.name}");
+
+        if (hit.transform == PlayerTransform.transform)
+        {
+            SeesPlayer = true;
+        }
+        else
+        {
+            SeesPlayer = false;
+        }
     }
 
     private int ClipAmmo;
@@ -72,6 +93,7 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
         {
             PlayerRef = GameObject.FindWithTag("Player");
             PlayerRb = PlayerRef.GetComponent<Rigidbody2D>();
+            PlayerTransform = PlayerRef.GetComponent<Transform>();
         }
         else
         {
@@ -80,19 +102,17 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
                 float distanceFromPlayer = Vector2.Distance(transform.position, PlayerRef.transform.position);
                 if (distanceFromPlayer <= DetectionDistance)
                 {
-                    //// Debug prints for all TryGetInterceptAngle parameters
-                    //Debug.Log($"TryGetInterceptAngle param shooterPos: {transform.position}");
-                    //Debug.Log($"TryGetInterceptAngle param shooterVel: {rb.linearVelocity}");
-                    //Debug.Log($"TryGetInterceptAngle param targetPos: {PlayerRef.transform.position}");
-                    //Debug.Log($"TryGetInterceptAngle param targetVel: {PlayerRb.linearVelocity}");
-                    //Debug.Log($"TryGetInterceptAngle param muzzleVelo: {Weapon.BaseWeaponParams.MuzzleVelo}");
-
-                    ProjInterceptCalc.InterceptData InterceptInfo = ProjInterceptCalc.TryGetInterceptAngle(transform.position, rb.linearVelocity, PlayerRef.transform.position, PlayerRb.linearVelocity, WeaponParams.MuzzleVelo);
-
-                    if (InterceptInfo.Possible)
+                    CheckSeesPlayer();
+                    print($"Sees player is {SeesPlayer}");
+                    if (SeesPlayer)
                     {
-                        transform.eulerAngles = new Vector3(0, 0, InterceptInfo.AimDeg + 180);
-                        Fire();
+                        ProjInterceptCalc.InterceptData InterceptInfo = ProjInterceptCalc.TryGetInterceptAngle(transform.position, rb.linearVelocity, PlayerRef.transform.position, PlayerRb.linearVelocity, WeaponParams.MuzzleVelo);
+
+                        if (InterceptInfo.Possible)
+                        {
+                            transform.eulerAngles = new Vector3(0, 0, InterceptInfo.AimDeg + 180);
+                            Fire();
+                        }
                     }
                 }
             }

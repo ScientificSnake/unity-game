@@ -141,6 +141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceGunpodPirate
       objectReference: {fileID: 0}
+    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 311.2
@@ -223,6 +227,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerRb: {fileID: 0}
+  PlayerTransform: {fileID: 0}
 --- !u!4 &8487328259908031197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
