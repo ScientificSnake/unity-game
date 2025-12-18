@@ -1,6 +1,5 @@
 ﻿# unity-game
 
-Version - 6000.0.31f1 or 6000.0.58f2
-31f1 has a security vulnerability, but I hope they are compatible
-
-you can still open it on 6000.0.58f2 dont know if it matters
+Version - 6000.0.31f1 
+may have a security vulnerability, but who cares
+will update once ready for final product;
