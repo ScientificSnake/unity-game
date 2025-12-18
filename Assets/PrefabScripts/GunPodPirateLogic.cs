@@ -1,3 +1,4 @@
+using MathNet.Numerics.Optimization.ObjectiveFunctions;
 using Sebastian;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
@@ -8,20 +9,43 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
     public GameObject PlayerRef;
     public Rigidbody2D PlayerRb;
     public Transform PlayerTransform;
+
     private float DetectionDistance = 200;
     private bool SeesPlayer;
+    private float rotationDegreesPerSeconds = 60;
+    private float aimingThreshold = 5f; // Degrees within target to start firing
 
-    [SerializeField] 
-
-    private Sebastian.WeaponryData.Weapon Weapon;
-
+    [SerializeField] private Sebastian.WeaponryData.Weapon Weapon;
     private WeaponryData.WeaponParameters WeaponParams;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private WeaponryData.WeaponParameters CurrentWeaponArgs;
+
+    private int ClipAmmo;
+    private bool LeftGun;
+    private float LastFireTimeStamp;
 
     private Vector2 RotateVectorByAngle(Vector2 sourceVector, float angle)
     {
-        Vector2 _rotatedVector = Quaternion.AngleAxis(angle, Vector3.forward) * sourceVector;
-        return _rotatedVector;
+        return Quaternion.AngleAxis(angle, Vector3.forward) * sourceVector;
+    }
+
+    private void RotateTowardsTarget(float zTargetRotation)
+    {
+        float maxDegreesPerTick = rotationDegreesPerSeconds * Time.fixedDeltaTime;
+
+        float currentAngle = transform.eulerAngles.z;
+        float headingMouseAngleDiff = Mathf.DeltaAngle(currentAngle, zTargetRotation);
+
+        float angleTurned;
+        if (Mathf.Abs(headingMouseAngleDiff) <= maxDegreesPerTick)
+        {
+            angleTurned = headingMouseAngleDiff;
+        }
+        else
+        {
+            angleTurned = maxDegreesPerTick * Mathf.Sign(headingMouseAngleDiff);
+        }
+
+        transform.Rotate(0, 0, angleTurned);
     }
 
     private void CheckSeesPlayer()
@@ -29,9 +53,8 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
         Vector2 directionToPlayer = PlayerTransform.position - transform.position;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, DetectionDistance);
 
-        print($"Hit {hit.collider.name}");
-
-        if (hit.transform == PlayerTransform.transform)
+        // Check if raycast hit anything and if it's the player
+        if (hit.collider != null && hit.transform == PlayerTransform)
         {
             SeesPlayer = true;
         }
@@ -41,28 +64,24 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
         }
     }
 
-    private int ClipAmmo;
-    private bool LeftGun;
-    private float LastFireTimeStamp;
+    private bool IsAimedAtTarget(float targetAngle)
+    {
+        float currentAngle = transform.eulerAngles.z;
+        float angleDifference = Mathf.Abs(Mathf.DeltaAngle(currentAngle, targetAngle));
+        return angleDifference <= aimingThreshold;
+    }
 
-    private WeaponryData.WeaponParameters CurrentWeaponArgs;
     private void Fire()
     {
-        float RPS = WeaponParams.RPM / 60;
-        float WaitTimeBetweenRounds = 1 / RPS;
-
+        float RPS = WeaponParams.RPM / 60f;
+        float WaitTimeBetweenRounds = 1f / RPS;
         float now = Time.time;
-
         float timeDiff = now - LastFireTimeStamp;
 
-        print($"Wait time befween rounds is {WaitTimeBetweenRounds}");
-
-        if (timeDiff > WaitTimeBetweenRounds)
+        if (timeDiff >= WaitTimeBetweenRounds)
         {
             float heading = transform.eulerAngles.z + 180;
-
-            Vector2 offset = new(50, 0);
-
+            Vector2 offset = new Vector2(50, 0);
             Vector2 offsetVector = RotateVectorByAngle(offset, heading);
             Vector2 pos = new Vector2(transform.position.x, transform.position.y) + offsetVector;
 
@@ -75,13 +94,11 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
         }
     }
 
-
     protected override void Start()
     {
         base.Start();
         State = "trackPlayer";
         Weapon = Sebastian.WeaponryData.WeaponDict[4];
-
         rb = gameObject.GetComponent<Rigidbody2D>();
         WeaponParams = Weapon.BaseWeaponParams;
         CurrentWeaponArgs = WeaponParams;
@@ -89,28 +106,44 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
 
     private void FixedUpdate()
     {
+        // Cache player references if null
         if (PlayerRef == null || PlayerRb == null)
         {
             PlayerRef = GameObject.FindWithTag("Player");
-            PlayerRb = PlayerRef.GetComponent<Rigidbody2D>();
-            PlayerTransform = PlayerRef.GetComponent<Transform>();
-        }
-        else
-        {
-            if (State == "trackPlayer")
+            if (PlayerRef != null)
             {
-                float distanceFromPlayer = Vector2.Distance(transform.position, PlayerRef.transform.position);
-                if (distanceFromPlayer <= DetectionDistance)
-                {
-                    CheckSeesPlayer();
-                    print($"Sees player is {SeesPlayer}");
-                    if (SeesPlayer)
-                    {
-                        ProjInterceptCalc.InterceptData InterceptInfo = ProjInterceptCalc.TryGetInterceptAngle(transform.position, rb.linearVelocity, PlayerRef.transform.position, PlayerRb.linearVelocity, WeaponParams.MuzzleVelo);
+                PlayerRb = PlayerRef.GetComponent<Rigidbody2D>();
+                PlayerTransform = PlayerRef.GetComponent<Transform>();
+            }
+            return; // Exit early if player not found
+        }
 
-                        if (InterceptInfo.Possible)
+        if (State == "trackPlayer")
+        {
+            float distanceFromPlayer = Vector2.Distance(transform.position, PlayerRef.transform.position);
+
+            if (distanceFromPlayer <= DetectionDistance)
+            {
+                CheckSeesPlayer();
+
+                if (SeesPlayer)
+                {
+                    ProjInterceptCalc.InterceptData InterceptInfo = ProjInterceptCalc.TryGetInterceptAngle(
+                        transform.position,
+                        rb.linearVelocity,
+                        PlayerRef.transform.position,
+                        PlayerRb.linearVelocity,
+                        WeaponParams.MuzzleVelo
+                    );
+
+                    if (InterceptInfo.Possible)
+                    {
+                        float targetAngle = InterceptInfo.AimDeg + 180;
+                        RotateTowardsTarget(targetAngle);
+
+                        // Fire when aimed within threshold
+                        if (IsAimedAtTarget(targetAngle))
                         {
-                            transform.eulerAngles = new Vector3(0, 0, InterceptInfo.AimDeg + 180);
                             Fire();
                         }
                     }
