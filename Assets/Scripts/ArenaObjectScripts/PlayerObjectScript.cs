@@ -254,6 +254,10 @@ public class PlayerObjectScript : MonoBehaviour
         CurrentMainWeaponParams = TargetWeapon.BaseWeaponParams;
         CurrentMainWeaponParams.IgnoredColliders = new List<Collider2D> { collider };
         #endregion
+
+        #region initialize thrusters
+        Thrusters.ApplyThrusterSet(gameObject, BaseRoundStats.thrusterLayout);
+        #endregion
     }
 
     public void ApplyRoundStats()

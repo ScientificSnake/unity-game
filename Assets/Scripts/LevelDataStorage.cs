@@ -273,6 +273,7 @@ public class LevelDataStorage
             public float Mass;
             public float ScaleFactor;
             public float BaseFuel;
+            public Thrusters.ThrusterSet thrusterLayout;
 
             public Vector2 GunOffset;
 

@@ -676,12 +676,16 @@ MonoBehaviour:
   PlayerHullObjPrefab: {fileID: 5457092128639579156, guid: ea2bd599f4b86b649a15ab298d584ac9, type: 3}
   BasicBulletPrefab: {fileID: 2627414494034220773, guid: f812b477fd820c245a55ca3420cf235d, type: 3}
   RocketPrefab: {fileID: 1319892208821184728, guid: 6a80ec9715a52324eadbfa1e99635d04, type: 3}
-  BasicThrusterPrefab: {fileID: 663964113696163352, guid: 078696972c7463640b0244c3779e0d0a, type: 3}
   LynchpinSprite: {fileID: 2278735194727070721, guid: 197fd0fdec9c88d42832a90c318265b2, type: 3}
   ScorpionSprite: {fileID: -3303235448760210217, guid: 7039cd27fed551e4db3f9aa984bbadd3, type: 3}
   SwallowSprite: {fileID: -3384617665269950355, guid: 1f836cb789ab31141bfc04768c1c1f3e, type: 3}
   TrohpySprite: {fileID: -3376404754720889478, guid: c0ff852cbf3a3ad48a6f1a4dbf71c824, type: 3}
   RavenSprite: {fileID: 658638481444860609, guid: 2caf931540bf71740a0a78934c3ba223, type: 3}
+  LynchpinThrusting: {fileID: -4325541955514232979, guid: 7dab4dcddf02adc4fb7e61bd9eafdfb1, type: 3}
+  ScorpionThrusting: {fileID: 0}
+  SwallowThrusting: {fileID: 0}
+  TrophyThrusting: {fileID: 0}
+  RavenThrusting: {fileID: -9086353283211051367, guid: 5310867317ac8d14cb832681ccaea1ea, type: 3}
   TutorialLayoutPrefab: {fileID: 796005607905427677, guid: 50e095780f2edc146a6a8bb2e6a0d074, type: 3}
 --- !u!1 &1360741382
 GameObject:

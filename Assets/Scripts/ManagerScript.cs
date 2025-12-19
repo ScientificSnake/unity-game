@@ -126,6 +126,8 @@ public class ManagerScript : MonoBehaviour
     public GameObject BasicBulletPrefab;
     public GameObject RocketPrefab;
 
+    public GameObject BasicThrusterPrefab;
+
     #endregion
 
     #region Sprite game object fields
@@ -134,12 +136,6 @@ public class ManagerScript : MonoBehaviour
     public Sprite SwallowSprite;
     public Sprite TrohpySprite;
     public Sprite RavenSprite;
-
-    public Sprite LynchpinThrusting;
-    public Sprite ScorpionThrusting;
-    public Sprite SwallowThrusting;
-    public Sprite TrophyThrusting;
-    public Sprite RavenThrusting;
     #endregion
 
     #region Level Layout fields

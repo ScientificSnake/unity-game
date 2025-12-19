@@ -144,6 +144,8 @@ public class TechData : MonoBehaviour
                 BaseStats.Acceleration = 5000;  // SUBJECT TO FURTHER CHANGE neutons of thrust
                 BaseStats.Mass = 2.5f; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
 
+                BaseStats.thrusterLayout = Thrusters.LynchpinThrusterSet;
+
                 BaseStats.ScaleFactor = 1.75f; //hull size scale factor
                 BaseStats.GunOffset = new Vector2(10, 0); //gun offset from center of hull sprite
 
@@ -158,7 +160,6 @@ public class TechData : MonoBehaviour
             }
 
         }
-
         public static void ApplySecondHull(object BaseStatsObj)
         {
             Debug.Log("test applied second hull");
@@ -182,7 +183,6 @@ public class TechData : MonoBehaviour
             }
             else { print("argument not dictionary<string, int>"); }
         }
-
         public static void ApplyScorpionHull(object BaseStatsObj)
         {
             Debug.Log("test applied scorpion hull");
