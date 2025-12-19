@@ -175,6 +175,8 @@ public class TechData : MonoBehaviour
                 BaseStats.BaseFuel = 50;
                 BaseStats.GunOffset = new Vector2(20, 0);
 
+                BaseStats.thrusterLayout = Thrusters.SwallowThrusterSet;
+
                 //Special abilities
                 BaseStats.DashAbility = false;
                 BaseStats.StealthAbility = false;
@@ -197,6 +199,7 @@ public class TechData : MonoBehaviour
                 BaseStats.ScaleFactor = 1.25f; //hull size scale factor
                 BaseStats.BaseFuel = 50;
                 BaseStats.GunOffset = new Vector2(20, 0);
+                BaseStats.thrusterLayout = Thrusters.ScorpionThrusterSet;
 
                 //Special abilities
                 BaseStats.DashAbility = true;
@@ -220,6 +223,8 @@ public class TechData : MonoBehaviour
                 BaseStats.BaseFuel = 100;
                 BaseStats.GunOffset = new Vector2(45, 0);  // bro is very large, rocket must be far infortn of him
 
+                BaseStats.thrusterLayout = Thrusters.TrophyThrusterSet;
+
                 //Special abilities
                 BaseStats.DashAbility = false;
                 BaseStats.StealthAbility = false;
@@ -239,8 +244,10 @@ public class TechData : MonoBehaviour
                 BaseStats.Mass = 2.75f;
 
                 BaseStats.ScaleFactor = 0.7f; //hull size scale factor
-                BaseStats.BaseFuel = 60;
+                BaseStats.BaseFuel = 60;    
                 BaseStats.GunOffset = new Vector2(20, 0);
+
+                BaseStats.thrusterLayout = Thrusters.RavenThrusterSet;
 
                 //Special abilities
                 BaseStats.DashAbility = false;

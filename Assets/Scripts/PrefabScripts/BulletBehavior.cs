@@ -35,7 +35,7 @@ public class BulletBehavior : MonoBehaviour
 
     public void ActivateCollider()
     {
-        collider.enabled = true;
+        tcollider.enabled = true;
     }
 }
 //haisdfgihhsbdfoyig

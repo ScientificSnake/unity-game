@@ -31,7 +31,7 @@ public class PlayerObjectScript : MonoBehaviour
 
     #region public vars
 
-    public List<float> ThrusterBaseScales;
+    public List<Vector2> ThrusterBaseScales;
     public List<GameObject> ThrusterRefs;
 
     public float Fuel;
@@ -186,8 +186,8 @@ public class PlayerObjectScript : MonoBehaviour
     {
         for (int i = 0; i < ThrusterRefs.Count; i++)
         {
-            float targetScale = ThrusterBaseScales[i] * (throttle/100);
-            ThrusterRefs[i].gameObject.transform.localScale = new Vector2(targetScale, targetScale);
+            Vector2 targetScale = ThrusterBaseScales[i] * (throttle/100);
+            ThrusterRefs[i].gameObject.transform.localScale = targetScale;
 
             //ThrusterRefs[i].transform.position = new Vector2 ((targetScale/2), 0 );
         }

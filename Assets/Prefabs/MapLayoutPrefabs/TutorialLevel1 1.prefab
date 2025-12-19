@@ -228,7 +228,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerRb: {fileID: 0}
-  collider: {fileID: 0}
+  pcollider: {fileID: 0}
   PlayerTransform: {fileID: 0}
 --- !u!4 &8487328259908031197 stripped
 Transform:
@@ -374,6 +374,10 @@ PrefabInstance:
     - target: {fileID: 4989162631363157431, guid: b901059d5e2c4f440bd70da0edaa5a1f, type: 3}
       propertyPath: m_Name
       value: spacerock1prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148768705915080695, guid: b901059d5e2c4f440bd70da0edaa5a1f, type: 3}
+      propertyPath: m_SortingOrder
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 8620750477560358333, guid: b901059d5e2c4f440bd70da0edaa5a1f, type: 3}
       propertyPath: m_LocalScale.x
@@ -999,6 +1003,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9025467623443561041}
     m_Modifications:
+    - target: {fileID: 3594177142491412997, guid: 4354f01c1a61c5742a1dafdd8c67750a, type: 3}
+      propertyPath: m_SortingOrder
+      value: -25
+      objectReference: {fileID: 0}
     - target: {fileID: 6259435497372518890, guid: 4354f01c1a61c5742a1dafdd8c67750a, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.8488002
@@ -1445,6 +1453,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9025467623443561041}
     m_Modifications:
+    - target: {fileID: 3594177142491412997, guid: 4354f01c1a61c5742a1dafdd8c67750a, type: 3}
+      propertyPath: m_SortingOrder
+      value: -25
+      objectReference: {fileID: 0}
     - target: {fileID: 6259435497372518890, guid: 4354f01c1a61c5742a1dafdd8c67750a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 91.6
@@ -1766,6 +1778,10 @@ PrefabInstance:
     - target: {fileID: 4989162631363157431, guid: b901059d5e2c4f440bd70da0edaa5a1f, type: 3}
       propertyPath: m_Name
       value: spacerock1prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148768705915080695, guid: b901059d5e2c4f440bd70da0edaa5a1f, type: 3}
+      propertyPath: m_SortingOrder
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 8620750477560358333, guid: b901059d5e2c4f440bd70da0edaa5a1f, type: 3}
       propertyPath: m_LocalScale.x

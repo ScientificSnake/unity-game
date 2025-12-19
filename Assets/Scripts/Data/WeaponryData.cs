@@ -104,8 +104,6 @@ namespace Sebastian
 
                 bulletScript.Damage = Params.Damage;
 
-                Debug.Log($"{Params.IgnoredColliders.ToString()} - the ignored colliders");
-
                 foreach(Collider2D collider in Params.IgnoredColliders)
                 {
                     Physics2D.IgnoreCollision(orphan.GetComponent<CapsuleCollider2D>(), collider);
