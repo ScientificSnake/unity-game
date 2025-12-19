@@ -130,6 +130,15 @@ namespace Sebastian
                 rocketBehavior.Acceleration = Params.AcceleratioRate;
                 rocketBehavior.Damage = Params.Damage;
                 rocketBehavior.Fuel = Params.FuelSeconds * 40; // times forty for Seconds -> ticks
+
+
+
+                foreach (Collider2D collider in Params.IgnoredColliders)
+                {
+                    Physics2D.IgnoreCollision(orphan.GetComponent<PolygonCollider2D>(), collider);
+                }
+
+                rocketBehavior.ActivateCollider();
             }
         }
 

@@ -7,15 +7,22 @@ public class RocketBehavior : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Sprite newSprite;
     public float Damage;
+    public PolygonCollider2D tcollider;
 
     public Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        tcollider = GetComponent<PolygonCollider2D>();
+    }
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
+
+        tcollider = GetComponent<PolygonCollider2D>();
 
         print($"Newly inited rocket with velo : {rb.linearVelocity.ToString()}, acceleration {Acceleration}, fuel {Fuel}");
     }
@@ -23,6 +30,8 @@ public class RocketBehavior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if ( tcollider == null )
+            tcollider = GetComponent<PolygonCollider2D>();
         if (Fuel > 0)   
         {
             Vector2 Direction = transform.right.normalized;
@@ -51,5 +60,10 @@ public class RocketBehavior : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    public void ActivateCollider()
+    {
+        tcollider.enabled = true;
     }
 }
