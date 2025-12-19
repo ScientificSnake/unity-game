@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.UI;
@@ -40,6 +41,8 @@ namespace Sebastian
             public float MaxDegreeError;
             public float RecoilForce;
             public float Damage;
+
+            public List<Collider2D> IgnoredColliders;
 
             // ^^ Shared parameters that every weapon has
 
@@ -100,6 +103,15 @@ namespace Sebastian
                 BulletBehavior bulletScript = orphan.GetComponent<BulletBehavior>();
 
                 bulletScript.Damage = Params.Damage;
+
+                Debug.Log($"{Params.IgnoredColliders.ToString()} - the ignored colliders");
+
+                foreach(Collider2D collider in Params.IgnoredColliders)
+                {
+                    Physics2D.IgnoreCollision(orphan.GetComponent<CapsuleCollider2D>(), collider);
+                }
+
+                bulletScript.ActivateCollider();
             }
 
             public static void BasicRocketSpawn(WeaponParameters Params)

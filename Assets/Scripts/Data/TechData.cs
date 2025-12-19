@@ -145,7 +145,7 @@ public class TechData : MonoBehaviour
                 BaseStats.Mass = 2.5f; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
 
                 BaseStats.ScaleFactor = 1.75f; //hull size scale factor
-                BaseStats.GunOffset = new Vector2(20, 0); //gun offset from center of hull sprite
+                BaseStats.GunOffset = new Vector2(10, 0); //gun offset from center of hull sprite
 
                 BaseStats.BaseFuel = 60; // Fuel in full thrust seconds
 

@@ -252,6 +252,7 @@ public class PlayerObjectScript : MonoBehaviour
         SpawnMainWeaponPrefabAction = TargetWeapon.SpawnPrefab;
 
         CurrentMainWeaponParams = TargetWeapon.BaseWeaponParams;
+        CurrentMainWeaponParams.IgnoredColliders = new List<Collider2D> { collider };
         #endregion
     }
 

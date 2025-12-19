@@ -198,7 +198,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8181949559543045070, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+    - {fileID: 0}
+    - {fileID: 4143365741818738444, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -223,10 +224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunPodPirateLogic
-  Health: 0
+  Health: 2
   rb: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerRb: {fileID: 0}
+  collider: {fileID: 0}
   PlayerTransform: {fileID: 0}
 --- !u!4 &8487328259908031197 stripped
 Transform:

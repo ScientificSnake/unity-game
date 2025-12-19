@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 366103925649337852}
   - component: {fileID: 8746573300138829742}
   - component: {fileID: 2038074156164543581}
-  - component: {fileID: 8181949559543045070}
+  - component: {fileID: 4143365741818738444}
   m_Layer: 0
   m_Name: SpaceGunpodPirate
   m_TagString: BasicSpacePirate
@@ -55,8 +55,6 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -78,7 +76,6 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -20
@@ -719,7 +716,7 @@ PolygonCollider2D:
       - {x: 4.9303136, y: 10.927735}
       - {x: 4.9596105, y: 10.927735}
   m_UseDelaunayMesh: 0
---- !u!114 &8181949559543045070
+--- !u!114 &4143365741818738444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -728,8 +725,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4920187038524122764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 075d95e55e6fa9349a78effd0dd48071, type: 3}
+  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: 
   Health: 0
   rb: {fileID: 0}
+  PlayerRef: {fileID: 0}
+  PlayerRb: {fileID: 0}
+  collider: {fileID: 0}
+  PlayerTransform: {fileID: 0}

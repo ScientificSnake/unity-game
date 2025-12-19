@@ -8,6 +8,7 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
     private string State;
     public GameObject PlayerRef;
     public Rigidbody2D PlayerRb;
+    public PolygonCollider2D pcollider;
     public Transform PlayerTransform;
 
     private float DetectionDistance = 200;
@@ -81,7 +82,7 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
         if (timeDiff >= WaitTimeBetweenRounds)
         {
             float heading = transform.eulerAngles.z + 180;
-            Vector2 offset = new Vector2(50, 0);
+            Vector2 offset = new Vector2(0, 0);
             Vector2 offsetVector = RotateVectorByAngle(offset, heading);
             Vector2 pos = new Vector2(transform.position.x, transform.position.y) + offsetVector;
 
@@ -98,10 +99,14 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
     {
         base.Start();
         State = "trackPlayer";
+
         Weapon = Sebastian.WeaponryData.WeaponDict[4];
         rb = gameObject.GetComponent<Rigidbody2D>();
         WeaponParams = Weapon.BaseWeaponParams;
         CurrentWeaponArgs = WeaponParams;
+
+        pcollider = gameObject.GetComponent<PolygonCollider2D>();
+        CurrentWeaponArgs.IgnoredColliders = new System.Collections.Generic.List<Collider2D> { pcollider };
     }
 
     private void FixedUpdate()
