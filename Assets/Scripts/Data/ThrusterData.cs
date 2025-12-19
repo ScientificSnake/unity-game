@@ -48,24 +48,29 @@ public static class Thrusters
         }
     }
 
-    public static void ApplyThrusterSet(GameObject parentObj, ThrusterSet th)
+    public static List<GameObject> ApplyThrusterSet(GameObject parentObj, ThrusterSet th)
     {
+        List<GameObject> returnThrusters = new();
+
         for (int i = 0; i < th.thrusters.Count; i++)
         {
             GameObject obj = ManagerScript.Instance.SpawnPrefab(ManagerScript.Instance.BasicThrusterPrefab,
                                                                 th.thrusters[i].position,
                                                                 parentObj.transform);
             obj.transform.localScale *= th.thrusters[i].baseScale;
+            returnThrusters.Add(obj);
         }
+
+        return returnThrusters;
     }
 
     #region Preset thruster data
 
     public readonly static ThrusterSet LynchpinThrusterSet =
         new ThrusterSet(
-            new List<Vector2> { new(-10, 2.3f), new(-10, -2.3f)},
+            new List<Vector2> { new(-8.4f, 2.3f), new(-8.4f, -2.3f)},
             new List<float> { 0, 0 },
-            new List<float> {1, 1}
+            new List<float> {0.28f, 0.28f}
         );
     #endregion
 }

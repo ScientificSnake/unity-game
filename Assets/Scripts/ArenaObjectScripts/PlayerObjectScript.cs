@@ -30,6 +30,10 @@ public class PlayerObjectScript : MonoBehaviour
     }
 
     #region public vars
+
+    public List<float> ThrusterBaseScales;
+    public List<GameObject> ThrusterRefs;
+
     public float Fuel;
     public float maxAcceleration; // acceleration at 100% throttle
     public float maxTurnSpeedDPS; // max turn speed in degrees per second
@@ -177,7 +181,17 @@ public class PlayerObjectScript : MonoBehaviour
             Fuel -= fuelUsage;
         }
     }
+    
+    private void ScaleThrusters()
+    {
+        for (int i = 0; i < ThrusterRefs.Count; i++)
+        {
+            float targetScale = ThrusterBaseScales[i] * (throttle/100);
+            ThrusterRefs[i].gameObject.transform.localScale = new Vector2(targetScale, targetScale);
 
+            //ThrusterRefs[i].transform.position = new Vector2 ((targetScale/2), 0 );
+        }
+    }
     private void HeadingFollowMouse()
     {
         Vector2 mousePos = Input.mousePosition;
@@ -240,7 +254,6 @@ public class PlayerObjectScript : MonoBehaviour
 
         ApplyRoundStats();
 
-
         #endregion
 
         #region Weapon intialization
@@ -256,7 +269,12 @@ public class PlayerObjectScript : MonoBehaviour
         #endregion
 
         #region initialize thrusters
-        Thrusters.ApplyThrusterSet(gameObject, BaseRoundStats.thrusterLayout);
+        ThrusterRefs = Thrusters.ApplyThrusterSet(gameObject, BaseRoundStats.thrusterLayout);
+        
+        foreach (Thrusters.Thruster thruster in BaseRoundStats.thrusterLayout.thrusters)
+        {
+            ThrusterBaseScales.Add(thruster.baseScale);
+        }
         #endregion
     }
 
@@ -287,6 +305,7 @@ public class PlayerObjectScript : MonoBehaviour
         ApplyThrottle();
         HeadingFollowMouse();
         PollMainWeapon();
+        ScaleThrusters();
     }
 
     #region Collision damage handling
