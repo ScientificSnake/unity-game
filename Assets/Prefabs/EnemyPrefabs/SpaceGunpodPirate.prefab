@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8746573300138829742}
   - component: {fileID: 2038074156164543581}
   - component: {fileID: 4143365741818738444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpaceGunpodPirate
   m_TagString: BasicSpacePirate
   m_Icon: {fileID: 0}
@@ -732,5 +732,5 @@ MonoBehaviour:
   rb: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerRb: {fileID: 0}
-  collider: {fileID: 0}
+  pcollider: {fileID: 0}
   PlayerTransform: {fileID: 0}

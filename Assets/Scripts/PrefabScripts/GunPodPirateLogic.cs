@@ -1,10 +1,13 @@
 using MathNet.Numerics.Optimization.ObjectiveFunctions;
 using Sebastian;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.PlayerSettings;
 
 public class GunPodPirateLogic : BasicPirateDummyBehaviour
 {
+    private int IgnoredLayer;
+
     private string State;
     public GameObject PlayerRef;
     public Rigidbody2D PlayerRb;
@@ -52,7 +55,7 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
     private void CheckSeesPlayer()
     {
         Vector2 directionToPlayer = PlayerTransform.position - transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, DetectionDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, DetectionDistance, IgnoredLayer);
 
         // Check if raycast hit anything and if it's the player
         if (hit.collider != null && hit.transform == PlayerTransform)
@@ -82,7 +85,7 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
         if (timeDiff >= WaitTimeBetweenRounds)
         {
             float heading = transform.eulerAngles.z + 180;
-            Vector2 offset = new Vector2(0, 0);
+            Vector2 offset = Vector2.zero;
             Vector2 offsetVector = RotateVectorByAngle(offset, heading);
             Vector2 pos = new Vector2(transform.position.x, transform.position.y) + offsetVector;
 
@@ -107,6 +110,8 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
 
         pcollider = gameObject.GetComponent<PolygonCollider2D>();
         CurrentWeaponArgs.IgnoredColliders = new System.Collections.Generic.List<Collider2D> { pcollider };
+
+        IgnoredLayer = ~(1 << 8);
     }
 
     private void FixedUpdate()
