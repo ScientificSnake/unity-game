@@ -99,8 +99,6 @@ public class BackgroundManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
-        print($"width is {width}, height is {height}");
         FakeVeloOffset = Vector2.zero;
     }
 

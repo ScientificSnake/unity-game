@@ -83,7 +83,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 50
+  m_SortingOrder: -1
   m_Sprite: {fileID: -5330357614087949317, guid: 75d970bcb68f4414ba936d18f888f7ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -111,6 +111,7 @@ MonoBehaviour:
   Acceleration: 0
   newSprite: {fileID: 8440275070517590014, guid: c72aa98da11432245bd6c44a8ce36abc, type: 3}
   Damage: 0
+  tcollider: {fileID: 0}
   rb: {fileID: 6572999417644618937}
 --- !u!96 &3050293768668445071
 TrailRenderer:

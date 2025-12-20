@@ -29,6 +29,11 @@ public class BulletBehavior : MonoBehaviour
 
             Otherscript.ApplyDamage(Damage);
         }
+        else if (OtherGO.CompareTag("Player"))
+        {
+            PlayerObjectScript playerObjectScript = OtherGO.GetComponent<PlayerObjectScript>();
+            playerObjectScript.ApplyDamage(Damage);
+        }
         // destroy self
         Destroy(gameObject);
     }
