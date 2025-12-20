@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -203,6 +204,24 @@ public class ManagerScript : MonoBehaviour
             yield return null;
         }
         LoadingScreen.Instance.Disable();
+    }
+
+    public IEnumerator FadeInSprite(SpriteRenderer targetSprite, float totalFadeTime)
+    {
+        Color color = targetSprite.color;
+        int totalFadeSteps = Mathf.FloorToInt(totalFadeTime / Time.fixedDeltaTime);
+        print($"Fading with {totalFadeSteps} steps, fade ");
+        float increment = (1f / (float)totalFadeSteps);
+        for (int i = 0; i < (totalFadeSteps - 1); i++)
+        {
+            color.a += increment;
+            targetSprite.color = color;
+            print($"Sprite color alpha is now {targetSprite.color.a}");
+            yield return new WaitForFixedUpdate();
+        }
+        yield return new WaitForFixedUpdate();
+        color.a = 1;
+        targetSprite.color = color;
     }
 
     /// <summary>

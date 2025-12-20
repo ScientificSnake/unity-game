@@ -11,6 +11,7 @@ using UnityEngine.UIElements;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEditor.SceneManagement;
+using MathNet.Numerics.LinearAlgebra.Solvers;
 public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
@@ -308,7 +309,7 @@ public class LevelDataStorage
             return totalEnemies;
         }
 
-        public IEnumerator PeriodicallyCheckForEndOfRound(int Period)
+        public IEnumerator PeriodicallyCheckForEndOfRound(float Period)
         {
             bool enemiesRemain = true;
             while (enemiesRemain)
@@ -339,10 +340,8 @@ public class LevelDataStorage
             // display round over screen
             GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
             SpriteRenderer RoundOverSpriteRenderer = RoundOverScreen.GetComponent<SpriteRenderer>();
-            Color color = RoundOverSpriteRenderer.color;
 
-            color.a = 1;
-            RoundOverSpriteRenderer.color = color;
+            ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.FadeInSprite(RoundOverSpriteRenderer, 2));
 
             Debug.Log("-------------------------------------- End of round test");
         }
@@ -406,7 +405,7 @@ public class LevelDataStorage
 
             int localLatestSpawnTime = RoundDict.Keys.Max();
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));
-            ManagerScript.Instance.StartCoroutine(PeriodicallyCheckForEndOfRound(2));  // wanted in 3 countries for this move :(
+            ManagerScript.Instance.StartCoroutine(PeriodicallyCheckForEndOfRound(0.5f));  // wanted in 3 countries for this move :(
             Debug.Log("started periodic enemy checking");
 
 
