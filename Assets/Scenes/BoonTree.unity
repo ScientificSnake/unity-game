@@ -2513,14 +2513,14 @@ PrefabInstance:
     - target: {fileID: 4709014673381162631, guid: cd59ce7c08f877c4aa460b36d1f03afd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1961794336}
+      objectReference: {fileID: 1961794331}
     - target: {fileID: 4709014673381162631, guid: cd59ce7c08f877c4aa460b36d1f03afd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnSelect
       objectReference: {fileID: 0}
     - target: {fileID: 4709014673381162631, guid: cd59ce7c08f877c4aa460b36d1f03afd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BaseHullBtnScript, Assembly-CSharp
+      value: TrophyBtn, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5544703151430828969, guid: cd59ce7c08f877c4aa460b36d1f03afd, type: 3}
       propertyPath: m_Sprite
@@ -2533,7 +2533,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2812908354974050850, guid: cd59ce7c08f877c4aa460b36d1f03afd, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1961794336}
+      addedObject: {fileID: 1961794331}
   m_SourcePrefab: {fileID: 100100000, guid: cd59ce7c08f877c4aa460b36d1f03afd, type: 3}
 --- !u!224 &1601619976 stripped
 RectTransform:
@@ -2756,7 +2756,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2812908354974050850, guid: cd59ce7c08f877c4aa460b36d1f03afd, type: 3}
   m_PrefabInstance: {fileID: 1601619975}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1961794336
+--- !u!114 &1961794331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2765,10 +2765,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1961794330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a83ab4ba5efa9b4a8ccba72f345bf62, type: 3}
+  m_Script: {fileID: 11500000, guid: e3a18cb62897a08489b8487dc2f8d96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SysName: TrophyHullNode
   PurchaseButton: {fileID: 1160065600}
   TargetTitleDisplay: {fileID: 1436733989}
   TargetBodyDisplay: {fileID: 1417695791}

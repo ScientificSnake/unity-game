@@ -3,30 +3,10 @@ using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class BasicHullOptionSelectPrefab : MonoBehaviour
+public class BasicHullOptionSelectPrefab : HullOptionBtnScriptTemplate
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    public string HullOptionSysName = "LynchpinHullNode";
-
-    private GameObject RootCanvas;
-
-    void Start()
+    private void Start()
     {
-        RootCanvas = GameObject.Find("RootCanvas");
-        print($"Root canvas has been set to {RootCanvas}");
-    }
-
-
-    public void OnClick()
-    {
-        print("Selecting the Basic hull options");
-
-        Vector2 position = new(-329, -194);
-
-        ManagerScript.Instance.SpawnPrefab(ManagerScript.Instance.BasicHullSpritePrefab, position, RootCanvas.transform);
-
-        ManagerScript.CurrentLevelManagerInstance.selectedHull = HullOptionSysName;
-        print(ManagerScript.CurrentLevelManagerInstance.selectedHull);
+        HullOptionSysName = "LynchpinHullNode";
     }
 }

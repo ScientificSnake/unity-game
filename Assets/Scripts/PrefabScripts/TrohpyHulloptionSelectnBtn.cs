@@ -1,3 +1,8 @@
 using UnityEngine;
 
-public class TrohpyHulloptionSelectnBtn : BaseHullBtnScript { }
+public class TrohpyHulloptionSelectnBtn : HullOptionBtnScriptTemplate {
+    private void Start()
+    {
+        HullOptionSysName = "TrophyHullNode";
+    }
+}
