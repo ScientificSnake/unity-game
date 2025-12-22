@@ -20,8 +20,10 @@ public class ManagerScript : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
+        #region Populating dicts for references
         SysNameToPrefabObj = new Dictionary<string, GameObject>()
         {
             {
@@ -69,23 +71,25 @@ public class ManagerScript : MonoBehaviour
                 Instance.RavenSprite
             }
         };
+        #endregion
 
+        #region Load meta save data
+        try
+        {
+            SaveSystem.LoadMeta();
+
+            SaveSystem.Load(LastSaveFileName);
+            ManagerScript.Instance.CurrentLoad = ManagerScript.Instance.LastLoadName;
+        }
+        catch (Exception e)
+        {
+            print(e);
+            Debug.Log("Loading default save state");
+            TechData.TechCredits = 500;
+            TechData.HullOptionsDataDict["LynchpinHullNode"].IsNodePurchased = true; // start with a basic hull
+        }
     }
-    void Start()
-    {
-        TechData.TechCredits = 500;
-        TechData.HullOptionsDataDict["LynchpinHullNode"].IsNodePurchased = true; // start with a basic hull
-    }
-    #endregion
-    #region Currect Tech Tree configuration data
-
-    // Note : Node and boon are used interchangeble here and the really mean "Thing you can buy off the tech tree", basic boons in the boon pool different.
-
-
-    #endregion
-
-    #region Level initialization
-
+        #endregion
     public static LevelDataStorage.LevelManager CurrentLevelManagerInstance;
 
     public void EnterLevel(string sysName)
@@ -166,6 +170,8 @@ public class ManagerScript : MonoBehaviour
         GameObject newGameObj = Instantiate(prefab, position, Quaternion.identity);
         return newGameObj;
     }
+
+    public string CurrentLoad;
 
     public void FinishHullSelection()
     {
@@ -266,7 +272,6 @@ public class ManagerScript : MonoBehaviour
 
                 if (TechData.AreNodeDependciesMet(script.SysName))
                 {
-                    print($"{script.SysName}'s depencies are met");
                     Color btnCompcolor = script.BtnComp.GetComponent<Image>().color;
                     btnCompcolor.r = 1;
                     btnCompcolor.g = 1;
@@ -275,7 +280,6 @@ public class ManagerScript : MonoBehaviour
                 }
                 else
                 {
-                    print($"{script.SysName}'s depencies are not met greying out");
                     Color btnCompcolor = script.BtnComp.GetComponent<Image>().color;
                     btnCompcolor.r = 0.35f;
                     btnCompcolor.g = 0.35f;
@@ -314,6 +318,24 @@ public class ManagerScript : MonoBehaviour
         }
     }
 
+    public string LastLoadName;
+    public string LastSaveFileName;
+
+    public void SaveMeta(ref MetaSaveData data)
+    {
+        data.LastLoadFileName = LastLoadName;
+        data.LastSaveFileName = LastSaveFileName;
+
+        Debug.Log($"Saving meta data with {LastLoadName} as last load name and {LastSaveFileName} as last save name");  
+    }
+
+    public void LoadMeta(MetaSaveData data)
+    {
+        LastLoadName = data.LastLoadFileName;
+        LastSaveFileName = data.LastSaveFileName;
+
+        Debug.Log($"Meta load yields {LastLoadName} and {LastSaveFileName} for load and save respectively)");
+    }
     #endregion
 }
 
@@ -322,4 +344,10 @@ public struct ManagerSaveData
 {
     public int TechCredits;
     public Dictionary<string, bool> PurchasedNodes;
+}
+
+public struct MetaSaveData
+{
+    public string LastLoadFileName;
+    public string LastSaveFileName;
 }

@@ -12,4 +12,9 @@ public class MultiSaveStrIn : MonoBehaviour
     {
         targetFileName = inputField.text;
     }
+
+    private void Start()
+    {
+        inputField.text = ManagerScript.Instance.LastLoadName;
+    }
 }
