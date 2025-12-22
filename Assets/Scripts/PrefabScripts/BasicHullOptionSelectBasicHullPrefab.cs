@@ -7,7 +7,7 @@ public class BasicHullOptionSelectPrefab : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    public string HullOptionSysName = "BasicHullNode";
+    public string HullOptionSysName = "LynchpinHullNode";
 
     private GameObject RootCanvas;
 

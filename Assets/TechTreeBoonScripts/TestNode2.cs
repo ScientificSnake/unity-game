@@ -8,7 +8,7 @@ public class TestNode2 : MonoBehaviour
 {
     private static string Title;
     private static string BodyText;
-    private static string SysName = "SecondHullNode";
+    private static string SysName = "SwallowHullNode";
 
     public BtnPurchaseBoon PurchaseButton;
     public BoonInfoDisplayTitle TargetTitleDisplay;

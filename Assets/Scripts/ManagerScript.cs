@@ -25,11 +25,11 @@ public class ManagerScript : MonoBehaviour
         SysNameToPrefabObj = new Dictionary<string, GameObject>()
         {
             {
-                "BasicHullNode",
+                "LynchpinHullNode",
                 Instance.BasicHullBtnPrefab
             },
             {
-                "SecondHullNode",
+                "SwallowHullNode",
                 Instance.FastHullBtnPrefab
             },
             {
@@ -49,11 +49,11 @@ public class ManagerScript : MonoBehaviour
         SpriteDict = new Dictionary<string, Sprite>()
         {
             {
-                "BasicHullNode",
+                "LynchpinHullNode",
                 Instance.LynchpinSprite
             },
             {
-                "SecondHullNode",
+                "SwallowHullNode",
                 Instance.SwallowSprite
             },
             {

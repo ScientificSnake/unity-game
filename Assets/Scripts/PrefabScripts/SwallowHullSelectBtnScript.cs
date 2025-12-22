@@ -4,7 +4,7 @@ public class SwallowHullSelectBtnScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private string HullOptionSysName = "SecondHullNode";
+    private string HullOptionSysName = "SwallowHullNode";
 
     private GameObject RootCanvas;
 
