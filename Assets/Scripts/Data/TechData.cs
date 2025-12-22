@@ -69,9 +69,9 @@ public class TechData : MonoBehaviour
     public static Dictionary<string, TechNode> HullOptionsDataDict = new()
     {
         {
-            "BasicHullNode",
+            "LynchpinHullNode",
             new TechNode(
-                "BasicHullNode",
+                "LynchpinHullNode",
                 "HullOption",
                 HullStatsMutationFunctions.ApplyBasicHull,
                 30,
@@ -80,15 +80,15 @@ public class TechData : MonoBehaviour
                 )
         },
         {
-            "SecondHullNode",
+            "SwallowHullNode",
             new TechNode(
-                "SecondHullNode",
+                "SwallowHullNode",
                 "HullOption",
                 HullStatsMutationFunctions.ApplySecondHull,
                 67,
                 "A faster more agile hull with lower base health and more (instability)\n\nSTATS:\nHealth: 85\nAcceleration Rate : m/s/s\nTurn Rate: degrees/s\nSpecial Ability: None\n\nIf the Lynchpin is the bricks, then the Swallow is the mortar. The PLF Navy uses this as a basic interdictor fighter, and occasionally they strap fuel pods onto it and use it for escort missions.",
                 "SI-290 Swallow",
-                new string[] {"BasicHullNode"}   // this some stupid positional argument type shi
+                new string[] {"LynchpinHullNode"}   // this some stupid positional argument type shi
                 )
         },
         {
@@ -100,7 +100,7 @@ public class TechData : MonoBehaviour
                 100,
                 "An experimental hull with a the new XD-130 drive system, allowing it to dash short distances.\n\nSTATS:\nHealth: 75\nAcceleration Rate : m/s/s\nTurn Rate: degrees/s\nSpecial Ability: Dash\n\nThis one was a spitball project made by the higher ups after Wraith Industries came up with that dash drive system. Very few prototypes were made because of the price, but it's capable enough that it's very rarely used as a defense fighter. However, to be able to house this equipment and keep its maneuverability it is very fragile, so it's only put into the hands of vetaran pilots.",
                 "XSF-347 Scorpion",
-                new string[] {"SecondHullNode"} // same positional argument tysh
+                new string[] {"SwallowHullNode"} // same positional argument tysh
             )
         },
         {
@@ -112,7 +112,7 @@ public class TechData : MonoBehaviour
                 125,
                 "A cargo hull with the ability to carry 2 light fighter drones, due to an improved control computer and added space.\n\nSTATS:\nHealth: 110\nAcceleration Rate : m/s/s\nTurn Rate: degrees/s\nSpecial Ability: Drone Carrying\n\nAfter the [INSERT CIVIL WAR], the higher ups wanted a way to muster more force to cover more area. After the same competition that resulted in the dash drive concept, Pilen Technologies came up with the Enhanced Capability Trophy Upgrade, or ECTU. This allowed the Trophy to carry 2 light fighter drones, give it the ability to act as an extension of carrier wings.",
                 "SLC-111C Trophy",
-                new string[] {"SecondHullNode"} // positional arg tysh
+                new string[] {"SwallowHullNode"} // positional arg tysh
             )
         },
         {

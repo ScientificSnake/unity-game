@@ -73,5 +73,7 @@ public class BtnPurchaseBoon : MonoBehaviour
         {
             print("You do not have enough money you should probably put some gui element on the screen about now");
         }
+
+        ManagerScript.Instance.UpdateNodes();
     }
 }

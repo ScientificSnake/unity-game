@@ -74,7 +74,7 @@ public class ManagerScript : MonoBehaviour
     void Start()
     {
         TechData.TechCredits = 500;
-        TechData.HullOptionsDataDict["BasicHullNode"].IsNodePurchased = true; // start with a basic hull
+        TechData.HullOptionsDataDict["LynchpinHullNode"].IsNodePurchased = true; // start with a basic hull
     }
     #endregion
     #region Currect Tech Tree configuration data
@@ -232,7 +232,59 @@ public class ManagerScript : MonoBehaviour
     {
         return GameObject.FindGameObjectsWithTag(Tag).Length;
     }
+    public void UpdateNodes()
+    {
+        // grab a ref to canvas
+        GameObject container = GameObject.Find("NodeTreeContainer");
 
+        List<NodeCapsuleScript> childNodeScripts = new();
+
+        foreach (Transform childTransform in container.transform)
+        {
+            childNodeScripts.Add(childTransform.gameObject.GetComponent<NodeCapsuleScript>());
+        }
+
+        foreach (NodeCapsuleScript script in childNodeScripts)
+        {
+            if (TechData.IsNodePurchased(script.SysName))
+            {
+                Color orangeBgColor = script.OrangeBg.GetComponent<Image>().color;
+                orangeBgColor.a = 1;
+                script.OrangeBg.GetComponent<Image>().color = orangeBgColor;
+
+                Color btnCompcolor = script.BtnComp.GetComponent<Image>().color;
+                btnCompcolor.r = 1;
+                btnCompcolor.g = 1;
+                btnCompcolor.b = 1;
+                script.BtnComp.GetComponent<Image>().color = btnCompcolor;
+            }
+            else
+            {
+                Color orangeBgColor = script.OrangeBg.GetComponent<Image>().color;
+                orangeBgColor.a = 0;
+                script.OrangeBg.GetComponent<Image>().color = orangeBgColor;
+
+                if (TechData.AreNodeDependciesMet(script.SysName))
+                {
+                    print($"{script.SysName}'s depencies are met");
+                    Color btnCompcolor = script.BtnComp.GetComponent<Image>().color;
+                    btnCompcolor.r = 1;
+                    btnCompcolor.g = 1;
+                    btnCompcolor.b = 1;
+                    script.BtnComp.GetComponent<Image>().color = btnCompcolor;
+                }
+                else
+                {
+                    print($"{script.SysName}'s depencies are not met greying out");
+                    Color btnCompcolor = script.BtnComp.GetComponent<Image>().color;
+                    btnCompcolor.r = 0.35f;
+                    btnCompcolor.g = 0.35f;
+                    btnCompcolor.b = 0.35f;
+                    script.BtnComp.GetComponent<Image>().color = btnCompcolor;
+                }
+            }
+        }
+    }
 
     #region Save and Load
 
