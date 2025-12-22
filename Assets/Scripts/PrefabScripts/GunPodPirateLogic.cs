@@ -54,11 +54,7 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
 
     private void CheckSeesPlayer()
     {
-        Vector2 directionToPlayer = PlayerTransform.position - transform.position;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, DetectionDistance, IgnoredLayer);
-
-        // Check if raycast hit anything and if it's the player
-        if (hit.collider != null && hit.transform == PlayerTransform)
+        if (ObjTools.LineOfSight(gameObject, PlayerTransform, DetectionDistance))
         {
             SeesPlayer = true;
         }
@@ -110,8 +106,6 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
 
         pcollider = gameObject.GetComponent<PolygonCollider2D>();
         CurrentWeaponArgs.IgnoredColliders = new System.Collections.Generic.List<Collider2D> { pcollider };
-
-        IgnoredLayer = ~(1 << 8);
     }
 
     private void FixedUpdate()

@@ -145,3 +145,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f0ff9c3710797489a2a75fb2ad2b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicHullPrefabScript
+  HullOptionSysName: LynchpinHullNode
