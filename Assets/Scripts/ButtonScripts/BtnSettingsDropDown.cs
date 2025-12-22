@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class BtnSettingsDropDown : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject saveInterfacePanel;
+
+    public void OnClick()
     {
-        
+        saveInterfacePanel.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Awake()
     {
-        
+        saveInterfacePanel.SetActive(false);
     }
 }

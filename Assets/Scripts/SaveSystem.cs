@@ -15,21 +15,21 @@ public class SaveSystem
         public ManagerSaveData ManagerData;
     }
 
-    public static string SaveFileName()
+    public static string SaveFileName(string filename)
     {
-        string saveFile = Application.persistentDataPath + "/save" + ".xanxan";
+        string saveFile = Application.persistentDataPath + "/" + filename + ".xanxan";
         return saveFile;
     }
 
-    public static void Save()
+    public static void Save(string filename)
     {
         HandleSaveData();
 
-        Debug.Log($"Writing to {SaveFileName()}");
+        Debug.Log($"Writing to {SaveFileName(filename)}");
 
         // Use JsonConvert.SerializeObject instead of JsonUtility.ToJson
         // 'Formatting.Indented' makes the file easy to read
-        File.WriteAllText(SaveFileName(), JsonConvert.SerializeObject(_saveData, Formatting.Indented));
+        File.WriteAllText(SaveFileName(filename), JsonConvert.SerializeObject(_saveData, Formatting.Indented));
     }
 
     private static void HandleSaveData()
@@ -38,18 +38,18 @@ public class SaveSystem
         ManagerScript.Instance.Save(ref _saveData.ManagerData); 
     }
 
-    public static void Load()
+    public static void Load(string filename)
     {
-        Debug.Log($"Loading file from {SaveFileName()}");
+        Debug.Log($"Loading file from {SaveFileName(filename)}");
 
         // Add a check to make sure the file exists before trying to read it
-        if (!File.Exists(SaveFileName()))
+        if (!File.Exists(SaveFileName(filename)))
         {
             Debug.LogWarning("Save file does not exist, cannot load.");
             return;
         }
 
-        string saveContent = File.ReadAllText(SaveFileName());
+        string saveContent = File.ReadAllText(SaveFileName(filename));
 
         _saveData = JsonConvert.DeserializeObject<SaveData>(saveContent);
         HandleLoadData();

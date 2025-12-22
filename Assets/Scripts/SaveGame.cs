@@ -2,9 +2,18 @@ using UnityEngine;
 
 public class Save : MonoBehaviour
 {
+
+    public MultiSaveStrIn SaveStrIn;
     public void SaveManagerData()
     {
-        print("Saving Data");
-        SaveSystem.Save();
+        try
+        {
+            print("Attempting to write to " + SaveStrIn.targetFileName);
+            SaveSystem.Save(SaveStrIn.targetFileName);
+        }
+        catch (System.Exception e)
+        {
+            print("Failed file save " + e.ToString());
+        }
     }
 }

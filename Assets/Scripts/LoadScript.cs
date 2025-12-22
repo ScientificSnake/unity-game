@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Load : MonoBehaviour
 {
+    public MultiSaveStrIn SaveStrIn;
     public void LoadManagerData()
     {
-        print("Loading Data");
-        SaveSystem.Load();
+        SaveSystem.Load(SaveStrIn.targetFileName);
     }
 }
