@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,13 @@ public class BulletBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject OtherGO = collision.gameObject;
+
+        if (OtherGO.TryGetComponent<EnemyTemplate>(out EnemyTemplate targetScript))
+        {
+            targetScript.ApplyDamage(Damage);
+        }
+
+
 
         if (OtherGO.CompareTag("BasicSpacePirate"))
         {

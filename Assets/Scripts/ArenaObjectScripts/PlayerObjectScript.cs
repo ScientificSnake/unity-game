@@ -182,16 +182,14 @@ public class PlayerObjectScript : MonoBehaviour
         }
     }
     
-    private void ScaleThrusters()
-    {
-        for (int i = 0; i < ThrusterRefs.Count; i++)
-        {
-            Vector2 targetScale = ThrusterBaseScales[i] * (throttle/100);
-            ThrusterRefs[i].gameObject.transform.localScale = targetScale;
-
-            //ThrusterRefs[i].transform.position = new Vector2 ((targetScale/2), 0 );
-        }
-    }
+    //private void ScaleThrusters()
+    //{
+    //    for (int i = 0; i < ThrusterRefs.Count; i++)
+    //    {
+    //        Vector2 targetScale = ThrusterBaseScales[i] * (throttle/100);
+    //        ThrusterRefs[i].gameObject.transform.localScale = targetScale;
+    //    }
+    //}
     private void HeadingFollowMouse()
     {
         Vector2 mousePos = Input.mousePosition;
@@ -305,11 +303,11 @@ public class PlayerObjectScript : MonoBehaviour
         ApplyThrottle();
         HeadingFollowMouse();
         PollMainWeapon();
-        ScaleThrusters();
+        ObjTools.ScaleThrusterRefs(ThrusterRefs, ThrusterBaseScales, throttle);
     }
 
     #region Collision damage handling
-
+        
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float relativeVelocityMagnitude = collision.relativeVelocity.magnitude;

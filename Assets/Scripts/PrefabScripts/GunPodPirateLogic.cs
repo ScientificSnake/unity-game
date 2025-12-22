@@ -16,7 +16,6 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
 
     private float DetectionDistance = 200;
     private bool SeesPlayer;
-    private float rotationDegreesPerSeconds = 60;
     private float aimingThreshold = 5f; // Degrees within target to start firing
 
     [SerializeField] private Sebastian.WeaponryData.Weapon Weapon;
@@ -26,31 +25,6 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
     private int ClipAmmo;
     private bool LeftGun;
     private float LastFireTimeStamp;
-
-    private Vector2 RotateVectorByAngle(Vector2 sourceVector, float angle)
-    {
-        return Quaternion.AngleAxis(angle, Vector3.forward) * sourceVector;
-    }
-
-    private void RotateTowardsTarget(float zTargetRotation)
-    {
-        float maxDegreesPerTick = rotationDegreesPerSeconds * Time.fixedDeltaTime;
-
-        float currentAngle = transform.eulerAngles.z;
-        float headingMouseAngleDiff = Mathf.DeltaAngle(currentAngle, zTargetRotation);
-
-        float angleTurned;
-        if (Mathf.Abs(headingMouseAngleDiff) <= maxDegreesPerTick)
-        {
-            angleTurned = headingMouseAngleDiff;
-        }
-        else
-        {
-            angleTurned = maxDegreesPerTick * Mathf.Sign(headingMouseAngleDiff);
-        }
-
-        transform.Rotate(0, 0, angleTurned);
-    }
 
     private void CheckSeesPlayer()
     {
@@ -106,6 +80,8 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
 
         pcollider = gameObject.GetComponent<PolygonCollider2D>();
         CurrentWeaponArgs.IgnoredColliders = new System.Collections.Generic.List<Collider2D> { pcollider };
+
+        rotationDegreesPerSeconds = 60;
     }
 
     private void FixedUpdate()
@@ -132,7 +108,7 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
 
                 if (SeesPlayer)
                 {
-                    ProjInterceptCalc.InterceptData InterceptInfo = ProjInterceptCalc.TryGetInterceptAngle(
+                    ObjTools.InterceptData InterceptInfo = ObjTools.TryGetInterceptAngle(
                         transform.position,
                         rb.linearVelocity,
                         PlayerRef.transform.position,
