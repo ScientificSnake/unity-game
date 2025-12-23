@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEditor.Build.Player;
 using UnityEngine;
 
 public class EnemyTemplate : MonoBehaviour
@@ -7,11 +10,20 @@ public class EnemyTemplate : MonoBehaviour
     public Rigidbody2D rb;
     public float rotationDegreesPerSeconds;
 
+    public float Fuel;
+    public float MaxAccel;
+    public float Throttle;
+
+    public GameObject PlayerRef;
+    public PlayerObjectScript PlayerScriptRef;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Health = 1;
+        PlayerRef = GameObject.FindWithTag("Player");
+        PlayerScriptRef = PlayerRef.GetComponent<PlayerObjectScript>();
     }
 
     public void ApplyDamage(float damage)
@@ -49,8 +61,17 @@ public class EnemyTemplate : MonoBehaviour
         transform.Rotate(0, 0, angleTurned);
     }
 
-    private void DestructSelf()
+    protected void DestructSelf()
     {
+        if (!(TryGetComponent<AudioSource>(out AudioSource audio)))
+        {
+            gameObject.AddComponent<AudioSource>();
+        }
+        audio = gameObject.GetComponent<AudioSource>();
+
+        //audio.PlayOneShot()
+
+
         rb.angularVelocity = 3000;
         StartCoroutine(DestroyInSeconds(0.5f));
     }

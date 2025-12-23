@@ -29,15 +29,7 @@ public class BulletBehavior : MonoBehaviour
             targetScript.ApplyDamage(Damage);
         }
 
-
-
-        if (OtherGO.CompareTag("BasicSpacePirate"))
-        {
-            BasicPirateDummyBehaviour Otherscript = OtherGO.GetComponent<BasicPirateDummyBehaviour>();
-
-            Otherscript.ApplyDamage(Damage);
-        }
-        else if (OtherGO.CompareTag("Player"))
+        if (OtherGO.CompareTag("Player"))
         {
             PlayerObjectScript playerObjectScript = OtherGO.GetComponent<PlayerObjectScript>();
             playerObjectScript.ApplyDamage(Damage);

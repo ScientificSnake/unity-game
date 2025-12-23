@@ -1,5 +1,4 @@
 {
-    "version": 1,
     "name": "InArenaControls",
     "maps": [
         {
@@ -35,12 +34,12 @@
                 },
                 {
                     "name": "LClick",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "3de614cb-42ae-4aa2-9d71-7d9dab077a79",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -85,6 +84,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "LClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "CameraControls",
+            "id": "bc757ebc-f5c7-4c3a-9800-d3697c7aca60",
+            "actions": [
+                {
+                    "name": "Scroll",
+                    "type": "Value",
+                    "id": "db3a43db-7b34-4f44-ab6f-b320252838ba",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "971b3b46-9e7c-4a49-b943-142b412332be",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Timers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraFollowScript : MonoBehaviour
 {
@@ -8,11 +9,21 @@ public class CameraFollowScript : MonoBehaviour
     private float LightCenteringRate;
     private float TrueDeadZone = 0.05f;
 
+    public float maxCamZoom = 300;
+    public float minCamZoom = 100;
+
+
     public PlayerObjectScript PlayerReference;
+
+    private Camera cam;
+
+    public InArenaControls inputManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        cam = GetComponent<Camera>();
+
         GameObject PlayerGO = GameObject.FindWithTag("Player");
         PlayerReference = PlayerGO.GetComponent<PlayerObjectScript>();
     }
@@ -84,5 +95,34 @@ public class CameraFollowScript : MonoBehaviour
 
             //print($"Moving x by {centeringFactor * directedXDist}");
         }
+    }
+
+    private void OnEnable()
+    {
+        inputManager = new InArenaControls();
+
+        inputManager.CameraControls.Scroll.performed += Scroll_performed;
+
+        inputManager.Enable();
+    }
+
+    private void Scroll_performed(InputAction.CallbackContext context)
+    {
+        Vector2 scrollDelta = context.ReadValue<Vector2>();
+
+        float camzoom = cam.orthographicSize;
+
+        if (scrollDelta.y > 0)
+        {
+            camzoom -= 5;
+        }
+        else if (scrollDelta.y < 0)
+        {
+            camzoom += 5;
+        }
+
+        camzoom = Mathf.Clamp(camzoom, minCamZoom, maxCamZoom);
+
+        cam.orthographicSize = camzoom;
     }
 }

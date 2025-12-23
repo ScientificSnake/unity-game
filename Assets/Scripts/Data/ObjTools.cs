@@ -7,7 +7,6 @@ public static class ObjTools
 {
     public static void ApplyThrottle(float throttle, ref float fuel, float maxAccleration, Rigidbody2D rb, Transform transform, float fuelUsage)
     {
-        // dead zone
         if (throttle > 0 && fuel > 0)
         {
             float trueThrottleProportion = (throttle / 100);

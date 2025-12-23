@@ -17,6 +17,9 @@ public class PlayerObjectScript : MonoBehaviour
     private PolygonCollider2D PolygonCollider;
     private SpriteRenderer spriteRenderer;
 
+    public AudioSource audios;
+    public AudioClip collisionSound;
+
     public float FuelUsage = 1;
 
     public float CollsionDamageMultiplier = 0.5f;
@@ -29,6 +32,7 @@ public class PlayerObjectScript : MonoBehaviour
         rb.angularDamping = 0;
         rb.linearDamping = 0;
         rb.freezeRotation = true;
+        audios = GetComponent<AudioSource>();
     }
 
     #region public vars
@@ -296,6 +300,13 @@ public class PlayerObjectScript : MonoBehaviour
 
         Health -= relativeVelocityMagnitude * CollsionDamageMultiplier;
         HealthCheck();
+
+        print($"Collided with {collision.gameObject.name}, at relative velo of {collision.relativeVelocity.magnitude}");
+
+        if (collision.relativeVelocity.magnitude > 20)
+        {
+            audios.PlayOneShot(collisionSound);
+        }
     }
     #endregion
 

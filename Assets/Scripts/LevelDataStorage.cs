@@ -304,10 +304,10 @@ public class LevelDataStorage
 
             foreach (string Tag in RootLevelData.PossibleEnemyTags)
             {
-                Debug.Log($"Polling tag {Tag}");
+                //Debug.Log($"Polling tag {Tag}");
                 totalEnemies += ManagerScript.Instance.HowManyObjectsWithTag(Tag);
             }
-            Debug.Log($"{totalEnemies} enemies");
+            //Debug.Log($"{totalEnemies} enemies");
             return totalEnemies;
         }
 
@@ -322,7 +322,7 @@ public class LevelDataStorage
                     enemiesRemain = false;
                     EndRoundRoutine();
                 }
-                Debug.Log($"Checking for end of round. Enemies remaining: {PollTotalEnemies()} | Last Enemy Spawned: {LastEnemySpawned}");
+                //Debug.Log($"Checking for end of round. Enemies remaining: {PollTotalEnemies()} | Last Enemy Spawned: {LastEnemySpawned}");
             }
         }
 

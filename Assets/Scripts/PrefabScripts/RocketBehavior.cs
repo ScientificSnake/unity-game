@@ -47,16 +47,17 @@ public class RocketBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("ZE ROCKET HAS HIT ");
-
-
         GameObject OtherGo = collision.gameObject;
 
         if (OtherGo.TryGetComponent<EnemyTemplate>(out EnemyTemplate targetScript))
         {
             targetScript.ApplyDamage(Damage);
         }
-
+        if (OtherGo.CompareTag("Player"))
+        {
+            PlayerObjectScript playerObjectScript = OtherGo.GetComponent<PlayerObjectScript>();
+            playerObjectScript.ApplyDamage(Damage);
+        }
         Destroy(gameObject);
     }
 
