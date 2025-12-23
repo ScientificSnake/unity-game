@@ -20,10 +20,6 @@ public class RecentSaveDropDown : MonoBehaviour
         options.Reverse();
 
         options.Insert(0, "Choose a recent save");
-        foreach (string option in options)
-        {
-            print($"option is {option}");
-        }
         dropdown.ClearOptions();
         dropdown.AddOptions(options);
         dropdown.value = 0;

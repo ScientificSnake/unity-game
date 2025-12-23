@@ -216,13 +216,11 @@ public class ManagerScript : MonoBehaviour
     {
         Color color = targetSprite.color;
         int totalFadeSteps = Mathf.FloorToInt(totalFadeTime / Time.fixedDeltaTime);
-        print($"Fading with {totalFadeSteps} steps, fade ");
         float increment = (1f / (float)totalFadeSteps);
         for (int i = 0; i < (totalFadeSteps - 1); i++)
         {
             color.a += increment;
             targetSprite.color = color;
-            print($"Sprite color alpha is now {targetSprite.color.a}");
             yield return new WaitForFixedUpdate();
         }
         yield return new WaitForFixedUpdate();
