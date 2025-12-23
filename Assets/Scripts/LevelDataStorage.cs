@@ -333,8 +333,8 @@ public class LevelDataStorage
         {
             Debug.Log("-------------------------------------- End of round test");
             GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
-            SpriteRenderer RoundOverSpriteRenderer = RoundOverScreen.GetComponent<SpriteRenderer>();
-            ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.FadeInSprite(RoundOverSpriteRenderer, RoundEndFadeInTime));
+            CanvasGroup RoundOverCG= RoundOverScreen.GetComponent<CanvasGroup>();
+            ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.FadeInCanvasImage(RoundOverCG, RoundEndFadeInTime));
 
             void RunAfterFadeIn()
             {
@@ -355,6 +355,9 @@ public class LevelDataStorage
                 GameObject Layout = GameObject.FindGameObjectWithTag("MapLayoutTag");
                 Debug.Log($"Found layout with name {Layout.name}");
                 UnityEngine.Object.Destroy(Layout);
+
+                GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
+                RoundOverScreen.GetComponent<RoundOverImage>().EndOfRoundButtons.SetActive(true);
             }
 
             ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);
@@ -384,16 +387,14 @@ public class LevelDataStorage
             {
                 //GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
 
-                GameObject RoundOverScreen = GameObject.Find("Testpanel");
+                GameObject RoundOverScreen = GameObject.FindWithTag("RoundOverScreen");
 
-                SpriteRenderer RoundOverSpriteRenderer = RoundOverScreen.GetComponent<SpriteRenderer>();
-                Color color = RoundOverSpriteRenderer.color;
-                color.a = 0;
-                RoundOverSpriteRenderer.color = color;
+                CanvasGroup canvasGroup = RoundOverScreen.GetComponent<CanvasGroup>();
+                canvasGroup.alpha = 0;
             }
-            catch (Exception)
+            catch(Exception e)
             {
-                Debug.LogError("ERROR: Could not find RoundOverScreen object in scene. Make sure there is a GameObject with the 'RoundOverScreen' tag assigned.");
+                Debug.LogError("Failed setting round overscreen to transparent " + e);
                 return;
             }
 

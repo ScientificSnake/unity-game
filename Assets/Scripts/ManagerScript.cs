@@ -212,20 +212,17 @@ public class ManagerScript : MonoBehaviour
         LoadingScreen.Instance.Disable();
     }
 
-    public IEnumerator FadeInSprite(SpriteRenderer targetSprite, float totalFadeTime)
+    public IEnumerator FadeInCanvasImage(CanvasGroup cgroup, float totalFadeTime)
     {
-        Color color = targetSprite.color;
         int totalFadeSteps = Mathf.FloorToInt(totalFadeTime / Time.fixedDeltaTime);
         float increment = (1f / (float)totalFadeSteps);
         for (int i = 0; i < (totalFadeSteps - 1); i++)
         {
-            color.a += increment;
-            targetSprite.color = color;
+            cgroup.alpha += increment;
             yield return new WaitForFixedUpdate();
         }
         yield return new WaitForFixedUpdate();
-        color.a = 1;
-        targetSprite.color = color;
+        cgroup.alpha = 1;
     }
 
     /// <summary>
