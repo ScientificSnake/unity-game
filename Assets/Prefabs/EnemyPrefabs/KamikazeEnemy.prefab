@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4072413333531057736}
   m_Layer: 0
   m_Name: KamikazeEnemy
-  m_TagString: Untagged
+  m_TagString: EnemyTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   rb: {fileID: 0}
+  rotationDegreesPerSeconds: 0
 --- !u!212 &7326475408682284362
 SpriteRenderer:
   m_ObjectHideFlags: 0

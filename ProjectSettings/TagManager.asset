@@ -4,10 +4,11 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - BasicSpacePirate
   - Othertag
   - RoundOverScreen
   - MapLayoutTag
+  - EnemyTag
+  - BasicSpacePirate
   layers:
   - Default
   - TransparentFX

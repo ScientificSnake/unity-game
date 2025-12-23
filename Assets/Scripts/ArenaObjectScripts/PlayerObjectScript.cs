@@ -17,6 +17,8 @@ public class PlayerObjectScript : MonoBehaviour
     private PolygonCollider2D PolygonCollider;
     private SpriteRenderer spriteRenderer;
 
+    public float FuelUsage = 1;
+
     public float CollsionDamageMultiplier = 0.5f;
 
     public LevelDataStorage.LevelManager.BaseStats BaseRoundStats;
@@ -161,26 +163,6 @@ public class PlayerObjectScript : MonoBehaviour
             throttle = 0;
         }
     }
-
-    private void ApplyThrottle()
-    {
-        // dead zone
-        if (throttle > 0 && Fuel > 0)
-        {
-            float trueThrottleProportion = (throttle / 100);
-
-            float instantaneousAcceleration = trueThrottleProportion * maxAcceleration;
-
-            float heading_rad = DegToRadian(transform.eulerAngles.z);
-
-            Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad) * instantaneousAcceleration), (Mathf.Sin(heading_rad) * instantaneousAcceleration));
-
-            rb.AddForce(instantaneousAccelerationVector);
-
-            float fuelUsage = trueThrottleProportion;
-            Fuel -= fuelUsage;
-        }
-    }
     
     //private void ScaleThrusters()
     //{
@@ -300,7 +282,7 @@ public class PlayerObjectScript : MonoBehaviour
     private void FixedUpdate()
     {
         ThrottleControl();
-        ApplyThrottle();
+        ObjTools.ApplyThrottle(throttle, ref Fuel, maxAcceleration, rb, transform, FuelUsage);
         HeadingFollowMouse();
         PollMainWeapon();
         ObjTools.ScaleThrusterRefs(ThrusterRefs, ThrusterBaseScales, throttle);
@@ -313,8 +295,6 @@ public class PlayerObjectScript : MonoBehaviour
         float relativeVelocityMagnitude = collision.relativeVelocity.magnitude;
 
         Health -= relativeVelocityMagnitude * CollsionDamageMultiplier;
-
-        Debug.Log("Player collided with " + collision.gameObject.name + " | Relative Velocity Magnitude: " + relativeVelocityMagnitude + " | New Health: " + Health);
         HealthCheck();
     }
     #endregion
@@ -323,7 +303,6 @@ public class PlayerObjectScript : MonoBehaviour
     public void ApplyDamage(float damageAmount)
     {
         Health -= damageAmount;
-        Debug.Log($"Player took {damageAmount} damage. New Health: {Health}");
         HealthCheck();
     }
 
@@ -331,7 +310,6 @@ public class PlayerObjectScript : MonoBehaviour
     {
         if (Health <= 0)
         {
-            Debug.Log("Player has been slimed!");
             // Handle player destruction (e.g., trigger game over, respawn, etc.)
         }
     }

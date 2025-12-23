@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpacePirateDummy
       objectReference: {fileID: 0}
+    - target: {fileID: 2634702215401998498, guid: 63913bb8788f8684b964929eb1f42624, type: 3}
+      propertyPath: m_TagString
+      value: EnemyTag
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -145,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_TagString
+      value: EnemyTag
       objectReference: {fileID: 0}
     - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1528,6 +1536,10 @@ PrefabInstance:
     - target: {fileID: 282199277103005661, guid: 254b2ab9e0d365f48ad7c971c3a10251, type: 3}
       propertyPath: m_Name
       value: KamikazeEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 282199277103005661, guid: 254b2ab9e0d365f48ad7c971c3a10251, type: 3}
+      propertyPath: m_TagString
+      value: EnemyTag
       objectReference: {fileID: 0}
     - target: {fileID: 1511483026439276995, guid: 254b2ab9e0d365f48ad7c971c3a10251, type: 3}
       propertyPath: m_LocalPosition.x

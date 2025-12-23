@@ -304,8 +304,10 @@ public class LevelDataStorage
 
             foreach (string Tag in RootLevelData.PossibleEnemyTags)
             {
+                Debug.Log($"Polling tag {Tag}");
                 totalEnemies += ManagerScript.Instance.HowManyObjectsWithTag(Tag);
             }
+            Debug.Log($"{totalEnemies} enemies");
             return totalEnemies;
         }
 

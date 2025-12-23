@@ -5,6 +5,27 @@ using System.Linq;
 
 public static class ObjTools
 {
+    public static void ApplyThrottle(float throttle, ref float fuel, float maxAccleration, Rigidbody2D rb, Transform transform, float fuelUsage)
+    {
+        // dead zone
+        if (throttle > 0 && fuel > 0)
+        {
+            float trueThrottleProportion = (throttle / 100);
+
+            float instantaneousAcceleration = trueThrottleProportion * maxAccleration;
+
+            float heading_rad = Mathf.Deg2Rad * (transform.eulerAngles.z);
+
+            Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad) * instantaneousAcceleration), (Mathf.Sin(heading_rad) * instantaneousAcceleration));
+
+            rb.AddForce(instantaneousAccelerationVector);
+
+            float fuelUse = trueThrottleProportion * fuelUsage;
+            fuel -= fuelUse;
+        }
+    }
+
+
     public static bool LineOfSight(GameObject StartObject, Transform targetTransform, float MaxDistance)
     {
         Vector2 directionToTarget = targetTransform.position - StartObject.transform.position;

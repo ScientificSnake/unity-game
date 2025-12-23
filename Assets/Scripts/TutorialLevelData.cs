@@ -42,7 +42,7 @@ public class TuturialLevelData
                 }
             }
         },
-        new string[] { "BasicSpacePirate" },
+        new string[] { "EnemyTag" },
         new GameObject[] { ManagerScript.Instance.TutorialLayoutPrefab },
         Endless: false
         );

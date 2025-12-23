@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4143365741818738444}
   m_Layer: 8
   m_Name: SpaceGunpodPirate
-  m_TagString: BasicSpacePirate
+  m_TagString: EnemyTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -730,6 +730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   rb: {fileID: 0}
+  rotationDegreesPerSeconds: 0
   PlayerRef: {fileID: 0}
   PlayerRb: {fileID: 0}
   pcollider: {fileID: 0}
