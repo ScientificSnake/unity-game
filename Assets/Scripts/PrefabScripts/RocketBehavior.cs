@@ -52,11 +52,9 @@ public class RocketBehavior : MonoBehaviour
 
         GameObject OtherGo = collision.gameObject;
 
-        if (OtherGo.CompareTag("BasicSpacePirate"))
+        if (OtherGo.TryGetComponent<EnemyTemplate>(out EnemyTemplate targetScript))
         {
-            BasicPirateDummyBehaviour OtherScript = OtherGo.GetComponent<BasicPirateDummyBehaviour>();
-
-            OtherScript.ApplyDamage(Damage);
+            targetScript.ApplyDamage(Damage);
         }
 
         Destroy(gameObject);
