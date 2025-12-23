@@ -13,6 +13,7 @@ using UnityEngine.UI;
 using UnityEditor.SceneManagement;
 using MathNet.Numerics.LinearAlgebra.Solvers;
 using System.Runtime.CompilerServices;
+using UnityEngine.InputSystem.UI;
 public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
@@ -333,18 +334,27 @@ public class LevelDataStorage
         {
             Debug.Log("-------------------------------------- End of round test");
             GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
-            CanvasGroup RoundOverCG= RoundOverScreen.GetComponent<CanvasGroup>();
+            CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.FadeInCanvasImage(RoundOverCG, RoundEndFadeInTime));
+
+            GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
+            // disable player inputs
+            PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
+            PlayerScript.inputManager.Player.Disable();
+            PlayerScript.inputManager.CameraControls.Disable();
+            Camera MainCam = Camera.main;
+
+            CameraFollowScript CamScript = MainCam.GetComponent<CameraFollowScript>();
+
+            CamScript.inputManager.CameraControls.Disable();
+
+            PlayerScript.throttle = 0;
 
             void RunAfterFadeIn()
             {
                 Debug.Log("2 seconds later - Running delayed end of round code");
                 
-                GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
-                // disable player inputs
-                PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
-                PlayerScript.inputManager.Disable();
-                PlayerScript.throttle = 0;
+
 
                 //set velo to 0
 
@@ -358,6 +368,9 @@ public class LevelDataStorage
 
                 GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
                 RoundOverScreen.GetComponent<RoundOverImage>().EndOfRoundButtons.SetActive(true);
+                CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
+                RoundOverCG.interactable = true;
+                RoundOverCG.blocksRaycasts = true;
             }
 
             ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);
