@@ -9,8 +9,8 @@ using TMPro;
 
 public class SaveSystem
 {
-    private static SaveData _saveData = new SaveData();
-    private static MetaSaveData _metaSaveData = new MetaSaveData();
+    private static SaveData _saveData = new();
+    private static MetaSaveData _metaSaveData = new();
 
     [System.Serializable] // System.Serializable is not strictly needed for Newtonsoft but can be kept
     public struct SaveData
@@ -43,6 +43,8 @@ public class SaveSystem
         ManagerScript.Instance.LastSaveFileName = filename;
 
         SaveMeta();
+
+        ManagerScript.Instance.RecentFiles.Enqueue(filename);
     }
 
     private static void HandleSaveData()
@@ -77,6 +79,7 @@ public class SaveSystem
 
         _saveData = JsonConvert.DeserializeObject<SaveData>(saveContent);
         HandleLoadData();
+        ManagerScript.Instance.RecentFiles.Enqueue(filename);
     }
 
     public static void LoadMeta()

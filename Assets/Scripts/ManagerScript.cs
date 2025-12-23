@@ -325,6 +325,7 @@ public class ManagerScript : MonoBehaviour
     {
         data.LastLoadFileName = LastLoadName;
         data.LastSaveFileName = LastSaveFileName;
+        data.RecentFiles = RecentFiles.ToList();
 
         Debug.Log($"Saving meta data with {LastLoadName} as last load name and {LastSaveFileName} as last save name");  
     }
@@ -334,9 +335,16 @@ public class ManagerScript : MonoBehaviour
         LastLoadName = data.LastLoadFileName;
         LastSaveFileName = data.LastSaveFileName;
 
+
+        foreach (var item in data.RecentFiles)
+        {
+            RecentFiles.Enqueue(item);
+        }
         Debug.Log($"Meta load yields {LastLoadName} and {LastSaveFileName} for load and save respectively)");
     }
     #endregion
+
+    public FixedSizeQueue<string> RecentFiles = new(4);
 }
 
 [System.Serializable]
@@ -350,4 +358,5 @@ public struct MetaSaveData
 {
     public string LastLoadFileName;
     public string LastSaveFileName;
+    public List<string> RecentFiles;
 }

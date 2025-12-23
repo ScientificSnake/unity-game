@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Save : MonoBehaviour
 {
-
+    public RecentSaveDropDown dropdown;
     public MultiSaveStrIn SaveStrIn;
     public void SaveManagerData()
     {
@@ -15,5 +15,7 @@ public class Save : MonoBehaviour
         {
             print("Failed file save " + e.ToString());
         }
+
+        dropdown.refreshOptions();
     }
 }

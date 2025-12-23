@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Load : MonoBehaviour
 {
+    public RecentSaveDropDown dropdown;
     public MultiSaveStrIn SaveStrIn;
     public CurrentLoadTextUpdater CurrentLoadTextUpdater;
     public void LoadManagerData()
@@ -13,5 +15,7 @@ public class Load : MonoBehaviour
         ManagerScript.Instance.LastLoadName = SaveStrIn.targetFileName;
 
         SaveSystem.SaveMeta();
+
+        dropdown.refreshOptions();
     }
 }

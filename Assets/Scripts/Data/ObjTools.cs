@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class ObjTools
 {
@@ -93,4 +94,43 @@ public static class ObjTools
         return returnData;
     }
 
+}
+public class FixedSizeQueue<T>
+{
+    private Queue<T> queue = new Queue<T>();
+    private int maxSize;
+
+    public FixedSizeQueue(int maxSize)
+    {
+        this.maxSize = maxSize;
+    }
+
+    public void Enqueue(T item)
+    {
+        if (!queue.Contains(item))
+        {
+            if (queue.Count >= maxSize)
+            {
+                queue.Dequeue(); // Remove oldest item
+            }
+            queue.Enqueue(item);
+        }
+    }
+
+    public T Dequeue()
+    {
+        return queue.Dequeue();
+    }
+
+    public int Count => queue.Count;
+
+    public void Clear()
+    {
+        queue.Clear();
+    }
+
+    public List<T> ToList()
+    {
+        return queue.ToList();
+    }
 }
