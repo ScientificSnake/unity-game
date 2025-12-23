@@ -9,6 +9,8 @@ TagManager:
   - MapLayoutTag
   - EnemyTag
   - BasicSpacePirate
+  - LayoutObj
+  - InstantiatedArtifact
   layers:
   - Default
   - TransparentFX

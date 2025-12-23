@@ -343,6 +343,17 @@ public class ManagerScript : MonoBehaviour
     #endregion
 
     public FixedSizeQueue<string> RecentFiles = new(4);
+
+    public IEnumerator RunOnDelayCoroutine(Action code, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        code();
+    }
+
+    public void RunOnDelay(Action code, float delay)
+    {
+        StartCoroutine(RunOnDelayCoroutine(code, delay));
+    }
 }
 
 [System.Serializable]

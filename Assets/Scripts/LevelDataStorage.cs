@@ -12,6 +12,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEditor.SceneManagement;
 using MathNet.Numerics.LinearAlgebra.Solvers;
+using System.Runtime.CompilerServices;
 public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
@@ -326,26 +327,46 @@ public class LevelDataStorage
             }
         }
 
+        public float RoundEndFadeInTime = 2;
+
         public void EndRoundRoutine()
         {
-            //set velo to 0
-
-            GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
-            Rigidbody2D PlayerRb = PlayerObj.GetComponent<Rigidbody2D>();
-            PlayerRb.linearVelocity = Vector2.zero;
-            PlayerRb.angularVelocity = 0;
-
-            // disable player inputs
-            PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
-            PlayerScript.inputManager.Disable();
-
-            // display round over screen
+            Debug.Log("-------------------------------------- End of round test");
             GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
             SpriteRenderer RoundOverSpriteRenderer = RoundOverScreen.GetComponent<SpriteRenderer>();
+            ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.FadeInSprite(RoundOverSpriteRenderer, RoundEndFadeInTime));
 
-            ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.FadeInSprite(RoundOverSpriteRenderer, 2));
+            void RunAfterFadeIn()
+            {
+                Debug.Log("2 seconds later - Running delayed end of round code");
+                
+                GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
+                // disable player inputs
+                PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
+                PlayerScript.inputManager.Disable();
+                PlayerScript.throttle = 0;
 
-            Debug.Log("-------------------------------------- End of round test");
+                //set velo to 0
+
+                Rigidbody2D PlayerRb = PlayerObj.GetComponent<Rigidbody2D>();
+                PlayerRb.linearVelocity = Vector2.zero;
+                PlayerRb.angularVelocity = 0;
+
+                GameObject Layout = GameObject.FindGameObjectWithTag("MapLayoutTag");
+                Debug.Log($"Found layout with name {Layout.name}");
+                UnityEngine.Object.Destroy(Layout);
+            }
+
+            ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);
+
+            // we can just get rid of all bullets now, its spreads the frame hitch anyways so
+
+            GameObject[] weaponArtifacts = GameObject.FindGameObjectsWithTag("InstantiatedArtifact");
+
+            foreach ( GameObject weaponArtifact in weaponArtifacts)
+            {
+                UnityEngine.Object.Destroy(weaponArtifact);
+            }
         }
 
         // Getoverhere start
@@ -356,8 +377,6 @@ public class LevelDataStorage
             SpriteRenderer spriteRenderer = PlayerObject.GetComponent<SpriteRenderer>();
 
             spriteRenderer.sprite = ManagerScript.Instance.SpriteDict[ManagerScript.CurrentLevelManagerInstance.selectedHull];
-
-
 
             // hide the round over screen
             Debug.Log("Start round routine triggered");

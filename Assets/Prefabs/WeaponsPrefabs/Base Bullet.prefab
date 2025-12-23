@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7208946534712021771}
   m_Layer: 0
   m_Name: Base Bullet
-  m_TagString: Untagged
+  m_TagString: InstantiatedArtifact
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
   Damage: 0
   rb: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  tcollider: {fileID: 0}
 --- !u!96 &2055957277367490302
 TrailRenderer:
   serializedVersion: 3

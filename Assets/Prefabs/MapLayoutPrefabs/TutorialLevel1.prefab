@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9025467623443561041}
   m_Layer: 0
-  m_Name: TutorialLevel1 1
-  m_TagString: Untagged
+  m_Name: TutorialLevel1
+  m_TagString: MapLayoutTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,6 +236,11 @@ MonoBehaviour:
   Health: 2
   rb: {fileID: 0}
   rotationDegreesPerSeconds: 60
+  Fuel: 0
+  MaxAccel: 0
+  Throttle: 0
+  PlayerRef: {fileID: 0}
+  PlayerScriptRef: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerRb: {fileID: 0}
   pcollider: {fileID: 0}

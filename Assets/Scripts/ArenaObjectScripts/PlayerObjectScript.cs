@@ -275,6 +275,8 @@ public class PlayerObjectScript : MonoBehaviour
 
     public void ResetRoundStats()
     {
+
+        print("reseting stats to round start");
         ApplyRoundStats();
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0;
