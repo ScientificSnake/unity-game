@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kamikaze_reforged_0: -4035786950723522360
+      kamikaze_reforged_1: 3142207684774572877
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

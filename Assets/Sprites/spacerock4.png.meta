@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spacerock4_0: -9159442332547359126
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
