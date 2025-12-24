@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using static LevelDataStorage;
-public class TuturialLevelData
+public static class TuturialLevelData
 {
     private static int DifficultyFunc(int Round)
     {
@@ -12,7 +12,7 @@ public class TuturialLevelData
     }
 
     public static LevelData Main = new(
-        1,
+        2,
         DifficultyFunc,  // This is the function for calculating difficulty per round, here it doesn't really do much but in longer rounds it will simplify things.
         new Dictionary<Action, int>  // Events as values and their difficulty as keys
         {
@@ -40,10 +40,23 @@ public class TuturialLevelData
                         }
                     }
                 }
+            },
+            {
+                2,
+                new Dictionary<int, List<Action>>
+                {
+                    {
+                    0,
+                        new List<Action>
+                        {
+                            EventLib.TestEvent
+                        }
+                    }
+                }
             }
         },
         new string[] { "EnemyTag" },
-        new GameObject[] { ManagerScript.Instance.TutorialLayoutPrefab },
+        new GameObject[] { ManagerScript.Instance.TutorialLayoutPrefab, ManagerScript.Instance.TutorialLayoutPrefab },
         Endless: false
         );
 }

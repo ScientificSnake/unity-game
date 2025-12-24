@@ -332,6 +332,7 @@ public class LevelDataStorage
 
         public void EndRoundRoutine()
         {
+            CurrentRound++;
             Debug.Log("-------------------------------------- End of round test");
             GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
             CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
@@ -352,10 +353,6 @@ public class LevelDataStorage
 
             void RunAfterFadeIn()
             {
-                Debug.Log("2 seconds later - Running delayed end of round code");
-                
-
-
                 //set velo to 0
 
                 Rigidbody2D PlayerRb = PlayerObj.GetComponent<Rigidbody2D>();
@@ -363,7 +360,6 @@ public class LevelDataStorage
                 PlayerRb.angularVelocity = 0;
 
                 GameObject Layout = GameObject.FindGameObjectWithTag("MapLayoutTag");
-                Debug.Log($"Found layout with name {Layout.name}");
                 UnityEngine.Object.Destroy(Layout);
 
                 GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
@@ -388,14 +384,29 @@ public class LevelDataStorage
         // Getoverhere start
         public void StartRoundRoutine()
         {
-            ManagerScript.CurrentLevelManagerInstance.InstantiatePlayerObject();
-            GameObject PlayerObject = GameObject.FindWithTag("Player");
-            SpriteRenderer spriteRenderer = PlayerObject.GetComponent<SpriteRenderer>();
+            GameObject Player;
+            PlayerObjectScript PlayerScript;
+            if (CurrentRound == 0)
+            {
+                ManagerScript.CurrentLevelManagerInstance.InstantiatePlayerObject();
+                Player = GameObject.FindWithTag("Player");
+                SpriteRenderer spriteRenderer = Player.GetComponent<SpriteRenderer>();
 
-            spriteRenderer.sprite = ManagerScript.Instance.SpriteDict[ManagerScript.CurrentLevelManagerInstance.selectedHull];
+                spriteRenderer.sprite = ManagerScript.Instance.SpriteDict[ManagerScript.CurrentLevelManagerInstance.selectedHull];
+                PlayerScript = Player.GetComponent<PlayerObjectScript>();
+                PlayerScript.BaseRoundStats = Stats;
+            } else
+            {
+                Player = GameObject.FindWithTag("Player");
+                PlayerScript = Player.GetComponent<PlayerObjectScript>();
+                PlayerScript.inputManager.Enable();
+                PlayerScript.inputManager.Player.Enable();
+                PlayerScript.inputManager.CameraControls.Enable();
+            }
 
+            PlayerScript.ResetRoundStats();
             // hide the round over screen
-            Debug.Log("Start round routine triggered");
+            Debug.Log("Start round routine triggered" + $" | Starting round {CurrentRound}");
             try
             {
                 //GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
@@ -410,6 +421,12 @@ public class LevelDataStorage
                 Debug.LogError("Failed setting round overscreen to transparent " + e);
                 return;
             }
+
+            foreach (Dictionary<int, List<Action>> roundpt in Rounds) {
+                Debug.Log($"round - > {roundpt}");
+            }
+
+            Debug.Log($"There are {Rounds.Count} Rounds");
 
             Dictionary<int, List<Action>> RoundDict = Rounds[CurrentRound];
 
@@ -426,17 +443,6 @@ public class LevelDataStorage
                 ManagerScript.Instantiate(RootLevelData.LayoutPrefab[CurrentRound]);
                 // reset player position and velocity and health and fuel
             }
-
-            GameObject Player = GameObject.FindWithTag("Player");
-
-            PlayerObjectScript PlayerScript = Player.GetComponent<PlayerObjectScript>();
-
-            if (CurrentRound == 0)
-            {
-                PlayerScript.BaseRoundStats = Stats;
-            }
-
-            PlayerScript.ResetRoundStats();
 
             int localLatestSpawnTime = RoundDict.Keys.Max();
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));

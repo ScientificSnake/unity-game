@@ -281,7 +281,7 @@ public class PlayerObjectScript : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0;
         throttle = 0;
-        Fuel = BaseRoundStats.BaseFuel;
+        Fuel = BaseRoundStats.BaseFuel / Time.fixedDeltaTime;
         transform.position = Vector3.zero;
     }
 
