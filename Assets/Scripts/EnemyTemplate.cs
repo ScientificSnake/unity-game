@@ -13,6 +13,7 @@ public class EnemyTemplate : MonoBehaviour
     public float Fuel;
     public float MaxAccel;
     public float Throttle;
+    public float FuelUsage;
 
     public GameObject PlayerRef;
     public PlayerObjectScript PlayerScriptRef;

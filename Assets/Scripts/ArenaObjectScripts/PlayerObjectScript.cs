@@ -303,7 +303,7 @@ public class PlayerObjectScript : MonoBehaviour
         Health -= relativeVelocityMagnitude * CollsionDamageMultiplier;
         HealthCheck();
 
-        print($"Collided with {collision.gameObject.name}, at relative velo of {collision.relativeVelocity.magnitude}");
+        //print($"Collided with {collision.gameObject.name}, at relative velo of {collision.relativeVelocity.magnitude}");
 
         if (collision.relativeVelocity.magnitude > 20)
         {

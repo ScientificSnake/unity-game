@@ -367,6 +367,11 @@ public class LevelDataStorage
                 CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
                 RoundOverCG.interactable = true;
                 RoundOverCG.blocksRaycasts = true;
+
+                if (CurrentRound == Rounds.Count)
+                {
+                    Debug.Log("Last round reached at round " + CurrentRound);
+                }
             }
 
             ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);
