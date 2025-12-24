@@ -82,4 +82,11 @@ public class EnemyTemplate : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         Destroy(gameObject);
     }
+
+    protected IEnumerator RunOnDelayCR(Action code, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        code();
+    }
+    
 }

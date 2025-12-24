@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Security.Authentication.ExtendedProtection;
 using UnityEditor.SceneManagement;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class KamikazeEnemyAI : EnemyTemplate
 {
@@ -20,16 +23,18 @@ public class KamikazeEnemyAI : EnemyTemplate
 
     protected void UpdateState()
     {
-        print($"Dihtance to player is {Vector2.Distance(PlayerRef.transform.position, transform.position)}, Line of sight is {ObjTools.LineOfSight(gameObject, PlayerRef.transform, PlayerDetectionRadius)}");
-        if ((Vector2.Distance(transform.position, PlayerRef.transform.position) < PlayerDetectionRadius) && (ObjTools.LineOfSight(gameObject, PlayerRef.transform, PlayerDetectionRadius)))
+        if (State != "Detonating")
         {
-            State = "LockedPlayer";
+            print($"Dihtance to player is {Vector2.Distance(PlayerRef.transform.position, transform.position)}, Line of sight is {ObjTools.LineOfSight(gameObject, PlayerRef.transform, PlayerDetectionRadius)}");
+            if ((Vector2.Distance(transform.position, PlayerRef.transform.position) < PlayerDetectionRadius) && (ObjTools.LineOfSight(gameObject, PlayerRef.transform, PlayerDetectionRadius)))
+            {
+                State = "LockedPlayer";
+            }
+            else
+            {
+                State = "Wandering";
+            }
         }
-        else
-        {
-            State = "Wandering";
-        }
-        
     }
 
     protected void FixedUpdate()
@@ -64,10 +69,19 @@ public class KamikazeEnemyAI : EnemyTemplate
         GameObject OtherGo = collision.gameObject;
         if (OtherGo.CompareTag("Player"))
         {
-            if (collision.relativeVelocity.magnitude > 20)
+            if ((collision.relativeVelocity.magnitude > 20) && State != "Detonating")
             {
+                State = "Detonating";
                 Audio.PlayOneShot(BoomBoomSound, 0.2f);
+                StartCoroutine(RunOnDelayCR(Explode, 2));
             }
         }
+    }
+
+    protected void Explode()
+    {
+        GameObject explosion = Instantiate(ManagerScript.Instance.ExplosionSystem);
+        explosion.transform.localScale = new Vector3(15, 15, 5);
+        explosion.transform.position = transform.position;
     }
 }

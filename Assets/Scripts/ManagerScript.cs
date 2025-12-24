@@ -132,6 +132,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject RocketPrefab;
 
     public GameObject BasicThrusterPrefab;
+    public GameObject ExplosionSystem;
 
     #endregion
 
