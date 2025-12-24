@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      kamikazeplaneright_0: -1560982632291208815
+      kamikazeplaneright_1: 4240678887964498786
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

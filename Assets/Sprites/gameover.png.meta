@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: efd978bbe7839cd4f9ee638497fe7d02
+guid: 6116147d9b5a76848a34cf7a151141fc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1032021056684403375
-    second: resetloadbuttonbg_0
+      213: 717815370215568713
+    second: Untitled space game shit (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: resetloadbuttonbg_0
+      name: Untitled space game shit (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 6000
-        height: 3375
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1555a9b11568da1f0800000000000000
-      internalID: -1032021056684403375
+      spriteID: 945b30ca64136f900800000000000000
+      internalID: 717815370215568713
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      resetloadbuttonbg_0: -1032021056684403375
+      Untitled space game shit (1)_0: 717815370215568713
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
