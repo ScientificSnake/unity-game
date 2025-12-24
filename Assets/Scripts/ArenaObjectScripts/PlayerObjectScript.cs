@@ -317,6 +317,7 @@ public class PlayerObjectScript : MonoBehaviour
     {
         Health -= damageAmount;
         HealthCheck();
+        print($"Player health is now {Health}");
     }
 
     private void HealthCheck()

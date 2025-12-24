@@ -15,7 +15,9 @@ public class KamikazeEnemyAI : EnemyTemplate
     public AudioClip BoomBoomSound;
     public AudioSource Audio;
 
+    public float ExplosionDamage;
     public float DamageRadius;
+    public float BlastForce;
     protected void RotateTowardsPlayer()
     {
         Vector2 vectorToPlayer = (Vector2)(PlayerRef.transform.position - transform.position);
@@ -62,6 +64,10 @@ public class KamikazeEnemyAI : EnemyTemplate
         MaxAccel = 200;
         PlayerDetectionRadius = 2000;
 
+        BlastForce = 100;
+        DamageRadius = 50;
+        ExplosionDamage = 2;
+
         Audio = gameObject.AddComponent<AudioSource>();
     }
 
@@ -75,7 +81,9 @@ public class KamikazeEnemyAI : EnemyTemplate
                 Throttle = 0;
                 State = "Detonating";
                 Audio.PlayOneShot(BoomBoomSound, 0.2f);
-                StartCoroutine(RunOnDelayCR(Explode, 2));
+
+                ManagerScript.Instance.RunOnDelay(Explode, 2);
+                //StartCoroutine(RunOnDelayCR(Explode, 2));
             }
         }
     }
@@ -96,17 +104,52 @@ public class KamikazeEnemyAI : EnemyTemplate
         Color color = spriteRenderer.color;
         color.a = 0;
         spriteRenderer.color = color;
-
-        StartCoroutine(RunOnDelayCR(DestroyExplosionObj, 1));
+        ManagerScript.Instance.RunOnDelay(DestroyExplosionObj, 1);
+        //StartCoroutine(RunOnDelayCR(DestroyExplosionObj, 1));
         void DestroyKamikaz()
         {
-            Destroy(gameObject);
+            try
+            {
+                Destroy(gameObject);
+            }
+            catch
+            {
+                print("Kamkaz already killed self");
+            }
         }
-        StartCoroutine(RunOnDelayCR(DestroyKamikaz, 1));
+        ManagerScript.Instance.RunOnDelay(DestroyKamikaz, 1);
+        //StartCoroutine(RunOnDelayCR(DestroyKamikaz, 1));
 
         #region Damage application and physics
 
-        //Collider2D[] Physics2D.OverlapCircleAll(transform.position, DamageRadius);
+        Collider2D[] collidersInRadius = Physics2D.OverlapCircleAll(transform.position, DamageRadius);
+
+        foreach (Collider2D collider in collidersInRadius)
+        {
+            float distanceToSelf = Vector2.Distance(collider.gameObject.transform.position, transform.position);
+            float intensityProportion = (DamageRadius - distanceToSelf)/DamageRadius;
+
+            GameObject OtherGo = collider.gameObject;
+
+            if (OtherGo.TryGetComponent<PlayerObjectScript>(out PlayerObjectScript _))
+            {
+                // already have a reference
+                PlayerScriptRef.ApplyDamage(intensityProportion * ExplosionDamage);
+            }
+            else if(OtherGo.TryGetComponent<EnemyTemplate>(out EnemyTemplate enemyScript))
+            {
+                enemyScript.ApplyDamage(intensityProportion * ExplosionDamage);
+            }
+
+            Vector2 directionToCollider = OtherGo.transform.position - collider.transform.position;
+
+            if (OtherGo.TryGetComponent<Rigidbody2D>(out Rigidbody2D OtherRb))
+            {
+                float force = intensityProportion * BlastForce;
+                OtherRb.AddForce(directionToCollider.normalized * force);
+            }
+        }
+
 
         #endregion
     }
