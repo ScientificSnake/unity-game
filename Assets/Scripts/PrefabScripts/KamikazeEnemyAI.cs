@@ -1,3 +1,4 @@
+using MathNet.Numerics;
 using System.Collections;
 using System.Security.Authentication.ExtendedProtection;
 using UnityEditor.SceneManagement;
@@ -9,9 +10,11 @@ public class KamikazeEnemyAI : EnemyTemplate
 {
     public float PlayerDetectionRadius;
     public string State = "LockedPlayer";
-    float SpriteAngleOffset = 0;
+    public float SpriteAngleOffset = 0;
     public AudioClip BoomBoomSound;
     public AudioSource Audio;
+
+    public float DamageRadius;
     protected void RotateTowardsPlayer()
     {
         Vector2 vectorToPlayer = (Vector2)(PlayerRef.transform.position - transform.position);
@@ -71,6 +74,7 @@ public class KamikazeEnemyAI : EnemyTemplate
         {
             if ((collision.relativeVelocity.magnitude > 20) && State != "Detonating")
             {
+                Throttle = 0;
                 State = "Detonating";
                 Audio.PlayOneShot(BoomBoomSound, 0.2f);
                 StartCoroutine(RunOnDelayCR(Explode, 2));
@@ -81,7 +85,18 @@ public class KamikazeEnemyAI : EnemyTemplate
     protected void Explode()
     {
         GameObject explosion = Instantiate(ManagerScript.Instance.ExplosionSystem);
-        explosion.transform.localScale = new Vector3(15, 15, 5);
+        explosion.transform.localScale = new Vector3(150, 150, 150);
         explosion.transform.position = transform.position;
+        Rigidbody2D explosionrb = explosion.GetComponent<Rigidbody2D>();
+        explosionrb.linearVelocity = rb.linearVelocity;
+
+        void DestroyExplosionObj()
+        {
+            Destroy(explosion);
+        }
+
+        StartCoroutine(RunOnDelayCR(DestroyExplosionObj, 1));
+        Destroy(gameObject);
+        
     }
 }
