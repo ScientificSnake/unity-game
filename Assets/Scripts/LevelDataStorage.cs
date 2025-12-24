@@ -14,6 +14,7 @@ using UnityEditor.SceneManagement;
 using MathNet.Numerics.LinearAlgebra.Solvers;
 using System.Runtime.CompilerServices;
 using UnityEngine.InputSystem.UI;
+using UnityEditor;
 public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
@@ -455,6 +456,24 @@ public class LevelDataStorage
             Debug.Log("started periodic enemy checking");
 
 
+        }
+
+        public void GameOver()
+        {
+            GameObject LevelLayout = GameObject.FindWithTag("MapLayoutTag");
+            UnityEngine.Object.Destroy(LevelLayout);
+
+            GameObject[] weaponArtifacts = GameObject.FindGameObjectsWithTag("InstantiatedArtifact");
+
+            foreach (GameObject weaponArtifact in weaponArtifacts)
+            {
+                UnityEngine.Object.Destroy(weaponArtifact);
+            }
+
+            GameObject Player = GameObject.FindWithTag("Player");
+            UnityEngine.Object.Destroy(Player);
+
+            ManagerScript.Instance.StopCoroutine("PeriodicallyCheckForEndOfRound");
         }
     }
     public class LevelData

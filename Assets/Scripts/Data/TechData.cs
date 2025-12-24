@@ -19,7 +19,6 @@ public class TechData : MonoBehaviour
         HullOptionsDataDict[sysname].IsNodePurchased = true;
     }
 
-
     public static bool AreNodeDependciesMet(string sysName)
     {
         Array dependencies = TechData.HullOptionsDataDict[sysName].DependencyNodes;
@@ -139,7 +138,7 @@ public class TechData : MonoBehaviour
 
             if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)  // OH YEAH REFERENCE MUTATION
             {
-                BaseStats.Health = 100; // yeah no we ain't doin no fucking module health
+                BaseStats.Health = 1000; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 107; // degress per second 
                 BaseStats.Acceleration = 5000;  // SUBJECT TO FURTHER CHANGE neutons of thrust
                 BaseStats.Mass = 2.5f; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
@@ -166,7 +165,7 @@ public class TechData : MonoBehaviour
             if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
                 // print("detected dict object");
-                BaseStats.Health = 85; // yeah no we ain't doin no fucking module health
+                BaseStats.Health = 850; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 112; // degress per second 
                 BaseStats.Acceleration = 5000;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.Mass = 1.75f;
@@ -191,7 +190,7 @@ public class TechData : MonoBehaviour
             if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
                 print("detected dict objec");
-                BaseStats.Health = 75; // yeah no we ain't doin no fucking module health
+                BaseStats.Health = 750; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 130; // degress per second 
                 BaseStats.Acceleration = 6000f;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.ReverseAcceleration = 10; //^ but in reverse (reverse thrust)
@@ -215,7 +214,7 @@ public class TechData : MonoBehaviour
             if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
                 print("detected dict object");
-                BaseStats.Health = 110; // yeah no we ain't doin no fucking module health
+                BaseStats.Health = 1100; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 80; // degress per second 
                 BaseStats.Acceleration = 4000;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.Mass = 3f;
@@ -238,7 +237,7 @@ public class TechData : MonoBehaviour
             if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
                 print("detected dict object");
-                BaseStats.Health = 100; // yeah no we ain't doin no fucking module health
+                BaseStats.Health = 1000; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 110; // degress per second 
                 BaseStats.Acceleration = 5500;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.Mass = 2.75f;

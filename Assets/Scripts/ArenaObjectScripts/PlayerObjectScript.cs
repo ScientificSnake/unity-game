@@ -324,10 +324,10 @@ public class PlayerObjectScript : MonoBehaviour
     {
         if (Health <= 0)
         {
+            ManagerScript.CurrentLevelManagerInstance.GameOver();
             // Handle player destruction (e.g., trigger game over, respawn, etc.)
         }
     }
 
     #endregion
-
 }
