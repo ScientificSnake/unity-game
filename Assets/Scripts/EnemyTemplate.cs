@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Player;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class EnemyTemplate : MonoBehaviour
 {
@@ -15,12 +16,14 @@ public class EnemyTemplate : MonoBehaviour
     public float Throttle;
     public float FuelUsage;
 
+    public SpriteRenderer spriteRenderer;
     public GameObject PlayerRef;
     public PlayerObjectScript PlayerScriptRef;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         Health = 1;
         PlayerRef = GameObject.FindWithTag("Player");

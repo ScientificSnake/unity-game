@@ -1,6 +1,7 @@
 using MathNet.Numerics;
 using System.Collections;
 using System.Security.Authentication.ExtendedProtection;
+using UnityEditor.Build;
 using UnityEditor.SceneManagement;
 using UnityEditor.Tilemaps;
 using UnityEngine;
@@ -28,7 +29,6 @@ public class KamikazeEnemyAI : EnemyTemplate
     {
         if (State != "Detonating")
         {
-            print($"Dihtance to player is {Vector2.Distance(PlayerRef.transform.position, transform.position)}, Line of sight is {ObjTools.LineOfSight(gameObject, PlayerRef.transform, PlayerDetectionRadius)}");
             if ((Vector2.Distance(transform.position, PlayerRef.transform.position) < PlayerDetectionRadius) && (ObjTools.LineOfSight(gameObject, PlayerRef.transform, PlayerDetectionRadius)))
             {
                 State = "LockedPlayer";
@@ -52,8 +52,6 @@ public class KamikazeEnemyAI : EnemyTemplate
         {
             Throttle = 0;
         }
-        print("Applying throttle on " + gameObject.name);
-        print($" Thrtle : {Throttle}, fuel : {Fuel}");
         ObjTools.ApplyThrottle(Throttle, ref Fuel, MaxAccel, rb, transform, FuelUsage);
     }
 
@@ -95,8 +93,16 @@ public class KamikazeEnemyAI : EnemyTemplate
             Destroy(explosion);
         }
 
+        Color color = spriteRenderer.color;
+        color.a = 0;
+        spriteRenderer.color = color;
+
         StartCoroutine(RunOnDelayCR(DestroyExplosionObj, 1));
-        Destroy(gameObject);
+        void DestroyKamikaz()
+        {
+            Destroy(gameObject);
+        }
+        StartCoroutine(RunOnDelayCR(DestroyKamikaz, 1));
         
     }
 }

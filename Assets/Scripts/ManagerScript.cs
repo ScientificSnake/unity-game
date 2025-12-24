@@ -147,6 +147,7 @@ public class ManagerScript : MonoBehaviour
     #region Level Layout fields
 
     public GameObject TutorialLayoutPrefab;
+    public GameObject XandersLevel1;
 
     #endregion
 

@@ -56,7 +56,7 @@ public static class TuturialLevelData
             }
         },
         new string[] { "EnemyTag" },
-        new GameObject[] { ManagerScript.Instance.TutorialLayoutPrefab, ManagerScript.Instance.TutorialLayoutPrefab },
+        new GameObject[] { ManagerScript.Instance.TutorialLayoutPrefab, ManagerScript.Instance.XandersLevel1 },
         Endless: false
         );
 }
