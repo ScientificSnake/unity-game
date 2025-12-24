@@ -70,7 +70,7 @@ public class KamikazeEnemyAI : EnemyTemplate
         GameObject OtherGo = collision.gameObject;
         if (OtherGo.CompareTag("Player"))
         {
-            if ((collision.relativeVelocity.magnitude > 20) && State != "Detonating")
+            if ((collision.relativeVelocity.magnitude > 50) && State != "Detonating")
             {
                 Throttle = 0;
                 State = "Detonating";
@@ -103,6 +103,11 @@ public class KamikazeEnemyAI : EnemyTemplate
             Destroy(gameObject);
         }
         StartCoroutine(RunOnDelayCR(DestroyKamikaz, 1));
-        
+
+        #region Damage application and physics
+
+        //Collider2D[] Physics2D.OverlapCircleAll(transform.position, DamageRadius);
+
+        #endregion
     }
 }
