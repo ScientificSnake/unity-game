@@ -5,7 +5,7 @@ public class ExplosionCleaner : MonoBehaviour
 {
     void Start()
     {
-        KillSelf();
+        StartCoroutine(KillSelf());
     }
 
     private IEnumerator KillSelf()

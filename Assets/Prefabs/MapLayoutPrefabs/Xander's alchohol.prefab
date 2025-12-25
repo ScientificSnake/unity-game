@@ -178,6 +178,7 @@ MonoBehaviour:
   MaxAccel: 0
   Throttle: 0
   FuelUsage: 0
+  spriteRenderer: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerScriptRef: {fileID: 0}
   PlayerRef: {fileID: 0}
@@ -321,14 +322,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9025467623443561041}
     m_Modifications:
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
       propertyPath: m_Name
       value: SpaceGunpodPirate
@@ -373,57 +366,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Mass
-      value: 343.0986
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8181949559543045070, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1548439632157705502}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
---- !u!1 &5951150615164713389 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 1647965616240025377}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1548439632157705502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5951150615164713389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunPodPirateLogic
-  Health: 0
-  rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
-  Fuel: 0
-  MaxAccel: 0
-  Throttle: 0
-  FuelUsage: 0
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerRb: {fileID: 0}
-  pcollider: {fileID: 0}
-  PlayerTransform: {fileID: 0}
 --- !u!4 &8487328259908031197 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
@@ -534,6 +481,7 @@ MonoBehaviour:
   MaxAccel: 0
   Throttle: 0
   FuelUsage: 0
+  spriteRenderer: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerScriptRef: {fileID: 0}
   PlayerRef: {fileID: 0}
@@ -1411,6 +1359,7 @@ MonoBehaviour:
   MaxAccel: 0
   Throttle: 0
   FuelUsage: 0
+  spriteRenderer: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerScriptRef: {fileID: 0}
   PlayerRef: {fileID: 0}
@@ -1968,6 +1917,7 @@ MonoBehaviour:
   MaxAccel: 0
   Throttle: 0
   FuelUsage: 0
+  spriteRenderer: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerScriptRef: {fileID: 0}
   PlayerRef: {fileID: 0}
@@ -2084,6 +2034,7 @@ MonoBehaviour:
   MaxAccel: 0
   Throttle: 0
   FuelUsage: 0
+  spriteRenderer: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerScriptRef: {fileID: 0}
   PlayerRef: {fileID: 0}
@@ -3089,6 +3040,7 @@ MonoBehaviour:
   MaxAccel: 0
   Throttle: 0
   FuelUsage: 0
+  spriteRenderer: {fileID: 0}
   PlayerRef: {fileID: 0}
   PlayerScriptRef: {fileID: 0}
   PlayerRef: {fileID: 0}

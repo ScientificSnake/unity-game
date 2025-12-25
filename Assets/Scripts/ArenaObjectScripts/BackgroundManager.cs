@@ -5,6 +5,8 @@ using UnityEngine.U2D.IK;
 
 public class BackgroundManager : MonoBehaviour
 {
+    public GameObject PauseMenuRef;
+
     [SerializeField] private Vector2 FakeVeloOffset;
 
     [SerializeField] private GameObject C;

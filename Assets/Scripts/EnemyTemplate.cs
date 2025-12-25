@@ -44,8 +44,14 @@ public class EnemyTemplate : MonoBehaviour
     {
         return Quaternion.AngleAxis(angle, Vector3.forward) * sourceVector;
     }
+    protected bool IsAimedAtTarget(float targetAngle, float aimingThreshold)
+    {
+        float currentAngle = transform.eulerAngles.z;
+        float angleDifference = Mathf.Abs(Mathf.DeltaAngle(currentAngle, targetAngle));
+        return angleDifference <= aimingThreshold;
+    }
 
-    public void RotateTowardsTarget(float zTargetRotation)
+    public void RotateTowardsTargetAngle(float zTargetRotation)
     {
         float maxDegreesPerTick = rotationDegreesPerSeconds * Time.fixedDeltaTime;
 

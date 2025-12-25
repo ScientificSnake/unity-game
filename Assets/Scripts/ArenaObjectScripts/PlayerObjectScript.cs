@@ -13,7 +13,7 @@ using NUnit.Framework.Constraints;
 
 public class PlayerObjectScript : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private PolygonCollider2D PolygonCollider;
     private SpriteRenderer spriteRenderer;
 
@@ -22,7 +22,7 @@ public class PlayerObjectScript : MonoBehaviour
 
     public float FuelUsage = 1;
 
-    public float CollsionDamageMultiplier = 0.5f;
+    public float CollsionDamageMultiplier = 0.02f;
 
     public LevelDataStorage.LevelManager.BaseStats BaseRoundStats;
     private void Awake()
@@ -300,14 +300,15 @@ public class PlayerObjectScript : MonoBehaviour
     {
         float relativeVelocityMagnitude = collision.relativeVelocity.magnitude;
 
-        ApplyDamage(relativeVelocityMagnitude * CollsionDamageMultiplier);
-        HealthCheck();
-
         //print($"Collided with {collision.gameObject.name}, at relative velo of {collision.relativeVelocity.magnitude}");
 
-        if (collision.relativeVelocity.magnitude > 20)
+        if (collision.relativeVelocity.magnitude > 50)
         {
             audios.PlayOneShot(collisionSound);
+            print("<color=yellow> Player was hit with rel valo of " + relativeVelocityMagnitude);
+            ApplyDamage(relativeVelocityMagnitude * CollsionDamageMultiplier);
+            HealthCheck();
+
         }
     }
     #endregion
@@ -317,7 +318,7 @@ public class PlayerObjectScript : MonoBehaviour
     {
         Health -= damageAmount;
         HealthCheck();
-        print($"<color=orange> Player now has {Health}");
+        print($"<color=orange> Player now has {Health}, took {damageAmount} damage");
     }
 
     private void HealthCheck()

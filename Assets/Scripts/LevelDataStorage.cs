@@ -9,12 +9,6 @@ using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using System.Collections;
-using UnityEngine.UI;
-using UnityEditor.SceneManagement;
-using MathNet.Numerics.LinearAlgebra.Solvers;
-using System.Runtime.CompilerServices;
-using UnityEngine.InputSystem.UI;
-using UnityEditor;
 public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
@@ -390,6 +384,8 @@ public class LevelDataStorage
         // Getoverhere start
         public void StartRoundRoutine()
         {
+            Time.timeScale = 1.0f;
+
             GameObject Player;
             PlayerObjectScript PlayerScript;
             if (CurrentRound == 0)
@@ -454,12 +450,11 @@ public class LevelDataStorage
             ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.StartLastEnemySpawnTimer(localLatestSpawnTime));
             ManagerScript.Instance.StartCoroutine(PeriodicallyCheckForEndOfRound(0.5f));  // wanted in 3 countries for this move :(
             Debug.Log("started periodic enemy checking");
-
-
         }
 
         public void GameOver()
-        {
+        { 
+            Time.timeScale = 1.0f;
             GameObject LevelLayout = GameObject.FindWithTag("MapLayoutTag");
             UnityEngine.Object.Destroy(LevelLayout);
 

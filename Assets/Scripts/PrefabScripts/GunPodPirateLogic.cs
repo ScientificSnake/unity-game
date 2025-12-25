@@ -6,10 +6,7 @@ using static UnityEditor.PlayerSettings;
 
 public class GunPodPirateLogic : BasicPirateDummyBehaviour
 {
-    private int IgnoredLayer;
-
     private string State;
-    public GameObject PlayerRef;
     public Rigidbody2D PlayerRb;
     public PolygonCollider2D pcollider;
     public Transform PlayerTransform;
@@ -36,13 +33,6 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
         {
             SeesPlayer = false;
         }
-    }
-
-    private bool IsAimedAtTarget(float targetAngle)
-    {
-        float currentAngle = transform.eulerAngles.z;
-        float angleDifference = Mathf.Abs(Mathf.DeltaAngle(currentAngle, targetAngle));
-        return angleDifference <= aimingThreshold;
     }
 
     private void Fire()
@@ -119,10 +109,10 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
                     if (InterceptInfo.Possible)
                     {
                         float targetAngle = InterceptInfo.AimDeg + 180;
-                        RotateTowardsTarget(targetAngle);
+                        RotateTowardsTargetAngle(targetAngle);
 
                         // Fire when aimed within threshold
-                        if (IsAimedAtTarget(targetAngle))
+                        if (IsAimedAtTarget(targetAngle, aimingThreshold))
                         {
                             Fire();
                         }
