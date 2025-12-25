@@ -23,8 +23,6 @@ public class RocketBehavior : MonoBehaviour
         rb.gravityScale = 0f;
 
         tcollider = GetComponent<PolygonCollider2D>();
-
-        print($"Newly inited rocket with velo : {rb.linearVelocity.ToString()}, acceleration {Acceleration}, fuel {Fuel}");
     }
 
     // Update is called once per frame

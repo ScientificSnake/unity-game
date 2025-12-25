@@ -65,8 +65,8 @@ public class KamikazeEnemyAI : EnemyTemplate
         PlayerDetectionRadius = 2000;
 
         BlastForce = 100;
-        DamageRadius = 50;
-        ExplosionDamage = 2;
+        DamageRadius = 100;
+        ExplosionDamage = 400;
 
         Audio = gameObject.AddComponent<AudioSource>();
     }

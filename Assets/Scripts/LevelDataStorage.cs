@@ -407,7 +407,7 @@ public class LevelDataStorage
                 PlayerScript = Player.GetComponent<PlayerObjectScript>();
                 PlayerScript.inputManager.Enable();
                 PlayerScript.inputManager.Player.Enable();
-                PlayerScript.inputManager.CameraControls.Enable();
+                PlayerScript.mainCamera.GetComponent<CameraFollowScript>().inputManager.CameraControls.Enable();
             }
 
             PlayerScript.ResetRoundStats();
@@ -471,9 +471,18 @@ public class LevelDataStorage
             }
 
             GameObject Player = GameObject.FindWithTag("Player");
+
+            PlayerObjectScript playerScript = Player.GetComponent<PlayerObjectScript>();
+
+            playerScript.mainCamera.GetComponent<CameraFollowScript>().inputManager.CameraControls.Disable();
+            playerScript.inputManager.Player.Disable();
+
             UnityEngine.Object.Destroy(Player);
 
             ManagerScript.Instance.StopCoroutine("PeriodicallyCheckForEndOfRound");
+            ManagerScript.Instance.StopCoroutine("StartLastEnemySpawnTimer");
+            ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.LoadSceneRoutine("GameOverScreen"));
+            ManagerScript.CurrentLevelManagerInstance = null;
         }
     }
     public class LevelData

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using UnityEditor.Search.Providers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -203,8 +204,9 @@ public class ManagerScript : MonoBehaviour
         CurrentLevelManagerInstance.LastEnemySpawned = true;
     }
 
-    private IEnumerator LoadSceneRoutine(string sceneName)
+    public IEnumerator LoadSceneRoutine(string sceneName)
     {
+        print($"<color=green> Loading scene {sceneName}");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
         while (!asyncLoad.isDone)

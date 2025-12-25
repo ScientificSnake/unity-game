@@ -300,7 +300,7 @@ public class PlayerObjectScript : MonoBehaviour
     {
         float relativeVelocityMagnitude = collision.relativeVelocity.magnitude;
 
-        Health -= relativeVelocityMagnitude * CollsionDamageMultiplier;
+        ApplyDamage(relativeVelocityMagnitude * CollsionDamageMultiplier);
         HealthCheck();
 
         //print($"Collided with {collision.gameObject.name}, at relative velo of {collision.relativeVelocity.magnitude}");
@@ -317,7 +317,7 @@ public class PlayerObjectScript : MonoBehaviour
     {
         Health -= damageAmount;
         HealthCheck();
-        print($"Player health is now {Health}");
+        print($"<color=orange> Player now has {Health}");
     }
 
     private void HealthCheck()
@@ -325,6 +325,7 @@ public class PlayerObjectScript : MonoBehaviour
         if (Health <= 0)
         {
             ManagerScript.CurrentLevelManagerInstance.GameOver();
+            print($"Player has been slimed");
             // Handle player destruction (e.g., trigger game over, respawn, etc.)
         }
     }
