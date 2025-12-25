@@ -78,7 +78,7 @@ public class KamikazeEnemyAI : EnemyTemplate
             }
 
             RotateTowardsTargetAngle(targetAngle);
-            print($"<color=purple>{gameObject.name} is rotating towards angle {targetAngle}, method - {angleMethod}");
+            //print($"<color=purple>{gameObject.name} is rotating towards angle {targetAngle}, method - {angleMethod}");
             if (IsAimedAtTarget(targetAngle, ThrottleDegreeThreshold))
             {
                 Throttle = 100;

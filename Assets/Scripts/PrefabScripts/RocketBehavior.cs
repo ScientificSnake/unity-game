@@ -1,31 +1,18 @@
 using UnityEngine;
 
-public class RocketBehavior : MonoBehaviour
+public class RocketBehavior : ProjectileTemplate
 {
     public float Fuel;//time the rocket accelerates for
     public float Acceleration;//rate at which the rocket accelerates
     private SpriteRenderer spriteRenderer;
     public Sprite newSprite;
     public float Damage;
-    public PolygonCollider2D tcollider;
 
-    public Rigidbody2D rb;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Awake()
-    {
-        tcollider = GetComponent<PolygonCollider2D>();
-    }
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
-
-        tcollider = GetComponent<PolygonCollider2D>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if ( tcollider == null )
@@ -57,10 +44,5 @@ public class RocketBehavior : MonoBehaviour
             playerObjectScript.ApplyDamage(Damage);
         }
         Destroy(gameObject);
-    }
-
-    public void ActivateCollider()
-    {
-        tcollider.enabled = true;
     }
 }

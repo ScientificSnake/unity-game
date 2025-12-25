@@ -5,20 +5,9 @@ using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BulletBehavior : MonoBehaviour
+public class BulletBehavior : ProjectileTemplate
 {
     public float Damage;
-    public Rigidbody2D rb;
-    public CapsuleCollider2D tcollider;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Awake()
-    {
-        tcollider = GetComponent<CapsuleCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
-        rb.linearDamping = 0f;
-        rb.angularDamping = 0f;
-        rb.gravityScale = 0f;
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -37,10 +26,4 @@ public class BulletBehavior : MonoBehaviour
         // destroy self
         Destroy(gameObject);
     }
-
-    public void ActivateCollider()
-    {
-        tcollider.enabled = true;
-    }
 }
-//haisdfgihhsbdfoyig

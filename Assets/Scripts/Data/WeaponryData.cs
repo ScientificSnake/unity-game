@@ -109,7 +109,7 @@ namespace Sebastian
                     Physics2D.IgnoreCollision(orphan.GetComponent<CapsuleCollider2D>(), collider);
                 }
 
-                bulletScript.ActivateCollider();
+                bulletScript.tcollider.enabled = true;
             }
 
             public static void BasicRocketSpawn(WeaponParameters Params)
@@ -138,7 +138,7 @@ namespace Sebastian
                     Physics2D.IgnoreCollision(orphan.GetComponent<PolygonCollider2D>(), collider);
                 }
 
-                rocketBehavior.ActivateCollider();
+                rocketBehavior.tcollider.enabled = true;
             }
         }
 

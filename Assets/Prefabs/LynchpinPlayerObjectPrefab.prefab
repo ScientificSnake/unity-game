@@ -104,10 +104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb58e6726cf8f214ab4d4c7ad31915cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  rb: {fileID: 0}
   audios: {fileID: 0}
   collisionSound: {fileID: 8300000, guid: f684b7900d03023438b3ee9a11a6a143, type: 3}
   FuelUsage: 1
-  CollsionDamageMultiplier: 0.5
+  CollsionDamageMultiplier: 0.07
   ThrusterBaseScales: []
   ThrusterRefs: []
   Fuel: 0

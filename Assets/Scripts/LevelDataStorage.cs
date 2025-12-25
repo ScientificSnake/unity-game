@@ -492,16 +492,21 @@ public class LevelDataStorage
         public GameObject[] LayoutPrefab;
         public string[] PossibleEnemyTags { get; }
 
+        public Vector2 MinXY;
+        public Vector2 MaxXY;
+
         public LevelData(int roundCount, Func<int, int> difficultyFunc, Dictionary<Action, int> difficultyEventDict, Dictionary<int, Dictionary<int, List<Action>>> presetRounds,
-                         string[] possibleEnemyTags, GameObject[] layoutPrefab, bool Endless)
+                         string[] possibleEnemyTags, GameObject[] layoutPrefab, bool Endless, Vector2 minXY, Vector2 maxXY)
         {
             RoundCount = roundCount;
             DifficultyFunc = difficultyFunc;
             DifficultyEventDict = difficultyEventDict;
             PresetRounds = presetRounds;
             PossibleEnemyTags = possibleEnemyTags;
-            
+
             LayoutPrefab = layoutPrefab;
+            MinXY = minXY;
+            MaxXY = maxXY;
         }
     }
 
