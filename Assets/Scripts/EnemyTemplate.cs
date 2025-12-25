@@ -5,10 +5,11 @@ using UnityEditor.Build.Player;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 
-public class EnemyTemplate : MonoBehaviour
+public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
 {
     public float Health;
     public Rigidbody2D rb;
+    public Rigidbody2D Rigidbody2 => rb;
     public float rotationDegreesPerSeconds;
 
     public float Fuel;
@@ -96,6 +97,12 @@ public class EnemyTemplate : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         code();
+    }
+
+    public void OnOutOfBounds()
+    {
+        BoundsEnforcer.DeRegister(this);
+        Destroy(gameObject);
     }
     
 }
