@@ -57,12 +57,11 @@ Transform:
   - {fileID: 7776214553808612688}
   - {fileID: 2157634927601458704}
   - {fileID: 8487328259908031197}
-  - {fileID: 6948055204253955885}
-  - {fileID: 2131145360348722718}
-  - {fileID: 3232837235692802550}
-  - {fileID: 6155846385977511382}
-  - {fileID: 3670282281514677926}
-  - {fileID: 8742816587464995385}
+  - {fileID: 751083724000862369}
+  - {fileID: 8504633516387080008}
+  - {fileID: 8938251990375415865}
+  - {fileID: 8143710519276624971}
+  - {fileID: 8640373521128676185}
   - {fileID: 8060120744240507236}
   - {fileID: 7544826401713423085}
   - {fileID: 5719145705307781682}
@@ -73,123 +72,6 @@ Transform:
   - {fileID: 7879790930955479914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &251005928296741585
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 9025467623443561041}
-    m_Modifications:
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Name
-      value: SpaceGunpodPirate (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 56.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -82.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Mass
-      value: 343.0986
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8181949559543045070, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3149837633900452268}
-  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
---- !u!1 &5130660475126864989 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 251005928296741585}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3149837633900452268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5130660475126864989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunPodPirateLogic
-  Health: 0
-  rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
-  Fuel: 0
-  MaxAccel: 0
-  Throttle: 0
-  FuelUsage: 0
-  spriteRenderer: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerRb: {fileID: 0}
-  pcollider: {fileID: 0}
-  PlayerTransform: {fileID: 0}
---- !u!4 &6948055204253955885 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 251005928296741585}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &947869948759668539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,6 +133,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1213428981118757163, guid: 63913bb8788f8684b964929eb1f42624, type: 3}
   m_PrefabInstance: {fileID: 947869948759668539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1302655727241843127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9025467623443561041}
+    m_Modifications:
+    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_Name
+      value: SpaceGunpodPirate (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 303.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+--- !u!4 &8143710519276624971 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+  m_PrefabInstance: {fileID: 1302655727241843127}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1415291693635083161
 PrefabInstance:
@@ -314,6 +258,130 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1511483026439276995, guid: 254b2ab9e0d365f48ad7c971c3a10251, type: 3}
   m_PrefabInstance: {fileID: 1415291693635083161}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1513057857424610981
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9025467623443561041}
+    m_Modifications:
+    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_Name
+      value: SpaceGunpodPirate (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 212.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -244.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+--- !u!4 &8640373521128676185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+  m_PrefabInstance: {fileID: 1513057857424610981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1518052776957614772
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9025467623443561041}
+    m_Modifications:
+    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_Name
+      value: SpaceGunpodPirate (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 43.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -176.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+--- !u!4 &8504633516387080008 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+  m_PrefabInstance: {fileID: 1518052776957614772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1647965616240025377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,123 +443,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
   m_PrefabInstance: {fileID: 1647965616240025377}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1892368053443166149
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 9025467623443561041}
-    m_Modifications:
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Name
-      value: SpaceGunpodPirate (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 184
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 86.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Mass
-      value: 343.0986
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8181949559543045070, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2498380099055616443}
-  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
---- !u!1 &6776526269127383369 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 1892368053443166149}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2498380099055616443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6776526269127383369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunPodPirateLogic
-  Health: 0
-  rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
-  Fuel: 0
-  MaxAccel: 0
-  Throttle: 0
-  FuelUsage: 0
-  spriteRenderer: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerRb: {fileID: 0}
-  pcollider: {fileID: 0}
-  PlayerTransform: {fileID: 0}
---- !u!4 &8742816587464995385 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 1892368053443166149}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1908753771732110330
 PrefabInstance:
@@ -877,6 +828,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4602949470987123668, guid: 91b1767a987d30d4e974a24267517d98, type: 3}
   m_PrefabInstance: {fileID: 2190361822995835019}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2241876989927083461
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9025467623443561041}
+    m_Modifications:
+    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_Name
+      value: SpaceGunpodPirate (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 280.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -163.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+--- !u!4 &8938251990375415865 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+  m_PrefabInstance: {fileID: 2241876989927083461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2325300690106623782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1249,123 +1262,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 764792263806039606, guid: 12d19ec6aa682104c820afd2a527f391, type: 3}
   m_PrefabInstance: {fileID: 3830068087362444824}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3925527295056887850
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 9025467623443561041}
-    m_Modifications:
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Name
-      value: SpaceGunpodPirate (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 287.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Mass
-      value: 343.0986
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8181949559543045070, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3871342092012898150}
-  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
---- !u!4 &6155846385977511382 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 3925527295056887850}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8228712371300951718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 3925527295056887850}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3871342092012898150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8228712371300951718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunPodPirateLogic
-  Health: 0
-  rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
-  Fuel: 0
-  MaxAccel: 0
-  Throttle: 0
-  FuelUsage: 0
-  spriteRenderer: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerRb: {fileID: 0}
-  pcollider: {fileID: 0}
-  PlayerTransform: {fileID: 0}
 --- !u!1001 &3978434240187300287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1812,240 +1708,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8666402592615241038, guid: b3bba8e372b75bd41a8833b2ac2f2e0f, type: 3}
   m_PrefabInstance: {fileID: 5468203314417958066}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5749667070935079946
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 9025467623443561041}
-    m_Modifications:
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Name
-      value: SpaceGunpodPirate (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -39.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -17.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Mass
-      value: 343.0986
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8181949559543045070, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 455019616849860666}
-  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
---- !u!1 &829488854815652486 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 5749667070935079946}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &455019616849860666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 829488854815652486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunPodPirateLogic
-  Health: 0
-  rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
-  Fuel: 0
-  MaxAccel: 0
-  Throttle: 0
-  FuelUsage: 0
-  spriteRenderer: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerRb: {fileID: 0}
-  pcollider: {fileID: 0}
-  PlayerTransform: {fileID: 0}
---- !u!4 &3232837235692802550 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 5749667070935079946}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &5906688217296354138
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 9025467623443561041}
-    m_Modifications:
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Name
-      value: SpaceGunpodPirate (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 47.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Mass
-      value: 343.0986
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8181949559543045070, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5655492947894856979}
-  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
---- !u!1 &1562961999830785494 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 5906688217296354138}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5655492947894856979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1562961999830785494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunPodPirateLogic
-  Health: 0
-  rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
-  Fuel: 0
-  MaxAccel: 0
-  Throttle: 0
-  FuelUsage: 0
-  spriteRenderer: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerRb: {fileID: 0}
-  pcollider: {fileID: 0}
-  PlayerTransform: {fileID: 0}
---- !u!4 &3670282281514677926 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 5906688217296354138}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5973723363476086610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2421,6 +2083,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8644807323408519913, guid: 0abdfeca32679a74e93a87829742c22b, type: 3}
   m_PrefabInstance: {fileID: 7296886523580990988}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7600898870609882461
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9025467623443561041}
+    m_Modifications:
+    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_Name
+      value: SpaceGunpodPirate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 207.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -127.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+--- !u!4 &751083724000862369 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
+  m_PrefabInstance: {fileID: 7600898870609882461}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7882212264839619800
 PrefabInstance:
@@ -2930,120 +2654,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 764792263806039606, guid: 12d19ec6aa682104c820afd2a527f391, type: 3}
   m_PrefabInstance: {fileID: 9069435201775558211}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &9116669396108327906
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 9025467623443561041}
-    m_Modifications:
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 366103925649337852, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Name
-      value: SpaceGunpodPirate (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -93.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -92.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_Mass
-      value: 343.0986
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_UseAutoMass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8746573300138829742, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8181949559543045070, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8589173090533235633}
-  m_SourcePrefab: {fileID: 100100000, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
---- !u!4 &2131145360348722718 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7140373554003480060, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 9116669396108327906}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4237023619110149486 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4920187038524122764, guid: f108783be0e4c8644bdbf2e6dfb667be, type: 3}
-  m_PrefabInstance: {fileID: 9116669396108327906}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8589173090533235633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4237023619110149486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunPodPirateLogic
-  Health: 0
-  rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
-  Fuel: 0
-  MaxAccel: 0
-  Throttle: 0
-  FuelUsage: 0
-  spriteRenderer: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
-  PlayerRef: {fileID: 0}
-  PlayerRb: {fileID: 0}
-  pcollider: {fileID: 0}
-  PlayerTransform: {fileID: 0}

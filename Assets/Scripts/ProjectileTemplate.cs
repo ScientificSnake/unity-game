@@ -4,7 +4,7 @@ public class ProjectileTemplate : MonoBehaviour, IBoundsCheckable
 {
     public Rigidbody2D rb;
     public Rigidbody2D Rigidbody2 => rb;
-    public Collider2D tcollider;
+    public Collider2D tcollider;    
 
     protected void Awake()
     {

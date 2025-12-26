@@ -68,6 +68,8 @@ public class GunPodPirateLogic : BasicPirateDummyBehaviour
         WeaponParams = Weapon.BaseWeaponParams;
         CurrentWeaponArgs = WeaponParams;
 
+        CurrentWeaponArgs.Spawner = gameObject;
+
         pcollider = gameObject.GetComponent<PolygonCollider2D>();
         CurrentWeaponArgs.IgnoredColliders = new System.Collections.Generic.List<Collider2D> { pcollider };
 

@@ -32,7 +32,7 @@ namespace Sebastian
             }
         }
 
-        public class WeaponParameters
+        public struct WeaponParameters
         {
             public float RPM;
             public Vector2 ParentVelo;
@@ -51,6 +51,8 @@ namespace Sebastian
             public float MuzzleVelo;
             public float AcceleratioRate;
             public float FuelSeconds;
+
+            public GameObject Spawner;
         }
 
         public static class WeaponryActions
@@ -93,6 +95,11 @@ namespace Sebastian
 
                 Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(trueRotation * Mathf.Deg2Rad), Mathf.Sin(trueRotation * Mathf.Deg2Rad)) * MuzzleVelo;
 
+                // disable collider of parent during frame then renable
+
+                //Params.Spawner.GetComponent<Collider2D>().enabled = false;
+
+
                 Vector2 newVeloVector = VelocityFromMuzzle + Parentveloc;
                 GameObject prefab = ManagerScript.Instance.BasicBulletPrefab;
                 GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
@@ -110,6 +117,7 @@ namespace Sebastian
                 }
 
                 bulletScript.tcollider.enabled = true;
+                //Params.Spawner.GetComponent<Collider2D>().enabled = true;
             }
 
             public static void BasicRocketSpawn(WeaponParameters Params)

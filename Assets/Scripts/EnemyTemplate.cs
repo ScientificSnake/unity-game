@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Build.Player;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
 {
@@ -104,5 +101,4 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
         BoundsEnforcer.DeRegister(this);
         Destroy(gameObject);
     }
-    
 }
