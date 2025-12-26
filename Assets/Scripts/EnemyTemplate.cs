@@ -7,16 +7,17 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
     public float Health;
     public Rigidbody2D rb;
     public Rigidbody2D Rigidbody2 => rb;
-    public float rotationDegreesPerSeconds;
 
+    [Header("Movement")]
     public float Fuel;
     public float MaxAccel;
     public float Throttle;
     public float FuelUsage;
+    public float rotationDegreesPerSeconds;
 
     public SpriteRenderer spriteRenderer;
-    public GameObject PlayerRef;
-    public PlayerObjectScript PlayerScriptRef;
+    public static GameObject PlayerRef;
+    public static PlayerObjectScript PlayerScriptRef;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Start()
@@ -24,8 +25,12 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         Health = 1;
-        PlayerRef = GameObject.FindWithTag("Player");
-        PlayerScriptRef = PlayerRef.GetComponent<PlayerObjectScript>();
+        if (PlayerRef == null)
+        {
+            PlayerRef = GameObject.FindWithTag("Player");
+            PlayerScriptRef = PlayerRef.GetComponent<PlayerObjectScript>();
+        }
+        BoundsEnforcer.Register(this);
     }
 
     public void ApplyDamage(float damage)

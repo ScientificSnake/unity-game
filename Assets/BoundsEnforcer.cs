@@ -51,6 +51,8 @@ public class BoundsEnforcer : MonoBehaviour
                 Obj.OnOutOfBounds();
             }
         }
+
+        print($"{TrackedObjects.Count} objects tracked");
     }
 
     public bool IsInBounds(IBoundsCheckable Obj)
