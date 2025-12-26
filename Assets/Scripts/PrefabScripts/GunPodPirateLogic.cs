@@ -1,17 +1,15 @@
 using MathNet.Numerics.Optimization.ObjectiveFunctions;
 using Sebastian;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.PlayerSettings;
 
-public class GunPodPirateLogic : BasicPirateDummyBehaviour
+public class GunPodPirateLogic : EnemyTemplate
 {
     private string State;
     public Rigidbody2D PlayerRb;
     public PolygonCollider2D pcollider;
     public Transform PlayerTransform;
 
-    private float DetectionDistance = 200;
+    private float DetectionDistance = 420;
     private bool SeesPlayer;
     private float aimingThreshold = 5f; // Degrees within target to start firing
 

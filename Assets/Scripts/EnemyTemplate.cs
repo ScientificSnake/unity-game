@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
 {
-    public float Health;
+    public float Health = 1;
     public Rigidbody2D rb;
     public Rigidbody2D Rigidbody2 => rb;
 
@@ -24,7 +24,6 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        Health = 1;
         if (PlayerRef == null)
         {
             PlayerRef = GameObject.FindWithTag("Player");

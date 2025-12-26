@@ -9,8 +9,10 @@ public class CameraFollowScript : MonoBehaviour
     private float LightCenteringRate;
     private float TrueDeadZone = 0.05f;
 
-    public float maxCamZoom = 300;
+    public float maxCamZoom = 440;
     public float minCamZoom = 100;
+
+    public float CameraStartingZoom = 420;
 
 
     public PlayerObjectScript PlayerReference;
@@ -23,6 +25,8 @@ public class CameraFollowScript : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+
+        cam.orthographicSize = CameraStartingZoom;
 
         GameObject PlayerGO = GameObject.FindWithTag("Player");
         PlayerReference = PlayerGO.GetComponent<PlayerObjectScript>();

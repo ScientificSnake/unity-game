@@ -1,10 +1,8 @@
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Unity.Multiplayer.Center.Common;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class TechData : MonoBehaviour
 {
@@ -35,7 +33,7 @@ public class TechData : MonoBehaviour
 
     #region Node Data
     [System.Serializable]
-    public class TechNode
+    public class HullNode: ITechNode
     {
         public string SysName { get; }
         public string NodeType { get; }
@@ -44,13 +42,12 @@ public class TechData : MonoBehaviour
         [JsonIgnore]
         public Action<object> MutationFunc { get; }
 
-
         public int Price { get; }
         public string[] DependencyNodes { get; }
         public string DisplayText { get; }
         public string DisplayTitle { get; }
 
-        public TechNode(string sysName, string nodeType, Action<object> mutationFunc, int price, string displayText, string displayTitle, string[] dependencyNodes = null)
+        public HullNode(string sysName, string nodeType, Action<object> mutationFunc, int price, string displayText, string displayTitle, string[] dependencyNodes = null)
         {
             SysName = sysName;
             NodeType = nodeType;
@@ -65,11 +62,11 @@ public class TechData : MonoBehaviour
         }
     }
 
-    public static Dictionary<string, TechNode> HullOptionsDataDict = new()
+    public static Dictionary<string, HullNode> HullOptionsDataDict = new()
     {
         {
             "LynchpinHullNode",
-            new TechNode(
+            new HullNode(
                 "LynchpinHullNode",
                 "HullOption",
                 HullStatsMutationFunctions.ApplyBasicHull,
@@ -80,7 +77,7 @@ public class TechData : MonoBehaviour
         },
         {
             "SwallowHullNode",
-            new TechNode(
+            new HullNode(
                 "SwallowHullNode",
                 "HullOption",
                 HullStatsMutationFunctions.ApplySecondHull,
@@ -92,7 +89,7 @@ public class TechData : MonoBehaviour
         },
         {
             "ScorpionHullNode",
-            new TechNode(
+            new HullNode(
                 "ScorpionHullNode",
                 "HullOption",
                 HullStatsMutationFunctions.ApplyScorpionHull,
@@ -104,7 +101,7 @@ public class TechData : MonoBehaviour
         },
         {
             "TrophyHullNode",
-            new TechNode(
+            new HullNode(
                 "TrophyHullNode",
                 "HullOption",
                 HullStatsMutationFunctions.ApplyTrophyHull,
@@ -116,7 +113,7 @@ public class TechData : MonoBehaviour
         },
         {
             "RavenHullNode",
-            new TechNode(
+            new HullNode(
                 "RavenHullNode",
                 "HullOption",
                 HullStatsMutationFunctions.ApplyRavenHull,
@@ -128,8 +125,6 @@ public class TechData : MonoBehaviour
         }
     };
     #endregion
-    #region Node functions for mutation of base stats
-    [System.Serializable]
     private static class HullStatsMutationFunctions//RULES TO MAKE IT FEEL GOOD- REDUCE THRUST=REDUCE TURN RATE ADD THRUST=ADD TURN RATE
     {
         public static void ApplyBasicHull(object BaseStatsObj)  // Populating the dictionary of base stats
@@ -256,6 +251,16 @@ public class TechData : MonoBehaviour
             }
 
         }
-        #endregion
     }
+}
+
+
+public interface ITechNode
+{
+    string SysName { get; }
+    string[] DependencyNodes { get; }
+    bool IsNodePurchased { get; set; }
+    string DisplayTitle { get; }
+    string DisplayText { get; }
+    string NodeType { get; }
 }

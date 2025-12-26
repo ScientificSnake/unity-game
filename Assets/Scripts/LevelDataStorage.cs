@@ -1,9 +1,6 @@
-using JetBrains.Annotations;
-using NUnit.Framework;
-using NUnit.Framework.Constraints;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
@@ -29,11 +26,11 @@ public class LevelDataStorage
         public List<string> MajorBoonPool; // sys names for active major boons
         public List<string> StatNodes;
 
-        private static List<string> PurchasedTechNodes(Dictionary<string, TechData.TechNode> nodes)
+        private static List<string> PurchasedTechNodes(Dictionary<string, TechData.HullNode> nodes)
         {
             List<string> PurchasedTechNodesysNames = new();
 
-            foreach (TechData.TechNode node in nodes.Values)
+            foreach (TechData.HullNode node in nodes.Values)
             {
                 if (node.IsNodePurchased == true)
                 {
@@ -137,7 +134,7 @@ public class LevelDataStorage
         /// <summary>
         /// Level ManagerConstructor
         /// </summary>
-        public LevelManager(LevelData leveldata, Dictionary<string, TechData.TechNode> nodeData)
+        public LevelManager(LevelData leveldata, Dictionary<string, TechData.HullNode> nodeData)
         {
             RootLevelData = leveldata;
 

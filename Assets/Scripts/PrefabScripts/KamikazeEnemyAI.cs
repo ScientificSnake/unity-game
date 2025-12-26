@@ -1,14 +1,5 @@
-using MathNet.Numerics;
-using NUnit.Framework.Internal.Filters;
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Authentication.ExtendedProtection;
-using UnityEditor.Build;
-using UnityEditor.SceneManagement;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.Rendering;
-using static UnityEditor.PlayerSettings;
 
 public class KamikazeEnemyAI : EnemyTemplate
 {
@@ -104,7 +95,7 @@ public class KamikazeEnemyAI : EnemyTemplate
         PlayerDetectionRadius = 2000;
 
         BlastForce = 100;
-        DamageRadius = 100;
+        DamageRadius = 150;
         ExplosionDamage = 600;
         FuseTime = 2f;
         ThrottleDegreeThreshold = 10;
