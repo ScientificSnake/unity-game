@@ -1,11 +1,10 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 public class BoundsEnforcer : MonoBehaviour
 {
-    public static List<IBoundsCheckable> TrackedObjects = new List<IBoundsCheckable>();
+    private static List<IBoundsCheckable> TrackedObjects = new List<IBoundsCheckable>();
 
     public static Vector2 MinBounds;
     public static Vector2 MaxBounds;

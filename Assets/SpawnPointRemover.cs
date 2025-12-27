@@ -9,8 +9,8 @@ public class SpawnPointRemover : MonoBehaviour
         Color color = spriteRenderer.color;
 
         color.a = 0;
-        //spriteRenderer.color = color;
-        // disable the sprite renderer
+        spriteRenderer.color = color;
+        //disable the sprite renderer
     }
 
     public void Start()

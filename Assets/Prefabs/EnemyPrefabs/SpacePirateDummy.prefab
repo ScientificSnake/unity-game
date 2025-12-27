@@ -510,12 +510,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   Health: 0
   rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
+  localMiniMapIcon: {fileID: 1242634201591264772, guid: 9743a51c01e0cf1458f1fec0527727b0, type: 3}
   Fuel: 0
   MaxAccel: 0
   Throttle: 0
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
+  FuelUsage: 0
+  rotationDegreesPerSeconds: 0
+  spriteRenderer: {fileID: 0}
 --- !u!82 &-7720210049202602790
 AudioSource:
   m_ObjectHideFlags: 0

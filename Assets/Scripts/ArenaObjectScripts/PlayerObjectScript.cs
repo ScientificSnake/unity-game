@@ -11,8 +11,14 @@ using System.Linq;
 using Sebastian;
 using NUnit.Framework.Constraints;
 
-public class PlayerObjectScript : MonoBehaviour
+public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 {
+    [Header("MiniMapTracking")]
+    public bool SeenByPlayer => true;
+    public Sprite LocalMiniMapIcon;
+    public Sprite MiniMapIcon => LocalMiniMapIcon;
+    public Rigidbody2D Rigidbody2 => rb;
+
     public Rigidbody2D rb;
     private PolygonCollider2D PolygonCollider;
     private SpriteRenderer spriteRenderer;
@@ -64,8 +70,22 @@ public class PlayerObjectScript : MonoBehaviour
         inputManager = new InArenaControls();
 
         inputManager.Player.LAlt.performed += LAlt_performed;
+        inputManager.Player.QPress.performed += KeyQPress;
 
         inputManager.Enable();
+    }
+
+    private void KeyQPress(InputAction.CallbackContext obj)
+    {
+        Debug.Log("$<color=green> Q press detected");
+        if (MiniMapRegister.MiniMapShown)
+        {
+            MiniMapRegister.DisableMiniMap();
+        }
+        else
+        {
+            MiniMapRegister.EnableMiniMap();
+        }
     }
 
     private void LAlt_performed(InputAction.CallbackContext context)
@@ -210,6 +230,8 @@ public class PlayerObjectScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //add to minimap tracker
+        MiniMapRegister.Register(this);
 
         #region Collider setup
 
@@ -260,6 +282,8 @@ public class PlayerObjectScript : MonoBehaviour
         #endregion
     }
 
+    public float BaseHealth;
+
     public void ApplyRoundStats()
     {
         maxTurnSpeedDPS = BaseRoundStats.MaxTurnRate;
@@ -268,6 +292,7 @@ public class PlayerObjectScript : MonoBehaviour
         transform.localScale = new Vector3(BaseRoundStats.ScaleFactor, BaseRoundStats.ScaleFactor);
         Fuel = BaseRoundStats.BaseFuel * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
         Offset = BaseRoundStats.GunOffset;
+        BaseHealth = BaseRoundStats.Health;
         Health = BaseRoundStats.Health;
     }
 
@@ -323,6 +348,7 @@ public class PlayerObjectScript : MonoBehaviour
     {
         if (Health <= 0)
         {
+            //MiniMapRegister.DisableMiniMap();
             ManagerScript.CurrentLevelManagerInstance.GameOver();
             print($"Player has been slimed");
             // Handle player destruction (e.g., trigger game over, respawn, etc.)

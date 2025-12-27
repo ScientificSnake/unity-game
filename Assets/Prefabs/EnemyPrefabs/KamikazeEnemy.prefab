@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   rb: {fileID: 0}
+  localMiniMapIcon: {fileID: 1242634201591264772, guid: 9743a51c01e0cf1458f1fec0527727b0, type: 3}
   Fuel: 0
   MaxAccel: 0
   Throttle: 0

@@ -2,11 +2,16 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
+public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
 {
     public float Health = 1;
     public Rigidbody2D rb;
     public Rigidbody2D Rigidbody2 => rb;
+
+    [Header("Mini map tracking")]
+    public Sprite localMiniMapIcon;
+    public Sprite MiniMapIcon => localMiniMapIcon;
+    public bool SeenByPlayer => true;
 
     [Header("Movement")]
     public float Fuel;
@@ -16,6 +21,8 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
     public float rotationDegreesPerSeconds;
 
     public SpriteRenderer spriteRenderer;
+
+    [Header("References")]
     public static GameObject PlayerRef;
     public static PlayerObjectScript PlayerScriptRef;
 
@@ -30,6 +37,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
             PlayerScriptRef = PlayerRef.GetComponent<PlayerObjectScript>();
         }
         BoundsEnforcer.Register(this);
+        MiniMapRegister.Register(this);
     }
 
     public void ApplyDamage(float damage)
@@ -40,6 +48,12 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
         {
             DestructSelf();
         }
+    }
+
+    protected void OnDestroy()
+    {
+        MiniMapRegister.DeRegister(this);
+        BoundsEnforcer.DeRegister(this);
     }
 
     public Vector2 RotateVectorByAngle(Vector2 sourceVector, float angle)
@@ -83,7 +97,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable
 
         //audio.PlayOneShot()
 
-
+        MiniMapRegister.DeRegister(this);
         rb.angularVelocity = 3000;
         StartCoroutine(DestroyInSeconds(0.5f));
     }

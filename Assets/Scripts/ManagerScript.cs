@@ -147,6 +147,7 @@ public class ManagerScript : MonoBehaviour
 
     public GameObject TutorialLayoutPrefab;
     public GameObject XandersLevel1;
+    public GameObject TutorialLayoutRound2;
 
     #endregion
 

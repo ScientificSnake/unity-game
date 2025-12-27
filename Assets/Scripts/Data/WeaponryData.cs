@@ -170,7 +170,7 @@ namespace Sebastian
                 // ze rocket
                 3,
                 new Weapon(WeaponryActions.BasicRocketSpawn,
-                    new WeaponParameters {RPM = 30, MaxDegreeError = 4, AcceleratioRate = 500, FuelSeconds = 5, RecoilForce = 0, Damage = 155}
+                    new WeaponParameters {RPM = 30, MaxDegreeError = 4, AcceleratioRate = 500, FuelSeconds = 5, RecoilForce = 0, Damage = 500}
                 )
             },
             {
