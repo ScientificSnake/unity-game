@@ -129,6 +129,7 @@ public class KamikazeEnemyAI : EnemyTemplate
 
     protected void Explode()
     {
+        MiniMapRegister.DeRegister(this);
         // VFX
         GameObject explosion = Instantiate(ManagerScript.Instance.ExplosionSystem);
 

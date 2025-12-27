@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class MiniMapRegister : MonoBehaviour
 {
+    public float ParentScale;
+    private LineRenderer _boundsLineRenderer;
+
     private static readonly Vector2 _BaseMiniMapScale = new Vector2(1920 - 80, 1080 - 80);
 
     //private static int _IconSortingOrder = 2003;
@@ -25,7 +28,7 @@ public class MiniMapRegister : MonoBehaviour
     public static bool MiniMapShown;
     private static MiniMapRegister Instance;
     private Image BgImage;
-    
+
     private static void CalculateMiniMapScale()
     {
         Vector2 MapDimensions = new();
@@ -39,8 +42,10 @@ public class MiniMapRegister : MonoBehaviour
         float yScale = _BaseMiniMapScale.y / MapDimensions.y;
 
         float scale = Mathf.Min(xScale, yScale);
-        
+
         MiniMapScale = scale;
+
+        print($"<color=green>Minimap scale: {MiniMapScale}, Parent scale: {Instance.ParentScale}</color>");
     }
 
     public static void Register(IMiniMapTrackable obj)
@@ -65,14 +70,13 @@ public class MiniMapRegister : MonoBehaviour
         Instance._canvasGroup.alpha = 1;
         MiniMapShown = true;
         CalculateMiniMapScale();
-        print($"<color=green> minimap scale is {MiniMapScale}");
     }
 
     public static void DisableMiniMap()
     {
         Instance.ClearMiniMap();
         Instance._canvasGroup.alpha = 0;
-        
+
         MiniMapShown = false;
     }
 
@@ -91,6 +95,7 @@ public class MiniMapRegister : MonoBehaviour
         }
         MiniMapIcons.Clear();
     }
+
     public void RenderMiniMap()
     {
         print($"<color=yellow>minimap rendering, {TrackedObjs.Count} objects being tracked");
@@ -113,7 +118,7 @@ public class MiniMapRegister : MonoBehaviour
                 icon = null;
             }
 
-            // Create icon if
+            // Create icon if it doesn't exist
             if (icon == null)
             {
                 icon = new GameObject($"{key}_Icon");
@@ -123,8 +128,9 @@ public class MiniMapRegister : MonoBehaviour
                 MiniMapIcons[key] = icon;
             }
 
-            // Update every frame
-            Vector2 iconPos = trackedObj.Rigidbody2.position * MiniMapScale;
+            // Update every frame - scale world position and compensate for parent scale
+            Vector2 iconPos = (trackedObj.Rigidbody2.position * MiniMapScale) / ParentScale;
+
             RectTransform rectTransform;
 
             if (!icon.TryGetComponent(out rectTransform))
@@ -164,6 +170,8 @@ public class MiniMapRegister : MonoBehaviour
         Instance = this;
         BgImage = gameObject.GetComponent<Image>();
         _canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        ParentScale = 4.89f/2;
+        _boundsLineRenderer = gameObject.AddComponent<LineRenderer>();
     }
 
     private void Start()
