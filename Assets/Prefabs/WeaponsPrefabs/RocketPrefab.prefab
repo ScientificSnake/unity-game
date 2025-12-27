@@ -107,12 +107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c08dcdd0e94d64892fdcb45920478a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RocketBehaviorScript
+  rb: {fileID: 6572999417644618937}
+  tcollider: {fileID: 0}
   Fuel: 0
   Acceleration: 0
   newSprite: {fileID: 8440275070517590014, guid: c72aa98da11432245bd6c44a8ce36abc, type: 3}
   Damage: 0
-  tcollider: {fileID: 0}
-  rb: {fileID: 6572999417644618937}
 --- !u!96 &3050293768668445071
 TrailRenderer:
   serializedVersion: 3

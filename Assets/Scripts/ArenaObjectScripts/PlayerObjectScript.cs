@@ -124,11 +124,6 @@ public class PlayerObjectScript : MonoBehaviour
         }
     }
 
-    private float DegToRadian(float rad)
-    {
-        return Mathf.Deg2Rad * rad;
-    }
-
     private void OnDisable()
     {
         inputManager.Disable();
