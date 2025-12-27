@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class MiniMapRegister : MonoBehaviour
 {
     public float ParentScale;
-    private LineRenderer _boundsLineRenderer;
 
     private static readonly Vector2 _BaseMiniMapScale = new Vector2(1920 - 80, 1080 - 80);
 
@@ -171,7 +170,6 @@ public class MiniMapRegister : MonoBehaviour
         BgImage = gameObject.GetComponent<Image>();
         _canvasGroup = gameObject.GetComponent<CanvasGroup>();
         ParentScale = 4.89f/2;
-        _boundsLineRenderer = gameObject.AddComponent<LineRenderer>();
     }
 
     private void Start()

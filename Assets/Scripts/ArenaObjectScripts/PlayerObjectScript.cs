@@ -139,7 +139,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
                 rb.AddForce(instantaneousAccelerationVector);
 
-                audios.PlayOneShot(ShotSound);
+                audios.PlayOneShot(ShotSound, 0.5f);
             }
         }
     }
@@ -298,7 +298,6 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
     public void ResetRoundStats()
     {
-
         print("reseting stats to round start");
         ApplyRoundStats();
         rb.linearVelocity = Vector2.zero;

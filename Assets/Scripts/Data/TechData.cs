@@ -209,7 +209,7 @@ public class TechData : MonoBehaviour
             if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
             {
                 print("detected dict object");
-                BaseStats.Health = 1100; // yeah no we ain't doin no fucking module health
+                BaseStats.Health = 5000; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 80; // degress per second 
                 BaseStats.Acceleration = 4000;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.Mass = 3f;

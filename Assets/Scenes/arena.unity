@@ -1413,6 +1413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e350cce83aaf57441b0640171a5cec11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParentScale: 0
 --- !u!225 &1018764567
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1588,7 +1589,7 @@ GameObject:
   - component: {fileID: 1125136022}
   - component: {fileID: 1125136026}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UiCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
