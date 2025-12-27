@@ -1,5 +1,3 @@
-using JetBrains.Annotations;
-using System.Timers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,8 +7,8 @@ public class CameraFollowScript : MonoBehaviour
     private float LightCenteringRate;
     private float TrueDeadZone = 0.05f;
 
-    public float maxCamZoom = 440;
-    public float minCamZoom = 100;
+    private float maxCamZoom = 440;
+    private float minCamZoom = 100;
 
     public float CameraStartingZoom = 420;
 

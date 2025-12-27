@@ -19,6 +19,7 @@ public class PlayerObjectScript : MonoBehaviour
 
     public AudioSource audios;
     public AudioClip collisionSound;
+    public AudioClip ShotSound;
 
     public float FuelUsage = 1;
 
@@ -117,6 +118,8 @@ public class PlayerObjectScript : MonoBehaviour
                 Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad) * CurrentMainWeaponParams.RecoilForce), (Mathf.Sin(heading_rad) * CurrentMainWeaponParams.RecoilForce));
 
                 rb.AddForce(instantaneousAccelerationVector);
+
+                audios.PlayOneShot(ShotSound);
             }
         }
     }

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4920187038524122764}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 337.9, y: -52.4, z: 0}
+  m_LocalPosition: {x: 380, y: -83, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -731,13 +731,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
   Fuel: 0
   MaxAccel: 0
   Throttle: 0
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
-  PlayerRef: {fileID: 0}
+  FuelUsage: 0
+  rotationDegreesPerSeconds: 0
+  spriteRenderer: {fileID: 0}
   PlayerRb: {fileID: 0}
   pcollider: {fileID: 0}
   PlayerTransform: {fileID: 0}

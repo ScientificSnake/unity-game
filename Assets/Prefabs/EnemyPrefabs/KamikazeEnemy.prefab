@@ -50,17 +50,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 0
   rb: {fileID: 0}
-  rotationDegreesPerSeconds: 0
   Fuel: 0
   MaxAccel: 0
   Throttle: 0
   FuelUsage: 0
-  PlayerRef: {fileID: 0}
-  PlayerScriptRef: {fileID: 0}
+  rotationDegreesPerSeconds: 0
+  spriteRenderer: {fileID: 0}
   PlayerDetectionRadius: 0
   State: LockedPlayer
-  BoomBoomSound: {fileID: 8300000, guid: 498cb2070dec76b42aaef1eb2b92f739, type: 3}
+  SpriteAngleOffset: 0
+  BoomBoomSound: {fileID: 8300000, guid: 15f266f3309b2694d83ea4334649022f, type: 3}
   Audio: {fileID: 0}
+  FuseTime: 0
+  ExplosionDamage: 0
+  DamageRadius: 0
+  BlastForce: 0
+  ThrottleDegreeThreshold: 0
+  ManualTargetingThreshold: 50
 --- !u!212 &7326475408682284362
 SpriteRenderer:
   m_ObjectHideFlags: 0

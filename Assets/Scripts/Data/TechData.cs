@@ -81,7 +81,7 @@ public class TechData : MonoBehaviour
                 "SwallowHullNode",
                 "HullOption",
                 HullStatsMutationFunctions.ApplySecondHull,
-                67,
+                70,
                 "A faster more agile hull with lower base health and more (instability)\n\nSTATS:\nHealth: 85\nAcceleration Rate : m/s/s\nTurn Rate: degrees/s\nSpecial Ability: None\n\nIf the Lynchpin is the bricks, then the Swallow is the mortar. The PLF Navy uses this as a basic interdictor fighter, and occasionally they strap fuel pods onto it and use it for escort missions.",
                 "SI-290 Swallow",
                 new string[] {"LynchpinHullNode"}   // this some stupid positional argument type shi

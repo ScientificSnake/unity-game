@@ -10,7 +10,6 @@ public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
 
-
     public static System.Random random = new();
 
     public static float DifficultyDeviationTolerance = 0.1f;
@@ -131,9 +130,6 @@ public class LevelDataStorage
         }
         #endregion
 
-        /// <summary>
-        /// Level ManagerConstructor
-        /// </summary>
         public LevelManager(LevelData leveldata, Dictionary<string, TechData.HullNode> nodeData)
         {
             RootLevelData = leveldata;
@@ -325,56 +321,86 @@ public class LevelDataStorage
         public void EndRoundRoutine()
         {
             CurrentRound++;
-            Debug.Log("-------------------------------------- End of round test");
-            GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
-            CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
-            ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.FadeInCanvasImage(RoundOverCG, RoundEndFadeInTime));
-
-            GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
-            // disable player inputs
-            PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
-            PlayerScript.inputManager.Player.Disable();
-            PlayerScript.inputManager.CameraControls.Disable();
-            Camera MainCam = Camera.main;
-
-            CameraFollowScript CamScript = MainCam.GetComponent<CameraFollowScript>();
-
-            CamScript.inputManager.CameraControls.Disable();
-
-            PlayerScript.throttle = 0;
-
-            void RunAfterFadeIn()
+            if (CurrentRound == Rounds.Count)
             {
-                //set velo to 0
+                Debug.Log($"<color=green> last round detected");
+                GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
+                // disable player inputs
+                PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
+                PlayerScript.inputManager.Player.Disable();
+                PlayerScript.inputManager.CameraControls.Disable();
+                Camera MainCam = Camera.main;
 
-                Rigidbody2D PlayerRb = PlayerObj.GetComponent<Rigidbody2D>();
-                PlayerRb.linearVelocity = Vector2.zero;
-                PlayerRb.angularVelocity = 0;
+                CameraFollowScript CamScript = MainCam.GetComponent<CameraFollowScript>();
+
+                CamScript.inputManager.CameraControls.Disable();
+
+                PlayerScript.throttle = 0;
+
+                GameObject.Destroy(PlayerObj);
 
                 GameObject Layout = GameObject.FindGameObjectWithTag("MapLayoutTag");
-                UnityEngine.Object.Destroy(Layout);
+                GameObject.Destroy(Layout);
 
-                GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
-                RoundOverScreen.GetComponent<RoundOverImage>().EndOfRoundButtons.SetActive(true);
-                CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
-                RoundOverCG.interactable = true;
-                RoundOverCG.blocksRaycasts = true;
+                GameObject[] Artifacts = GameObject.FindGameObjectsWithTag("InstantiatedArtifact");
 
-                if (CurrentRound == Rounds.Count)
+                foreach (GameObject Artifact in Artifacts)
                 {
-                    Debug.Log("Last round reached at round " + CurrentRound);
+                    GameObject.Destroy(Artifact);
                 }
+
+                Debug.Log("Last round reached at round " + CurrentRound);
+
+                ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.LoadSceneRoutine("WinScreen"));
             }
-
-            ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);
-
-            // we can just get rid of all bullets now, its spreads the frame hitch anyways so
-
-            GameObject[] weaponArtifacts = GameObject.FindGameObjectsWithTag("InstantiatedArtifact");
-
-            foreach ( GameObject weaponArtifact in weaponArtifacts)
+            else
             {
-                UnityEngine.Object.Destroy(weaponArtifact);
+                Debug.Log("-------------------------------------- End of round test");
+                GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
+                CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
+                ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.FadeInCanvasImage(RoundOverCG, RoundEndFadeInTime));
+
+                GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
+                // disable player inputs
+                PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
+                PlayerScript.inputManager.Player.Disable();
+                PlayerScript.inputManager.CameraControls.Disable();
+                Camera MainCam = Camera.main;
+
+                CameraFollowScript CamScript = MainCam.GetComponent<CameraFollowScript>();
+
+                CamScript.inputManager.CameraControls.Disable();
+
+                PlayerScript.throttle = 0;
+
+                void RunAfterFadeIn()
+                {
+                    //set velo to 0
+
+                    Rigidbody2D PlayerRb = PlayerObj.GetComponent<Rigidbody2D>();
+                    PlayerRb.linearVelocity = Vector2.zero;
+                    PlayerRb.angularVelocity = 0;
+
+                    GameObject Layout = GameObject.FindGameObjectWithTag("MapLayoutTag");
+                    UnityEngine.Object.Destroy(Layout);
+
+                    GameObject RoundOverScreen = GameObject.FindGameObjectWithTag("RoundOverScreen");
+                    RoundOverScreen.GetComponent<RoundOverImage>().EndOfRoundButtons.SetActive(true);
+                    CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
+                    RoundOverCG.interactable = true;
+                    RoundOverCG.blocksRaycasts = true;
+                }
+
+                ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);
+
+                // we can just get rid of all bullets now, its spreads the frame hitch anyways so
+
+                GameObject[] weaponArtifacts = GameObject.FindGameObjectsWithTag("InstantiatedArtifact");
+
+                foreach (GameObject weaponArtifact in weaponArtifacts)
+                {
+                    UnityEngine.Object.Destroy(weaponArtifact);
+                }
             }
         }
 

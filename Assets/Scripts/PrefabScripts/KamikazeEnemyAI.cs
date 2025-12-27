@@ -91,13 +91,13 @@ public class KamikazeEnemyAI : EnemyTemplate
     {
         Fuel = 50 / Time.fixedDeltaTime;
         FuelUsage = 1;
-        MaxAccel = 200;
+        MaxAccel = 100;
         PlayerDetectionRadius = 2000;
 
         BlastForce = 100;
         DamageRadius = 150;
         ExplosionDamage = 600;
-        FuseTime = 2f;
+        FuseTime = 0.1f;
         ThrottleDegreeThreshold = 10;
 
         rotationDegreesPerSeconds = 135;
