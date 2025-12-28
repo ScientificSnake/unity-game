@@ -147,6 +147,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject TutorialLayoutPrefab;
     public GameObject XandersLevel1;
     public GameObject TutorialLayoutRound2;
+    public GameObject TutorialLayoutRound0;
 
     #endregion
 
@@ -182,10 +183,10 @@ public class ManagerScript : MonoBehaviour
 
             print($"Target sysname is {targetSysName}");
 
-            Action<LevelDataStorage.LevelManager.BaseStats> targetMutationFunc = TechData.HullOptionsDataDict[targetSysName].MutationFunc;
+            TechData.HullMutation targetMutationFunc = TechData.HullOptionsDataDict[targetSysName].MutationFunc;
 
             // populate BaseStats Dictionary 
-            targetMutationFunc(CurrentLevelManagerInstance.Stats);
+            targetMutationFunc(ref CurrentLevelManagerInstance.RootStats);
 
             StartCoroutine(LoadSceneRoutine("Arena"));
         }

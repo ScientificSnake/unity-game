@@ -56,7 +56,7 @@ public static class TuturialLevelData
             }
         },
         new string[] { "EnemyTag" },
-        new GameObject[] { ManagerScript.Instance.TutorialLayoutPrefab, ManagerScript.Instance.TutorialLayoutRound2 },
+        new GameObject[] { ManagerScript.Instance.TutorialLayoutRound0, ManagerScript.Instance.TutorialLayoutPrefab},
         Endless: false,
         new Vector2(-2000, -2000),
         new Vector2(2000, 2000)

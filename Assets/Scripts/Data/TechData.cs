@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using Unity.Multiplayer.Center.Common;
 using UnityEngine;
 
 public class TechData : MonoBehaviour
@@ -31,23 +30,25 @@ public class TechData : MonoBehaviour
         return true;
     }
 
+
+    public delegate void HullMutation(ref LevelDataStorage.LevelManager.BaseStats stats);
     #region Node Data
     [System.Serializable]
-    public class HullNode: ITechNode
+    public class HullNode : ITechNode
     {
         public string SysName { get; }
         public string NodeType { get; }
         public bool IsNodePurchased { get; set; }
 
         [JsonIgnore]
-        public Action<object> MutationFunc { get; }
+        public HullMutation MutationFunc { get; }
 
         public int Price { get; }
         public string[] DependencyNodes { get; }
         public string DisplayText { get; }
         public string DisplayTitle { get; }
 
-        public HullNode(string sysName, string nodeType, Action<object> mutationFunc, int price, string displayText, string displayTitle, string[] dependencyNodes = null)
+        public HullNode(string sysName, string nodeType, HullMutation mutationFunc, int price, string displayText, string displayTitle, string[] dependencyNodes = null)
         {
             SysName = sysName;
             NodeType = nodeType;
@@ -127,134 +128,103 @@ public class TechData : MonoBehaviour
     #endregion
     private static class HullStatsMutationFunctions//RULES TO MAKE IT FEEL GOOD- REDUCE THRUST=REDUCE TURN RATE ADD THRUST=ADD TURN RATE
     {
-        public static void ApplyBasicHull(object BaseStatsObj)  // Populating the dictionary of base stats
+        public static void ApplyBasicHull(ref LevelDataStorage.LevelManager.BaseStats BaseStats)
         {
             Debug.Log("Test applied basic hull");
 
-            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)  // OH YEAH REFERENCE MUTATION
-            {
-                BaseStats.Health = 1000; // yeah no we ain't doin no fucking module health
-                BaseStats.MaxTurnRate = 107; // degress per second 
-                BaseStats.Acceleration = 5000;  // SUBJECT TO FURTHER CHANGE neutons of thrust
-                BaseStats.Mass = 2.5f; //mass in kg f-15 weighs 20 tons gross weight NVM THATS A LIE I HAVE NO CLUE -might be multiplicative
+            BaseStats.Health = 1000;
+            BaseStats.MaxTurnRate = 107;
+            BaseStats.Acceleration = 5000;
+            BaseStats.Mass = 2.5f;
+            BaseStats.ScaleFactor = 1.75f;
+            BaseStats.GunOffset = new Vector2(10, 0);
+            BaseStats.BaseFuel = 60;
+            BaseStats.thrusterLayout = Thrusters.LynchpinThrusterSet;
 
-                BaseStats.thrusterLayout = Thrusters.LynchpinThrusterSet;
-
-                BaseStats.ScaleFactor = 1.75f; //hull size scale factor
-                BaseStats.GunOffset = new Vector2(10, 0); //gun offset from center of hull sprite
-
-                BaseStats.BaseFuel = 60; // Fuel in full thrust seconds
-
-                //Special abilities
-                BaseStats.DashAbility = false;
-                BaseStats.StealthAbility = false;
-                BaseStats.CarrierAbility = false;
-                BaseStats.WeaponSelection = 1; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)'
-                BaseStats.SelectedWeapon = Sebastian.WeaponryData.WeaponDict[1];  // possible moving to this method instead
-            }
-
+            BaseStats.DashAbility = false;
+            BaseStats.StealthAbility = false;
+            BaseStats.CarrierAbility = false;
+            BaseStats.WeaponSelection = 1;
+            BaseStats.SelectedWeapon = Sebastian.WeaponryData.WeaponDict[1];
         }
-        public static void ApplySecondHull(object BaseStatsObj)
+
+        public static void ApplySecondHull(ref LevelDataStorage.LevelManager.BaseStats BaseStats)
         {
             Debug.Log("test applied second hull");
-            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
-            {
-                // print("detected dict object");
-                BaseStats.Health = 850; // yeah no we ain't doin no fucking module health
-                BaseStats.MaxTurnRate = 112; // degress per second 
-                BaseStats.Acceleration = 5200;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats.Mass = 1.75f;
 
-                BaseStats.ScaleFactor = 1.9f; //hull size scale factor
-                BaseStats.BaseFuel = 50;
-                BaseStats.GunOffset = new Vector2(7, -1.1f);
+            BaseStats.Health = 850;
+            BaseStats.MaxTurnRate = 112;
+            BaseStats.Acceleration = 5200;
+            BaseStats.Mass = 1.75f;
+            BaseStats.ScaleFactor = 1.9f;
+            BaseStats.BaseFuel = 50;
+            BaseStats.GunOffset = new Vector2(7, -1.1f);
+            BaseStats.thrusterLayout = Thrusters.SwallowThrusterSet;
 
-                BaseStats.thrusterLayout = Thrusters.SwallowThrusterSet;
-
-                //Special abilities
-                BaseStats.DashAbility = false;
-                BaseStats.StealthAbility = false;
-                BaseStats.CarrierAbility = false;
-                BaseStats.WeaponSelection  = 1; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
-            }
-            else { print("argument not dictionary<string, int>"); }
+            BaseStats.DashAbility = false;
+            BaseStats.StealthAbility = false;
+            BaseStats.CarrierAbility = false;
+            BaseStats.WeaponSelection = 1;
         }
-        public static void ApplyScorpionHull(object BaseStatsObj)
+
+        public static void ApplyScorpionHull(ref LevelDataStorage.LevelManager.BaseStats BaseStats)
         {
             Debug.Log("test applied scorpion hull");
-            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
-            {
-                print("detected dict objec");
-                BaseStats.Health = 750; // yeah no we ain't doin no fucking module health
-                BaseStats.MaxTurnRate = 130; // degress per second 
-                BaseStats.Acceleration = 6000;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats.ReverseAcceleration = 10; //^ but in reverse (reverse thrust)
-                BaseStats.Mass = 1.5f;
-                BaseStats.ScaleFactor = 1.25f; //hull size scale factor
-                BaseStats.BaseFuel = 50;
-                BaseStats.GunOffset = new Vector2(15, 0.7f);
-                BaseStats.thrusterLayout = Thrusters.ScorpionThrusterSet;
 
-                //Special abilities
-                BaseStats.DashAbility = true;
-                BaseStats.StealthAbility = false;
-                BaseStats.CarrierAbility = false;
-                BaseStats.WeaponSelection = 2; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
-            }
+            BaseStats.Health = 750;
+            BaseStats.MaxTurnRate = 130;
+            BaseStats.Acceleration = 6000;
+            BaseStats.ReverseAcceleration = 10;
+            BaseStats.Mass = 1.5f;
+            BaseStats.ScaleFactor = 1.25f;
+            BaseStats.BaseFuel = 50;
+            BaseStats.GunOffset = new Vector2(15, 0.7f);
+            BaseStats.thrusterLayout = Thrusters.ScorpionThrusterSet;
+
+            BaseStats.DashAbility = true;
+            BaseStats.StealthAbility = false;
+            BaseStats.CarrierAbility = false;
+            BaseStats.WeaponSelection = 2;
         }
-        public static void ApplyTrophyHull(object BaseStatsObj)
+
+        public static void ApplyTrophyHull(ref LevelDataStorage.LevelManager.BaseStats BaseStats)
         {
             Debug.Log("test applied trophy hull");
 
-            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
-            {
-                print("detected dict object");
-                BaseStats.Health = 5000; // yeah no we ain't doin no fucking module health
-                BaseStats.MaxTurnRate = 80; // degress per second 
-                BaseStats.Acceleration = 4120;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats.Mass = 3f;
-                BaseStats.ScaleFactor = 1f; //hull size scale factor
-                BaseStats.BaseFuel = 100;
-                BaseStats.GunOffset = new Vector2(20, 0);  // bro is very large, rocket must be far infortn of him
+            BaseStats.Health = 5000;
+            BaseStats.MaxTurnRate = 80;
+            BaseStats.Acceleration = 4120;
+            BaseStats.Mass = 3f;
+            BaseStats.ScaleFactor = 1f;
+            BaseStats.BaseFuel = 100;
+            BaseStats.GunOffset = new Vector2(20, 0);
+            BaseStats.thrusterLayout = Thrusters.TrophyThrusterSet;
 
-                BaseStats.thrusterLayout = Thrusters.TrophyThrusterSet;
-
-                //Special abilities
-                BaseStats.DashAbility = false;
-                BaseStats.StealthAbility = false;
-                BaseStats.CarrierAbility = true;
-                BaseStats.WeaponSelection = 3; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
-            }
+            BaseStats.DashAbility = false;
+            BaseStats.StealthAbility = false;
+            BaseStats.CarrierAbility = true;
+            BaseStats.WeaponSelection = 3;
         }
-        public static void ApplyRavenHull(object BaseStatsObj)
+        public static void ApplyRavenHull(ref LevelDataStorage.LevelManager.BaseStats BaseStats)
         {
             Debug.Log("test applied raven hull");
-            if (BaseStatsObj is LevelDataStorage.LevelManager.BaseStats BaseStats)
-            {
-                print("detected dict object");
-                BaseStats.Health = 1000; // yeah no we ain't doin no fucking module health
-                BaseStats.MaxTurnRate = 110; // degress per second 
-                BaseStats.Acceleration = 5300;  // SUBJECT TO FURTHER CHANGE meters per second^2
-                BaseStats.Mass = 2.75f;
 
-                BaseStats.ScaleFactor = 0.7f; //hull size scale factor
-                BaseStats.BaseFuel = 60;    
-                BaseStats.GunOffset = new Vector2(10, 1);
+            BaseStats.Health = 1000;
+            BaseStats.MaxTurnRate = 110;
+            BaseStats.Acceleration = 5300;
+            BaseStats.Mass = 2.75f;
+            BaseStats.ScaleFactor = 0.7f;
+            BaseStats.BaseFuel = 60;
+            BaseStats.GunOffset = new Vector2(10, 1);
+            BaseStats.thrusterLayout = Thrusters.RavenThrusterSet;
 
-                BaseStats.thrusterLayout = Thrusters.RavenThrusterSet;
-
-                //Special abilities
-                BaseStats.DashAbility = false;
-                BaseStats.StealthAbility = true;
-                BaseStats.CarrierAbility = false;
-                BaseStats.WeaponSelection = 2; //adds which weapon dependant on which number is in here(corresponds with its weapon in the list)
-            }
-
+            BaseStats.DashAbility = false;
+            BaseStats.StealthAbility = true;
+            BaseStats.CarrierAbility = false;
+            BaseStats.WeaponSelection = 2;
         }
     }
 }
-
-
 public interface ITechNode
 {
     string SysName { get; }

@@ -31,7 +31,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
     public float CollsionDamageMultiplier = 0.02f;
 
-    public LevelDataStorage.LevelManager.BaseStats BaseRoundStats;
+    public LevelDataStorage.LevelManager.BaseStats RoundStats;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -253,7 +253,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
         #region initialize stats based on what hull is chosen
 
-        // BaseRoundStats = ManagerScript.CurrentLevelManagerInstance.Stats;
+        // RoundStats = ManagerScript.CurrentLevelManagerInstance.Stats;
         // string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
 
         ApplyRoundStats();
@@ -262,7 +262,9 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
         #region Weapon intialization
 
-        int WeaponIndex = (int)BaseRoundStats.WeaponSelection;
+        int WeaponIndex = (int)RoundStats.WeaponSelection;
+
+        print($"<color=yellow> weapon selection is {WeaponIndex}");
 
         Sebastian.WeaponryData.Weapon TargetWeapon = Sebastian.WeaponryData.WeaponDict[WeaponIndex];
 
@@ -273,12 +275,13 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         #endregion
 
         #region initialize thrusters
-        ThrusterRefs = Thrusters.ApplyThrusterSet(gameObject, BaseRoundStats.thrusterLayout);
+        ThrusterRefs = Thrusters.ApplyThrusterSet(gameObject, RoundStats.thrusterLayout);
         
-        foreach (Thrusters.Thruster thruster in BaseRoundStats.thrusterLayout.thrusters)
+        foreach (Thrusters.Thruster thruster in RoundStats.thrusterLayout.thrusters)
         {
             ThrusterBaseScales.Add(thruster.baseScale);
         }
+
         #endregion
     }
 
@@ -286,14 +289,14 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
     public void ApplyRoundStats()
     {
-        maxTurnSpeedDPS = BaseRoundStats.MaxTurnRate;
-        maxAcceleration = BaseRoundStats.Acceleration / 40;  // Dividing by 40 because Per second -> Per tick 40 tps
-        rb.mass = BaseRoundStats.Mass;
-        transform.localScale = new Vector3(BaseRoundStats.ScaleFactor, BaseRoundStats.ScaleFactor);
-        Fuel = BaseRoundStats.BaseFuel * 40; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
-        Offset = BaseRoundStats.GunOffset;
-        BaseHealth = BaseRoundStats.Health;
-        Health = BaseRoundStats.Health;
+        maxTurnSpeedDPS = RoundStats.MaxTurnRate;
+        maxAcceleration = RoundStats.Acceleration * Time.fixedDeltaTime;  // Dividing by 40 because Per second -> Per tick 40 tps
+        rb.mass = RoundStats.Mass;
+        transform.localScale = new Vector3(RoundStats.ScaleFactor, RoundStats.ScaleFactor);
+        Fuel = RoundStats.BaseFuel / Time.fixedDeltaTime; // Same reasoning as above ^^^^^ but this time now it is fuel usage for each tick
+        Offset = RoundStats.GunOffset;
+        BaseHealth = RoundStats.Health;
+        Health = RoundStats.Health;
     }
 
     public void ResetRoundStats()
@@ -303,7 +306,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0;
         throttle = 0;
-        Fuel = BaseRoundStats.BaseFuel / Time.fixedDeltaTime;
+        Fuel = RoundStats.BaseFuel / Time.fixedDeltaTime;
         transform.position = Vector3.zero;
     }
 

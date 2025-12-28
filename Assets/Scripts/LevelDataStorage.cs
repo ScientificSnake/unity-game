@@ -6,6 +6,7 @@ using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using System.Collections;
+using NUnit.Framework.Interfaces;
 public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
@@ -50,7 +51,7 @@ public class LevelDataStorage
             return new KeyValuePair<Action, int>(randomKey, dict[randomKey]);
         }
 
-        #region Helper methods for round generation
+        #region Helper methods for endless level generation
         private static int SumDifficultys(List<KeyValuePair<Action, int>> kvp_list)
         {
             int totalDifc = 0;
@@ -255,7 +256,7 @@ public class LevelDataStorage
 
         public Dictionary<string, float> LiveStats;
 
-        public class BaseStats
+        public struct BaseStats
         {
             public float Health;
             public float MaxTurnRate;
@@ -275,7 +276,7 @@ public class LevelDataStorage
             public Sebastian.WeaponryData.Weapon SelectedWeapon;
         }
 
-        public BaseStats Stats = new(); // Will be populated by the hull stats
+        public BaseStats RootStats = new(); // Will be populated by the hull stats
 
         public void InstantiatePlayerObject()
         {
@@ -404,22 +405,45 @@ public class LevelDataStorage
             }
         }
 
-        // Getoverhere start
-        public void StartRoundRoutine()
+        public class PlayerStatModifers
         {
+            public float HealthAddtMult;
+            public float FuelAddtMult;
+
+            public BaseStats MutateBaseStats(BaseStats stats)
+            {
+                BaseStats result = stats;
+                result.Health = stats.Health * HealthAddtMult;
+                result.BaseFuel = stats.BaseFuel * FuelAddtMult;
+
+                return result;
+            }
+
+            public PlayerStatModifers()
+            {
+                HealthAddtMult = 1;
+                FuelAddtMult = 1;
+            }
+        }
+        public PlayerStatModifers Modifers;
+
+        // Getoverhere start
+        public void StartRoundRoutine() 
+        {   
             Time.timeScale = 1.0f;
 
             GameObject Player;
             PlayerObjectScript PlayerScript;
             if (CurrentRound == 0)
             {
+                Modifers = new();
+
                 ManagerScript.CurrentLevelManagerInstance.InstantiatePlayerObject();
                 Player = GameObject.FindWithTag("Player");
                 SpriteRenderer spriteRenderer = Player.GetComponent<SpriteRenderer>();
 
                 spriteRenderer.sprite = ManagerScript.Instance.SpriteDict[ManagerScript.CurrentLevelManagerInstance.selectedHull];
                 PlayerScript = Player.GetComponent<PlayerObjectScript>();
-                PlayerScript.BaseRoundStats = Stats;
             } else
             {
                 Player = GameObject.FindWithTag("Player");
@@ -428,6 +452,9 @@ public class LevelDataStorage
                 PlayerScript.inputManager.Player.Enable();
                 PlayerScript.mainCamera.GetComponent<CameraFollowScript>().inputManager.CameraControls.Enable();
             }
+
+            PlayerScript.RoundStats = Modifers.MutateBaseStats(RootStats);
+            Debug.Log($"<color=yellow> Player weapon selection is {RootStats.WeaponSelection}, turns into {PlayerScript.RoundStats.WeaponSelection}");
 
             PlayerScript.ResetRoundStats();
             // hide the round over screen
@@ -440,15 +467,13 @@ public class LevelDataStorage
 
                 CanvasGroup canvasGroup = RoundOverScreen.GetComponent<CanvasGroup>();
                 canvasGroup.alpha = 0;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
             }
             catch(Exception e)
             {
                 Debug.LogError("Failed setting round overscreen to transparent " + e);
                 return;
-            }
-
-            foreach (Dictionary<int, List<Action>> roundpt in Rounds) {
-                Debug.Log($"round - > {roundpt}");
             }
 
             Debug.Log($"There are {Rounds.Count} Rounds");

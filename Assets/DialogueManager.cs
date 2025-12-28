@@ -7,6 +7,10 @@ using UnityEngine.InputSystem;
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private GameObject _dialogueBox;
+    [SerializeField] private GameObject _dialogueText;
+
+    [SerializeField] private AudioClip clickSound;
+    [SerializeField] private AudioSource auxsource;
 
     public InArenaControls inputManager;
 
@@ -21,7 +25,9 @@ public class DialogueManager : MonoBehaviour
 
     private void EnterEvent(InputAction.CallbackContext obj)
     {
+        auxsource.PlayOneShot(clickSound);
         _dialogueBox.SetActive(false);
+        _dialogueText.SetActive(false);
         inputManager.Dialogue.Disable();
         Time.timeScale = 1;
         Camera.main.GetComponent<CameraFollowScript>().inputManager.CameraControls.Enable();
@@ -32,6 +38,7 @@ public class DialogueManager : MonoBehaviour
     public static void DisplayDialogue(string text, bool hard)
     {
         Instance._dialogueBox.SetActive(true);
+        Instance._dialogueText.SetActive(true); // unity i dont trust you to properly do inheiretance
 
         if (hard)
         {
@@ -41,7 +48,7 @@ public class DialogueManager : MonoBehaviour
             GameObject.Find("PauseMenuListener").GetComponent<PauseMenuListener>().inputManager.PauseMenu.Disable();
         }
 
-        Instance._dialogueBox.GetComponent<TextMeshProUGUI>().text = text;
+        Instance._dialogueText.GetComponent<TextMeshProUGUI>().text = text;
         
         Instance.inputManager.Dialogue.Enable();
     }

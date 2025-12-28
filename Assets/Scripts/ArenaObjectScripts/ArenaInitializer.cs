@@ -6,6 +6,7 @@ public class ArenaInitializer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        print($"Arena start initilizer starting round");
         ManagerScript.CurrentLevelManagerInstance.StartRoundRoutine();
     }
 
