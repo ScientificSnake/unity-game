@@ -1,17 +1,18 @@
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using TMPro.EditorUtilities;
-using UnityEditor.Search;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
+using UnityEngine.UI.Extensions;
 
 public class MiniMapRegister : MonoBehaviour
 {
+    [Header("important")]
+    public GameObject LineRendererPrefab;
+
     public float ParentScale;
 
-    private static readonly Vector2 _BaseMiniMapScale = new Vector2(1920 - 80, 1080 - 80);
+    private static readonly Vector2 _BaseMiniMapScale = new Vector2(1920 - 180, 1080 - 180);
 
     //private static int _IconSortingOrder = 2003;
 
@@ -69,6 +70,7 @@ public class MiniMapRegister : MonoBehaviour
         Instance._canvasGroup.alpha = 1;
         MiniMapShown = true;
         CalculateMiniMapScale();
+        Instance.RenderBoundingBox();
     }
 
     public static void DisableMiniMap()
@@ -175,6 +177,30 @@ public class MiniMapRegister : MonoBehaviour
     private void Start()
     {
         DisableMiniMap();
+    }
+
+    private void RenderBoundingBox()
+    {
+        GameObject boxRenderer = Instantiate(LineRendererPrefab, transform);
+
+        UILineRenderer uILineRenderer = boxRenderer.GetComponent<UILineRenderer>();
+
+        Vector2 translateToAnchorCoords(Vector2 point)
+        {
+            return (point * MiniMapScale) / ParentScale;
+        }
+
+        Vector2[] corners =
+        {
+            translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.y)),
+
+            translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY.y)),
+            translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY.y)),
+            translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.y)),
+            translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.y))
+        };
+
+        uILineRenderer.Points = corners;
     }
 }
 

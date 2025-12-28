@@ -1,7 +1,7 @@
 
 public class BasicPirateDummyBehaviour : EnemyTemplate
 {
-    private void Awake()
+    private void Start()
     {
         Health = 1000;
     }

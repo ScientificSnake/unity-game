@@ -11,7 +11,7 @@ public class ProjectileTemplate : MonoBehaviour, IBoundsCheckable
         rb = GetComponent<Rigidbody2D>();
         tcollider = GetComponent<Collider2D>();
         BoundsEnforcer.Register(this);
-        rb.linearDamping = 0f;
+        rb.linearDamping = 0.05f;
         rb.angularDamping = 0f;
         rb.gravityScale = 0f;
     }

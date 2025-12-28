@@ -27,7 +27,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
     public static PlayerObjectScript PlayerScriptRef;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -38,6 +38,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         }
         BoundsEnforcer.Register(this);
         MiniMapRegister.Register(this);
+        rb.linearDamping = 0.25f;
     }
 
     public void ApplyDamage(float damage)

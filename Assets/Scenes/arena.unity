@@ -1413,6 +1413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e350cce83aaf57441b0640171a5cec11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LineRendererPrefab: {fileID: 1208019035891792310, guid: f0a2b241ae173bf4aaed2a161706f657, type: 3}
   ParentScale: 0
 --- !u!225 &1018764567
 CanvasGroup:

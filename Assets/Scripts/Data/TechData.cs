@@ -162,7 +162,7 @@ public class TechData : MonoBehaviour
                 // print("detected dict object");
                 BaseStats.Health = 850; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 112; // degress per second 
-                BaseStats.Acceleration = 5000;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats.Acceleration = 5200;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.Mass = 1.75f;
 
                 BaseStats.ScaleFactor = 1.9f; //hull size scale factor
@@ -187,7 +187,7 @@ public class TechData : MonoBehaviour
                 print("detected dict objec");
                 BaseStats.Health = 750; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 130; // degress per second 
-                BaseStats.Acceleration = 6000f;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats.Acceleration = 6000;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.ReverseAcceleration = 10; //^ but in reverse (reverse thrust)
                 BaseStats.Mass = 1.5f;
                 BaseStats.ScaleFactor = 1.25f; //hull size scale factor
@@ -211,7 +211,7 @@ public class TechData : MonoBehaviour
                 print("detected dict object");
                 BaseStats.Health = 5000; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 80; // degress per second 
-                BaseStats.Acceleration = 4000;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats.Acceleration = 4120;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.Mass = 3f;
                 BaseStats.ScaleFactor = 1f; //hull size scale factor
                 BaseStats.BaseFuel = 100;
@@ -234,7 +234,7 @@ public class TechData : MonoBehaviour
                 print("detected dict object");
                 BaseStats.Health = 1000; // yeah no we ain't doin no fucking module health
                 BaseStats.MaxTurnRate = 110; // degress per second 
-                BaseStats.Acceleration = 5500;  // SUBJECT TO FURTHER CHANGE meters per second^2
+                BaseStats.Acceleration = 5300;  // SUBJECT TO FURTHER CHANGE meters per second^2
                 BaseStats.Mass = 2.75f;
 
                 BaseStats.ScaleFactor = 0.7f; //hull size scale factor

@@ -56,9 +56,8 @@ public class GunPodPirateLogic : EnemyTemplate
         }
     }
 
-    protected override void Start()
+    protected void Start()
     {
-        base.Start();
         State = "trackPlayer";
 
         Weapon = Sebastian.WeaponryData.WeaponDict[4];

@@ -87,12 +87,16 @@ public class KamikazeEnemyAI : EnemyTemplate
         ObjTools.ApplyThrottle(Throttle, ref Fuel, MaxAccel, rb, transform, FuelUsage);
     }
 
-    protected void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         Fuel = 50 / Time.fixedDeltaTime;
         FuelUsage = 1;
-        MaxAccel = 100;
-        PlayerDetectionRadius = 2000;
+        MaxAccel = 200;
+        PlayerDetectionRadius = 4000;
+
+        rb.mass = 1;
 
         BlastForce = 100;
         DamageRadius = 150;
