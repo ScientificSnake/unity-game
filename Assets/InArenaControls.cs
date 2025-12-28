@@ -186,6 +186,34 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dialogue"",
+            ""id"": ""c9935edf-69e9-48d5-a908-f28fdbb49fcc"",
+            ""actions"": [
+                {
+                    ""name"": ""EnterPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b302e3d-6258-43ca-8118-a3dddf916861"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a50c0527-0655-4a3c-ac1c-82720680f7aa"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EnterPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -203,6 +231,9 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         // PauseMenu
         m_PauseMenu = asset.FindActionMap("PauseMenu", throwIfNotFound: true);
         m_PauseMenu_Escape = m_PauseMenu.FindAction("Escape", throwIfNotFound: true);
+        // Dialogue
+        m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+        m_Dialogue_EnterPressed = m_Dialogue.FindAction("EnterPressed", throwIfNotFound: true);
     }
 
     ~@InArenaControls()
@@ -210,6 +241,7 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InArenaControls.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_CameraControls.enabled, "This will cause a leak and performance issues, InArenaControls.CameraControls.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_PauseMenu.enabled, "This will cause a leak and performance issues, InArenaControls.PauseMenu.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Dialogue.enabled, "This will cause a leak and performance issues, InArenaControls.Dialogue.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -437,6 +469,52 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         }
     }
     public PauseMenuActions @PauseMenu => new PauseMenuActions(this);
+
+    // Dialogue
+    private readonly InputActionMap m_Dialogue;
+    private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
+    private readonly InputAction m_Dialogue_EnterPressed;
+    public struct DialogueActions
+    {
+        private @InArenaControls m_Wrapper;
+        public DialogueActions(@InArenaControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @EnterPressed => m_Wrapper.m_Dialogue_EnterPressed;
+        public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
+        public void AddCallbacks(IDialogueActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Add(instance);
+            @EnterPressed.started += instance.OnEnterPressed;
+            @EnterPressed.performed += instance.OnEnterPressed;
+            @EnterPressed.canceled += instance.OnEnterPressed;
+        }
+
+        private void UnregisterCallbacks(IDialogueActions instance)
+        {
+            @EnterPressed.started -= instance.OnEnterPressed;
+            @EnterPressed.performed -= instance.OnEnterPressed;
+            @EnterPressed.canceled -= instance.OnEnterPressed;
+        }
+
+        public void RemoveCallbacks(IDialogueActions instance)
+        {
+            if (m_Wrapper.m_DialogueActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialogueActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialogueActions @Dialogue => new DialogueActions(this);
     public interface IPlayerActions
     {
         void OnLShift(InputAction.CallbackContext context);
@@ -452,5 +530,9 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
     public interface IPauseMenuActions
     {
         void OnEscape(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActions
+    {
+        void OnEnterPressed(InputAction.CallbackContext context);
     }
 }

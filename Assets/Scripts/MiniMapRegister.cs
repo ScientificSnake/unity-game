@@ -12,7 +12,7 @@ public class MiniMapRegister : MonoBehaviour
 
     public float ParentScale;
 
-    private static readonly Vector2 _BaseMiniMapScale = new Vector2(1920 - 180, 1080 - 180);
+    private static readonly Vector2 _BaseMiniMapScale = new Vector2(1920 - 180, 1080 - 180);  //    
 
     //private static int _IconSortingOrder = 2003;
 

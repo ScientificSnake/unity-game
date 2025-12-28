@@ -16,47 +16,55 @@ public class PauseMenuListener : MonoBehaviour
     private void Escape_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         print("<color=red> ESCAPE DETECTED");
-        if (PauseMenu.activeSelf == false)
+
+        if (MiniMapRegister.MiniMapShown)
         {
-            Time.timeScale = 0;
-
-            try
-            {
-                GameObject PlayerObj = GameObject.FindWithTag("Player");
-                PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
-
-                PlayerScript.inputManager.Player.Disable();
-            }
-            catch (System.Exception e)
-            {
-                Debug.Log(e + " | Is player not here? Is round ending?");
-            }
-
-            CameraFollowScript camScript = Camera.main.GetComponent<CameraFollowScript>();
-            camScript.inputManager.CameraControls.Disable();
-
-            PauseMenu.SetActive(true);
+            MiniMapRegister.DisableMiniMap();
         }
-
-        else
+        else 
         {
-            Time.timeScale = 1;
-            try
+            if (PauseMenu.activeSelf == false)
             {
-                GameObject PlayerObj = GameObject.FindWithTag("Player");
-                PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
+                Time.timeScale = 0;
 
-                PlayerScript.inputManager.Player.Enable();
+                try
+                {
+                    GameObject PlayerObj = GameObject.FindWithTag("Player");
+                    PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
+
+                    PlayerScript.inputManager.Player.Disable();
+                }
+                catch (System.Exception e)
+                {
+                    Debug.Log(e + " | Is player not here? Is round ending?");
+                }
+
+                CameraFollowScript camScript = Camera.main.GetComponent<CameraFollowScript>();
+                camScript.inputManager.CameraControls.Disable();
+
+                PauseMenu.SetActive(true);
             }
-            catch (System.Exception e)
+
+            else
             {
-                Debug.Log(e + " | Is player not here? Is round ending?");
+                Time.timeScale = 1;
+                try
+                {
+                    GameObject PlayerObj = GameObject.FindWithTag("Player");
+                    PlayerObjectScript PlayerScript = PlayerObj.GetComponent<PlayerObjectScript>();
+
+                    PlayerScript.inputManager.Player.Enable();
+                }
+                catch (System.Exception e)
+                {
+                    Debug.Log(e + " | Is player not here? Is round ending?");
+                }
+
+                CameraFollowScript camScript = Camera.main.GetComponent<CameraFollowScript>();
+                camScript.inputManager.CameraControls.Enable();
+
+                PauseMenu.SetActive(false);
             }
-
-            CameraFollowScript camScript = Camera.main.GetComponent<CameraFollowScript>();
-            camScript.inputManager.CameraControls.Enable();
-
-            PauseMenu.SetActive(false);
         }
     }
 }
