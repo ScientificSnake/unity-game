@@ -409,12 +409,14 @@ public class LevelDataStorage
         {
             public float HealthAddtMult;
             public float FuelAddtMult;
+            public float TurnRateAddtMult;
 
             public BaseStats MutateBaseStats(BaseStats stats)
             {
                 BaseStats result = stats;
                 result.Health = stats.Health * HealthAddtMult;
                 result.BaseFuel = stats.BaseFuel * FuelAddtMult;
+                result.MaxTurnRate = stats.MaxTurnRate * TurnRateAddtMult;
 
                 return result;
             }
@@ -423,8 +425,10 @@ public class LevelDataStorage
             {
                 HealthAddtMult = 1;
                 FuelAddtMult = 1;
+                TurnRateAddtMult = 1;
             }
         }
+
         public PlayerStatModifers Modifers;
 
         // Getoverhere start

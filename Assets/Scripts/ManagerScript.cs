@@ -87,6 +87,13 @@ public class ManagerScript : MonoBehaviour
             TechData.TechCredits = 500;
             TechData.HullOptionsDataDict["LynchpinHullNode"].IsNodePurchased = true; // start with a basic hull
         }
+
+
+        foreach (var item in BoonData.GlobalBoonPool)
+        {
+            if (item.UnlockedByDefault)
+                BoonData.UnlockBoon(item.SysName);
+        }
     }
         #endregion
     public static LevelDataStorage.LevelManager CurrentLevelManagerInstance;
@@ -300,19 +307,33 @@ public class ManagerScript : MonoBehaviour
         {
             data.PurchasedNodes[item.Key] = item.Value.IsNodePurchased;
         }
+
+        data.UnlockedBoons = new List<string>();
+
+        foreach (var item in BoonData.GlobalBoonPool)
+        {
+            if (BoonData.IsBoonUnlocked(item))
+            {
+                data.UnlockedBoons.Add(item.SysName);
+            }
+        }
     }
 
     public void Load(ManagerSaveData data)
     {
         TechData.TechCredits = data.TechCredits;
 
-        // Just restore the purchased status - the dictionary already exists with all the delegates intact
         foreach (var item in data.PurchasedNodes)
         {
             if (TechData.HullOptionsDataDict.ContainsKey(item.Key))
             {
                 TechData.HullOptionsDataDict[item.Key].IsNodePurchased = item.Value;
             }
+        }
+
+        foreach (var sysName in data.UnlockedBoons)
+        {
+            BoonData.UnlockBoon(sysName);
         }
     }
 
@@ -361,6 +382,8 @@ public struct ManagerSaveData
 {
     public int TechCredits;
     public Dictionary<string, bool> PurchasedNodes;
+
+    public List<string> UnlockedBoons;                       
 }
 
 public struct MetaSaveData

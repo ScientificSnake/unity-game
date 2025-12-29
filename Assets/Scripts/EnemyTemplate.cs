@@ -53,7 +53,6 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
     {
         if (thisThrusterSet != null)
         {
-            //print($"<color=green> thrusters are found, scaling them accordingly");
             ObjTools.ScaleThrusterRefs(ThrusterRefs, ThrusterBaseScales, Throttle);
         }
     }
