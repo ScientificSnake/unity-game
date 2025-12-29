@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
@@ -26,6 +27,11 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
     public static GameObject PlayerRef;
     public static PlayerObjectScript PlayerScriptRef;
 
+    protected Thrusters.ThrusterSet thisThrusterSet;
+    //private List<Vector2> ThrusterBaseScale;
+    private List<GameObject> ThrusterRefs;
+    private List<Vector2> ThrusterBaseScales;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Awake()
     {
@@ -39,6 +45,26 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         BoundsEnforcer.Register(this);
         MiniMapRegister.Register(this);
         rb.linearDamping = 0.25f;
+
+        _InitializeThrusters();
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        if (thisThrusterSet != null)
+        {
+            //print($"<color=green> thrusters are found, scaling them accordingly");
+            ObjTools.ScaleThrusterRefs(ThrusterRefs, ThrusterBaseScales, Throttle);
+        }
+    }
+
+    private void _InitializeThrusters()
+    {
+        if (thisThrusterSet != null)
+        {
+            ThrusterRefs = Thrusters.ApplyThrusterSet(gameObject, thisThrusterSet);
+            ThrusterBaseScales = thisThrusterSet.BaseScales;
+        }
     }
 
     public void ApplyDamage(float damage)

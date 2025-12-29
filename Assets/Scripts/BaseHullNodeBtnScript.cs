@@ -7,11 +7,22 @@ public class BaseHullBtnScript : MonoBehaviour
     private string BodyText;
     public string SysName;
 
-    public BtnPurchaseBoon PurchaseButton;
-    public BoonInfoDisplayTitle TargetTitleDisplay;
-    public UpdateBoonBodyTextDisplay TargetBodyDisplay;
+    public static BtnPurchaseBoon PurchaseButton;
+    public static BoonInfoDisplayTitle TargetTitleDisplay;
+    public static UpdateBoonBodyTextDisplay TargetBodyDisplay;
 
     public Array DependentBoonsSysNames;
+
+    public void Awake()
+    {
+        if (PurchaseButton == null)
+            PurchaseButton = GameObject.Find("BoonPurchaseButton").GetComponent<BtnPurchaseBoon>();
+        if (TargetBodyDisplay == null)
+            TargetTitleDisplay = GameObject.Find("SelectedBoonTitle").GetComponent<BoonInfoDisplayTitle>();
+        if (TargetBodyDisplay == null)
+            TargetBodyDisplay = GameObject.Find("SelectedBoonBodyText").GetComponent<UpdateBoonBodyTextDisplay>();
+    }
+
 
     public void OnSelect()
     {

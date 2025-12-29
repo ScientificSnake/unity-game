@@ -42,8 +42,9 @@ public class KamikazeEnemyAI : EnemyTemplate
         }
     }
 
-    protected void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
         UpdateState();
         if (State == "LockedPlayer")
         {
@@ -89,6 +90,8 @@ public class KamikazeEnemyAI : EnemyTemplate
 
     protected override void Awake()
     {
+        thisThrusterSet = Thrusters.KamikazeThrusterSet;
+
         base.Awake();
 
         Fuel = 50 / Time.fixedDeltaTime;

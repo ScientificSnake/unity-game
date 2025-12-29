@@ -277,10 +277,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         #region initialize thrusters
         ThrusterRefs = Thrusters.ApplyThrusterSet(gameObject, RoundStats.thrusterLayout);
         
-        foreach (Thrusters.Thruster thruster in RoundStats.thrusterLayout.thrusters)
-        {
-            ThrusterBaseScales.Add(thruster.baseScale);
-        }
+        ThrusterBaseScales = RoundStats.thrusterLayout.BaseScales;
 
         #endregion
     }

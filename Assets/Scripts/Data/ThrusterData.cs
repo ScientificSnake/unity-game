@@ -45,6 +45,21 @@ public static class Thrusters
                 Thruster thisThruster = new(Positions[i], zRotations[i], scales[i]);
                 thrusters.Add(thisThruster);
             }
+
+            BaseScales = GetBaseScales();
+        }
+
+        public List<Vector2> BaseScales;
+        private List<Vector2> GetBaseScales()
+        {
+            List<Vector2> result = new();
+
+            foreach(Thruster thruster in thrusters)
+            {
+                result.Add(thruster.baseScale);
+            }
+
+            return result;
         }
     }
 
@@ -57,7 +72,7 @@ public static class Thrusters
             GameObject obj = ManagerScript.Instance.SpawnPrefab(ManagerScript.Instance.BasicThrusterPrefab,
                                                                 th.thrusters[i].position,
                                                                 parentObj.transform);
-            obj.transform.localScale *= (Vector2) th.thrusters[i].baseScale;
+            obj.transform.localScale *= (Vector2)th.thrusters[i].baseScale;
             returnThrusters.Add(obj);
             obj.transform.localEulerAngles = new Vector3(0, 0, th.thrusters[i].zRotation);
         }
@@ -69,9 +84,9 @@ public static class Thrusters
 
     public readonly static ThrusterSet LynchpinThrusterSet =
         new ThrusterSet(
-            new List<Vector2> { new(-8.4f, 2.3f), new(-8.4f, -2.3f)},
+            new List<Vector2> { new(-8.4f, 2.3f), new(-8.4f, -2.3f) },
             new List<float> { 0, 0 },
-            new List<Vector2> {new(0.28f, 0.28f) , new(0.28f, 0.28f)}
+            new List<Vector2> { new(0.28f, 0.28f), new(0.28f, 0.28f) }
         );
 
     public readonly static ThrusterSet SwallowThrusterSet =
@@ -90,13 +105,20 @@ public static class Thrusters
         new(
             new List<Vector2> { new(-12.5f, 0), new(-10.33f, -8.39f), new(-10.33f, 8.39f) },
             new List<float> { 0, 32.528f, -32.528f },
-            new List<Vector2> { new(0.5f, 0.5f) , new(0.4f, 0.4f), new(0.4f, 0.4f) }
+            new List<Vector2> { new(0.5f, 0.5f), new(0.4f, 0.4f), new(0.4f, 0.4f) }
         );
     public readonly static ThrusterSet RavenThrusterSet =
         new(
             new List<Vector2> { new(-24.24f, -3.35f), new(-24.24f, 3.35f) },
             new List<float> { 0, 0 },
             new List<Vector2> { new(0.5f, 0.28f), new(0.5f, 0.28f) } // strechted out x
+            );
+
+    public readonly static ThrusterSet KamikazeThrusterSet =
+        new(
+            new List<Vector2> { new(-22, 0) },
+            new List<float> { 0 },
+            new List<Vector2> { new(1.2f, 1.2f) }
             );
     #endregion
 }
