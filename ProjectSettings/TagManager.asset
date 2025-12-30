@@ -9,8 +9,8 @@ TagManager:
   - MapLayoutTag
   - EnemyTag
   - BasicSpacePirate
-  - LayoutObj
   - PSpawnPoint
+  - InstantiatedArtifact
   layers:
   - Default
   - TransparentFX
