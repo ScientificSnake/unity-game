@@ -265,6 +265,8 @@ public class LevelDataStorage
             public float Mass;
             public float ScaleFactor;
             public float BaseFuel;
+            public float ShotDrag;
+
             public Thrusters.ThrusterSet thrusterLayout;
 
             public Vector2 GunOffset;
@@ -410,6 +412,7 @@ public class LevelDataStorage
             public float HealthAddtMult;
             public float FuelAddtMult;
             public float TurnRateAddtMult;
+            public float ShotDragAddtMult;
 
             public BaseStats MutateBaseStats(BaseStats stats)
             {
@@ -417,6 +420,7 @@ public class LevelDataStorage
                 result.Health = stats.Health * HealthAddtMult;
                 result.BaseFuel = stats.BaseFuel * FuelAddtMult;
                 result.MaxTurnRate = stats.MaxTurnRate * TurnRateAddtMult;
+                result.ShotDrag = stats.MaxTurnRate * ShotDragAddtMult;
 
                 return result;
             }
@@ -426,6 +430,7 @@ public class LevelDataStorage
                 HealthAddtMult = 1;
                 FuelAddtMult = 1;
                 TurnRateAddtMult = 1;
+                ShotDragAddtMult = 1;
             }
         }
 

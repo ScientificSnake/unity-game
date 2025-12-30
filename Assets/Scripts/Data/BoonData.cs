@@ -1,36 +1,34 @@
 using System;
-using Unity.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using static BoonData;
 public static class BoonData
 {
-    public class BoonBuff
+
+    [CreateAssetMenu(fileName = "NewBoon", menuName = "GameData/Boon")]
+    public class BoonBuff : ScriptableObject
     {
-        public readonly string SysName;
-        public readonly string DisplayName;
-        public readonly string Description;
-        public readonly int MaxTakes;
-        public readonly bool InByDefault; // Whether to include in the boon pool by default
-        public readonly string[] Conflicts;
-        public readonly Action AppliedAction;
+        public string SysName;
+        public string DisplayName;
+        public string Description;
+        public int MaxTakes;
+        public bool InByDefault; // Whether to include in the boon pool by default
+        public string[] Conflicts;
+        public BoonEffectType BoonEffect;
 
-        public readonly Sprite Icon;
+        public Sprite Icon;
 
-        public readonly bool UnlockedByDefault;
+        public bool UnlockedByDefault;
 
-        public BoonBuff (string sysName, string displayName, string description, int maxTakes, bool inByDefault, string[] conflicts, Action action, Sprite icon, bool unlockedByDefault)
-        {
-            SysName = sysName;
-            DisplayName = displayName;
-            Description = description;
-            MaxTakes = maxTakes;
-            InByDefault = inByDefault;
-            Conflicts = conflicts;
-            AppliedAction = action;
-            Icon = icon;
-            UnlockedByDefault = unlockedByDefault;
-        }
+    }
+
+    public enum BoonEffectType
+    {
+        TitaniumLiner,
+        ExpandedFuel,
+        ImprovedBoosters,
+        ImprovedBallistics,
+        HighRoller
     }
 
 
@@ -53,18 +51,37 @@ public static class BoonData
         {
             ManagerScript.CurrentLevelManagerInstance.Modifers.TurnRateAddtMult += 0.05f;
         }
+
+        public static void ApplyHighRoller()
+        {
+            /// double or nothing yo
+        }
+
+        public static void ApplyImprovedBallistics()
+        {
+            ManagerScript.CurrentLevelManagerInstance.Modifers.ShotDragAddtMult += 0.05f;
+        }
     }
 
-    private readonly static BoonBuff TitaniumLiner = new("TitaniumLiner", "Titanium Liner", "Reinforce the spacecrafts surface with Titanium liner to increase survivability.",
-                                                3, true, new string[] { }, BoonActions.ApplyTitaniumLiner, (Sprite) Resources.Load("ResourceSprites/TitaniumLinerIcon"), true);
+    //private readonly static BoonBuff TitaniumLiner = new("TitaniumLiner", "Titanium Liner", "Reinforce the spacecrafts surface with Titanium liner to increase survivability.",
+    //                                            3, true, new string[] { }, BoonActions.ApplyTitaniumLiner, ManagerScript.Instance.TitaniumLinerSvg, true);
 
-    private readonly static BoonBuff ExpandedFuelStores = new("ExpandedFuelStores", "Expanded Fuel Stores", "Increase fuel stores by minimizing wasted space in the fuselage.",
-                                                     2, true, new string[] { }, BoonActions.ApplyExpandedFuelStores, (Sprite)Resources.Load("ResourceSprites/ExpandedFuelStoresIcon"), true);
+    //private readonly static BoonBuff ExpandedFuelStores = new("ExpandedFuelStores", "Expanded Fuel Stores", "Increase fuel stores by minimizing wasted space in the fuselage.",
+    //                                                 2, true, new string[] { }, BoonActions.ApplyExpandedFuelStores, (Sprite)Resources.Load("ResourceSprites/ExpandedFuelStoresIcon"), true);
 
-    private readonly static BoonBuff ImprovedAuxillaryBoosters = new("ImprovedAuxillaryBoosters", "Improved Auxillary Boosters",
-                                                            "Increase Turnrate of the space craft by increasing the power of maneuvering thrusters",
-                                                            4, true, new string[] { }, BoonActions.ApplyImprovedAuxillaryBoosters, (Sprite)Resources.Load("ResourceSprites/ImprovedAuxillaryBoosters"),
-                                                            true);
+    //private readonly static BoonBuff ImprovedAuxillaryBoosters = new("ImprovedAuxillaryBoosters", "Improved Auxillary Boosters",
+    //                                                        "Increase Turnrate of the space craft by increasing the power of maneuvering thrusters",
+    //                                                        4, true, new string[] { }, BoonActions.ApplyImprovedAuxillaryBoosters, (Sprite)Resources.Load("ResourceSprites/ImprovedAuxillaryBoosters"),
+    //                                                        true);
+
+    //private readonly static BoonBuff ImprovedBallasitics = new("ImprovedBallastics", "Improved Ballistics",
+    //                                                           "Improved round ballistics decrease drag and result in higher round velocity", 3, true, new string[] {},BoonActions.ApplyImprovedBallistics, (Sprite) Resources.Load("ResourceSprites/ImprovedBallisticsIcon"), true);
+
+    //private readonly static BoonBuff HighRoller = new("HighRoller", "High Roller",
+    //                                                  "50% chance at the end of a level to gain 2x original reward or nothing.", 1, true,
+    //                                                  new string[] { }, BoonActions.ApplyHighRoller, (Sprite)Resources.Load("ResourceSprites/HighRollerIcon"), false);
+
+
 
 #pragma warning disable IDE0044 // Add readonly modifier
     private static Dictionary<string, bool> UnlockedBoonDictionary = new();
@@ -81,30 +98,28 @@ public static class BoonData
             return true;
         else return false;
     }
-
-    public readonly static BoonBuff[] GlobalBoonPool = new BoonBuff[]
-    {
-        TitaniumLiner,
-        ExpandedFuelStores,
-        ImprovedAuxillaryBoosters
-    };
-
+    
     public static HashSet<BoonBuff> GetBoonPool(ref LevelDataStorage.LevelManager levelManager)
     {
         HashSet<BoonBuff> resultantPool = new();
 
 
-        foreach (BoonBuff boon in GlobalBoonPool)
-        {
-            if (boon.InByDefault && IsBoonUnlocked(boon))
-            {
-                resultantPool.Add(boon);
-            }
-        }
+        //foreach (BoonBuff boon in GlobalBoonPool)
+        //{
+        //    if (boon.InByDefault && IsBoonUnlocked(boon))
+        //    {
+        //        resultantPool.Add(boon);
+        //    }
+        //}
 
         return resultantPool;
     }
+}
 
-
-
+public static class BoonBuffExtensions
+{
+    public static bool IsOwned(this BoonBuff boon)
+    {
+        return IsBoonUnlocked(boon);
+    }
 }

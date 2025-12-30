@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
@@ -53,6 +54,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
     {
         if (thisThrusterSet != null)
         {
+            ObjTools.ApplyThrottle(Throttle, ref Fuel, MaxAccel, rb, transform, FuelUsage);
             ObjTools.ScaleThrusterRefs(ThrusterRefs, ThrusterBaseScales, Throttle);
         }
     }

@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Processors;
-using UnityEngine.UIElements;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System;
-using System.Linq;
 using Sebastian;
-using NUnit.Framework.Constraints;
 
 public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 {
@@ -128,6 +121,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
                 CurrentMainWeaponParams.SpawnPos = pos;
                 CurrentMainWeaponParams.ParentZRotation = heading;
                 CurrentMainWeaponParams.ParentVelo = rb.linearVelocity;
+                CurrentMainWeaponParams.ShotDragMult = RoundStats.ShotDrag;
 
                 SpawnMainWeaponPrefabAction(CurrentMainWeaponParams);
 
@@ -135,7 +129,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
                 float heading_rad = Mathf.Deg2Rad * transform.eulerAngles.z;
 
-                Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad) * CurrentMainWeaponParams.RecoilForce), (Mathf.Sin(heading_rad) * CurrentMainWeaponParams.RecoilForce));
+                Vector2 instantaneousAccelerationVector = new((Mathf.Cos(heading_rad) * CurrentMainWeaponParams.RecoilForce), (Mathf.Sin(heading_rad) * CurrentMainWeaponParams.RecoilForce));
 
                 rb.AddForce(instantaneousAccelerationVector);
 

@@ -1,11 +1,7 @@
 using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
-using UnityEngine.UI;
 
 namespace Sebastian
 {
@@ -52,12 +48,14 @@ namespace Sebastian
             public float AcceleratioRate;
             public float FuelSeconds;
 
+            public float ShotDragMult;
+
             public GameObject Spawner;
         }
 
         public static class WeaponryActions
         {
-            private static System.Random _random = new((int)System.DateTime.Now.Ticks);
+            private readonly static System.Random _random = new((int)System.DateTime.Now.Ticks);
             public static float GetRandomError(float maxError)
             {
                 double random1tominus1 = (_random.NextDouble() * 2) - 1;
@@ -117,6 +115,8 @@ namespace Sebastian
                 }
 
                 bulletScript.tcollider.enabled = true;
+                bulletScript.rb.linearDamping *= Params.ShotDragMult;
+
                 //Params.Spawner.GetComponent<Collider2D>().enabled = true;
             }
 
@@ -147,6 +147,8 @@ namespace Sebastian
                 }
 
                 rocketBehavior.tcollider.enabled = true;
+
+
             }
         }
 

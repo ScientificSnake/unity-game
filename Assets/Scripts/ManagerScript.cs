@@ -78,7 +78,7 @@ public class ManagerScript : MonoBehaviour
             SaveSystem.LoadMeta();
 
             SaveSystem.Load(LastSaveFileName);
-            ManagerScript.Instance.CurrentLoad = ManagerScript.Instance.LastLoadName;
+            CurrentLoad = LastLoadName;
         }
         catch (Exception e)
         {
@@ -89,10 +89,12 @@ public class ManagerScript : MonoBehaviour
         }
 
 
-        foreach (var item in BoonData.GlobalBoonPool)
+        foreach(BoonData.BoonBuff boon in MasterBoonList)
         {
-            if (item.UnlockedByDefault)
-                BoonData.UnlockBoon(item.SysName);
+            if (boon.UnlockedByDefault)
+            {
+                BoonData.UnlockBoon(boon.SysName);
+            }
         }
     }
         #endregion
@@ -157,6 +159,8 @@ public class ManagerScript : MonoBehaviour
     public GameObject TutorialLayoutRound0;
 
     #endregion
+
+    public BoonData.BoonBuff[] MasterBoonList;
 
     public Dictionary<string, GameObject> SysNameToPrefabObj;
 
@@ -310,11 +314,11 @@ public class ManagerScript : MonoBehaviour
 
         data.UnlockedBoons = new List<string>();
 
-        foreach (var item in BoonData.GlobalBoonPool)
+        foreach (BoonData.BoonBuff boon in MasterBoonList)
         {
-            if (BoonData.IsBoonUnlocked(item))
+            if (boon.IsOwned())
             {
-                data.UnlockedBoons.Add(item.SysName);
+                data.UnlockedBoons.Add(boon.SysName);
             }
         }
     }

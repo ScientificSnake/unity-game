@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.Rendering;
@@ -119,6 +120,12 @@ public static class Thrusters
             new List<Vector2> { new(-22, 0) },
             new List<float> { 0 },
             new List<Vector2> { new(1.2f, 1.2f) }
+            );
+    public readonly static ThrusterSet GunPodPirateThrusterSet =
+        new(
+            new List<Vector2> { new(-26, 0) },
+            new List<float> { 0 },
+            new List<Vector2> { new(0.7f, 0.7f) }
             );
     #endregion
 }

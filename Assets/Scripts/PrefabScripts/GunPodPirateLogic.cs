@@ -1,17 +1,38 @@
-using MathNet.Numerics.Optimization.ObjectiveFunctions;
 using Sebastian;
+using System.Collections;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class GunPodPirateLogic : EnemyTemplate
 {
-    private string State;
+    public enum State
+    {
+        trackPlayer,
+        moveToPlayer,
+        stabilizing
+    }
+
+    public State state;
     public Rigidbody2D PlayerRb;
     public PolygonCollider2D pcollider;
     public Transform PlayerTransform;
 
     private float DetectionDistance = 420;
+    private float ShootRange = 420;
     private bool SeesPlayer;
     private float aimingThreshold = 5f; // Degrees within target to start firing
+
+    private float stabilizationThreshold = 120;
+
+    protected override void Awake()
+    {
+        Fuel = 50 / Time.fixedDeltaTime;
+        MaxAccel = 3000;
+        state = State.moveToPlayer;
+        thisThrusterSet = Thrusters.GunPodPirateThrusterSet;
+        base.Awake();
+    }
 
     [SerializeField] private Sebastian.WeaponryData.Weapon Weapon;
     private WeaponryData.WeaponParameters WeaponParams;
@@ -42,7 +63,7 @@ public class GunPodPirateLogic : EnemyTemplate
 
         if (timeDiff >= WaitTimeBetweenRounds)
         {
-            float heading = transform.eulerAngles.z + 180;
+            float heading = transform.eulerAngles.z;
             Vector2 offset = Vector2.zero;
             Vector2 offsetVector = RotateVectorByAngle(offset, heading);
             Vector2 pos = new Vector2(transform.position.x, transform.position.y) + offsetVector;
@@ -58,10 +79,7 @@ public class GunPodPirateLogic : EnemyTemplate
 
     protected void Start()
     {
-        State = "trackPlayer";
-
         Weapon = Sebastian.WeaponryData.WeaponDict[4];
-        rb = gameObject.GetComponent<Rigidbody2D>();
         WeaponParams = Weapon.BaseWeaponParams;
         CurrentWeaponArgs = WeaponParams;
 
@@ -73,8 +91,10 @@ public class GunPodPirateLogic : EnemyTemplate
         rotationDegreesPerSeconds = 60;
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
+
         // Cache player references if null
         if (PlayerRef == null || PlayerRb == null)
         {
@@ -87,11 +107,12 @@ public class GunPodPirateLogic : EnemyTemplate
             return; // Exit early if player not found
         }
 
-        if (State == "trackPlayer")
+        if (state == State.trackPlayer)
         {
+            Throttle = 0;
             float distanceFromPlayer = Vector2.Distance(transform.position, PlayerRef.transform.position);
 
-            if (distanceFromPlayer <= DetectionDistance)
+            if (distanceFromPlayer <= ShootRange)
             {
                 CheckSeesPlayer();
 
@@ -107,7 +128,7 @@ public class GunPodPirateLogic : EnemyTemplate
 
                     if (InterceptInfo.Possible)
                     {
-                        float targetAngle = InterceptInfo.AimDeg + 180;
+                        float targetAngle = InterceptInfo.AimDeg;
                         RotateTowardsTargetAngle(targetAngle);
 
                         // Fire when aimed within threshold
@@ -118,6 +139,59 @@ public class GunPodPirateLogic : EnemyTemplate
                     }
                 }
             }
+            else
+            {
+                state = State.moveToPlayer;
+            }
         }
+        else if (state == State.stabilizing)
+        {
+        }
+        else if (state == State.moveToPlayer)
+        {
+            Vector2 vectorToPlayer = PlayerScriptRef.rb.position - rb.position;
+
+            if (vectorToPlayer.magnitude <= ShootRange)
+            {
+                if (rb.linearVelocity.magnitude >= stabilizationThreshold)
+                {
+                    state = State.stabilizing;
+                    Stabilize();
+                }
+                else
+                {
+                    state = State.trackPlayer;
+                }
+            }
+            else
+            {
+                float angleToPlayer = Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) * Mathf.Rad2Deg;
+                RotateTowardsTargetAngle(angleToPlayer);
+                Throttle = 100;
+            }
+        }
+    }
+
+    protected IEnumerator Stabilize()
+    {
+        state = State.stabilizing;
+        float stoppingAngleDeg = Mathf.Rad2Deg * Mathf.Atan2(rb.linearVelocity.x, rb.linearVelocity.y);
+        RotateTowardsTargetAngle(stoppingAngleDeg);
+
+        while (!Mathf.Approximately(rb.rotation, stoppingAngleDeg))
+        {
+            yield return null;
+        }
+
+        Throttle = 100;
+
+        while (!Mathf.Approximately(rb.linearVelocity.magnitude, 0))
+        {
+            yield return null;
+        }
+
+        Throttle = 0;
+
+        state = State.moveToPlayer;
     }
 }

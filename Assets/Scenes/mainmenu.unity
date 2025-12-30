@@ -1845,6 +1845,8 @@ MonoBehaviour:
   XandersLevel1: {fileID: 796005607905427677, guid: da867cff29d3f2d40b01a75564b89789, type: 3}
   TutorialLayoutRound2: {fileID: 796005607905427677, guid: b11a1977c984b8f40ac97931ac627b11, type: 3}
   TutorialLayoutRound0: {fileID: 796005607905427677, guid: 5e038de0c014c6a4d870618a22815ca8, type: 3}
+  MasterBoonList:
+  - {fileID: 11400000, guid: ad30c09991f349249b8f0b197feaecbd, type: 2}
   CurrentLoad: 
   LastLoadName: 
   LastSaveFileName: 

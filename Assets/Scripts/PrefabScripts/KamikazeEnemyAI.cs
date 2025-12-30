@@ -54,23 +54,17 @@ public class KamikazeEnemyAI : EnemyTemplate
 
             float targetAngle;
 
-            //debug
-            string angleMethod;
-
             if (interceptData.Possible && (PlayerScriptRef.rb.linearVelocity.magnitude > ManualTargetingThreshold))
             {
-                angleMethod = "Intercept";
                 targetAngle = interceptData.AimDeg;
             }
             else
             {
-                angleMethod = "Manual";
                 Vector2 toPlayerDir = PlayerRef.transform.position - transform.position;
                 targetAngle = Mathf.Atan2(toPlayerDir.y, toPlayerDir.x) * Mathf.Rad2Deg;
             }
 
             RotateTowardsTargetAngle(targetAngle);
-            //print($"<color=purple>{gameObject.name} is rotating towards angle {targetAngle}, method - {angleMethod}");
             if (IsAimedAtTarget(targetAngle, ThrottleDegreeThreshold))
             {
                 Throttle = 100;
@@ -85,7 +79,6 @@ public class KamikazeEnemyAI : EnemyTemplate
             // helps get the lock back by moving
             Throttle = 10;
         }
-        ObjTools.ApplyThrottle(Throttle, ref Fuel, MaxAccel, rb, transform, FuelUsage);
     }
 
     protected override void Awake()
