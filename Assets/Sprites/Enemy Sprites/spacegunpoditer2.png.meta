@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      spacegunpoditer2_0: -2935427315421524185
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,7 +12,7 @@ public static class TestLevel1
     }
 
     public static LevelData Main = new(
-        1,
+        2,
         DifficultyFunc,  // This is the function for calculating difficulty per round, here it doesn't really do much but in longer rounds it will simplify things.
         new Dictionary<Action, int>  // Events as values and their difficulty as keys
         {
@@ -56,7 +56,7 @@ public static class TestLevel1
             }
         },
         new string[] { "EnemyTag" },
-        new GameObject[] { ManagerScript.Instance.XandersLevel1},
+        new GameObject[] { ManagerScript.Instance.XandersLevel1, ManagerScript.Instance.XandersLevel2},
         Endless: false,
         new Vector2(-2000, -2000),
         new Vector2(2000, 2000)
