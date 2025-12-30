@@ -18,7 +18,7 @@ public class GunPodPirateLogic : EnemyTemplate
     public PolygonCollider2D pcollider;
     public Transform PlayerTransform;
 
-    private float DetectionDistance = 840;
+    private float DetectionDistance = 1600;
     private float ShootRange = 420;
     public bool SeesPlayer;
     private float aimingThreshold = 5f; // Degrees within target to start firing

@@ -585,6 +585,10 @@ public class LevelDataStorage
         {
             "Tutorial",
             TuturialLevelData.Main
+        },
+        {
+            "TestLevel1",
+            TestLevel1.Main
         }
     };
 }

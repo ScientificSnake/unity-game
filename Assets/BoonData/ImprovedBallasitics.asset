@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: ImprovedBallasitics
+  m_EditorClassIdentifier: Assembly-CSharp::BoonData/BoonBuff
+  SysName: ImprovedBallasitics
+  DisplayName: Improved Ballasitics
+  Description: Improved round ballistics decrease drag and result in higher round
+    velocity
+  MaxTakes: 3
+  InByDefault: 1
+  Conflicts: []
+  BoonEffect: 3
+  Icon: {fileID: 0}
+  UnlockedByDefault: 1
