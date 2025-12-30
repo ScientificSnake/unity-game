@@ -18,9 +18,9 @@ public class GunPodPirateLogic : EnemyTemplate
     public PolygonCollider2D pcollider;
     public Transform PlayerTransform;
 
-    private float DetectionDistance = 420;
+    private float DetectionDistance = 840;
     private float ShootRange = 420;
-    private bool SeesPlayer;
+    public bool SeesPlayer;
     private float aimingThreshold = 5f; // Degrees within target to start firing
 
     private float stabilizationThreshold = 120;
@@ -44,6 +44,7 @@ public class GunPodPirateLogic : EnemyTemplate
 
     private void CheckSeesPlayer()
     {
+        print($"Distance to player is <color=orange> {Vector2.Distance(PlayerRb.position, rb.position)}");
         if (ObjTools.LineOfSight(gameObject, PlayerTransform, DetectionDistance))
         {
             SeesPlayer = true;
@@ -106,7 +107,7 @@ public class GunPodPirateLogic : EnemyTemplate
             }
             return; // Exit early if player not found
         }
-
+        CheckSeesPlayer();
         if (state == State.trackPlayer)
         {
             Throttle = 0;
@@ -114,8 +115,6 @@ public class GunPodPirateLogic : EnemyTemplate
 
             if (distanceFromPlayer <= ShootRange)
             {
-                CheckSeesPlayer();
-
                 if (SeesPlayer)
                 {
                     ObjTools.InterceptData InterceptInfo = ObjTools.TryGetInterceptAngle(
@@ -149,25 +148,28 @@ public class GunPodPirateLogic : EnemyTemplate
         }
         else if (state == State.moveToPlayer)
         {
-            Vector2 vectorToPlayer = PlayerScriptRef.rb.position - rb.position;
-
-            if (vectorToPlayer.magnitude <= ShootRange)
+            if (SeesPlayer)
             {
-                if (rb.linearVelocity.magnitude >= stabilizationThreshold)
+                Vector2 vectorToPlayer = PlayerScriptRef.rb.position - rb.position;
+
+                if (vectorToPlayer.magnitude <= ShootRange)
                 {
-                    state = State.stabilizing;
-                    Stabilize();
+                    if (rb.linearVelocity.magnitude >= stabilizationThreshold)
+                    {
+                        state = State.stabilizing;
+                        Stabilize();
+                    }
+                    else
+                    {
+                        state = State.trackPlayer;
+                    }
                 }
                 else
                 {
-                    state = State.trackPlayer;
+                    float angleToPlayer = Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) * Mathf.Rad2Deg;
+                    RotateTowardsTargetAngle(angleToPlayer);
+                    Throttle = 100;
                 }
-            }
-            else
-            {
-                float angleToPlayer = Mathf.Atan2(vectorToPlayer.y, vectorToPlayer.x) * Mathf.Rad2Deg;
-                RotateTowardsTargetAngle(angleToPlayer);
-                Throttle = 100;
             }
         }
     }
