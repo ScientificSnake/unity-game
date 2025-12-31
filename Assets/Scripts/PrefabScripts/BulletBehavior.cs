@@ -11,6 +11,7 @@ public class BulletBehavior : ProjectileTemplate
         if (OtherGO.TryGetComponent<EnemyTemplate>(out EnemyTemplate targetScript))
         {
             targetScript.ApplyDamage(Damage);
+            targetScript.SpawnSparks();
         }
 
         if (OtherGO.CompareTag("Player"))
@@ -19,6 +20,7 @@ public class BulletBehavior : ProjectileTemplate
             playerObjectScript.ApplyDamage(Damage);
         }
         // destroy self
+
         Destroy(gameObject);
     }
 }

@@ -1,7 +1,5 @@
 using Sebastian;
 using System.Collections;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class GunPodPirateLogic : EnemyTemplate
@@ -32,6 +30,8 @@ public class GunPodPirateLogic : EnemyTemplate
         state = State.moveToPlayer;
         thisThrusterSet = Thrusters.GunPodPirateThrusterSet;
         base.Awake();
+
+        Health = 60;
     }
 
     [SerializeField] private Sebastian.WeaponryData.Weapon Weapon;
@@ -44,7 +44,6 @@ public class GunPodPirateLogic : EnemyTemplate
 
     private void CheckSeesPlayer()
     {
-        print($"Distance to player is <color=orange> {Vector2.Distance(PlayerRb.position, rb.position)}");
         if (ObjTools.LineOfSight(gameObject, PlayerTransform, DetectionDistance))
         {
             SeesPlayer = true;

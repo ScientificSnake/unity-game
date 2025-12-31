@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: 1080d26d913cf3546a4759761c86ce2f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rb: {instanceID: 0}
+  - localMiniMapIcon: {instanceID: 0}
+  - spriteRenderer: {instanceID: 0}
+  - SparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

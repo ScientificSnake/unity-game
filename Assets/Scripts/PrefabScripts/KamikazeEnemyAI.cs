@@ -107,6 +107,8 @@ public class KamikazeEnemyAI : EnemyTemplate
         contactFilter = new ContactFilter2D();
         contactFilter.useTriggers = true;  // Include triggers
         contactFilter.useLayerMask = false; // Check all layers
+
+        Health = 45;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

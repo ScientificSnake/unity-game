@@ -108,7 +108,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   audios: {fileID: 0}
   collisionSound: {fileID: 8300000, guid: f684b7900d03023438b3ee9a11a6a143, type: 3}
-  ShotSound: {fileID: 8300000, guid: 73c27eb25f1a31d4687b1ab0d5391a83, type: 3}
+  ShotSound: {fileID: 8300000, guid: 1a546938ae6c67349b1f344b751fca32, type: 3}
   FuelUsage: 1
   CollsionDamageMultiplier: 0.07
   ThrusterBaseScales: []

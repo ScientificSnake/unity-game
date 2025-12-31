@@ -133,7 +133,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
                 rb.AddForce(instantaneousAccelerationVector);
 
-                audios.PlayOneShot(ShotSound, 0.5f);
+                audios.PlayOneShot(ShotSound, 0.25f);
             }
         }
     }
@@ -179,15 +179,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
             throttle = 0;
         }
     }
-    
-    //private void ScaleThrusters()
-    //{
-    //    for (int i = 0; i < ThrusterRefs.Count; i++)
-    //    {
-    //        Vector2 targetScale = ThrusterBaseScales[i] * (throttle/100);
-    //        ThrusterRefs[i].gameObject.transform.localScale = targetScale;
-    //    }
-    //}
+
     private void HeadingFollowMouse()
     {
         Vector2 mousePos = Input.mousePosition;
@@ -334,7 +326,6 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
     {
         Health -= damageAmount;
         HealthCheck();
-        print($"<color=orange> Player now has {Health}, took {damageAmount} damage");
     }
 
     private void HealthCheck()

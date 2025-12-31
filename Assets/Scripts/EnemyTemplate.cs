@@ -33,6 +33,8 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
     private List<GameObject> ThrusterRefs;
     private List<Vector2> ThrusterBaseScales;
 
+    [SerializeField] private GameObject SparksPrefab;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Awake()
     {
@@ -48,6 +50,13 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         rb.linearDamping = 0.25f;
 
         _InitializeThrusters();
+    }
+
+    public void SpawnSparks()
+    {
+        GameObject sparks = Instantiate(SparksPrefab);
+        sparks.transform.position = transform.position;
+        sparks.GetComponent<Rigidbody2D>().linearVelocity = rb.linearVelocity;
     }
 
     protected virtual void FixedUpdate()
