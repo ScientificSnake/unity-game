@@ -18,7 +18,7 @@ public class MiniMapRegister : MonoBehaviour
 
     private CanvasGroup _canvasGroup;
 
-    private static Vector3 IconScale = new Vector3(0.3f, 0.3f, 0.3f);
+    private static Vector3 IconScale = new Vector3(0.1f, 0.1f, 0.1f);
 
     private static float MiniMapScale;
     private static List<IMiniMapTrackable> TrackedObjs = new();
@@ -177,6 +177,7 @@ public class MiniMapRegister : MonoBehaviour
     private void Start()
     {
         DisableMiniMap();
+        print($"Bounding box is <color=#15b9cf> {ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY} & {ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY}");
     }
 
     private void RenderBoundingBox()
@@ -193,7 +194,6 @@ public class MiniMapRegister : MonoBehaviour
         Vector2[] corners =
         {
             translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.y)),
-
             translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY.y)),
             translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY.y)),
             translateToAnchorCoords(new Vector2(ManagerScript.CurrentLevelManagerInstance.RootLevelData.MaxXY.x, ManagerScript.CurrentLevelManagerInstance.RootLevelData.MinXY.y)),

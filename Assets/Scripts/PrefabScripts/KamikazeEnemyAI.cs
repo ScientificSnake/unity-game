@@ -168,40 +168,6 @@ public class KamikazeEnemyAI : EnemyTemplate
         ManagerScript.Instance.RunOnDelay(DestroyExplosionObj, 1);
 
         ApplyExplosionDamage();
-
-        //#region Damage application and physics
-
-        //colliderList.Clear();
-        //int count = Physics2D.OverlapCircle(transform.position, DamageRadius, contactFilter, colliderList);
-
-        //Collider2D[] collidersInRadius = Physics2D.OverlapCircleAll(transform.position, DamageRadius);
-
-        //foreach (Collider2D collider in collidersInRadius)
-        //{
-        //    float distanceToSelf = Mathf.Abs((Vector2.Distance(collider.gameObject.transform.position, transform.position)));
-        //    float intensityProportion = (DamageRadius - distanceToSelf)/DamageRadius;
-
-        //    GameObject OtherGo = collider.gameObject;
-
-        //    if (OtherGo.TryGetComponent<PlayerObjectScript>(out PlayerObjectScript _))
-        //    {
-        //        // already have a reference
-        //        PlayerScriptRef.ApplyDamage(intensityProportion * ExplosionDamage);
-        //    }
-        //    else if(OtherGo.TryGetComponent<EnemyTemplate>(out EnemyTemplate enemyScript))
-        //    {
-        //        enemyScript.ApplyDamage(intensityProportion * ExplosionDamage);
-        //    }
-
-        //    Vector2 directionToCollider = OtherGo.transform.position - transform.position;
-
-        //    if (OtherGo.TryGetComponent<Rigidbody2D>(out Rigidbody2D OtherRb))
-        //    {
-        //        float force = intensityProportion * BlastForce;
-        //        OtherRb.AddForce(directionToCollider.normalized * force);
-        //    }
-        //}
-        //#endregion
     }
 
     protected void ApplyExplosionDamage()
