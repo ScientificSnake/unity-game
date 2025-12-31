@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Android;
+using System.Collections;
 using static BoonData;
+using System.Linq;
+using NUnit.Framework;
 public static class BoonData
 {
 
@@ -64,35 +66,33 @@ public static class BoonData
         }
     }
 
-    private static Dictionary<string, Action> correspondingActions = new()
+    private static Action[] correspondingActions = 
     {
-        {
-        "TitaniumLiner",
-        BoonActions.ApplyTitaniumLiner
-        },
-        {
-            "ExpandedFuelStores",
-            BoonActions.ApplyExpandedFuelStores
-        }
+        BoonActions.ApplyTitaniumLiner,
+        BoonActions.ApplyExpandedFuelStores,
+        BoonActions.ApplyImprovedAuxillaryBoosters,
+        BoonActions.ApplyImprovedBallistics,
+        BoonActions.ApplyHighRoller
     };
 
 #pragma warning disable IDE0044 // Add readonly modifier
-    private static Dictionary<string, bool> UnlockedBoonDictionary = new();
+    private static List<string> UnlockedBoons = new();
 #pragma warning restore IDE0044 // Add readonly modifier
 
     public static void UnlockBoon(string sysname)
     {
-        UnlockedBoonDictionary[sysname] = true;
+        UnlockedBoons.Add(sysname);
+        Debug.Log($"<color=orange> Unlocking {sysname}");
     }
 
     public static bool IsBoonUnlocked(BoonBuff boonBuff)
     {
-        if (UnlockedBoonDictionary[boonBuff.SysName])
+        if (UnlockedBoons.Contains(boonBuff.SysName))
             return true;
         else return false;
     }
     
-    public static HashSet<BoonBuff> GetBoonPool(ref LevelDataStorage.LevelManager levelManager)
+    public static HashSet<BoonBuff> GetBoonPool(LevelDataStorage.LevelManager levelManager)
     {
         HashSet<BoonBuff> resultantPool = new();
 
@@ -107,9 +107,38 @@ public static class BoonData
         return resultantPool;
     }
 
-    public static void ApplyBoon(BoonBuff boon)
+    public static BoonBuff[] GetXRandomBoons(int xCount, LevelDataStorage.LevelManager levelManager)
     {
-        
+        BoonBuff[] applicablePool = GetBoonPool(levelManager).ToArray(); 
+
+        HashSet<int> picks = new();
+
+        xCount = Mathf.Min(xCount, applicablePool.Length);
+
+        while (picks.Count < xCount)
+        {
+            int randomBoonBuffIndex = UnityEngine.Random.Range(0, applicablePool.Length);
+            picks.Add(randomBoonBuffIndex);
+        }
+
+        BoonBuff[] pickedBoonBuffs = new BoonBuff[picks.Count];
+        int[] picksArray = picks.ToArray();
+
+        for (int i = 0; i < picks.Count; i++)
+        {
+            pickedBoonBuffs[i] = applicablePool[picksArray[i]];
+        }
+
+        return pickedBoonBuffs;
+    }
+
+    public static Action GetBoonAffect(BoonBuff boon)
+    {
+        int boonActionIndex = (int)boon.BoonEffect;
+
+        Action boonAction = correspondingActions[boonActionIndex];
+
+        return boonAction;
     }
 }
 

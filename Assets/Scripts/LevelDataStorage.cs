@@ -392,6 +392,11 @@ public class LevelDataStorage
                     CanvasGroup RoundOverCG = RoundOverScreen.GetComponent<CanvasGroup>();
                     RoundOverCG.interactable = true;
                     RoundOverCG.blocksRaycasts = true;
+
+                    BoonData.BoonBuff[] boonsOffered = BoonData.GetXRandomBoons(3, this);
+
+                    Debug.Log($"<color=gree> Offering {boonsOffered.Length} boons");
+                    Debug.Log($"<color=green> Offering {boonsOffered[0]} {boonsOffered[1]} {boonsOffered[2]}");
                 }
 
                 ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);

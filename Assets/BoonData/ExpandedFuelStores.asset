@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoonData/BoonBuff
   SysName: ExpandedFuelStores
   DisplayName: Expanded Fuel Stores
-  Description: Increase fuel stores by minimizing wasted space in the fuselage.
-  MaxTakes: 2
+  Description: Minimizes wastes space in the fulselage to increase total fuel capacity
+  MaxTakes: 3
   InByDefault: 1
   Conflicts: []
   BoonEffect: 1

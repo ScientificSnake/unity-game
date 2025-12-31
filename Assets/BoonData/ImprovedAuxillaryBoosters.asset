@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: ImprovedAuxillaryBoosters
   m_EditorClassIdentifier: Assembly-CSharp::BoonData/BoonBuff
   SysName: ImprovedAuxillaryBoosters
-  DisplayName: Improved Auxillary Boosters
-  Description: Increase Turnrate of the space craft by increasing the power of maneuvering
-    thrusters
-  MaxTakes: 4
+  DisplayName: Improved Auxillary boosters.
+  Description: Upgraded maneuvering thrusters increase turn rate.
+  MaxTakes: 2
   InByDefault: 1
   Conflicts: []
   BoonEffect: 2

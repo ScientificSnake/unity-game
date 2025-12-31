@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: HighRoller
   m_EditorClassIdentifier: Assembly-CSharp::BoonData/BoonBuff
   SysName: HighRoller
-  DisplayName: High Roller
-  Description: 50% chance at the end of a level to gain 2x original reward or nothing.
+  DisplayName: HIgh Roller
+  Description: 50/50 Chance of either doubling end of level rewards or removing them
+    completely
   MaxTakes: 1
   InByDefault: 1
   Conflicts: []
   BoonEffect: 4
-  Icon: {fileID: 3286163911610860551, guid: 13da269ab4e681f49b054a69aff0847d, type: 3}
+  Icon: {fileID: 0}
   UnlockedByDefault: 0

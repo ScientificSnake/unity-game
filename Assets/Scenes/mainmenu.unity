@@ -1848,6 +1848,10 @@ MonoBehaviour:
   XandersLevel2: {fileID: 3602911213833501146, guid: 8d3bc1501463d1447b9bf234b0890309, type: 3}
   MasterBoonList:
   - {fileID: 11400000, guid: ad30c09991f349249b8f0b197feaecbd, type: 2}
+  - {fileID: 11400000, guid: b10a8dc2981b84840bbdb860e972e769, type: 2}
+  - {fileID: 11400000, guid: 8226915adae7a824ab8279d3a5c2de93, type: 2}
+  - {fileID: 11400000, guid: 1f55a24e0c17f7345971d37e4dc50025, type: 2}
+  - {fileID: 11400000, guid: 8044c233b56c5c84ca8009bff71e70d7, type: 2}
   CurrentLoad: 
   LastLoadName: 
   LastSaveFileName: 

@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: ImprovedBallasitics
+  m_Name: ImprovedBallistics
   m_EditorClassIdentifier: Assembly-CSharp::BoonData/BoonBuff
-  SysName: ImprovedBallasitics
-  DisplayName: Improved Ballasitics
-  Description: Improved round ballistics decrease drag and result in higher round
-    velocity
+  SysName: ImprovedBallisitics
+  DisplayName: Improved Ballisitics
+  Description: Refined quality control and surfacing decreases round drag
   MaxTakes: 3
   InByDefault: 1
   Conflicts: []

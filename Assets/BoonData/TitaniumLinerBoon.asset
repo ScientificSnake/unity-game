@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoonData/BoonBuff
   SysName: TitaniumLiner
   DisplayName: Titanium Liner
-  Description: 
-  MaxTakes: 0
+  Description: Adds additional titanium lining to the spacecraft's surface to increase
+    survivability
+  MaxTakes: 3
   InByDefault: 1
   Conflicts: []
   BoonEffect: 0

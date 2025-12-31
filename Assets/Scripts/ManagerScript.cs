@@ -87,9 +87,9 @@ public class ManagerScript : MonoBehaviour
             TechData.TechCredits = 500;
             TechData.HullOptionsDataDict["LynchpinHullNode"].IsNodePurchased = true; // start with a basic hull
         }
+        #endregion
 
-
-        foreach(BoonData.BoonBuff boon in MasterBoonList)
+        foreach (BoonData.BoonBuff boon in MasterBoonList)
         {
             if (boon.UnlockedByDefault)
             {
@@ -97,7 +97,7 @@ public class ManagerScript : MonoBehaviour
             }
         }
     }
-        #endregion
+
     public static LevelDataStorage.LevelManager CurrentLevelManagerInstance;
 
     public void EnterLevel(string sysName)
