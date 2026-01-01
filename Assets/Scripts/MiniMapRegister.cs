@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.U2D;
 using UnityEngine.UI;
 using UnityEngine.UI.Extensions;
 
@@ -12,13 +11,13 @@ public class MiniMapRegister : MonoBehaviour
 
     public float ParentScale;
 
-    private static readonly Vector2 _BaseMiniMapScale = new Vector2(1920 - 180, 1080 - 180);  //    
+    private static readonly Vector2 _BaseMiniMapScale = new Vector2(1920 - 80, 1080 - 80);  //    
 
     //private static int _IconSortingOrder = 2003;
 
     private CanvasGroup _canvasGroup;
 
-    private static Vector3 IconScale = new Vector3(0.1f, 0.1f, 0.1f);
+    private static Vector3 IconScale = new Vector3(0.5f, 0.5f, 0.5f);
 
     private static float MiniMapScale;
     private static List<IMiniMapTrackable> TrackedObjs = new();
@@ -171,7 +170,7 @@ public class MiniMapRegister : MonoBehaviour
         Instance = this;
         BgImage = gameObject.GetComponent<Image>();
         _canvasGroup = gameObject.GetComponent<CanvasGroup>();
-        ParentScale = 4.89f/2;
+        ParentScale = 1f/2;
     }
 
     private void Start()

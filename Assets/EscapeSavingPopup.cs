@@ -6,6 +6,6 @@ public class EscapeSavingPopup : MonoBehaviour
 
     public void OnClick()
     {
-        Popup.SetActive(false);
+        Popup.LeanScale(Vector3.zero, 1);
     }
 }

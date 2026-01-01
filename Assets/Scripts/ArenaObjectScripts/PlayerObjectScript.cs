@@ -6,6 +6,10 @@ using Sebastian;
 
 public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 {
+    [Header("HealthScript")]
+
+    public HealthScript PlayerHealthManager;
+
     [Header("MiniMapTracking")]
     public bool SeenByPlayer => true;
     public Sprite LocalMiniMapIcon;
@@ -235,6 +239,12 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         collider.SetPath(0, path);
         #endregion
 
+        #region Heath Setup
+        PlayerHealthManager = gameObject.GetComponent<HealthScript>();
+        PlayerHealthManager.OnDamage = SpawnSparks;
+        PlayerHealthManager.OnDeath = DeathLogic;
+        #endregion
+
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         #region initialize stats based on what hull is chosen
@@ -307,37 +317,25 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float relativeVelocityMagnitude = collision.relativeVelocity.magnitude;
-
-        //print($"Collided with {collision.gameObject.name}, at relative velo of {collision.relativeVelocity.magnitude}");
-
         if (collision.relativeVelocity.magnitude > 50)
         {
             audios.PlayOneShot(collisionSound);
-            print("<color=yellow> Player was hit with rel valo of " + relativeVelocityMagnitude);
-            ApplyDamage(relativeVelocityMagnitude * CollsionDamageMultiplier);
-            HealthCheck();
-
+            PlayerHealthManager.ApplyDamage(relativeVelocityMagnitude * CollsionDamageMultiplier);
         }
     }
     #endregion
 
-    #region Health management and Damage application
-    public void ApplyDamage(float damageAmount)
+    [SerializeField] GameObject sparksPrefab;
+    public void SpawnSparks()
     {
-        Health -= damageAmount;
-        HealthCheck();
+        GameObject sparks = Instantiate(sparksPrefab);
+
+        sparks.GetComponent<Rigidbody2D>().position = rb.position;
+        sparks.GetComponent<Rigidbody2D>().linearVelocity = rb.linearVelocity;
     }
 
-    private void HealthCheck()
+    public void DeathLogic()
     {
-        if (Health <= 0)
-        {
-            //MiniMapRegister.DisableMiniMap();
-            ManagerScript.CurrentLevelManagerInstance.GameOver();
-            print($"Player has been slimed");
-            // Handle player destruction (e.g., trigger game over, respawn, etc.)
-        }
+        ManagerScript.CurrentLevelManagerInstance.GameOver();
     }
-
-    #endregion
 }

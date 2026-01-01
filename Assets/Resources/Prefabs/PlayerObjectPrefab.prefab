@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3630332469525547783}
-  - component: {fileID: 2227943501449297362}
   - component: {fileID: 5303256463571235488}
+  - component: {fileID: 7196689064943797960}
+  - component: {fileID: 2227943501449297362}
   - component: {fileID: 1742737850102969581}
   - component: {fileID: -7869956894437566275}
   - component: {fileID: 7122714676184794528}
@@ -37,6 +38,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5303256463571235488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5457092128639579156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb58e6726cf8f214ab4d4c7ad31915cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  LocalMiniMapIcon: {fileID: 2389086386851015068, guid: 07a914121a4febd41b97d165caaa377c, type: 3}
+  rb: {fileID: 0}
+  audios: {fileID: 0}
+  collisionSound: {fileID: 8300000, guid: f684b7900d03023438b3ee9a11a6a143, type: 3}
+  ShotSound: {fileID: 8300000, guid: 1a546938ae6c67349b1f344b751fca32, type: 3}
+  FuelUsage: 1
+  CollsionDamageMultiplier: 0.07
+  ThrusterBaseScales: []
+  ThrusterRefs: []
+  Fuel: 0
+  maxAcceleration: 0
+  maxTurnSpeedDPS: 0
+  Offset: {x: 20, y: 0}
+  throttle: 0
+  Health: 0
+  mainCamera: {fileID: 0}
+  BaseHealth: 0
+  sparksPrefab: {fileID: 0}
+--- !u!114 &7196689064943797960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5457092128639579156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc2402590b03e84d876b31f6be69729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 0
 --- !u!212 &2227943501449297362
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -92,35 +136,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5303256463571235488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5457092128639579156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb58e6726cf8f214ab4d4c7ad31915cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  LocalMiniMapIcon: {fileID: 2389086386851015068, guid: 07a914121a4febd41b97d165caaa377c, type: 3}
-  rb: {fileID: 0}
-  audios: {fileID: 0}
-  collisionSound: {fileID: 8300000, guid: f684b7900d03023438b3ee9a11a6a143, type: 3}
-  ShotSound: {fileID: 8300000, guid: 1a546938ae6c67349b1f344b751fca32, type: 3}
-  FuelUsage: 1
-  CollsionDamageMultiplier: 0.07
-  ThrusterBaseScales: []
-  ThrusterRefs: []
-  Fuel: 0
-  maxAcceleration: 0
-  maxTurnSpeedDPS: 0
-  Offset: {x: 20, y: 0}
-  throttle: 0
-  Health: 0
-  mainCamera: {fileID: 0}
-  BaseHealth: 0
 --- !u!114 &1742737850102969581
 MonoBehaviour:
   m_ObjectHideFlags: 0

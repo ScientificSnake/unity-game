@@ -8,6 +8,14 @@ public class RocketBehavior : ProjectileTemplate
     public Sprite newSprite;
     public float Damage;
 
+    public HealthScript rocketHealth;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        rocketHealth = gameObject.GetComponent<HealthScript>();
+    }
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,15 +42,18 @@ public class RocketBehavior : ProjectileTemplate
     {
         GameObject OtherGo = collision.gameObject;
 
-        if (OtherGo.TryGetComponent<EnemyTemplate>(out EnemyTemplate targetScript))
+        if (OtherGo.TryGetComponent<HealthScript>(out HealthScript otherHealth))
         {
-            targetScript.ApplyDamage(Damage);
+            otherHealth.ApplyDamage(Damage);
+            Destroy(gameObject);
         }
-        if (OtherGo.CompareTag("Player"))
+        else if (OtherGo.TryGetComponent(out BulletBehavior bullet))
         {
-            PlayerObjectScript playerObjectScript = OtherGo.GetComponent<PlayerObjectScript>();
-            playerObjectScript.ApplyDamage(Damage);
+            // just take the damage and do not destr
         }
-        Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

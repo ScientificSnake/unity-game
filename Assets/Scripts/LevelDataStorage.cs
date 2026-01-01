@@ -394,6 +394,9 @@ public class LevelDataStorage
                     RoundOverCG.blocksRaycasts = true;
 
                     RoundOverScreen.GetComponent<RoundOverImage>().EndOfRoundButtons.SetActive(true);
+
+                    Debug.Log("<color=yellow> setting amazing dropdown screen to active");
+                    RoundOverScreen.GetComponent<RoundOverImage>().amazingDropAnimatedScreen.SetActive(true);
                 }
 
                 ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);
@@ -409,7 +412,7 @@ public class LevelDataStorage
 
                 BoonData.BoonBuff[] boonsOffered = BoonData.GetXRandomBoons(3, this);
 
-                Debug.Log($"<color=gree> Offering {boonsOffered.Length} boons");
+                Debug.Log($"<color=green> Offering {boonsOffered.Length} boons");
                 Debug.Log($"<color=green> Offering {boonsOffered[0]} {boonsOffered[1]} {boonsOffered[2]}");
 
                 for (int i = 0; i < boonsOffered.Length; i++)

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6410843976582011064}
   - component: {fileID: 3050293768668445071}
   - component: {fileID: 6572999417644618937}
+  - component: {fileID: 8210984356227157860}
   - component: {fileID: 3056776805009222730}
   m_Layer: 5
   m_Name: RocketPrefab
@@ -113,6 +114,7 @@ MonoBehaviour:
   Acceleration: 0
   newSprite: {fileID: 8440275070517590014, guid: c72aa98da11432245bd6c44a8ce36abc, type: 3}
   Damage: 0
+  rocketHealth: {fileID: 0}
 --- !u!96 &3050293768668445071
 TrailRenderer:
   serializedVersion: 3
@@ -247,6 +249,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8210984356227157860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319892208821184728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc2402590b03e84d876b31f6be69729, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 0
 --- !u!60 &3056776805009222730
 PolygonCollider2D:
   m_ObjectHideFlags: 0

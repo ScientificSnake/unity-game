@@ -210,13 +210,9 @@ public class KamikazeEnemyAI : EnemyTemplate
             float intensityProportion = (DamageRadius - distance) / DamageRadius;
 
             // Apply damage
-            if (otherGo.CompareTag("Player"))
+            if (otherGo.TryGetComponent(out HealthScript otherHealth))
             {
-                PlayerScriptRef.ApplyDamage(intensityProportion * ExplosionDamage);
-            }
-            else if (otherGo.TryGetComponent<EnemyTemplate>(out EnemyTemplate enemyScript))
-            {
-                enemyScript.ApplyDamage(intensityProportion * ExplosionDamage);
+                otherHealth.ApplyDamage(intensityProportion * ExplosionDamage);
             }
 
             // Apply physics force

@@ -7,12 +7,12 @@ public class BtnSettingsDropDown : MonoBehaviour
 
     public void OnClick()
     {
-        saveInterfacePanel.SetActive(true);
+        saveInterfacePanel.LeanScale(Vector3.one, 1);
         recentSaveDropDown.refreshOptions();
     }
 
     public void Awake()
     {
-        saveInterfacePanel.SetActive(false);
+        saveInterfacePanel.transform.localScale = Vector3.zero;
     }
 }

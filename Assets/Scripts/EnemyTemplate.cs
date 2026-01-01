@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UI.Extensions;
 
 public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
 {
+    public HealthScript thisHealth;
+
     public float Health = 1;
     public Rigidbody2D rb;
     public Rigidbody2D Rigidbody2 => rb;
@@ -38,6 +40,10 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Awake()
     {
+        thisHealth = gameObject.GetOrAddComponent<HealthScript>();
+        thisHealth.OnDamage = SpawnSparks;
+        thisHealth.OnDeath = DestructSelf;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         if (PlayerRef == null)
@@ -74,16 +80,6 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         {
             ThrusterRefs = Thrusters.ApplyThrusterSet(gameObject, thisThrusterSet);
             ThrusterBaseScales = thisThrusterSet.BaseScales;
-        }
-    }
-
-    public void ApplyDamage(float damage)
-    {
-        Health -= damage;
-
-        if (Health <= 0)
-        {
-            DestructSelf();
         }
     }
 

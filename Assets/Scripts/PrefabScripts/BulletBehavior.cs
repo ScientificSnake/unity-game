@@ -6,21 +6,16 @@ public class BulletBehavior : ProjectileTemplate
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GameObject OtherGO = collision.gameObject;
+        GameObject OtherGo = collision.gameObject;
 
-        if (OtherGO.TryGetComponent<EnemyTemplate>(out EnemyTemplate targetScript))
+        if (OtherGo.TryGetComponent<HealthScript>(out HealthScript otherHealth))
         {
-            targetScript.ApplyDamage(Damage);
-            targetScript.SpawnSparks();
+            otherHealth.ApplyDamage(Damage);
+            Destroy(gameObject);
         }
-
-        if (OtherGO.CompareTag("Player"))
+        else
         {
-            PlayerObjectScript playerObjectScript = OtherGO.GetComponent<PlayerObjectScript>();
-            playerObjectScript.ApplyDamage(Damage);
+            Destroy(gameObject);
         }
-        // destroy self
-
-        Destroy(gameObject);
     }
 }

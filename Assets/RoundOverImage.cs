@@ -11,6 +11,8 @@ public class RoundOverImage : MonoBehaviour
 
     public GameObject[] boonButtons;
 
+    public GameObject amazingDropAnimatedScreen;
+
     public void Start()
     {
         boonButtons = new GameObject[3] { boon1Btn, boon2Btn, boon3Btn };

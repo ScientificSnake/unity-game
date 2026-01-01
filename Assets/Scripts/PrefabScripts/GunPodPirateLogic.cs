@@ -79,6 +79,8 @@ public class GunPodPirateLogic : EnemyTemplate
 
     protected void Start()
     {
+        StartCoroutine(PeriodicallyCheckLineOfSightOnPlayer(0.25f));
+
         Weapon = Sebastian.WeaponryData.WeaponDict[4];
         WeaponParams = Weapon.BaseWeaponParams;
         CurrentWeaponArgs = WeaponParams;
@@ -172,10 +174,11 @@ public class GunPodPirateLogic : EnemyTemplate
         }
     }
 
-    protected IEnumerator PeriodicallyCheckLineOfSightOnPlayer()
+    protected IEnumerator PeriodicallyCheckLineOfSightOnPlayer(float period)
     {
         while (true)
         {
+            yield return new WaitForSeconds(period);
             CheckSeesPlayer();
         }
     }

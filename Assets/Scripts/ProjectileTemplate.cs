@@ -6,7 +6,7 @@ public class ProjectileTemplate : MonoBehaviour, IBoundsCheckable
     public Rigidbody2D Rigidbody2 => rb;
     public Collider2D tcollider;    
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         tcollider = GetComponent<Collider2D>();
@@ -24,6 +24,6 @@ public class ProjectileTemplate : MonoBehaviour, IBoundsCheckable
 
     protected void OnDestroy()
     {
-        BoundsEnforcer.Destroy(gameObject);
+        BoundsEnforcer.DeRegister(this);
     }
 }
