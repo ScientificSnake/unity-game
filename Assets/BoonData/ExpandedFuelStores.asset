@@ -19,5 +19,5 @@ MonoBehaviour:
   InByDefault: 1
   Conflicts: []
   BoonEffect: 1
-  Icon: {fileID: 0}
+  Icon: {fileID: 9187119769254126004, guid: f42527a73b0e118428f764e1a80afe71, type: 3}
   UnlockedByDefault: 1

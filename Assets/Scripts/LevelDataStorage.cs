@@ -393,10 +393,7 @@ public class LevelDataStorage
                     RoundOverCG.interactable = true;
                     RoundOverCG.blocksRaycasts = true;
 
-                    BoonData.BoonBuff[] boonsOffered = BoonData.GetXRandomBoons(3, this);
-
-                    Debug.Log($"<color=gree> Offering {boonsOffered.Length} boons");
-                    Debug.Log($"<color=green> Offering {boonsOffered[0]} {boonsOffered[1]} {boonsOffered[2]}");
+                    RoundOverScreen.GetComponent<RoundOverImage>().EndOfRoundButtons.SetActive(true);
                 }
 
                 ManagerScript.Instance.RunOnDelay(RunAfterFadeIn, RoundEndFadeInTime);
@@ -408,6 +405,18 @@ public class LevelDataStorage
                 foreach (GameObject weaponArtifact in weaponArtifacts)
                 {
                     UnityEngine.Object.Destroy(weaponArtifact);
+                }
+
+                BoonData.BoonBuff[] boonsOffered = BoonData.GetXRandomBoons(3, this);
+
+                Debug.Log($"<color=gree> Offering {boonsOffered.Length} boons");
+                Debug.Log($"<color=green> Offering {boonsOffered[0]} {boonsOffered[1]} {boonsOffered[2]}");
+
+                for (int i = 0; i < boonsOffered.Length; i++)
+                {
+                    GameObject btn = RoundOverScreen.GetComponent<RoundOverImage>().boonButtons[i];
+
+                    btn.GetComponent<UnityEngine.UI.Image>().sprite = boonsOffered[i].Icon;
                 }
             }
         }
@@ -483,6 +492,8 @@ public class LevelDataStorage
                 canvasGroup.alpha = 0;
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
+
+                RoundOverScreen.GetComponent<RoundOverImage>().EndOfRoundButtons.SetActive(false);
             }
             catch(Exception e)
             {

@@ -106,7 +106,6 @@ public class GunPodPirateLogic : EnemyTemplate
             }
             return; // Exit early if player not found
         }
-        CheckSeesPlayer();
         if (state == State.trackPlayer)
         {
             Throttle = 0;
@@ -170,6 +169,14 @@ public class GunPodPirateLogic : EnemyTemplate
                     Throttle = 100;
                 }
             }
+        }
+    }
+
+    protected IEnumerator PeriodicallyCheckLineOfSightOnPlayer()
+    {
+        while (true)
+        {
+            CheckSeesPlayer();
         }
     }
 
