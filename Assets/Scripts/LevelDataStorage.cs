@@ -21,7 +21,6 @@ public class LevelDataStorage
         public List<Dictionary<int, List<Action>>> Rounds;
         public float CurrentScalingMult;
         public List<string> HullOptions; // sys names for active hull option
-        public List<string> MajorBoonPool; // sys names for active major boons
         public List<string> StatNodes;
 
         private static List<string> PurchasedTechNodes(Dictionary<string, TechData.HullNode> nodes)
@@ -512,7 +511,20 @@ public class LevelDataStorage
 
             Dictionary<int, List<Action>> RoundDict = Rounds[CurrentRound];
 
-            // start co routine "timers" on the events
+            // start co routine "timers" on the events  -- ALL TIMES ARE INTS XXX
+            int[] roundTimes = RoundDict.Keys.ToArray();
+            List<List<Action>> timeActions = RoundDict.Values.ToList();
+
+            int time;
+
+            for (int i = 0;  i < roundTimes.Length; i++)
+            {
+                time = roundTimes[i];
+                for (int j = 0; j < timeActions[i].Count; j++)
+                {
+                    ManagerScript.Instance.RunOnDelay(timeActions[i][j], time);
+                }
+            }
 
             //Debug.Log($"Current Round is {RoundDict.ToString()}");
 
