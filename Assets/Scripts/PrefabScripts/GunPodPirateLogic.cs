@@ -97,6 +97,11 @@ public class GunPodPirateLogic : EnemyTemplate
     {
         base.FixedUpdate();
 
+        if (SeesPlayer && HasPatrol)
+        {
+            StopPatrol();
+        }
+
         // Cache player references if null
         if (PlayerRef == null || PlayerRb == null)
         {
@@ -151,7 +156,6 @@ public class GunPodPirateLogic : EnemyTemplate
             if (SeesPlayer)
             {
                 Vector2 vectorToPlayer = PlayerScriptRef.rb.position - rb.position;
-
                 if (vectorToPlayer.magnitude <= ShootRange)
                 {
                     if (rb.linearVelocity.magnitude >= stabilizationThreshold)

@@ -73,7 +73,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
 
     protected virtual void Start()
     {
-        if (WayPoints.Count > 0)
+        if (WayPoints.Count > 1)
         {
             foreach (GameObject waypoint in WayPoints)
             {
@@ -82,14 +82,25 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
             }
 
             PatrolCoRoutine = StartCoroutine(PatrolPoint());
+            HasPatrol = true;
+        }
+        else if (WayPoints.Count == 1)
+        {
+            MoveTo(WayPoints[0].transform.position);
+            HasPatrol = false;
+        }
+        else
+        {
+            HasPatrol = false;
         }
     }
 
     private float stoppedThreshold = 3;
-
     private float closeEnough = 2;
 
     protected List<Coroutine> PatrolCoRoutines = new();
+
+    protected bool HasPatrol;
 
     protected void StopPatrol()
     {
@@ -107,18 +118,11 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         {
             for (int i = 0; i < InitialWayPoints.Count; i++)
             {
-                print($"<color=yellow> on waypoint {i}");
-
-                // Start the move coroutine
                 Coroutine moveCoRoutine = StartCoroutine(MoveTo(InitialWayPoints[i]));
-
-                // Add it to your tracking list for StopPatrol()
                 PatrolCoRoutines.Add(moveCoRoutine);
 
-                // WAIT here until the MoveTo coroutine is finished
                 yield return moveCoRoutine;
 
-                // Remove it from the list once finished so the list doesn't grow forever
                 PatrolCoRoutines.Remove(moveCoRoutine);
 
                 print($"<color=green> finished waypoint {i}");
@@ -128,7 +132,6 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
 
     protected IEnumerator MoveTo(Vector2 target)
     {
-        print($"<color=yellow> moving to {target}");
         //first stabilize
         float newHeading;
         if (rb.linearVelocity.magnitude > 3)
@@ -140,7 +143,6 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
                 {
                     break;
                 }
-                print($"turning to stop ");
                 RotateTowardsTargetAngle(newHeading);
                 yield return null;
             }
@@ -152,8 +154,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
                 if (Mathf.Abs(rb.linearVelocity.magnitude) < stoppedThreshold)
                 {
                     break;
-                }
-                print($"stopping");
+                } 
                 yield return null;
             }
             Throttle = 0;
@@ -162,7 +163,6 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         Vector2 VectorToTarget = target - (Vector2) transform.position;
 
         newHeading = VectorToTarget.DirectionAngle();
-        print($"<color=green> {newHeading} is new target");
 
         while (true)
         {
@@ -172,11 +172,9 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
             }
             yield return null;
             RotateTowardsTargetAngle(newHeading);
-            print($" from rotating towards target angle");
         }
 
         Throttle = 100;
-        print("throttle set to 100");
 
         float targetDistance;
         float stopNowGlideDist;
