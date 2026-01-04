@@ -420,6 +420,7 @@ public class LevelDataStorage
                     GameObject btn = RoundOverScreen.GetComponent<RoundOverImage>().boonButtons[i];
 
                     btn.GetComponent<UnityEngine.UI.Image>().sprite = boonsOffered[i].Icon;
+                    btn.GetComponent<BoonOption>().boonRepresentative = boonsOffered[i];
                 }
             }
         }
@@ -495,6 +496,10 @@ public class LevelDataStorage
                 canvasGroup.alpha = 0;
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
+
+                GameObject dropDown = RoundOverScreen.GetComponent<RoundOverImage>().amazingDropAnimatedScreen; 
+                dropDown.SetActive(false);
+                dropDown.transform.position = dropDown.transform.position + new Vector3(0, 10, 0); // move it back up so it can drop in again next time
 
                 RoundOverScreen.GetComponent<RoundOverImage>().EndOfRoundButtons.SetActive(false);
             }

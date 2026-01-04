@@ -38,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 285, y: 513}
+  m_AnchoredPosition: {x: 307.9, y: 519.2}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &4021283624076367727
@@ -115,6 +115,8 @@ MonoBehaviour:
   newSprite: {fileID: 8440275070517590014, guid: c72aa98da11432245bd6c44a8ce36abc, type: 3}
   Damage: 0
   rocketHealth: {fileID: 0}
+  explosionPrefab: {fileID: 7482296912053869895, guid: b6af818f340ca594c83433cf9e5f20de, type: 3}
+  boomBoomSound: {fileID: 8300000, guid: 15f266f3309b2694d83ea4334649022f, type: 3}
 --- !u!96 &3050293768668445071
 TrailRenderer:
   serializedVersion: 3

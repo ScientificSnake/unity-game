@@ -132,7 +132,7 @@ public static class BoonData
         return pickedBoonBuffs;
     }
 
-    public static Action GetBoonAffect(BoonBuff boon)
+    public static Action GetBoonEffect(BoonBuff boon)
     {
         int boonActionIndex = (int)boon.BoonEffect;
 

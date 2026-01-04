@@ -29,9 +29,8 @@ public class GunPodPirateLogic : EnemyTemplate
         MaxAccel = 3000;
         state = State.moveToPlayer;
         thisThrusterSet = Thrusters.GunPodPirateThrusterSet;
-        base.Awake();
-
         Health = 60;
+        base.Awake();
     }
 
     [SerializeField] private Sebastian.WeaponryData.Weapon Weapon;

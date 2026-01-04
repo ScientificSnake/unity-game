@@ -84,6 +84,7 @@ public class KamikazeEnemyAI : EnemyTemplate
     protected override void Awake()
     {
         thisThrusterSet = Thrusters.KamikazeThrusterSet;
+        Health = 45;
 
         base.Awake();
 
@@ -107,8 +108,6 @@ public class KamikazeEnemyAI : EnemyTemplate
         contactFilter = new ContactFilter2D();
         contactFilter.useTriggers = true;  // Include triggers
         contactFilter.useLayerMask = false; // Check all layers
-
-        Health = 45;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -167,61 +166,8 @@ public class KamikazeEnemyAI : EnemyTemplate
         ManagerScript.Instance.RunOnDelay(DestroyKamikaz, 1);
         ManagerScript.Instance.RunOnDelay(DestroyExplosionObj, 1);
 
-        ApplyExplosionDamage();
+        ObjTools.ApplyExplosionDamage(colliderList, gameObject, DamageRadius, contactFilter, ExplosionDamage, BlastForce);
     }
 
-    protected void ApplyExplosionDamage()
-    {
-        // Clear list (but keep capacity for reuse)
-        colliderList.Clear();
-
-        // Use the modern List overload (not deprecated!)
-        int hitCount = Physics2D.OverlapCircle(
-            transform.position,
-            DamageRadius,
-            contactFilter,
-            colliderList  // List automatically resizes if needed
-        );
-
-        // ========================================================================
-
-        // Cache values to avoid repeated calculations
-        Vector2 explosionPos = transform.position;
-        float damageRadiusSqr = DamageRadius * DamageRadius;
-
-        // Process all hit colliders
-        for (int i = 0; i < hitCount; i++)
-        {
-            Collider2D collider = colliderList[i];
-            GameObject otherGo = collider.gameObject;
-
-            // Skip self
-            if (otherGo == gameObject) continue;
-
-            // Calculate distance efficiently
-            Vector2 toOther = (Vector2)otherGo.transform.position - explosionPos;
-            float distanceSqr = toOther.sqrMagnitude;
-
-            // Safety check
-            if (distanceSqr > damageRadiusSqr) continue;
-
-            // Calculate actual distance and intensity
-            float distance = Mathf.Sqrt(distanceSqr);
-            float intensityProportion = (DamageRadius - distance) / DamageRadius;
-
-            // Apply damage
-            if (otherGo.TryGetComponent(out HealthScript otherHealth))
-            {
-                otherHealth.ApplyDamage(intensityProportion * ExplosionDamage);
-            }
-
-            // Apply physics force
-            if (collider.TryGetComponent<Rigidbody2D>(out Rigidbody2D otherRb))
-            {
-                float force = intensityProportion * BlastForce;
-                Vector2 forceDir = toOther / distance; // Normalized direction (reuse distance)
-                otherRb.AddForce(forceDir * force, ForceMode2D.Impulse);
-            }
-        }
-    }
+    
 }

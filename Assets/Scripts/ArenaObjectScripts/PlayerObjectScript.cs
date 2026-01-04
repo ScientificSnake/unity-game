@@ -31,6 +31,12 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
     public LevelDataStorage.LevelManager.BaseStats RoundStats;
     private void Awake()
     {
+        #region Heath Setup
+        PlayerHealthManager = gameObject.GetComponent<HealthScript>();
+        PlayerHealthManager.OnDamage = SpawnSparks;
+        PlayerHealthManager.OnDeath = DeathLogic;
+        #endregion
+
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.angularDamping = 0;
@@ -239,12 +245,6 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         collider.SetPath(0, path);
         #endregion
 
-        #region Heath Setup
-        PlayerHealthManager = gameObject.GetComponent<HealthScript>();
-        PlayerHealthManager.OnDamage = SpawnSparks;
-        PlayerHealthManager.OnDeath = DeathLogic;
-        #endregion
-
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         #region initialize stats based on what hull is chosen
@@ -290,6 +290,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         Offset = RoundStats.GunOffset;
         BaseHealth = RoundStats.Health;
         Health = RoundStats.Health;
+        PlayerHealthManager.Health = Health;
     }
 
     public void ResetRoundStats()

@@ -1,7 +1,14 @@
-using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+
+public static class Vector2Extensions
+{
+    public static float DirectionAngle(this Vector2 v)
+    {
+        return Mathf.Rad2Deg * Mathf.Atan2(v.y, v.x);
+    }
+}
 
 public static class ObjTools
 {
@@ -112,6 +119,61 @@ public static class ObjTools
         returnData.AimDeg = angleDeg;
 
         return returnData;
+    }
+
+    public static void ApplyExplosionDamage(List<Collider2D> colliderList, GameObject thisGameObject, float damageRadius, ContactFilter2D contactFilter, float explosionDamage, float blastForce)
+    {
+        // Clear list (but keep capacity for reuse)
+        colliderList.Clear();
+
+        // Use the modern List overload (not deprecated!)
+        int hitCount = Physics2D.OverlapCircle(
+            thisGameObject.transform.position,
+            damageRadius,
+            contactFilter,
+            colliderList  // List automatically resizes if needed
+        );
+
+        // ========================================================================
+
+        // Cache values to avoid repeated calculations
+        Vector2 explosionPos = thisGameObject.transform.position;
+        float damageRadiusSqr = damageRadius * damageRadius;
+
+        // Process all hit colliders
+        for (int i = 0; i < hitCount; i++)
+        {
+            Collider2D collider = colliderList[i];
+            GameObject otherGo = collider.gameObject;
+
+            // Skip self
+            if (otherGo == thisGameObject) continue;
+
+            // Calculate distance efficiently
+            Vector2 toOther = (Vector2)otherGo.transform.position - explosionPos;
+            float distanceSqr = toOther.sqrMagnitude;
+
+            // Safety check
+            if (distanceSqr > damageRadiusSqr) continue;
+
+            // Calculate actual distance and intensity
+            float distance = Mathf.Sqrt(distanceSqr);
+            float intensityProportion = (damageRadius - distance) / damageRadius;
+
+            // Apply damage
+            if (otherGo.TryGetComponent(out HealthScript otherHealth))
+            {
+                otherHealth.ApplyDamage(intensityProportion * explosionDamage);
+            }
+
+            // Apply physics force
+            if (collider.TryGetComponent<Rigidbody2D>(out Rigidbody2D otherRb))
+            {
+                float force = intensityProportion * blastForce;
+                Vector2 forceDir = toOther / distance; // Normalized direction (reuse distance)
+                otherRb.AddForce(forceDir * force, ForceMode2D.Impulse);
+            }
+        }
     }
 
 }
@@ -368,6 +430,7 @@ public static class AcceleratingIntercept
 
         return result;
     }
+
 }
 
 // Example usage in your KamikazeEnemyAI:

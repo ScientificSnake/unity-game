@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class HealthDisplayTemp : MonoBehaviour
 {
-    public static PlayerObjectScript PlayerScriptRef;
+    public static HealthScript PlayerHealthScriptRef;
+    public static PlayerObjectScript Playerscript;
     public static GameObject PlayerRef;
 
     public static TextMeshProUGUI tmp;
@@ -18,14 +19,15 @@ public class HealthDisplayTemp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerScriptRef == null || PlayerRef == null)
+        if (Playerscript == null || PlayerRef == null || PlayerHealthScriptRef == null)
         {
             PlayerRef = GameObject.FindWithTag("Player");
-            PlayerScriptRef = PlayerRef.GetComponent<PlayerObjectScript>();
+            Playerscript = PlayerRef.GetComponent<PlayerObjectScript>();
+            PlayerHealthScriptRef = Playerscript.PlayerHealthManager;
         }
         else
         {
-            tmp.text = $"<color=red> {(int)PlayerScriptRef.Health} / {(int)PlayerScriptRef.BaseHealth}";
+            tmp.text = $"<color=red> {(int)PlayerHealthScriptRef.Health} / {(int)Playerscript.BaseHealth}";
         }
     }
 }

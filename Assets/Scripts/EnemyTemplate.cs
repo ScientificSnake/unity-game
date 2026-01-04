@@ -1,14 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 using UnityEngine.UI.Extensions;
 
 public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
 {
+    protected AudioSource thisAudio;
+
     public HealthScript thisHealth;
 
-    public float Health = 1;
+    public float Health;
     public Rigidbody2D rb;
     public Rigidbody2D Rigidbody2 => rb;
 
@@ -37,12 +40,22 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
 
     [SerializeField] private GameObject SparksPrefab;
 
+    private List<Vector2> InitialWayPoints;
+    [SerializeField] protected List<GameObject> WayPoints;
+    private Coroutine PatrolCoRoutine;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Awake()
     {
+        InitialWayPoints = new List<Vector2>();
+
+        thisAudio = gameObject.AddComponent<AudioSource>();
+
         thisHealth = gameObject.GetOrAddComponent<HealthScript>();
         thisHealth.OnDamage = SpawnSparks;
         thisHealth.OnDeath = DestructSelf;
+
+        thisHealth.Health = Health;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -56,6 +69,142 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         rb.linearDamping = 0.25f;
 
         _InitializeThrusters();
+
+        foreach (GameObject waypoint in WayPoints)
+        {
+            if (waypoint != null)
+                InitialWayPoints.Add(waypoint.transform.position);
+        }
+
+        PatrolCoRoutine = StartCoroutine(PatrolPoint());
+    }
+
+    private float stoppedThreshold = 3;
+
+    private float closeEnough = 2;
+
+    protected List<Coroutine> PatrolCoRoutines = new();
+
+    protected void StopPatrol()
+    {
+        foreach(Coroutine e in PatrolCoRoutines)
+        {
+            StopCoroutine(e);
+        }
+        StopCoroutine(PatrolCoRoutine);
+    }
+
+    protected IEnumerator PatrolPoint()
+    {
+        print($"<color=yellow>started patrol");
+        while (true)
+        {
+            for (int i = 0; i < InitialWayPoints.Count; i++)
+            {
+                print($"<color=yellow> on waypoint {i}");
+
+                // Start the move coroutine
+                Coroutine moveCoRoutine = StartCoroutine(MoveTo(InitialWayPoints[i]));
+
+                // Add it to your tracking list for StopPatrol()
+                PatrolCoRoutines.Add(moveCoRoutine);
+
+                // WAIT here until the MoveTo coroutine is finished
+                yield return moveCoRoutine;
+
+                // Remove it from the list once finished so the list doesn't grow forever
+                PatrolCoRoutines.Remove(moveCoRoutine);
+
+                print($"<color=green> finished waypoint {i}");
+            }
+        }
+    }
+
+    protected IEnumerator MoveTo(Vector2 target)
+    {
+        print($"<color=yellow> moving to {target}");
+        //first stabilize
+        float newHeading;
+        if (rb.linearVelocity.magnitude > 3)
+        {
+            newHeading = rb.linearVelocity.DirectionAngle() + 180;
+            while (true)
+            {
+                if (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, newHeading)) < closeEnough)
+                {
+                    break;
+                }
+                print($"turning to stop ");
+                RotateTowardsTargetAngle(newHeading);
+                yield return null;
+            }
+
+            Throttle = 100;
+
+            while (true)
+            {
+                if (Mathf.Abs(rb.linearVelocity.magnitude) < stoppedThreshold)
+                {
+                    break;
+                }
+                print($"stopping");
+                yield return null;
+            }
+            Throttle = 0;
+        }
+
+        Vector2 VectorToTarget = target - (Vector2) transform.position;
+
+        newHeading = VectorToTarget.DirectionAngle();
+        print($"<color=green> {newHeading} is new target");
+
+        while (true)
+        {
+            if (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, newHeading)) < closeEnough)
+            {
+                break;
+            }
+            yield return null;
+            RotateTowardsTargetAngle(newHeading);
+            print($" from rotating towards target angle");
+        }
+
+        Throttle = 100;
+        print("throttle set to 100");
+
+        float targetDistance;
+        float stopNowGlideDist;
+        float stopNowGlideTime;
+
+        while (true)
+        {
+            targetDistance = Vector2.Distance(target, transform.position);
+            stopNowGlideTime = 1 / rb.linearDamping;
+            stopNowGlideDist = (stopNowGlideTime * rb.linearVelocity.magnitude) - (rb.linearDamping * (Mathf.Pow(stopNowGlideTime, 2) / 2));
+
+            if (Mathf.Abs(stopNowGlideDist - targetDistance) < closeEnough)
+            {
+                Throttle = 0;
+                break;
+            }
+            else if (stopNowGlideDist >= targetDistance)
+            {
+                Throttle = 0;
+                break;
+            }
+
+            yield return null;
+        }
+
+        while (true)
+        {
+            targetDistance = Vector2.Distance(target, transform.position);
+            if (targetDistance < closeEnough * 2)
+            {
+                break;
+            }
+            yield return null;
+        }
     }
 
     public void SpawnSparks()

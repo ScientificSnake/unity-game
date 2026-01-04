@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Globalization;
 using UnityEngine;
 
 public class RoundButtonsAnimatedDropScreen : MonoBehaviour
@@ -14,6 +15,6 @@ public class RoundButtonsAnimatedDropScreen : MonoBehaviour
     {
         print($"<color=yellow> dropping down the scren");
         yield return new WaitForSeconds(seconds);
-        transform.LeanMoveLocalY(0, 1);
+        transform.LeanMoveLocalY(0, 1).setEaseOutElastic();
     }
 }
