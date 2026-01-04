@@ -10,6 +10,5 @@ public class BasicPirateDummyBehaviour : EnemyTemplate
         Fuel = 2000;
         MaxAccel = 2000;
         FuelUsage = 1;
-
     }
 }

@@ -76,8 +76,9 @@ public class GunPodPirateLogic : EnemyTemplate
         }
     }
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(PeriodicallyCheckLineOfSightOnPlayer(0.25f));
 
         Weapon = Sebastian.WeaponryData.WeaponDict[4];

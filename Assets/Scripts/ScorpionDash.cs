@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ScorpionDash : MonoBehaviour
 {
-    public float DashForce = 500;
-    public float DashTime = 0.25f;
+    public float DashForce = 800;
+    public float DashTime = 0.15f;
 
     private float _ogDamping;
 

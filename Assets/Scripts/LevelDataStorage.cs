@@ -2,11 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
-using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using System.Collections;
-using NUnit.Framework.Interfaces;
+
+
 public class LevelDataStorage
 {
     public const int LatestSpawnSecond = 15;
@@ -454,7 +452,7 @@ public class LevelDataStorage
 
         public PlayerStatModifers Modifers;
 
-        // Getoverhere start
+        // Getoverhere start    
         public void StartRoundRoutine() 
         {   
             Time.timeScale = 1.0f;
@@ -463,6 +461,7 @@ public class LevelDataStorage
             PlayerObjectScript PlayerScript;
             if (CurrentRound == 0)
             {
+                Debug.Log(" branch round 0");
                 Modifers = new();
 
                 ManagerScript.CurrentLevelManagerInstance.InstantiatePlayerObject();
@@ -497,7 +496,7 @@ public class LevelDataStorage
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
 
-                GameObject dropDown = RoundOverScreen.GetComponent<RoundOverImage>().amazingDropAnimatedScreen; 
+                GameObject dropDown = RoundOverScreen.GetComponent<RoundOverImage>().amazingDropAnimatedScreen;
                 dropDown.SetActive(false);
                 dropDown.transform.position = dropDown.transform.position + new Vector3(0, 10, 0); // move it back up so it can drop in again next time
 
@@ -523,7 +522,7 @@ public class LevelDataStorage
                 GameObject PreviousLayoutObj = GameObject.FindWithTag("MapLayoutTag");
                 ManagerScript.Destroy(PreviousLayoutObj);
 
-                ManagerScript.Instantiate(RootLevelData.LayoutPrefab[CurrentRound]);
+                ManagerScript.Instantiate(RootLevelData.LayoutPrefab[CurrentRound]); // THHIS ONE IS THE BAD ONE
                 // reset player position and velocity and health and fuel
             }
 

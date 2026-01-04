@@ -69,14 +69,20 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         rb.linearDamping = 0.25f;
 
         _InitializeThrusters();
+    }
 
-        foreach (GameObject waypoint in WayPoints)
+    protected virtual void Start()
+    {
+        if (WayPoints.Count > 0)
         {
-            if (waypoint != null)
-                InitialWayPoints.Add(waypoint.transform.position);
-        }
+            foreach (GameObject waypoint in WayPoints)
+            {
+                if (waypoint != null)
+                    InitialWayPoints.Add(waypoint.transform.position);
+            }
 
-        PatrolCoRoutine = StartCoroutine(PatrolPoint());
+            PatrolCoRoutine = StartCoroutine(PatrolPoint());
+        }
     }
 
     private float stoppedThreshold = 3;

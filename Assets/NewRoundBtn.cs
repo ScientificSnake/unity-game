@@ -11,8 +11,8 @@ public class NewRoundBtn : MonoBehaviour
     {
         if (BoonAction != null)
         {
-            BoonAction();
-            print($"<color=yellow> New round button clicked");
+            Debug.Log($"<color=yellow> New round button clicked");
+            //BoonAction();
             ManagerScript.CurrentLevelManagerInstance.StartRoundRoutine();
         }
         else
