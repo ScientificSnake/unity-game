@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System;
 using Sebastian;
+using System.Diagnostics.CodeAnalysis;
 
 public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 {
@@ -74,6 +75,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
         inputManager.Player.LAlt.performed += LAlt_performed;
         inputManager.Player.QPress.performed += KeyQPress;
+        inputManager.Player.DPress.Disable();
 
         inputManager.Enable();
     }
@@ -276,7 +278,44 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         ThrusterBaseScales = RoundStats.thrusterLayout.BaseScales;
 
         #endregion
+
+        #region Abilities if applicable
+
+        if (RoundStats.DashAbility)
+        {
+            DashAbility = gameObject.AddComponent<ScorpionDash>();
+            inputManager.Player.DPress.Enable();
+            inputManager.Player.DPress.performed += DashAbilityPressed;
+            LastDashTimeStamp = Time.time;
+            DashCooldown = 2;
+        }
+
+        #endregion
     }
+
+    private ScorpionDash DashAbility;
+
+    public float DashCooldown;
+
+    private float LastDashTimeStamp;
+
+    private void DashAbilityPressed(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        float now = Time.time;
+
+        float diff = now - LastDashTimeStamp;
+
+        print($"D pressed - > {diff }after last dash ");
+        if (diff > DashCooldown)
+        {
+            DashAbility.Dash();
+            LastDashTimeStamp = now;
+        }
+    }
+
 
     public float BaseHealth;
 

@@ -71,6 +71,15 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DPress"",
+                    ""type"": ""Button"",
+                    ""id"": ""c33e7059-b716-4071-8829-5e594e364838"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -126,6 +135,17 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""QPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""10a31502-d2c1-4e75-92ce-ec6afaee258e"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPress"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -225,6 +245,7 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         m_Player_LAlt = m_Player.FindAction("LAlt", throwIfNotFound: true);
         m_Player_LClick = m_Player.FindAction("LClick", throwIfNotFound: true);
         m_Player_QPress = m_Player.FindAction("QPress", throwIfNotFound: true);
+        m_Player_DPress = m_Player.FindAction("DPress", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_Scroll = m_CameraControls.FindAction("Scroll", throwIfNotFound: true);
@@ -308,6 +329,7 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_LAlt;
     private readonly InputAction m_Player_LClick;
     private readonly InputAction m_Player_QPress;
+    private readonly InputAction m_Player_DPress;
     public struct PlayerActions
     {
         private @InArenaControls m_Wrapper;
@@ -317,6 +339,7 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         public InputAction @LAlt => m_Wrapper.m_Player_LAlt;
         public InputAction @LClick => m_Wrapper.m_Player_LClick;
         public InputAction @QPress => m_Wrapper.m_Player_QPress;
+        public InputAction @DPress => m_Wrapper.m_Player_DPress;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,6 +364,9 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
             @QPress.started += instance.OnQPress;
             @QPress.performed += instance.OnQPress;
             @QPress.canceled += instance.OnQPress;
+            @DPress.started += instance.OnDPress;
+            @DPress.performed += instance.OnDPress;
+            @DPress.canceled += instance.OnDPress;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -360,6 +386,9 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
             @QPress.started -= instance.OnQPress;
             @QPress.performed -= instance.OnQPress;
             @QPress.canceled -= instance.OnQPress;
+            @DPress.started -= instance.OnDPress;
+            @DPress.performed -= instance.OnDPress;
+            @DPress.canceled -= instance.OnDPress;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -522,6 +551,7 @@ public partial class @InArenaControls: IInputActionCollection2, IDisposable
         void OnLAlt(InputAction.CallbackContext context);
         void OnLClick(InputAction.CallbackContext context);
         void OnQPress(InputAction.CallbackContext context);
+        void OnDPress(InputAction.CallbackContext context);
     }
     public interface ICameraControlsActions
     {
