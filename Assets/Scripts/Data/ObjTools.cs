@@ -31,7 +31,51 @@ public static class ObjTools
         }
     }
 
+    public static float? GetAimAngleAccel(Vector2 shooterPos, Vector2 shooterVel,
+                                     Vector2 targetPos, Vector2 targetVel,
+                                     float muzzleSpeed, float bulletAccel)
+    {
+        // 1. Relative Position and Velocity
+        Vector2 D = targetPos - shooterPos;
+        Vector2 Vrel = targetVel - shooterVel;
 
+        // 2. Quartic Coefficients: At^4 + Bt^3 + Ct^2 + Dt + E = 0
+        // Based on: |D + Vrel*t|^2 = (s*t + 0.5*a*t^2)^2
+        float A = 0.25f * bulletAccel * bulletAccel;
+        float B = bulletAccel * muzzleSpeed;
+        float C = (muzzleSpeed * muzzleSpeed) - Vector2.Dot(Vrel, Vrel);
+        float D_coeff = -2f * Vector2.Dot(D, Vrel); // Named D_coeff to avoid confusion with Vector D
+        float E = -Vector2.Dot(D, D);
+
+        // 3. Solve for t using Newton-Raphson (Converges in ~5-8 steps)
+        float t = SolveQuartic(A, B, C, D_coeff, E);
+
+        if (float.IsNaN(t) || t <= 0) return null;
+
+        // 4. Calculate the Intercept Point in World Space
+        Vector2 interceptPoint = targetPos + (Vrel * t);
+
+        // 5. Calculate Angle from Shooter to Intercept Point
+        Vector2 direction = interceptPoint - shooterPos;
+        return Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    }
+
+    private static float SolveQuartic(float a, float b, float c, float d, float e)
+    {
+        // Initial guess based on simple distance / speed
+        // If a=0, this is the quadratic solution.
+        float t = 1.0f;
+
+        for (int i = 0; i < 10; i++)
+        {
+            float f = a * Mathf.Pow(t, 4) + b * Mathf.Pow(t, 3) + c * Mathf.Pow(t, 2) + d * t + e;
+            float df = 4 * a * Mathf.Pow(t, 3) + 3 * b * Mathf.Pow(t, 2) + 2 * c * t + d;
+
+            if (Mathf.Abs(df) < 0.0001f) break;
+            t = t - f / df;
+        }
+        return t;
+    }
     public static bool LineOfSight(GameObject StartObject, Transform targetTransform, float MaxDistance)
     {
         Vector2 directionToTarget = targetTransform.position - StartObject.transform.position;

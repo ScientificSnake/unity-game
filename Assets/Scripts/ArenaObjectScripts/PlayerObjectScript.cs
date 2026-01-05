@@ -40,7 +40,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.angularDamping = 0;
-        rb.linearDamping = 0.15f;
+        rb.linearDamping = 0.1f;
         rb.freezeRotation = true;
         audios = GetComponent<AudioSource>();
     }

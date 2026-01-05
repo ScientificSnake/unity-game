@@ -118,9 +118,12 @@ namespace Sebastian
                 bulletScript.tcollider.enabled = true;
                 bulletScript.rb.linearDamping *= Params.ShotDragMult;
 
-                for (int i = 0; i < Params.monoBehavioursAdditions.Count; i++)
+                if (Params.monoBehavioursAdditions != null)
                 {
-                    orphan.AddComponent(Params.monoBehavioursAdditions[i]);
+                    for (int i = 0; i < Params.monoBehavioursAdditions.Count; i++)
+                    {
+                        orphan.AddComponent(Params.monoBehavioursAdditions[i]);
+                    }
                 }
             }
 
