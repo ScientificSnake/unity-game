@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3148661881883736099}
   - component: {fileID: 5668756029841955402}
   - component: {fileID: -7720210049202602790}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpacePirateDummy
   m_TagString: EnemyTag
   m_Icon: {fileID: 0}

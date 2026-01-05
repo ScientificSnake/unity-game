@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class BulletBehavior : ProjectileTemplate
@@ -11,6 +13,7 @@ public class BulletBehavior : ProjectileTemplate
         if (OtherGo.TryGetComponent<HealthScript>(out HealthScript otherHealth))
         {
             otherHealth.ApplyDamage(Damage);
+            ApplyHitFuncs(collision);
             Destroy(gameObject);
         }
         else

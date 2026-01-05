@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +36,8 @@ namespace Sebastian
             public float MaxDegreeError;
             public float RecoilForce;
             public float Damage;
+
+            public List<Type> monoBehavioursAdditions;
 
             public List<Collider2D> IgnoredColliders;
 
@@ -117,7 +118,10 @@ namespace Sebastian
                 bulletScript.tcollider.enabled = true;
                 bulletScript.rb.linearDamping *= Params.ShotDragMult;
 
-                //Params.Spawner.GetComponent<Collider2D>().enabled = true;
+                for (int i = 0; i < Params.monoBehavioursAdditions.Count; i++)
+                {
+                    orphan.AddComponent(Params.monoBehavioursAdditions[i]);
+                }
             }
 
             public static void BasicRocketSpawn(WeaponParameters Params)

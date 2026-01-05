@@ -3,7 +3,6 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System;
 using Sebastian;
-using System.Diagnostics.CodeAnalysis;
 
 public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 {
@@ -62,7 +61,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
 
     private float LastFireTimeStamp;
 
-    public float throttle;  // Pre deadzone throttle
+    public float throttle;
     public float Health;
 
     public Camera mainCamera;
@@ -134,6 +133,11 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
                 CurrentMainWeaponParams.ParentZRotation = heading;
                 CurrentMainWeaponParams.ParentVelo = rb.linearVelocity;
                 CurrentMainWeaponParams.ShotDragMult = RoundStats.ShotDrag;
+
+                if (CurrentMainWeaponParams.monoBehavioursAdditions == null)
+                {
+                    CurrentMainWeaponParams.monoBehavioursAdditions = new List<Type>();
+                }
 
                 SpawnMainWeaponPrefabAction(CurrentMainWeaponParams);
 
@@ -225,7 +229,6 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         transform.Rotate(0, 0, angleTurned);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //add to minimap tracker
@@ -250,10 +253,6 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
         #region initialize stats based on what hull is chosen
-
-        // RoundStats = ManagerScript.CurrentLevelManagerInstance.Stats;
-        // string hullSysName = ManagerScript.CurrentLevelManagerInstance.selectedHull;
-
         ApplyRoundStats();
 
         #endregion
@@ -307,15 +306,12 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         float now = Time.time;
 
         float diff = now - LastDashTimeStamp;
-
-        print($"D pressed - > {diff }after last dash ");
         if (diff > DashCooldown)
         {
             DashAbility.Dash();
             LastDashTimeStamp = now;
         }
     }
-
 
     public float BaseHealth;
 

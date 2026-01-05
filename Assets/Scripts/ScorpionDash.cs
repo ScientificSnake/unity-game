@@ -18,7 +18,6 @@ public class ScorpionDash : MonoBehaviour
 
     public void Dash()
     {
-        print($"<color=orange> DASHING ");
         _ogDamping = rb.linearDamping;
         rb.linearDamping = 0;
         Vector2 Force = transform.right * DashForce;

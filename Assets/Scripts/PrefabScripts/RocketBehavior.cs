@@ -66,6 +66,7 @@ public class RocketBehavior : ProjectileTemplate
         if (OtherGo.TryGetComponent<HealthScript>(out HealthScript otherHealth))
         {
             otherHealth.ApplyDamage(Damage);
+            ApplyHitFuncs(collision);
             PlayerScriptRef.audios.PlayOneShot(boomBoomSound, 0.2f);
             ObjTools.ApplyExplosionDamage(colliderList, gameObject, DamageRadius, contactFilter, Damage / 3, 50);
             GameObject explosion = Instantiate(explosionPrefab);

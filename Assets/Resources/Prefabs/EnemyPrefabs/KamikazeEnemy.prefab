@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7697427869063785584}
   - component: {fileID: 4072413333531057736}
   - component: {fileID: -4350277107367551271}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: KamikazeEnemy
   m_TagString: EnemyTag
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1947967df3dece4986f6faf94401030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisHealth: {fileID: 0}
   Health: 0
   rb: {fileID: 0}
   localMiniMapIcon: {fileID: 1242634201591264772, guid: 9743a51c01e0cf1458f1fec0527727b0, type: 3}
@@ -58,6 +59,7 @@ MonoBehaviour:
   rotationDegreesPerSeconds: 0
   spriteRenderer: {fileID: 0}
   SparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
+  WayPoints: []
   PlayerDetectionRadius: 0
   State: LockedPlayer
   SpriteAngleOffset: 0

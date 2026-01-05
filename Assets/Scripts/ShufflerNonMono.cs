@@ -1,8 +1,3 @@
-using Newtonsoft.Json.Linq;
-using System;
-using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
-
 public static class ShufflerNonMono
 {
     private static System.Random _rng;
@@ -14,9 +9,6 @@ public static class ShufflerNonMono
 
     public static void Shuffle<T>(T[] array)
     {
-
-        Debug.Log("SHuffling array");
-
         int n = array.Length;
         while (n > 1)
         {
