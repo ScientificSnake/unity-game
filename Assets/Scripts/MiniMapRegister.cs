@@ -98,7 +98,6 @@ public class MiniMapRegister : MonoBehaviour
 
     public void RenderMiniMap()
     {
-        print($"<color=yellow>minimap rendering, {TrackedObjs.Count} objects being tracked");
         for (int i = TrackedObjs.Count - 1; i >= 0; i--)
         {
             IMiniMapTrackable trackedObj = TrackedObjs[i];

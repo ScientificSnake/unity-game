@@ -3,8 +3,10 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System;
 using Sebastian;
+using System.Collections;
+using System.Net.NetworkInformation;
 
-public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
+public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheckable
 {
     [Header("HealthScript")]
 
@@ -31,6 +33,8 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
     public LevelDataStorage.LevelManager.BaseStats RoundStats;
     private void Awake()
     {
+        BoundsEnforcer.Register(this);
+
         #region Heath Setup
         PlayerHealthManager = gameObject.GetComponent<HealthScript>();
         PlayerHealthManager.OnDamage = SpawnSparks;
@@ -157,6 +161,12 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
     private void OnDisable()
     {
         inputManager.Disable();
+        BoundsEnforcer.DeRegister(this);
+    }
+
+    private void OnDestroy()
+    {
+        BoundsEnforcer.DeRegister(this);
     }
 
     private void ThrottleControl()
@@ -290,6 +300,9 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
         }
 
         #endregion
+
+        boundsEnforcer = GameObject.Find("BoundsEnforcer").GetComponent<BoundsEnforcer>();
+        deserterWarning = GameObject.Find("ArenaInitializer").GetComponent<ArenaInitializer>().deserterWarning;
     }
 
     private ScorpionDash DashAbility;
@@ -374,4 +387,30 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable
     {
         ManagerScript.CurrentLevelManagerInstance.GameOver();
     }
+
+    public DeserterWarningScript deserterWarning;
+    public Coroutine CheckForReEntryCR;
+
+    public void OnOutOfBounds()
+    {
+        print("desertion detected !!!!");
+        deserterWarning.StartTimer();
+        CheckForReEntryCR = StartCoroutine(CheckForReEntry());
+    }
+
+    private BoundsEnforcer boundsEnforcer;
+
+    private IEnumerator CheckForReEntry()
+    {
+        while (true)
+        {
+            if (boundsEnforcer.IsInBounds(this))
+            {
+                deserterWarning.StopTimer();
+                break;
+            }
+            yield return null;
+        }
+    }
+
 }

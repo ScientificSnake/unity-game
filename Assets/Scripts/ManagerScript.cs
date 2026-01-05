@@ -181,7 +181,7 @@ public class ManagerScript : MonoBehaviour
 
     public GameObject SpawnOrphan(GameObject prefab, Vector2 position)
     {
-        GameObject newGameObj = Instantiate(prefab, position, Quaternion.identity);
+        GameObject newGameObj = Instantiate(prefab, position, Quaternion.identity); 
         return newGameObj;
     }
 
