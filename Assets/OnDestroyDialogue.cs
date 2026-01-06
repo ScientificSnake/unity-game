@@ -8,6 +8,10 @@ public class OnDestroyDialogue : MonoBehaviour
 
     private void OnDestroy()
     {
-        DialogueManager.DisplayDialogue(DialogueText, HardFreeze);
+        if (gameObject.scene.isLoaded)
+        {
+            if (ManagerScript.CurrentLevelManagerInstance.InRound)
+                DialogueManager.DisplayDialogue(DialogueText, HardFreeze);
+        }
     }
 }

@@ -451,11 +451,13 @@ public class LevelDataStorage
 
         public PlayerStatModifers Modifers;
 
+        public bool InRound;
+
         // Getoverhere start    
         public void StartRoundRoutine() 
         {   
             Time.timeScale = 1.0f;
-
+            InRound = true;
             GameObject Player;
             PlayerObjectScript PlayerScript;
             if (CurrentRound == 0)
@@ -545,7 +547,8 @@ public class LevelDataStorage
         }
 
         public void GameOver()
-        { 
+        {
+            InRound = false;
             Time.timeScale = 1.0f;
             GameObject LevelLayout = GameObject.FindWithTag("MapLayoutTag");
             UnityEngine.Object.Destroy(LevelLayout);

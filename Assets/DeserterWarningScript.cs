@@ -4,40 +4,45 @@ using UnityEngine;
 
 public class DeserterWarningScript : MonoBehaviour
 {
-    [SerializeField] private int TimerSeconds;
+    private int TimerSeconds = 15;
 
     [SerializeField] private TextMeshProUGUI timerText;
 
     private void Awake()
     {
+        TimerSeconds = 15;
         gameObject.SetActive(false);
     }
 
-    private Coroutine Timer;
-
     public void StartTimer()
     {
-        if (Timer == null && !(gameObject.activeSelf))
+        if (!(gameObject.activeSelf))
         {
             gameObject.SetActive(true);
-            Timer = StartCoroutine(TimerRoutine());
+            StartCoroutine(TimerRoutine());
         }
     }
 
     private IEnumerator TimerRoutine()
     {
-        for (int i = TimerSeconds;  i >= 1; i--)
+        int second = TimerSeconds;
+
+        while (true)
         {
-            timerText.text = $"Detonating charges in {i}";
+            timerText.text = $"Detonating charges in {second}";
             yield return new WaitForSeconds(1);
+            second--;
+            if (second == 0)
+            {
+                break;
+            }
         }
         ManagerScript.CurrentLevelManagerInstance.GameOver();
-        Timer = null;
     }
 
     public void StopTimer()
     {
-        StopCoroutine(Timer);
+        StopAllCoroutines();
         gameObject.SetActive(false);
     }
 }
