@@ -23,6 +23,12 @@ public class DialogueManager : MonoBehaviour
         inputManager.Dialogue.EnterPressed.performed += EnterEvent;
     }
 
+    public void SimulateEnterEvent()
+    {
+        EnterEvent(new InputAction.CallbackContext());
+        // callback context is unused so can just be junk new empy
+    }
+
     private void EnterEvent(InputAction.CallbackContext obj)
     {
         auxsource.PlayOneShot(clickSound);
