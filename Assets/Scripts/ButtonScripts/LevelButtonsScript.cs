@@ -6,10 +6,24 @@ public class LevelButtonsScript : MonoBehaviour
 
     public void TestLevel1()
     {
-        ManagerScript.Instance.EnterLevel("TestLevel1");
+        SendOverLevelInfo("TestLevel1");
     }
     public void Tutorial()
     {
-        ManagerScript.Instance.EnterLevel("Tutorial");
+        SendOverLevelInfo("Tutorial");
+    }
+
+    private static LevelInfoDisplay LevelInfoDisplay;
+
+    private void Awake()
+    {
+        if (LevelInfoDisplay == null)
+        {
+            LevelInfoDisplay = GameObject.Find("LevelInfoDisplay").GetComponent<LevelInfoDisplay>();
+        }
+    }
+    private void SendOverLevelInfo(string leveSysName)
+    {
+        LevelInfoDisplay.SetBoonInfo(leveSysName);
     }
 }
