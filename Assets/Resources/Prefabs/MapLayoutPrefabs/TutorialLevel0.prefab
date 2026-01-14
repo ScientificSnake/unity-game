@@ -128,7 +128,7 @@ PrefabInstance:
         started. To change the throttle of your spacecraft use shift to increase
         and ctrl to decrease (You can also press alt to instantly throttle to 0).
         To change the heading use your mouse, and left click fires your armament.
-        Press <color=red> ENTER <color=#ffde85>when you are ready.
+        Press <color=red> ENTER <color=#ffde85> or click this text when you are ready.
       objectReference: {fileID: 0}
     - target: {fileID: 6791956354287514454, guid: 61a75485f6e591048aaa6d7b3ad84801, type: 3}
       propertyPath: _WaitTime
