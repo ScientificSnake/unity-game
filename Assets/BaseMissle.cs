@@ -1,5 +1,3 @@
-using System.Runtime.CompilerServices;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class BaseMissle : ProjectileTemplate
@@ -69,7 +67,6 @@ public class BaseMissle : ProjectileTemplate
 
         GetThrustState(directionToPlayer.DirectionAngle());
         UseThrustState();
-
     }
 
     private void GetThrustState(float targetAngle)
@@ -96,6 +93,7 @@ public class BaseMissle : ProjectileTemplate
         {
             case ThrustState.Straight:
                 spRenderer.sprite = spStraight;
+
                 break;
             case ThrustState.TurnRight:
                 spRenderer.sprite = spTurnRight;

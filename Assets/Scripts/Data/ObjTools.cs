@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public static class Vector2Extensions
@@ -76,6 +78,12 @@ public static class ObjTools
         }
         return t;
     }
+
+    public static float GetAngleAfterBreaking(ref Rigidbody2D rb2, float leverdistance, float forceMagnitude)
+    {
+        throw new NotImplementedException();
+    }
+
     public static bool LineOfSight(GameObject StartObject, Transform targetTransform, float MaxDistance)
     {
         Vector2 directionToTarget = targetTransform.position - StartObject.transform.position;

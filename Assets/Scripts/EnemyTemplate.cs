@@ -68,7 +68,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         MiniMapRegister.Register(this);
         rb.linearDamping = 0.25f;
 
-        _InitializeThrusters();
+        InitializeThrusters();
     }
 
     protected virtual void Start()
@@ -86,7 +86,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         }
         else if (WayPoints.Count == 1)
         {
-            MoveTo(WayPoints[0].transform.position);
+            StartCoroutine(MoveTo(WayPoints[0].transform.position));
             HasPatrol = false;
         }
         else
@@ -227,7 +227,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         }
     }
 
-    private void _InitializeThrusters()
+    private void InitializeThrusters()
     {
         if (thisThrusterSet != null)
         {
