@@ -10,10 +10,12 @@ public class LevelInfoDisplay : MonoBehaviour
 
     public void SetBoonInfo(string boonInfoSysName)
     {
+        print($"<color=orange> Boon info being set");
+
         if (!_shown)
         {
             _shown = true;
-            gameObject.LeanMoveX(325, 1).setEaseInCubic();
+            gameObject.LeanMoveLocalX(325, 1).setEaseInCubic();
 
             // allow clicking off
             clickOffBtn.SetActive(true); 
@@ -26,10 +28,8 @@ public class LevelInfoDisplay : MonoBehaviour
         if (_shown)
         {
             _shown = false;
-            gameObject.LeanMoveX(625, 1).setEaseInCubic();
+            gameObject.LeanMoveLocalX(625, 1).setEaseInCubic();
             clickOffBtn.SetActive(false);
         }
     }
-
-    
 }

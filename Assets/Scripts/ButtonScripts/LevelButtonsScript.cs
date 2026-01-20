@@ -15,15 +15,14 @@ public class LevelButtonsScript : MonoBehaviour
 
     private static LevelInfoDisplay LevelInfoDisplay;
 
-    private void Awake()
+    private void Start()
     {
-        if (LevelInfoDisplay == null)
-        {
-            LevelInfoDisplay = GameObject.Find("LevelInfoDisplay").GetComponent<LevelInfoDisplay>();
-        }
+        LevelInfoDisplay = GameObject.Find("LevelInfoDisplayContainer").GetComponent<LevelInfoDisplay>();
     }
+
     private void SendOverLevelInfo(string leveSysName)
     {
+        LevelInfoDisplay = GameObject.Find("LevelInfoDisplayContainer").GetComponent<LevelInfoDisplay>();
         LevelInfoDisplay.SetBoonInfo(leveSysName);
     }
 }
