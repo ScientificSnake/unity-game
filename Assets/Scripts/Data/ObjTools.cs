@@ -1,7 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public static class Vector2Extensions
@@ -228,6 +228,16 @@ public static class ObjTools
         }
     }
 
+    public static Coroutine RunOnDelay(MonoBehaviour self, Action code, float delay)
+    {
+        return self.StartCoroutine(RunOnDelayCR(code, delay));
+    }
+
+    private static IEnumerator RunOnDelayCR(Action code, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        code();
+    }
 }
 public class FixedSizeQueue<T>
 {

@@ -579,6 +579,8 @@ public class LevelDataStorage
     {
         public bool IsEndless { get; } = false;
 
+        public string Title { get; }
+
         public int RoundCount { get; }  // Number of rounds in level
         public Func<int, int> DifficultyFunc { get; }  // Round -> Difficulty for that round
         public Dictionary<Action, int> DifficultyEventDict { get; } // Action to corresponding difficulty
@@ -591,7 +593,7 @@ public class LevelDataStorage
         public Vector2 MaxXY;
 
         public LevelData(int roundCount, Func<int, int> difficultyFunc, Dictionary<Action, int> difficultyEventDict, Dictionary<int, Dictionary<int, List<Action>>> presetRounds,
-                         string[] possibleEnemyTags, GameObject[] layoutPrefab, bool Endless, Vector2 minXY, Vector2 maxXY)
+                         string[] possibleEnemyTags, GameObject[] layoutPrefab, bool Endless, Vector2 minXY, Vector2 maxXY, string title)
         {
             RoundCount = roundCount;
             DifficultyFunc = difficultyFunc;
@@ -602,6 +604,7 @@ public class LevelDataStorage
             LayoutPrefab = layoutPrefab;
             MinXY = minXY;
             MaxXY = maxXY;
+            Title = title;
         }
     }
 

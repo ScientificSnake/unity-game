@@ -59,6 +59,7 @@ public static class TestLevel1
         new GameObject[] { ManagerScript.Instance.XandersLevel1, ManagerScript.Instance.XandersLevel2},
         Endless: false,
         new Vector2(-3000, -3000),
-        new Vector2(3000, 3000)
+        new Vector2(3000, 3000),
+        "Xanders Asteroid belt"
         );
 }
