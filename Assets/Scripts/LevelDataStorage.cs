@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.Collections;
+using MathNet.Numerics.Financial;
 
 
 public class LevelDataStorage
@@ -167,7 +168,6 @@ public class LevelDataStorage
             for (int i = 0; i < HullOptions.Count; i++)
             {
                 GameObject btnPrefab = ManagerScript.Instance.SysNameToPrefabObj[HullOptions[i]];
-
                 float xOffset;
                 Debug.Log(HullOptions[i] + " is added");
                 if (i % 2 == 0)
@@ -185,6 +185,19 @@ public class LevelDataStorage
                 prefab.transform.localScale *= 2;
 
                 HullSelectionButtons.Add(prefab);
+            }
+        }
+
+        private const int offSreenThresh = 0;
+
+        public void UpdateHullSelectionGUI()
+        {
+            foreach (GameObject btnPrefab in HullSelectionButtons)
+            {
+                if(Mathf.Abs(btnPrefab.transform.position.x) > offSreenThresh)
+                {
+                    // do stuff
+                }
             }
         }
 

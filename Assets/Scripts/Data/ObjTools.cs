@@ -279,6 +279,13 @@ public class FixedSizeQueue<T>
     }
 }
 
+public enum LR
+{
+    Left,
+    Right
+}
+
+
 #region diddy ah claude (not implemented) tried to unicode (bom)
 public static class AcceleratingIntercept
 {
