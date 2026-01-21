@@ -16,8 +16,14 @@ public class LevelInfoDisplay : MonoBehaviour
 
         if (!_shown)
         {
-            _shown = true;
-            gameObject.LeanMoveLocalX(325, 1).setEaseInCubic();
+            void UpdateState()
+            {
+                _shown = true;
+            }
+
+            ObjTools.RunOnDelay(this, UpdateState, 0.7f);
+
+            gameObject.LeanMoveLocalX(325, 0.7f).setEaseInExpo();
 
             // allow clicking off
             clickOffBtn.SetActive(true); 
@@ -30,9 +36,15 @@ public class LevelInfoDisplay : MonoBehaviour
     {
         if (_shown)
         {
-            _shown = false;
-            gameObject.LeanMoveLocalX(625, 1).setEaseInCubic();
-            clickOffBtn.SetActive(false);
+            void UpdateState()
+            {
+                _shown = false;
+                clickOffBtn.SetActive(false);
+            }
+
+            ObjTools.RunOnDelay(this, UpdateState, 0.7f);
+
+            gameObject.LeanMoveLocalX(625, 0.7f).setEaseInExpo();
         }
     }
 

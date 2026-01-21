@@ -158,6 +158,31 @@ public class LevelDataStorage
             Rounds = RoundList;
         }
 
+        public void DisplayNewHullSelectionMenu()
+        {
+            // Build the display out with 500 px spacing?
+
+            for (int i = 0; i < HullOptions.Count; i++)
+            {
+                GameObject btnPrefab = ManagerScript.Instance.SysNameToPrefabObj[HullOptions[i]];
+
+                float xOffset;
+                Debug.Log(HullOptions[i] + " is added");
+                if (i % 2 == 0)
+                {
+                    xOffset = Mathf.Floor(i / 2) * -500;
+                }
+                else
+                {
+                    xOffset = (Mathf.Floor(i / 2) + 1) * 500;
+                }
+
+                GameObject parent = GameObject.Find("RootCanvas");
+
+                GameObject prefab = ManagerScript.Instance.SpawnPrefab(btnPrefab, new Vector2(xOffset, 0), parent.transform);
+            }
+        }
+
         public void DisplayHullSelectionMenu(Transform parentTransform)
         {
             Debug.Log("Displaying hull selection menu at least im trying to ");

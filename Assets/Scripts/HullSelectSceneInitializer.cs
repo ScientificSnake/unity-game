@@ -12,7 +12,8 @@ public class HullSelectSceneInitializer : MonoBehaviour
         // Access the data payload we saved in ManagerScript before the scene change
         if (ManagerScript.CurrentLevelManagerInstance != null)
         {
-            ManagerScript.CurrentLevelManagerInstance.DisplayHullSelectionMenu(RootCanvas.transform);
+            //ManagerScript.CurrentLevelManagerInstance.DisplayHullSelectionMenu(RootCanvas.transform);
+            ManagerScript.CurrentLevelManagerInstance.DisplayNewHullSelectionMenu();
         }
         else
         {

@@ -84,8 +84,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheck
     }
 
     private void KeyQPress(InputAction.CallbackContext obj)
-    {
-        Debug.Log("$<color=green> Q press detected");
+    {   
         if (MiniMapRegister.MiniMapShown)
         {
             MiniMapRegister.DisableMiniMap();

@@ -118,10 +118,6 @@ public class ManagerScript : MonoBehaviour
             // First things first lets move scenes and get that juicy loading screen up
             StartCoroutine(LoadSceneRoutine("hullSelection"));
 
-            //LoadingScreen.Instance.Disable();
-
-            //CurrentLevelManagerInstance.DisplayHullSelectionMenu();
-
         }
     }
     #endregion
