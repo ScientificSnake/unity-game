@@ -83,7 +83,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheck
         inputManager.Enable();
     }
 
-    private void KeyQPress(InputAction.CallbackContext obj)
+    private void KeyQPress(InputAction.CallbackContext j)
     {   
         if (MiniMapRegister.MiniMapShown)
         {

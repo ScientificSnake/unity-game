@@ -8,7 +8,6 @@ public class HullSelectSceneInitializer : MonoBehaviour
     {
         print("Starting arena scene initializer");
 
-
         // Access the data payload we saved in ManagerScript before the scene change
         if (ManagerScript.CurrentLevelManagerInstance != null)
         {

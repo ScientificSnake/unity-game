@@ -158,6 +158,8 @@ public class LevelDataStorage
             Rounds = RoundList;
         }
 
+        public List<GameObject> HullSelectionButtons = new();
+
         public void DisplayNewHullSelectionMenu()
         {
             // Build the display out with 500 px spacing?
@@ -180,6 +182,9 @@ public class LevelDataStorage
                 GameObject parent = GameObject.Find("RootCanvas");
 
                 GameObject prefab = ManagerScript.Instance.SpawnPrefab(btnPrefab, new Vector2(xOffset, 0), parent.transform);
+                prefab.transform.localScale *= 2;
+
+                HullSelectionButtons.Add(prefab);
             }
         }
 
