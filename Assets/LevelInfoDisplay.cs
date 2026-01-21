@@ -6,6 +6,8 @@ public class LevelInfoDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_Tmp;
     [SerializeField] private GameObject clickOffBtn;
 
+    private string selectedSysName;
+
     private bool _shown;
 
     public void SetBoonInfo(string boonInfoSysName)
@@ -21,6 +23,7 @@ public class LevelInfoDisplay : MonoBehaviour
             clickOffBtn.SetActive(true); 
         }
         m_Tmp.text = LevelDataStorage.LevelDataDict[boonInfoSysName].Title;
+        selectedSysName = boonInfoSysName;
     }
 
     public void ClickOffBoonInfo()
@@ -32,4 +35,11 @@ public class LevelInfoDisplay : MonoBehaviour
             clickOffBtn.SetActive(false);
         }
     }
+
+    public void EnterSelectedMission()
+    {
+        ManagerScript.Instance.EnterLevel(selectedSysName);
+    }
 }
+
+
