@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using System.Collections;
 using MathNet.Numerics.Financial;
+using UnityEngine.UI;
 
 
 public class LevelDataStorage
@@ -158,9 +159,6 @@ public class LevelDataStorage
             }
             Rounds = RoundList;
         }
-
-        public List<GameObject> HullSelectionButtons = new();
-
         public void DisplayNewHullSelectionMenu()
         {
             // Build the display out with 500 px spacing?
@@ -184,19 +182,55 @@ public class LevelDataStorage
                 GameObject prefab = ManagerScript.Instance.SpawnPrefab(btnPrefab, new Vector2(xOffset, 0), parent.transform);
                 prefab.transform.localScale *= 2;
 
-                HullSelectionButtons.Add(prefab);
+                HullSelectionBtns.AddLast(prefab);
             }
         }
 
-        private const int offSreenThresh = 0;
+        private const int offSreenThresh = 600;
+
+        private LinkedList<GameObject> HullSelectionBtns = new();
+
+        public void ShiftHullSelectionBtns(LR direction)
+        {
+            Debug.Log($"<color=green> shifting {direction}");
+            GameObject temp;
+            switch (direction)
+            {
+                case LR.Left:
+                    temp = HullSelectionBtns.First.Value;
+                    HullSelectionBtns.RemoveFirst();
+                    HullSelectionBtns.AddLast(temp);
+                    break;
+                case LR.Right:
+                    temp = HullSelectionBtns.Last.Value;
+                    HullSelectionBtns.RemoveLast();
+                    HullSelectionBtns.AddFirst(temp);
+                    break;
+            }
+            UpdateHullSelectionGUI();
+        }
 
         public void UpdateHullSelectionGUI()
         {
-            foreach (GameObject btnPrefab in HullSelectionButtons)
+            for(int i = 0; i < HullSelectionBtns.Count; i++)
             {
-                if(Mathf.Abs(btnPrefab.transform.position.x) > offSreenThresh)
+                GameObject btnPrefab = HullSelectionBtns.ElementAt(i);
+
+                float xpos = -1000 + i * 500;
+                btnPrefab.transform.LeanMoveLocalX(xpos, 0.2f);
+
+                float offsetMagnitude = Mathf.Abs(xpos);
+                if (offsetMagnitude > offSreenThresh)
                 {
-                    // do stuff
+                    Color transparent = btnPrefab.GetComponent<Image>().color;
+                    transparent.a = 0;
+                    btnPrefab.GetComponent<Image>().color = transparent;
+                }
+                else
+                {
+                    Color opaque = btnPrefab.GetComponent<Image>().color;
+                    opaque.a = 1;
+                    btnPrefab.GetComponent<Image>().color = opaque;
                 }
             }
         }
