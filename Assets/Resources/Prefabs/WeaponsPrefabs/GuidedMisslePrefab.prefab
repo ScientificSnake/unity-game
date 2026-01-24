@@ -79,15 +79,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -164082725380277428, guid: c19446be3e395f040b6f1616d44e7f81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 14.200001, y: 2.4700003}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &-5519707465570438684
@@ -104,6 +104,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   tcollider: {fileID: 0}
+  spCold: {fileID: -164082725380277428, guid: c19446be3e395f040b6f1616d44e7f81, type: 3}
+  spTurnRight: {fileID: -4093987921198194536, guid: 381b1bf14d86def4c8e4b9667b1cb56f, type: 3}
+  spTurnLeft: {fileID: 3620510468529025383, guid: 3d8f711a4a48f51408308d61ffd17a1b, type: 3}
+  spStraight: {fileID: 5272401415994956661, guid: f7733262ab6a5a04887ca07e8b9f349b, type: 3}
+  TargetLock: {fileID: 0}
+  angularAcceleration: 0
 --- !u!50 &-7826125929102056765
 Rigidbody2D:
   serializedVersion: 5
