@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 380, y: -83, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1203283759416653459}
@@ -103,8 +103,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1366.1927
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -517,11 +517,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisHealth: {fileID: 0}
-  Health: 60
+  Health: 300
   rb: {fileID: 0}
   localMiniMapIcon: {fileID: 1242634201591264772, guid: 9743a51c01e0cf1458f1fec0527727b0, type: 3}
   Fuel: 2000
-  MaxAccel: 2500
+  MaxAccel: 5000
   Throttle: 0
   FuelUsage: 0
   rotationDegreesPerSeconds: 60
