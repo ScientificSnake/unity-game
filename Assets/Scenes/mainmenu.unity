@@ -1834,6 +1834,7 @@ MonoBehaviour:
   PlayerHullObjPrefab: {fileID: 5457092128639579156, guid: ea2bd599f4b86b649a15ab298d584ac9, type: 3}
   BasicBulletPrefab: {fileID: 2627414494034220773, guid: f812b477fd820c245a55ca3420cf235d, type: 3}
   RocketPrefab: {fileID: 1319892208821184728, guid: 6a80ec9715a52324eadbfa1e99635d04, type: 3}
+  BasicShotGunBallPrefab: {fileID: 2627414494034220773, guid: 1c4214708734fba4a9ea74683642903f, type: 3}
   BasicThrusterPrefab: {fileID: 663964113696163352, guid: 078696972c7463640b0244c3779e0d0a, type: 3}
   ExplosionSystem: {fileID: 7482296912053869895, guid: b6af818f340ca594c83433cf9e5f20de, type: 3}
   LynchpinSprite: {fileID: 2278735194727070721, guid: 197fd0fdec9c88d42832a90c318265b2, type: 3}

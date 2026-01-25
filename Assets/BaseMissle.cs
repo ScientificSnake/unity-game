@@ -1,4 +1,3 @@
-using MathNet.Numerics.Financial;
 using UnityEngine;
 
 public class BaseMissle : ProjectileTemplate
@@ -92,8 +91,8 @@ public class BaseMissle : ProjectileTemplate
         
         float diff = deltaAngle - brakeNowArcMeasure;
 
-        print($"<color=green> diff is {diff}");
-        print($"<color=orange> angular velo is {rb.angularVelocity}");
+        //print($"<color=green> diff is {diff}");
+        //print($"<color=orange> angular velo is {rb.angularVelocity}");
 
         if (diff > OnTargetThreshold)
         {

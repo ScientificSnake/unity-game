@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 namespace Sebastian
@@ -52,6 +53,8 @@ namespace Sebastian
             public float ShotDragMult;
 
             public GameObject Spawner;
+
+            public int ShotgunShots;
         }
 
         public static class WeaponryActions
@@ -129,6 +132,7 @@ namespace Sebastian
 
             public static void BasicRocketSpawn(WeaponParameters Params)
             {
+                Debug.Log("<color=orange> shot gun shooting attempt");
                 float randomOffset = GetNormalDistributedError(Params.MaxDegreeError);
                 float trueRotation = Params.ParentZRotation + randomOffset;
 
@@ -140,13 +144,10 @@ namespace Sebastian
                 orphan.transform.Rotate(0, 0, trueRotation);
                 orphanBody.linearVelocity += Params.ParentVelo;
 
-
                 RocketBehavior rocketBehavior = orphan.GetComponent<RocketBehavior>();
                 rocketBehavior.Acceleration = Params.AcceleratioRate;
                 rocketBehavior.Damage = Params.Damage;
                 rocketBehavior.Fuel = Params.FuelSeconds * 40; // times forty for Seconds -> ticks
-
-
 
                 foreach (Collider2D collider in Params.IgnoredColliders)
                 {
@@ -154,8 +155,50 @@ namespace Sebastian
                 }
 
                 rocketBehavior.tcollider.enabled = true;
+            }
 
+            public static void BasicShotGunSpawn(WeaponParameters Params)
+            {
+                float randomOffset;
+                float inheiretedRotation;
 
+                List<Collider2D> allColliderToIgnore = new();
+
+                for (int i = 0; i < Params.ShotgunShots; i++)
+                {
+                    randomOffset = GetNormalDistributedError(Params.MaxDegreeError);
+                    inheiretedRotation = Params.ParentZRotation + randomOffset;
+                    GameObject prefab = ManagerScript.Instance.BasicShotGunBallPrefab;
+
+                    GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, Params.SpawnPos);
+                    BulletBehavior bullet = orphan.GetComponent<BulletBehavior>();
+                    orphan.transform.rotation = Quaternion.Euler(0, 0, inheiretedRotation);
+
+                    Vector2 VeloFromMuzzle = new Vector2(Mathf.Cos(inheiretedRotation *Mathf.Deg2Rad), Mathf.Sin(inheiretedRotation*Mathf.Deg2Rad)) * Params.MuzzleVelo;
+
+                    Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
+                    orphanBody.linearVelocity = VeloFromMuzzle + Params.ParentVelo;
+
+                    allColliderToIgnore.Add(bullet.tcollider);
+
+                    bullet.Damage = Params.Damage;
+                }
+                for(int i = 0; i < allColliderToIgnore.Count; i++)
+                {
+                    for (int j = i + 1; j < allColliderToIgnore.Count; j++)
+                    {
+                        Physics2D.IgnoreCollision(allColliderToIgnore[i], allColliderToIgnore[j]);
+                    }
+                    
+                    foreach(Collider2D inheiretedIgnoredCollider in Params.IgnoredColliders)
+                    {
+                        Physics2D.IgnoreCollision(allColliderToIgnore[i], inheiretedIgnoredCollider);
+                    }
+                }
+                foreach(var tcollider in allColliderToIgnore)
+                {
+                    tcollider.enabled = true;
+                }
             }
         }
 
@@ -186,6 +229,11 @@ namespace Sebastian
                 4,
                 new Weapon(WeaponryActions.BasicBulletSpawnAction,
                     new WeaponParameters {RPM = 30, MaxDegreeError = 0, MuzzleVelo = 250, Damage = 200})
+            },
+            {
+                5,
+                new Weapon(WeaponryActions.BasicShotGunSpawn,
+                    new WeaponParameters{RPM = 30, Damage = 75, MuzzleVelo = 150, MaxDegreeError = 15, ShotgunShots = 20})
             }
         };
     }

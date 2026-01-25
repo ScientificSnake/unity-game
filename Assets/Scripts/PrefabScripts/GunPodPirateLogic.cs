@@ -1,3 +1,4 @@
+using MathNet.Numerics;
 using Sebastian;
 using System.Collections;
 using UnityEngine;
@@ -25,11 +26,8 @@ public class GunPodPirateLogic : EnemyTemplate
 
     protected override void Awake()
     {
-        Fuel = 50 / Time.fixedDeltaTime;
-        MaxAccel = 3000;
         state = State.moveToPlayer;
         thisThrusterSet = Thrusters.GunPodPirateThrusterSet;
-        Health = 60;
         base.Awake();
     }
 
@@ -55,6 +53,7 @@ public class GunPodPirateLogic : EnemyTemplate
 
     private void Fire()
     {
+        print($"<color=yellow> Firing shotgun boi");
         float RPS = WeaponParams.RPM / 60f;
         float WaitTimeBetweenRounds = 1f / RPS;
         float now = Time.time;
@@ -76,12 +75,14 @@ public class GunPodPirateLogic : EnemyTemplate
         }
     }
 
+    [SerializeField] private int WeaponIndex;
+
     protected override void Start()
     {
         base.Start();
         StartCoroutine(PeriodicallyCheckLineOfSightOnPlayer(0.25f));
 
-        Weapon = Sebastian.WeaponryData.WeaponDict[4];
+        Weapon = Sebastian.WeaponryData.WeaponDict[WeaponIndex];
         WeaponParams = Weapon.BaseWeaponParams;
         CurrentWeaponArgs = WeaponParams;
 

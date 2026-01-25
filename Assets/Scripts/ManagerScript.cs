@@ -134,6 +134,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject PlayerHullObjPrefab;
     public GameObject BasicBulletPrefab;
     public GameObject RocketPrefab;
+    public GameObject BasicShotGunBallPrefab;
 
     public GameObject BasicThrusterPrefab;
     public GameObject ExplosionSystem;

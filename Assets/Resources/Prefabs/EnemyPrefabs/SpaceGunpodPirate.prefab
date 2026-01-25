@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7140373554003480060}
+  - component: {fileID: 4143365741818738444}
   - component: {fileID: 366103925649337852}
   - component: {fileID: 8746573300138829742}
   - component: {fileID: 2038074156164543581}
-  - component: {fileID: 4143365741818738444}
   - component: {fileID: 16750773214580143}
+  - component: {fileID: 2866040372918880153}
   m_Layer: 8
   m_Name: SpaceGunpodPirate
   m_TagString: EnemyTag
@@ -36,6 +37,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4143365741818738444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920187038524122764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisHealth: {fileID: 0}
+  Health: 60
+  rb: {fileID: 0}
+  localMiniMapIcon: {fileID: 1242634201591264772, guid: 9743a51c01e0cf1458f1fec0527727b0, type: 3}
+  Fuel: 2000
+  MaxAccel: 3000
+  Throttle: 0
+  FuelUsage: 0
+  rotationDegreesPerSeconds: 120
+  spriteRenderer: {fileID: 0}
+  SparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
+  WayPoints: []
+  state: 0
+  PlayerRb: {fileID: 0}
+  pcollider: {fileID: 0}
+  PlayerTransform: {fileID: 0}
+  ShootRange: 420
+  SeesPlayer: 0
+  WeaponIndex: 4
 --- !u!212 &366103925649337852
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -103,7 +135,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1
+  m_Mass: 342.8355
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_GravityScale: 0
@@ -671,33 +703,6 @@ PolygonCollider2D:
       - {x: -4.923438, y: 10.839845}
       - {x: -4.923438, y: 10.869142}
   m_UseDelaunayMesh: 0
---- !u!114 &4143365741818738444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4920187038524122764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839d4a0d77f12444f99f3583a8597253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 0
-  rb: {fileID: 0}
-  localMiniMapIcon: {fileID: 1242634201591264772, guid: 9743a51c01e0cf1458f1fec0527727b0, type: 3}
-  Fuel: 0
-  MaxAccel: 0
-  Throttle: 0
-  FuelUsage: 0
-  rotationDegreesPerSeconds: 0
-  spriteRenderer: {fileID: 0}
-  SparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
-  state: 0
-  PlayerRb: {fileID: 0}
-  pcollider: {fileID: 0}
-  PlayerTransform: {fileID: 0}
-  SeesPlayer: 0
 --- !u!82 &16750773214580143
 AudioSource:
   m_ObjectHideFlags: 0
@@ -795,3 +800,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2866040372918880153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920187038524122764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48e36954f9db434a82f97a5b8d85189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
