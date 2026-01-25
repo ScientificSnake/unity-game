@@ -521,10 +521,10 @@ MonoBehaviour:
   rb: {fileID: 0}
   localMiniMapIcon: {fileID: 1242634201591264772, guid: 9743a51c01e0cf1458f1fec0527727b0, type: 3}
   Fuel: 2000
-  MaxAccel: 5000
+  MaxAccel: 10000
   Throttle: 0
   FuelUsage: 0
-  rotationDegreesPerSeconds: 60
+  rotationDegreesPerSeconds: 120
   spriteRenderer: {fileID: 0}
   SparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
   WayPoints: []
@@ -532,7 +532,7 @@ MonoBehaviour:
   PlayerRb: {fileID: 0}
   pcollider: {fileID: 0}
   PlayerTransform: {fileID: 0}
-  ShootRange: 200
+  ShootRange: 400
   SeesPlayer: 0
   WeaponIndex: 5
 --- !u!82 &16750773214580143

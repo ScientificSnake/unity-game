@@ -233,7 +233,7 @@ namespace Sebastian
             {
                 5,
                 new Weapon(WeaponryActions.BasicShotGunSpawn,
-                    new WeaponParameters{RPM = 30, Damage = 75, MuzzleVelo = 150, MaxDegreeError = 15, ShotgunShots = 20})
+                    new WeaponParameters{RPM = 30, Damage = 75, MuzzleVelo = 150, MaxDegreeError = 15, ShotgunShots = 15})
             }
         };
     }
