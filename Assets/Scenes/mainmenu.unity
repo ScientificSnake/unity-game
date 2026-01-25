@@ -1847,6 +1847,7 @@ MonoBehaviour:
   TutorialLayoutRound2: {fileID: 796005607905427677, guid: b11a1977c984b8f40ac97931ac627b11, type: 3}
   TutorialLayoutRound0: {fileID: 796005607905427677, guid: 5e038de0c014c6a4d870618a22815ca8, type: 3}
   XandersLevel2: {fileID: 3602911213833501146, guid: 8d3bc1501463d1447b9bf234b0890309, type: 3}
+  ShotgunHell: {fileID: 796005607905427677, guid: 010cffbde33fc0b428860f62174e2515, type: 3}
   MasterBoonList:
   - {fileID: 11400000, guid: ad30c09991f349249b8f0b197feaecbd, type: 2}
   - {fileID: 11400000, guid: b10a8dc2981b84840bbdb860e972e769, type: 2}

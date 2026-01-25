@@ -708,6 +708,10 @@ public class LevelDataStorage
         {
             "TestLevel1",
             TestLevel1.Main
+        },
+        {
+            "ShotgunHell",
+            ShotgunHullLevelData.Main
         }
     };
 }

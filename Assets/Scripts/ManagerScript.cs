@@ -155,7 +155,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject TutorialLayoutRound2;
     public GameObject TutorialLayoutRound0;
     public GameObject XandersLevel2;
-
+    public GameObject ShotgunHell;
     #endregion
 
     public BoonData.BoonBuff[] MasterBoonList;

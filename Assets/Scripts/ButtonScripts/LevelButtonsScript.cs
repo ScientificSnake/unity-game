@@ -13,6 +13,11 @@ public class LevelButtonsScript : MonoBehaviour
         SendOverLevelInfo("Tutorial");
     }
 
+    public void ShotGunHell()
+    {
+        SendOverLevelInfo("ShotgunHell");
+    }
+
     private static LevelInfoDisplay LevelInfoDisplay;
 
     private void Start()
