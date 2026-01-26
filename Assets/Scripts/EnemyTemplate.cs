@@ -284,7 +284,13 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
         //audio.PlayOneShot()
 
         MiniMapRegister.DeRegister(this);
-        rb.angularVelocity = 3000;
+        Color color = spriteRenderer.color;
+        color.r = 1;
+        color.g = 1;
+        color.b = 1;
+
+        spriteRenderer.color = color;
+
         StartCoroutine(DestroyInSeconds(0.5f));
     }
 

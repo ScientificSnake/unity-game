@@ -688,6 +688,7 @@ public class LevelDataStorage
 
     public static class EventLib
     {
+        public static int MaxSpawnTrys;
         public static void SpawnTutorialDummy()
         {
             Debug.Log("Spawning test dummy");
@@ -696,6 +697,25 @@ public class LevelDataStorage
         public static void TestEvent()
         {
             Debug.Log("test event. maybe a solar flare that damages");
+        }
+
+        public static void SpawnKamikazAt500Rad()
+        {
+            throw new NotImplementedException();
+
+            float radius = 500;
+
+            GameObject prefab;
+            // ok so the idea is randomly pick a position on the circle and do a sphere cast
+            // if the sphere cast does not hit anything that is a good place to spawn
+            for (int i = 0; i < MaxSpawnTrys; i++)
+            {
+                Vector2 direction = (Vector2)UnityEngine.Random.onUnitSphere;
+                Vector2 pos = direction * radius;
+
+                //Physics2D.CircleCast();
+
+            }
         }
     }
 

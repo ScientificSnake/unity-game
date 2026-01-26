@@ -81,24 +81,25 @@ namespace Sebastian
                 return (float)(standardNormal * maxError / 3.0);
             }
 
-            private static GameObject SpawnSimpleProjectile(GameObject prefab, WeaponParameters Params)
+            private static GameObject SpawnSimpleProjectile(GameObject prefab, WeaponParameters Params, bool useError)
             {
-                // Generate within random error
+                float trueRotation;
+                if (useError)
+                {
+                    float ParentRotation = Params.ParentZRotation;
+                    float maxDegreeError = Params.MaxDegreeError;
+                    float randomOffsetFactor = GetNormalDistributedError(maxDegreeError);
+                    trueRotation = ParentRotation + (float)randomOffsetFactor;
+                }
+                else
+                {
+                    trueRotation = Params.ParentZRotation;
+                }
 
-                float ParentRotation = Params.ParentZRotation;
-                float maxDegreeError = Params.MaxDegreeError;
-                Vector2 Parentveloc = Params.ParentVelo;
-                Vector2 pos = Params.SpawnPos;
-                float MuzzleVelo = Params.MuzzleVelo;
+                    Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(trueRotation * Mathf.Deg2Rad), Mathf.Sin(trueRotation * Mathf.Deg2Rad)) * Params.MuzzleVelo;
 
-                float randomOffsetFactor = GetNormalDistributedError(maxDegreeError);
-
-                float trueRotation = ParentRotation + (float)randomOffsetFactor;
-
-                Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(trueRotation * Mathf.Deg2Rad), Mathf.Sin(trueRotation * Mathf.Deg2Rad)) * MuzzleVelo;
-
-                Vector2 newVeloVector = VelocityFromMuzzle + Parentveloc;
-                GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
+                Vector2 newVeloVector = VelocityFromMuzzle + Params.ParentVelo;
+                GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, Params.SpawnPos);
                 orphan.transform.Rotate(0, 0, trueRotation);
                 Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
                 orphanBody.linearVelocity = newVeloVector;
@@ -108,7 +109,7 @@ namespace Sebastian
 
             public static void BasicBulletSpawnAction(WeaponParameters Params)
             {
-                GameObject orphan = SpawnSimpleProjectile(ManagerScript.Instance.BasicBulletPrefab, Params);
+                GameObject orphan = SpawnSimpleProjectile(ManagerScript.Instance.BasicBulletPrefab, Params, true);
                 BulletBehavior bulletScript = orphan.GetComponent<BulletBehavior>();
 
                 bulletScript.Damage = Params.Damage;
@@ -163,7 +164,7 @@ namespace Sebastian
 
                 for (int i = 0; i < Params.ShotgunShots; i++)
                 {
-                    GameObject bulletObj = SpawnSimpleProjectile(ManagerScript.Instance.BasicShotGunBallPrefab, Params);
+                    GameObject bulletObj = SpawnSimpleProjectile(ManagerScript.Instance.BasicShotGunBallPrefab, Params, useError: true);
 
                     BulletBehavior bullet = bulletObj.GetComponent<BulletBehavior>();
 
