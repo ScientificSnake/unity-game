@@ -67,21 +67,21 @@ namespace Sebastian
             }
             private static float GetNormalDistributedError(float maxError)
             {
-                // Box-Muller transform for normal distribution
+                // box muller or smth. us double cuz MR whit says round to 2 decimals for z scores
                 double u1 = 1.0 - _random.NextDouble(); // Uniform random [0,1]
                 double u2 = 1.0 - _random.NextDouble(); // Uniform random [0,1]
 
-                // This gives you a standard normal distribution (mean=0, stddev=1)
+                // normal dist oyeah
                 double standardNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
 
-                // Clamp to ±3 standard deviations (captures 99.7% of values)
+                // this should use Mathf.clamp but its not broke so dont fix it
                 standardNormal = Math.Max(-3, Math.Min(3, standardNormal));
 
                 // Scale to your maxError range (treating maxError as ~3 sigma)
                 return (float)(standardNormal * maxError / 3.0);
             }
 
-            public static void BasicBulletSpawnAction(WeaponParameters Params)
+            private static GameObject SpawnSimpleProjectile(GameObject prefab, WeaponParameters Params)
             {
                 // Generate within random error
 
@@ -97,18 +97,18 @@ namespace Sebastian
 
                 Vector2 VelocityFromMuzzle = new Vector2(Mathf.Cos(trueRotation * Mathf.Deg2Rad), Mathf.Sin(trueRotation * Mathf.Deg2Rad)) * MuzzleVelo;
 
-                // disable collider of parent during frame then renable
-
-                //Params.Spawner.GetComponent<Collider2D>().enabled = false;
-
-
                 Vector2 newVeloVector = VelocityFromMuzzle + Parentveloc;
-                GameObject prefab = ManagerScript.Instance.BasicBulletPrefab;
                 GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, pos);
                 orphan.transform.Rotate(0, 0, trueRotation);
                 Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
                 orphanBody.linearVelocity = newVeloVector;
 
+                return orphan;
+            }
+
+            public static void BasicBulletSpawnAction(WeaponParameters Params)
+            {
+                GameObject orphan = SpawnSimpleProjectile(ManagerScript.Instance.BasicBulletPrefab, Params);
                 BulletBehavior bulletScript = orphan.GetComponent<BulletBehavior>();
 
                 bulletScript.Damage = Params.Damage;
@@ -159,25 +159,13 @@ namespace Sebastian
 
             public static void BasicShotGunSpawn(WeaponParameters Params)
             {
-                float randomOffset;
-                float inheiretedRotation;
-
                 List<Collider2D> allColliderToIgnore = new();
 
                 for (int i = 0; i < Params.ShotgunShots; i++)
                 {
-                    randomOffset = GetNormalDistributedError(Params.MaxDegreeError);
-                    inheiretedRotation = Params.ParentZRotation + randomOffset;
-                    GameObject prefab = ManagerScript.Instance.BasicShotGunBallPrefab;
+                    GameObject bulletObj = SpawnSimpleProjectile(ManagerScript.Instance.BasicShotGunBallPrefab, Params);
 
-                    GameObject orphan = ManagerScript.Instance.SpawnOrphan(prefab, Params.SpawnPos);
-                    BulletBehavior bullet = orphan.GetComponent<BulletBehavior>();
-                    orphan.transform.rotation = Quaternion.Euler(0, 0, inheiretedRotation);
-
-                    Vector2 VeloFromMuzzle = new Vector2(Mathf.Cos(inheiretedRotation *Mathf.Deg2Rad), Mathf.Sin(inheiretedRotation*Mathf.Deg2Rad)) * Params.MuzzleVelo;
-
-                    Rigidbody2D orphanBody = orphan.GetComponent<Rigidbody2D>();
-                    orphanBody.linearVelocity = VeloFromMuzzle + Params.ParentVelo;
+                    BulletBehavior bullet = bulletObj.GetComponent<BulletBehavior>();
 
                     allColliderToIgnore.Add(bullet.tcollider);
 
