@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Common;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Sebastian
@@ -54,7 +54,7 @@ namespace Sebastian
 
             public GameObject Spawner;
 
-            public int ShotgunShots;
+            public int ShotCount;
         }
 
         public static class WeaponryActions
@@ -68,8 +68,8 @@ namespace Sebastian
             private static float GetNormalDistributedError(float maxError)
             {
                 // box muller or smth. us double cuz MR whit says round to 2 decimals for z scores
-                double u1 = 1.0 - _random.NextDouble(); // Uniform random [0,1]
-                double u2 = 1.0 - _random.NextDouble(); // Uniform random [0,1]
+                double u1 = 1.0 - _random.NextDouble();
+                double u2 = 1.0 - _random.NextDouble();
 
                 // normal dist oyeah
                 double standardNormal = Math.Sqrt(-2.0 * Math.Log(u1)) * Math.Sin(2.0 * Math.PI * u2);
@@ -77,7 +77,7 @@ namespace Sebastian
                 // this should use Mathf.clamp but its not broke so dont fix it
                 standardNormal = Math.Max(-3, Math.Min(3, standardNormal));
 
-                // Scale to your maxError range (treating maxError as ~3 sigma)
+                // Scale to max error being 3 std dev
                 return (float)(standardNormal * maxError / 3.0);
             }
 
@@ -162,7 +162,7 @@ namespace Sebastian
             {
                 List<Collider2D> allColliderToIgnore = new();
 
-                for (int i = 0; i < Params.ShotgunShots; i++)
+                for (int i = 0; i < Params.ShotCount; i++)
                 {
                     GameObject bulletObj = SpawnSimpleProjectile(ManagerScript.Instance.BasicShotGunBallPrefab, Params, useError: true);
 
@@ -187,6 +187,47 @@ namespace Sebastian
                 foreach(var tcollider in allColliderToIgnore)
                 {
                     tcollider.enabled = true;
+                }
+            }
+
+            public static void FragGrenade(WeaponParameters Params)
+            {
+                List<Collider2D> allColliders = new();
+
+                for (int i = 0; i < Params.ShotCount; i++)
+                {
+                    Vector2 RandDirection = (Vector2) UnityEngine.Random.onUnitSphere;
+                    float RandomRotation = RandDirection.DirectionAngle();
+
+                    GameObject fragmentPrefab = ManagerScript.Instance.BasicBulletPrefab;
+
+                    GameObject fragment = ManagerScript.Instance.SpawnOrphan(fragmentPrefab, Params.SpawnPos);
+                    Rigidbody2D fragmentRb = fragment.GetComponent<Rigidbody2D>();
+
+                    fragmentRb.linearVelocity = (RandDirection * Params.MuzzleVelo) + Params.ParentVelo;
+                    fragmentRb.SetRotation(RandomRotation);
+
+                    BulletBehavior fragScript = fragment.GetComponent<BulletBehavior>();
+                    fragScript.Damage = Params.Damage;
+
+                    foreach (Collider2D ignoredCollider in Params.IgnoredColliders)
+                    {
+                        Physics2D.IgnoreCollision(ignoredCollider, fragScript.tcollider);
+                    }
+                    allColliders.Add(fragScript.tcollider);
+                }
+
+                for (int i = 0; i < Params.ShotCount; i++)
+                {
+                    for (int j = i + 1; j < Params.ShotCount; j++)
+                    {
+                        Physics2D.IgnoreCollision(allColliders[i], allColliders[j]);
+                    }
+                }
+
+                foreach (var collider in allColliders)
+                {
+                    collider.enabled = true;
                 }
             }
         }
@@ -222,7 +263,12 @@ namespace Sebastian
             {
                 5,
                 new Weapon(WeaponryActions.BasicShotGunSpawn,
-                    new WeaponParameters{RPM = 30, Damage = 75, MuzzleVelo = 150, MaxDegreeError = 15, ShotgunShots = 15})
+                    new WeaponParameters {RPM = 30, Damage = 75, MuzzleVelo = 150, MaxDegreeError = 15, ShotCount = 15})
+            },
+            {
+                6,
+                new Weapon(WeaponryActions.FragGrenade,
+                    new WeaponParameters {Damage = 75, MuzzleVelo = 400, ShotCount = 30})
             }
         };
     }

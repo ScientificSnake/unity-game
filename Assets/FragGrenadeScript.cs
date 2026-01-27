@@ -1,16 +1,22 @@
+using Sebastian;
+using System.Collections;
 using UnityEngine;
 
 public class FragGrenadeScript : ProjectileTemplate
 {
     public float FuseSeconds;
-    private float BaseBlinkTimeWait;
-    private float MinBlinkTimeWait;
+    private float BaseBlinkTimeWait = 1f;
+    private float MinBlinkTimeWait = 0.001f;
+    private float blinkTime = 0.05f;
+
+    [SerializeField] private Sprite FlashingSprite;
+    private Sprite RegularSprite;
 
     private float LastBlink;
-
     private float StartTime;
-
     protected SpriteRenderer spriteRenderer;
+
+    protected WeaponryData.WeaponParameters ActiveWeaponParams;
 
     protected void Update()
     {
@@ -25,32 +31,44 @@ public class FragGrenadeScript : ProjectileTemplate
 
         float timeLeftPortion = 1 - (timePassed / FuseSeconds);
         float blinkWaitTimeMult = Mathf.Pow(timeLeftPortion, 0.333f);
-        float curblinktime = Mathf.Min(MinBlinkTimeWait, BaseBlinkTimeWait * blinkWaitTimeMult);
+        float curblinktime = Mathf.Max(MinBlinkTimeWait, BaseBlinkTimeWait * blinkWaitTimeMult);
         float timeSinceLastBlink = now - LastBlink;
 
         if (timeSinceLastBlink > curblinktime)
         {
-            Blink();    
+            StartCoroutine(SingleBlinkCR());
         }
     }
-
-    protected void Blink()
+    protected IEnumerator SingleBlinkCR()
     {
-        Color color = spriteRenderer.color;
-        color.r = 1;
-        color.g = 1;
-        color.b = 1;
-        spriteRenderer.color = color;
+        spriteRenderer.sprite = FlashingSprite;
         LastBlink = Time.time;
+        yield return new WaitForSeconds(blinkTime);
+        spriteRenderer.sprite = RegularSprite;
+        
     }
 
     protected void Activate()
     {
         // boom boom code go here
+        WeaponryData.Weapon FragWeapon = WeaponryData.WeaponDict[6];
+
+        ActiveWeaponParams.SpawnPos = transform.position;
+
+        FragWeapon.SpawnPrefab(ActiveWeaponParams);
+
+        Destroy(gameObject);
     }
 
     protected void Start()
     {
+        ActiveWeaponParams = WeaponryData.WeaponDict[6].BaseWeaponParams;
+        ActiveWeaponParams.IgnoredColliders = new()
+        {
+            tcollider
+        };
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        RegularSprite = spriteRenderer.sprite;
         StartTime = Time.time;
         LastBlink = Time.time;
     }
