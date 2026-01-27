@@ -24,7 +24,7 @@ public static class ObjTools
 
             float heading_rad = Mathf.Deg2Rad * (transform.eulerAngles.z);
 
-            Vector2 instantaneousAccelerationVector = new Vector2((Mathf.Cos(heading_rad) * instantaneousAcceleration), (Mathf.Sin(heading_rad) * instantaneousAcceleration));
+            Vector2 instantaneousAccelerationVector = new((Mathf.Cos(heading_rad) * instantaneousAcceleration), (Mathf.Sin(heading_rad) * instantaneousAcceleration));
 
             rb.AddForce(instantaneousAccelerationVector);
 
@@ -117,6 +117,7 @@ public static class ObjTools
         public bool Possible;
         public Vector2 AimDir;
         public float AimDeg;
+        public float Time;
     }
     public static InterceptData TryGetInterceptAngle(
     Vector2 shooterPos,
@@ -156,6 +157,7 @@ public static class ObjTools
             return returnData;
         }
         float t = Mathf.Min(t1, t2);
+
         if (t <= 0f)
             t = Mathf.Max(t1, t2);
         if (t <= 0f)
@@ -169,6 +171,7 @@ public static class ObjTools
         returnData.Possible = true;
         returnData.AimDir = aimDir;
         returnData.AimDeg = angleDeg;
+        returnData.Time = t;
 
         return returnData;
     }
@@ -186,43 +189,34 @@ public static class ObjTools
             colliderList  // List automatically resizes if needed
         );
 
-        // ========================================================================
-
-        // Cache values to avoid repeated calculations
+        // ========================================================================-=-=-=-
         Vector2 explosionPos = thisGameObject.transform.position;
         float damageRadiusSqr = damageRadius * damageRadius;
 
-        // Process all hit colliders
         for (int i = 0; i < hitCount; i++)
         {
             Collider2D collider = colliderList[i];
             GameObject otherGo = collider.gameObject;
 
-            // Skip self
             if (otherGo == thisGameObject) continue;
 
-            // Calculate distance efficiently
             Vector2 toOther = (Vector2)otherGo.transform.position - explosionPos;
             float distanceSqr = toOther.sqrMagnitude;
 
-            // Safety check
             if (distanceSqr > damageRadiusSqr) continue;
 
-            // Calculate actual distance and intensity
             float distance = Mathf.Sqrt(distanceSqr);
             float intensityProportion = (damageRadius - distance) / damageRadius;
 
-            // Apply damage
             if (otherGo.TryGetComponent(out HealthScript otherHealth))
             {
                 otherHealth.ApplyDamage(intensityProportion * explosionDamage);
             }
 
-            // Apply physics force
             if (collider.TryGetComponent<Rigidbody2D>(out Rigidbody2D otherRb))
             {
                 float force = intensityProportion * blastForce;
-                Vector2 forceDir = toOther / distance; // Normalized direction (reuse distance)
+                Vector2 forceDir = toOther / distance;
                 otherRb.AddForce(forceDir * force, ForceMode2D.Impulse);
             }
         }
@@ -241,7 +235,7 @@ public static class ObjTools
 }
 public class FixedSizeQueue<T>
 {
-    private Queue<T> queue = new Queue<T>();
+    private Queue<T> queue = new();
     private int maxSize;
 
     public FixedSizeQueue(int maxSize)
@@ -319,7 +313,7 @@ public static class AcceleratingIntercept
         int maxIterations = 10,
         float tolerance = 1f)
     {
-        InterceptResult result = new InterceptResult();
+        InterceptResult result = new();
 
         // Initial guess: use time to reach target at current speed + acceleration boost
         Vector2 toTarget = targetPos - shooterPos;
@@ -437,7 +431,7 @@ public static class AcceleratingIntercept
         Vector2 targetVel,
         float leadTimeFactor = 1.5f)
     {
-        InterceptResult result = new InterceptResult();
+        InterceptResult result = new();
 
         Vector2 relativeVel = targetVel - shooterVel;
         Vector2 toTarget = targetPos - shooterPos;
@@ -502,7 +496,7 @@ public static class AcceleratingIntercept
 
 }
 
-// Example usage in your KamikazeEnemyAI:
+#region diddy all claude code
 /*
 protected void FixedUpdate()
 {
@@ -557,4 +551,5 @@ protected void FixedUpdate()
 }
 */
 
+#endregion
 #endregion
