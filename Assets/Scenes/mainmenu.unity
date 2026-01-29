@@ -1837,6 +1837,7 @@ MonoBehaviour:
   BasicShotGunBallPrefab: {fileID: 2627414494034220773, guid: 1c4214708734fba4a9ea74683642903f, type: 3}
   BasicThrusterPrefab: {fileID: 663964113696163352, guid: 078696972c7463640b0244c3779e0d0a, type: 3}
   ExplosionSystem: {fileID: 7482296912053869895, guid: b6af818f340ca594c83433cf9e5f20de, type: 3}
+  FragGrenadePrefab: {fileID: 2501069409891822360, guid: 178e5c1aac4ad794e8bc0602ca7250d2, type: 3}
   LynchpinSprite: {fileID: 2278735194727070721, guid: 197fd0fdec9c88d42832a90c318265b2, type: 3}
   ScorpionSprite: {fileID: -3303235448760210217, guid: 7039cd27fed551e4db3f9aa984bbadd3, type: 3}
   SwallowSprite: {fileID: -3384617665269950355, guid: 1f836cb789ab31141bfc04768c1c1f3e, type: 3}

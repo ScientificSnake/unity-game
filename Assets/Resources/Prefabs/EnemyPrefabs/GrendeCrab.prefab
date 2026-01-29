@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7858543054346380677}
   m_Layer: 0
   m_Name: GrendeCrab
-  m_TagString: Untagged
+  m_TagString: EnemyTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -515,7 +515,7 @@ MonoBehaviour:
   FuelUsage: 4
   rotationDegreesPerSeconds: 90
   spriteRenderer: {fileID: 0}
-  SparksPrefab: {fileID: 0}
+  SparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
   WayPoints: []
   state: 0
   PlayerRb: {fileID: 0}
@@ -523,4 +523,4 @@ MonoBehaviour:
   PlayerTransform: {fileID: 0}
   ShootRange: 400
   SeesPlayer: 0
-  WeaponIndex: 0
+  WeaponIndex: 7

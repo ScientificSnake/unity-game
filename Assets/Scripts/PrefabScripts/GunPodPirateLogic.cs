@@ -53,7 +53,6 @@ public class GunPodPirateLogic : EnemyTemplate
 
     private void Fire()
     {
-        print($"<color=yellow> Firing shotgun boi");
         float RPS = WeaponParams.RPM / 60f;
         float WaitTimeBetweenRounds = 1f / RPS;
         float now = Time.time;
@@ -103,7 +102,6 @@ public class GunPodPirateLogic : EnemyTemplate
             StopPatrol();
         }
 
-        // Cache player references if null
         if (PlayerRef == null || PlayerRb == null)
         {
             PlayerRef = GameObject.FindWithTag("Player");
@@ -112,7 +110,7 @@ public class GunPodPirateLogic : EnemyTemplate
                 PlayerRb = PlayerRef.GetComponent<Rigidbody2D>();
                 PlayerTransform = PlayerRef.GetComponent<Transform>();
             }
-            return; // Exit early if player not found
+            return;
         }
         if (state == State.trackPlayer)
         {
@@ -139,6 +137,10 @@ public class GunPodPirateLogic : EnemyTemplate
                         // Fire when aimed within threshold
                         if (IsAimedAtTarget(targetAngle, aimingThreshold))
                         {
+                            if (WeaponIndex == 7)
+                            {
+                                print("crab firing");
+                            }
                             CurrentWeaponArgs.interceptData = InterceptInfo;
                             Fire();
                         }

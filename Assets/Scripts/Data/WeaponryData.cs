@@ -140,7 +140,6 @@ namespace Sebastian
 
             public static void BasicRocketSpawn(WeaponParameters Params)
             {
-                Debug.Log("<color=orange> shot gun shooting attempt");
                 float randomOffset = GetNormalDistributedError(Params.MaxDegreeError);
                 float trueRotation = Params.ParentZRotation + randomOffset;
 
@@ -157,10 +156,7 @@ namespace Sebastian
                 rocketBehavior.Damage = Params.Damage;
                 rocketBehavior.Fuel = Params.FuelSeconds * 40; // times forty for Seconds -> ticks
 
-                foreach (Collider2D collider in Params.IgnoredColliders)
-                {
-                    Physics2D.IgnoreCollision(orphan.GetComponent<PolygonCollider2D>(), collider);
-                }
+                ApplyIgnoredColliders(Params, rocketBehavior.tcollider);
 
                 rocketBehavior.tcollider.enabled = true;
             }
@@ -186,10 +182,7 @@ namespace Sebastian
                         Physics2D.IgnoreCollision(allColliderToIgnore[i], allColliderToIgnore[j]);
                     }
                     
-                    foreach(Collider2D inheiretedIgnoredCollider in Params.IgnoredColliders)
-                    {
-                        Physics2D.IgnoreCollision(allColliderToIgnore[i], inheiretedIgnoredCollider);
-                    }
+                    ApplyIgnoredColliders(Params, allColliderToIgnore[i]);
                 }
                 foreach(var tcollider in allColliderToIgnore)
                 {
@@ -246,6 +239,8 @@ namespace Sebastian
 
                 FragGrenadeScript grenadeScript = grenade.GetComponent<FragGrenadeScript>();
                 grenadeScript.FuseSeconds = Params.interceptData.Time;
+                ApplyIgnoredColliders(Params, grenadeScript.tcollider);
+                grenadeScript.tcollider.enabled = true;
             }
         }
 
@@ -286,6 +281,11 @@ namespace Sebastian
                 6,
                 new Weapon(WeaponryActions.FragGrenade,
                     new WeaponParameters {Damage = 75, MuzzleVelo = 400, ShotCount = 30})
+            },
+            {
+                7,
+                new Weapon(WeaponryActions.LaunchGrenade,
+                    new WeaponParameters {MuzzleVelo = 160, MaxDegreeError = 5, RPM = 60})
             }
         };
     }
