@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a9da56266700a6b43bdf7117f959a99a
+guid: ec8501635dc56544ebee1543b11aadd9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8027268313320931995
-    second: FlashingGrenadeFrag_0
+      213: -1597462262853420392
+    second: FlashingGrenadeFrag 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FlashingGrenadeFrag_0
+      name: FlashingGrenadeFrag 1_0
       rect:
         serializedVersion: 2
-        x: 2492
-        y: 1180
-        width: 1016
-        height: 1015
+        x: 2385
+        y: 1121
+        width: 1215
+        height: 1165
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 56db1c3dff9699090800000000000000
-      internalID: -8027268313320931995
+      spriteID: 89ab780298ca4d9e0800000000000000
+      internalID: -1597462262853420392
       vertices: []
       indices: 
       edges: []

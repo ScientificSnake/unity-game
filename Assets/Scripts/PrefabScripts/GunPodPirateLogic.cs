@@ -139,6 +139,7 @@ public class GunPodPirateLogic : EnemyTemplate
                         // Fire when aimed within threshold
                         if (IsAimedAtTarget(targetAngle, aimingThreshold))
                         {
+                            CurrentWeaponArgs.interceptData = InterceptInfo;
                             Fire();
                         }
                     }

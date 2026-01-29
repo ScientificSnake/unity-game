@@ -51,7 +51,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   tcollider: {fileID: 0}
   FuseSeconds: 0
-  FlashingSprite: {fileID: -8027268313320931995, guid: a9da56266700a6b43bdf7117f959a99a, type: 3}
+  FlashingSprite: {fileID: -1597462262853420392, guid: ec8501635dc56544ebee1543b11aadd9, type: 3}
 --- !u!212 &3380799936883677523
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -96,8 +96,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7427453572413932547, guid: ec42e29ca78d33b4780d12187548d13f, type: 3}
-  m_Color: {r: 0.8113208, g: 0.32529372, b: 0.44780514, a: 1}
+  m_Sprite: {fileID: 9213886978092977156, guid: 797004f07411c5141b87d0710fa1277f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -141,7 +141,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2501069409891822360}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

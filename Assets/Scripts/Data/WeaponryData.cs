@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -15,6 +16,14 @@ namespace Sebastian
     */
     public class WeaponryData
     {
+        private static void ApplyIgnoredColliders(WeaponParameters param, Collider2D collider1)
+        {
+            foreach(Collider2D collider2 in param.IgnoredColliders)
+            {
+                Physics2D.IgnoreCollision(collider1, collider2);
+            }
+        }
+
         public class Weapon
         {
             public WeaponParameters BaseWeaponParams;
@@ -55,6 +64,7 @@ namespace Sebastian
             public GameObject Spawner;
 
             public int ShotCount;
+            public ObjTools.InterceptData interceptData;
         }
 
         public static class WeaponryActions
@@ -114,10 +124,7 @@ namespace Sebastian
 
                 bulletScript.Damage = Params.Damage;
 
-                foreach(Collider2D collider in Params.IgnoredColliders)
-                {
-                    Physics2D.IgnoreCollision(orphan.GetComponent<CapsuleCollider2D>(), collider);
-                }
+                ApplyIgnoredColliders(Params, bulletScript.tcollider);
 
                 bulletScript.tcollider.enabled = true;
                 bulletScript.rb.linearDamping *= Params.ShotDragMult;
@@ -215,6 +222,7 @@ namespace Sebastian
                         Physics2D.IgnoreCollision(ignoredCollider, fragScript.tcollider);
                     }
                     allColliders.Add(fragScript.tcollider);
+                    fragScript.rb.linearDamping *= 500;
                 }
 
                 for (int i = 0; i < Params.ShotCount; i++)
@@ -229,6 +237,15 @@ namespace Sebastian
                 {
                     collider.enabled = true;
                 }
+            }
+
+            public static void LaunchGrenade(WeaponParameters Params)
+            {
+                GameObject grenadePrefab = ManagerScript.Instance.FragGrenadePrefab;
+                GameObject grenade = SpawnSimpleProjectile(grenadePrefab, Params, true);
+
+                FragGrenadeScript grenadeScript = grenade.GetComponent<FragGrenadeScript>();
+                grenadeScript.FuseSeconds = Params.interceptData.Time;
             }
         }
 
@@ -275,7 +292,6 @@ namespace Sebastian
 }
 /*
 public float bulletScale;//Scale factor
-public bool guidance;//if it has or not
 public int bulletSpeed;//m/s
 public int damage;
 */
