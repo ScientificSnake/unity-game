@@ -3,7 +3,6 @@ using UnityEngine;
 public class BulletBehavior : ProjectileTemplate
 {
     public float Damage;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject OtherGo = collision.gameObject;

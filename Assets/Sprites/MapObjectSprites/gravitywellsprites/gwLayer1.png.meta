@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ec8501635dc56544ebee1543b11aadd9
+guid: 067a7d09cf8bb4246bb4506a50516dfc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1597462262853420392
-    second: FlashingGrenadeFrag 1_0
+      213: 8500096622099558511
+    second: 130_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FlashingGrenadeFrag 1_0
+      name: 130_0
       rect:
         serializedVersion: 2
-        x: 2385
-        y: 1121
-        width: 1215
-        height: 1165
+        x: 2671
+        y: 1359
+        width: 658
+        height: 657
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 89ab780298ca4d9e0800000000000000
-      internalID: -1597462262853420392
+      spriteID: f60fdb4a7d866f570800000000000000
+      internalID: 8500096622099558511
       vertices: []
       indices: 
       edges: []
@@ -160,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      130_0: 8500096622099558511
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

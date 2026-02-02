@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 797004f07411c5141b87d0710fa1277f
+guid: 2b99a404bdb9b9c4c93e70d971961d16
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9213886978092977156
-    second: Orbit shit_0
+      213: -5034839630848066323
+    second: newgrenade 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Orbit shit_0
+      name: newgrenade 1_0
       rect:
         serializedVersion: 2
-        x: 2385
-        y: 1121
-        width: 1215
-        height: 1165
+        x: 2104
+        y: 794
+        width: 1807
+        height: 1802
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40c44d9a36d4edf70800000000000000
-      internalID: 9213886978092977156
+      spriteID: decfd3e0808a02ab0800000000000000
+      internalID: -5034839630848066323
       vertices: []
       indices: 
       edges: []
@@ -161,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Orbit shit_0: 9213886978092977156
+      newgrenade 1_0: -5034839630848066323
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

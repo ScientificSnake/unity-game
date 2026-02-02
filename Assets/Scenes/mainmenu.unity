@@ -1838,6 +1838,7 @@ MonoBehaviour:
   BasicThrusterPrefab: {fileID: 663964113696163352, guid: 078696972c7463640b0244c3779e0d0a, type: 3}
   ExplosionSystem: {fileID: 7482296912053869895, guid: b6af818f340ca594c83433cf9e5f20de, type: 3}
   FragGrenadePrefab: {fileID: 2501069409891822360, guid: 178e5c1aac4ad794e8bc0602ca7250d2, type: 3}
+  BasicSparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
   LynchpinSprite: {fileID: 2278735194727070721, guid: 197fd0fdec9c88d42832a90c318265b2, type: 3}
   ScorpionSprite: {fileID: -3303235448760210217, guid: 7039cd27fed551e4db3f9aa984bbadd3, type: 3}
   SwallowSprite: {fileID: -3384617665269950355, guid: 1f836cb789ab31141bfc04768c1c1f3e, type: 3}
@@ -2376,6 +2377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467974130}
   - component: {fileID: 1467974129}
+  - component: {fileID: 1467974131}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -2463,6 +2465,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1467974131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467974128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1488227635
 GameObject:
   m_ObjectHideFlags: 0

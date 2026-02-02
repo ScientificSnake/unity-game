@@ -139,6 +139,7 @@ public class ManagerScript : MonoBehaviour
     public GameObject BasicThrusterPrefab;
     public GameObject ExplosionSystem;
     public GameObject FragGrenadePrefab;
+    public GameObject BasicSparksPrefab;
     #endregion
 
     #region Sprite game object fields

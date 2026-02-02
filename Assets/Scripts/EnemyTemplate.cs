@@ -38,7 +38,7 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
     private List<GameObject> ThrusterRefs;
     private List<Vector2> ThrusterBaseScales;
 
-    [SerializeField] private GameObject SparksPrefab;
+    private GameObject SparksPrefab;
 
     private List<Vector2> InitialWayPoints;
     [SerializeField] protected List<GameObject> WayPoints;
@@ -47,6 +47,8 @@ public class EnemyTemplate : MonoBehaviour, IBoundsCheckable, IMiniMapTrackable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Awake()
     {
+        SparksPrefab = ManagerScript.Instance.BasicSparksPrefab;
+
         InitialWayPoints = new List<Vector2>();
 
         thisAudio = gameObject.AddComponent<AudioSource>();

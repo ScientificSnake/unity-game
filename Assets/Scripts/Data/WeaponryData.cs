@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Collections;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Sebastian
@@ -241,6 +239,7 @@ namespace Sebastian
                 grenadeScript.FuseSeconds = Params.interceptData.Time;
                 ApplyIgnoredColliders(Params, grenadeScript.tcollider);
                 grenadeScript.tcollider.enabled = true;
+                grenadeScript.rb.angularVelocity = UnityEngine.Random.Range(-90, 90);
             }
         }
 

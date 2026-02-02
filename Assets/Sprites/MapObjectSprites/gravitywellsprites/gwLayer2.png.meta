@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 17bfe7ab0ba253644bb4146353ab8d8a
+guid: c9e88156950e7b446b658f6d1371dc56
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7091585738497612877
-    second: CrabGrenadeNoBg_0
+      213: -6919194877884806517
+    second: 131_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,43 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CrabGrenadeNoBg_0
+      name: 131_0
       rect:
         serializedVersion: 2
-        x: 561
-        y: 404
-        width: 5439
-        height: 2567
+        x: 2217
+        y: 969
+        width: 1566
+        height: 1437
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3b3af9af750a59d90800000000000000
-      internalID: -7091585738497612877
+      spriteID: b8a49f30be41aff90800000000000000
+      internalID: -6919194877884806517
       vertices: []
       indices: 
       edges: []
@@ -161,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CrabGrenadeNoBg_0: -7091585738497612877
+      131_0: -6919194877884806517
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

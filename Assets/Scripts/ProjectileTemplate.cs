@@ -8,6 +8,8 @@ public class ProjectileTemplate : MonoBehaviour, IBoundsCheckable
     public Rigidbody2D Rigidbody2 => rb;
     public Collider2D tcollider;
     public List<Action<Collision2D>> OnHitExecutions;
+    private float MaxLifeSpanSeconds = 20;
+    private float StartTime;
 
     protected void ApplyHitFuncs(Collision2D collision)
     {
@@ -26,12 +28,21 @@ public class ProjectileTemplate : MonoBehaviour, IBoundsCheckable
         rb.angularDamping = 0f;
         OnHitExecutions = new();
         rb.gravityScale = 0f;
+        StartTime = Time.time;
     }
 
     public void OnOutOfBounds()
     {
         BoundsEnforcer.DeRegister(this);
         Destroy(gameObject);
+    }
+
+    protected void FixedUpdate()
+    {
+        if (Time.time - StartTime > MaxLifeSpanSeconds)
+        {
+            Destroy(gameObject);
+        }
     }
 
     protected void OnDestroy()

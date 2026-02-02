@@ -30,12 +30,13 @@ public class FragGrenadeScript : ProjectileTemplate
         }
 
         float timeLeftPortion = 1 - (timePassed / FuseSeconds);
-        float blinkWaitTimeMult = Mathf.Pow(timeLeftPortion, 0.333f);
+        float blinkWaitTimeMult = timeLeftPortion;
         float curblinktime = Mathf.Max(MinBlinkTimeWait, BaseBlinkTimeWait * blinkWaitTimeMult);
         float timeSinceLastBlink = now - LastBlink;
 
         if (timeSinceLastBlink > curblinktime)
         {
+            print($"blinking wtih time {curblinktime}, wait time mult is {blinkWaitTimeMult}");
             StartCoroutine(SingleBlinkCR());
         }
     }

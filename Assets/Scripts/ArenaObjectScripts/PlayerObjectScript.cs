@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System;
 using Sebastian;
 using System.Collections;
-using System.Net.NetworkInformation;
+using TMPro;
 
 public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheckable
 {
     [Header("HealthScript")]
-
     public HealthScript PlayerHealthManager;
 
     [Header("MiniMapTracking")]
@@ -30,9 +29,15 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheck
 
     public float CollsionDamageMultiplier = 0.02f;
 
+    public int AmmoLeft;
+
+    public TextMeshProUGUI AmmoDisplay;
+
     public LevelDataStorage.LevelManager.BaseStats RoundStats;
     private void Awake()
     {
+
+        AmmoDisplay = GameObject.Find("AmmoDisplay").GetComponent<TextMeshProUGUI>();
         BoundsEnforcer.Register(this);
 
         #region Heath Setup
@@ -124,35 +129,40 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheck
 
             if (timeDiff >= WaitTimeBetweenRounds)
             {
-                // arguments for calling the function
-
-                float heading = transform.eulerAngles.z;
-
-                Vector2 rotatedOffset = RotateVectorByAngle(Offset, transform.eulerAngles.z);
-
-                Vector2 pos = new Vector2(transform.position.x, transform.position.y) + rotatedOffset;
-
-                CurrentMainWeaponParams.SpawnPos = pos;
-                CurrentMainWeaponParams.ParentZRotation = heading;
-                CurrentMainWeaponParams.ParentVelo = rb.linearVelocity;
-                CurrentMainWeaponParams.ShotDragMult = RoundStats.ShotDrag;
-
-                if (CurrentMainWeaponParams.monoBehavioursAdditions == null)
+                if (AmmoLeft > 0)
                 {
-                    CurrentMainWeaponParams.monoBehavioursAdditions = new List<Type>();
+                    // arguments for calling the function
+
+                    float heading = transform.eulerAngles.z;
+
+                    Vector2 rotatedOffset = RotateVectorByAngle(Offset, transform.eulerAngles.z);
+
+                    Vector2 pos = new Vector2(transform.position.x, transform.position.y) + rotatedOffset;
+
+                    CurrentMainWeaponParams.SpawnPos = pos;
+                    CurrentMainWeaponParams.ParentZRotation = heading;
+                    CurrentMainWeaponParams.ParentVelo = rb.linearVelocity;
+                    CurrentMainWeaponParams.ShotDragMult = RoundStats.ShotDrag;
+
+                    if (CurrentMainWeaponParams.monoBehavioursAdditions == null)
+                    {
+                        CurrentMainWeaponParams.monoBehavioursAdditions = new List<Type>();
+                    }
+
+                    SpawnMainWeaponPrefabAction(CurrentMainWeaponParams);
+
+                    LastFireTimeStamp = now;
+
+                    float heading_rad = Mathf.Deg2Rad * transform.eulerAngles.z;
+
+                    Vector2 instantaneousAccelerationVector = new((Mathf.Cos(heading_rad) * CurrentMainWeaponParams.RecoilForce), (Mathf.Sin(heading_rad) * CurrentMainWeaponParams.RecoilForce));
+
+                    rb.AddForce(instantaneousAccelerationVector);
+
+                    audios.PlayOneShot(ShotSound, 0.25f);
+                    AmmoLeft--;
+                    AmmoDisplay.text = $"{AmmoLeft} Ammo left";
                 }
-
-                SpawnMainWeaponPrefabAction(CurrentMainWeaponParams);
-
-                LastFireTimeStamp = now;
-
-                float heading_rad = Mathf.Deg2Rad * transform.eulerAngles.z;
-
-                Vector2 instantaneousAccelerationVector = new((Mathf.Cos(heading_rad) * CurrentMainWeaponParams.RecoilForce), (Mathf.Sin(heading_rad) * CurrentMainWeaponParams.RecoilForce));
-
-                rb.AddForce(instantaneousAccelerationVector);
-
-                audios.PlayOneShot(ShotSound, 0.25f);
             }
         }
     }
@@ -211,27 +221,20 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheck
 
         Vector2 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
 
-        // Calculate mouse angle from center
         Vector2 mouseOffset = new(mousePos.x - screenPosition.x, mousePos.y - screenPosition.y);
         float targetAngle = Mathf.Atan2(mouseOffset.y, mouseOffset.x) * Mathf.Rad2Deg;
 
-        // Calculate the shortest angular difference
         float currentAngle = transform.eulerAngles.z;
         float headingMouseAngleDiff = Mathf.DeltaAngle(currentAngle, targetAngle);
 
-        // Calculate max rotation
         float maxDegreesPerTick = maxTurnSpeedDPS * Time.fixedDeltaTime;
-
-        // Determine how much to actually rotate
         float angleTurned;
         if (Mathf.Abs(headingMouseAngleDiff) <= maxDegreesPerTick)
         {
-            // We can reach the target this tick
             angleTurned = headingMouseAngleDiff;
         }
         else
         {
-            // Rotate max amount in the correct direction
             angleTurned = maxDegreesPerTick * Mathf.Sign(headingMouseAngleDiff);
         }
 
@@ -338,6 +341,7 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheck
         BaseHealth = RoundStats.Health;
         Health = RoundStats.Health;
         PlayerHealthManager.Health = Health;
+        AmmoLeft = Math.Max(AmmoLeft, RoundStats.StartingAmmoCount);
     }
 
     public void ResetRoundStats()
@@ -360,8 +364,6 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheck
         ObjTools.ScaleThrusterRefs(ThrusterRefs, ThrusterBaseScales, throttle);
     }
 
-    #region Collision damage handling
-        
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float relativeVelocityMagnitude = collision.relativeVelocity.magnitude;
@@ -371,7 +373,6 @@ public class PlayerObjectScript : MonoBehaviour, IMiniMapTrackable, IBoundsCheck
             PlayerHealthManager.ApplyDamage(relativeVelocityMagnitude * CollsionDamageMultiplier);
         }
     }
-    #endregion
 
     [SerializeField] GameObject sparksPrefab;
     public void SpawnSparks()

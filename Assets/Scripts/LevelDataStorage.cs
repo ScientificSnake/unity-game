@@ -341,6 +341,7 @@ public class LevelDataStorage
             public float ScaleFactor;
             public float BaseFuel;
             public float ShotDrag;
+            public int StartingAmmoCount; 
 
             public Thrusters.ThrusterSet thrusterLayout;
 

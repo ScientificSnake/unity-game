@@ -140,6 +140,7 @@ public class TechData : MonoBehaviour
             BaseStats.GunOffset = new Vector2(10, 0);
             BaseStats.BaseFuel = 60;
             BaseStats.thrusterLayout = Thrusters.LynchpinThrusterSet;
+            BaseStats.StartingAmmoCount = 1500;
 
             BaseStats.DashAbility = false;
             BaseStats.StealthAbility = false;
@@ -160,6 +161,7 @@ public class TechData : MonoBehaviour
             BaseStats.BaseFuel = 50;
             BaseStats.GunOffset = new Vector2(7, -1.1f);
             BaseStats.thrusterLayout = Thrusters.SwallowThrusterSet;
+            BaseStats.StartingAmmoCount = 1150;
 
             BaseStats.DashAbility = false;
             BaseStats.StealthAbility = false;
@@ -180,6 +182,7 @@ public class TechData : MonoBehaviour
             BaseStats.BaseFuel = 50;
             BaseStats.GunOffset = new Vector2(15, 0.7f);
             BaseStats.thrusterLayout = Thrusters.ScorpionThrusterSet;
+            BaseStats.StartingAmmoCount = 1000;
 
             BaseStats.DashAbility = true;
             BaseStats.StealthAbility = false;
@@ -199,6 +202,7 @@ public class TechData : MonoBehaviour
             BaseStats.BaseFuel = 100;
             BaseStats.GunOffset = new Vector2(20, 0);
             BaseStats.thrusterLayout = Thrusters.TrophyThrusterSet;
+            BaseStats.StartingAmmoCount = 50;
 
             BaseStats.DashAbility = false;
             BaseStats.StealthAbility = false;
@@ -217,6 +221,7 @@ public class TechData : MonoBehaviour
             BaseStats.BaseFuel = 60;
             BaseStats.GunOffset = new Vector2(10, 1);
             BaseStats.thrusterLayout = Thrusters.RavenThrusterSet;
+            BaseStats.StartingAmmoCount = 1400;
 
             BaseStats.DashAbility = false;
             BaseStats.StealthAbility = true;
