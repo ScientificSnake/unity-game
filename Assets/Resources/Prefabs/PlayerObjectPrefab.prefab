@@ -162,6 +162,8 @@ MonoBehaviour:
   ShotSound: {fileID: 8300000, guid: 1a546938ae6c67349b1f344b751fca32, type: 3}
   FuelUsage: 1
   CollsionDamageMultiplier: 0.07
+  AmmoLeft: 0
+  AmmoDisplay: {fileID: 0}
   ThrusterBaseScales: []
   ThrusterRefs: []
   Fuel: 0
@@ -174,6 +176,7 @@ MonoBehaviour:
   DashCooldown: 0
   BaseHealth: 0
   sparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
+  deserterWarning: {fileID: 0}
 --- !u!114 &7196689064943797960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +213,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
