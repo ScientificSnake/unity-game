@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3291034351388778672}
   - component: {fileID: 2744654386972261164}
   - component: {fileID: 862477727735077745}
+  - component: {fileID: 4765814295941053123}
   m_Layer: 0
   m_Name: spacerock3prefab
   m_TagString: Untagged
@@ -101,7 +102,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 72.75815
+  m_Mass: 7275.8154
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -261,3 +262,59 @@ PolygonCollider2D:
       - {x: -2.11, y: -4.6549997}
       - {x: -1.8499999, y: -4.495}
   m_UseDelaunayMesh: 0
+--- !u!114 &4765814295941053123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423608965778219022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 2
+  m_LightType: 1
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 0.7368654, g: 0.8113208, b: 0.6850303, a: 1}
+  m_Intensity: 1
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: -0.06770015, y: 0.08349991, z: 0}
+    m_Extent: {x: 5.9941998, y: 5.4133, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -2.5038736, y: -4.8309503, z: 0}
+  - {x: 0.16977768, y: -3.2542229, z: 0.0000017881393}
+  - {x: 5.391174, y: -3.2580183, z: 0}
+  - {x: 5.4272485, y: 2.714301, z: 0.0000017881393}
+  - {x: 4.1128807, y: 4.610439, z: 0.0000017881393}
+  - {x: 2.0944755, y: 3.4303942, z: 0}
+  - {x: -0.86447376, y: 4.9982905, z: 0.0000017881393}
+  - {x: -5.563549, y: 0.9524872, z: 0}

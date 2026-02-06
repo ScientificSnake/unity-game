@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class ThrusterScript : MonoBehaviour
 {
     public Light2D thrusterLight;
-    private readonly float baseLightIntensity = 0.6f;
+    private readonly float baseLightIntensity = 0.9f;
     private readonly float minLightIntensity = 0.3f;
 
     public void SetScale(float throttle, Vector2 baseScale)

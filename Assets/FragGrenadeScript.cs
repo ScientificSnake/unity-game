@@ -1,6 +1,7 @@
 using Sebastian;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FragGrenadeScript : ProjectileTemplate
 {
@@ -57,8 +58,14 @@ public class FragGrenadeScript : ProjectileTemplate
         ActiveWeaponParams.SpawnPos = transform.position;
 
         FragWeapon.SpawnPrefab(ActiveWeaponParams);
-
-        Destroy(gameObject);
+        Destroy(spriteRenderer);
+        Destroy(tcollider);
+        void destro()
+        {
+            Destroy(gameObject);
+        }
+        GetComponent<Light2D>().intensity = 100;
+        ObjTools.RunOnDelay(this, destro, 0.2f);
     }
 
     protected void Start()
