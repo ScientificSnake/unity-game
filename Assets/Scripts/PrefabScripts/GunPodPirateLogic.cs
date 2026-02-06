@@ -137,10 +137,6 @@ public class GunPodPirateLogic : EnemyTemplate
                         // Fire when aimed within threshold
                         if (IsAimedAtTarget(targetAngle, aimingThreshold))
                         {
-                            if (WeaponIndex == 7)
-                            {
-                                print("crab firing");
-                            }
                             CurrentWeaponArgs.interceptData = InterceptInfo;
                             Fire();
                         }

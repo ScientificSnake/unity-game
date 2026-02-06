@@ -107,8 +107,7 @@ public static class ObjTools
     {
         for (int i = 0; i < thrusterRefs.Count; i++)
         {
-            Vector2 targetScale = thrusterBaseScales[i] * (throttle / 100);
-            thrusterRefs[i].gameObject.transform.localScale = targetScale;
+            thrusterRefs[i].GetComponent<ThrusterScript>().SetScale(throttle, thrusterBaseScales[i]);
         }
     }
 
