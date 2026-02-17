@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.Collections;
-using MathNet.Numerics.Financial;
 using UnityEngine.UI;
 
 
@@ -430,6 +429,8 @@ public class LevelDataStorage
 
                 Debug.Log("Last round reached at round " + CurrentRound);
 
+                ManagerScript.Instance.BeatenLevels.Add(RootLevelData.Title);
+
                 ManagerScript.Instance.StartCoroutine(ManagerScript.Instance.LoadSceneRoutine("WinScreen"));
             }
             else
@@ -670,9 +671,9 @@ public class LevelDataStorage
 
         public Vector2 MinXY;
         public Vector2 MaxXY;
-
+        public string[] NeededBeatenLevels;
         public LevelData(int roundCount, Func<int, int> difficultyFunc, Dictionary<Action, int> difficultyEventDict, Dictionary<int, Dictionary<int, List<Action>>> presetRounds,
-                         string[] possibleEnemyTags, GameObject[] layoutPrefab, bool Endless, Vector2 minXY, Vector2 maxXY, string title)
+                         string[] possibleEnemyTags, GameObject[] layoutPrefab, bool Endless, Vector2 minXY, Vector2 maxXY, string title, string[] LevelDependencies)
         {
             RoundCount = roundCount;
             DifficultyFunc = difficultyFunc;
@@ -684,6 +685,7 @@ public class LevelDataStorage
             MinXY = minXY;
             MaxXY = maxXY;
             Title = title;
+            NeededBeatenLevels = LevelDependencies;
         }
     }
 
@@ -694,7 +696,7 @@ public class LevelDataStorage
             TuturialLevelData.Main
         },
         {
-            "TestLevel1",
+            "KamiAmbush",
             TestLevel1.Main
         },
         {

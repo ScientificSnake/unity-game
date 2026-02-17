@@ -6,7 +6,7 @@ public class LevelButtonsScript : MonoBehaviour
 
     public void TestLevel1()
     {
-        SendOverLevelInfo("TestLevel1");
+        SendOverLevelInfo("KamiAmbush");
     }
     public void Tutorial()
     {

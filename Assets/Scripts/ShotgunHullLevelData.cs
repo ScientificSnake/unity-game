@@ -46,6 +46,7 @@ public class ShotgunHullLevelData
     Endless: false,
     new Vector2(-2000, -2000),
     new Vector2(2000, 2000),
-    "Shotgun Hell"
+    "Shotgun Hell",
+    new string[] {"KamiAmbush"}
     );
 }

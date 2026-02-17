@@ -140,6 +140,8 @@ public class ManagerScript : MonoBehaviour
     public GameObject ExplosionSystem;
     public GameObject FragGrenadePrefab;
     public GameObject BasicSparksPrefab;
+
+    public GameObject KamikazePrefab;
     #endregion
 
     #region Sprite game object fields
@@ -165,6 +167,8 @@ public class ManagerScript : MonoBehaviour
     public Dictionary<string, GameObject> SysNameToPrefabObj;
 
     public Dictionary<string, Sprite> SpriteDict;
+
+    public List<string> BeatenLevels;
 
     public void ChangeBackground(Image Canvas, Sprite Background)
     {
@@ -321,6 +325,8 @@ public class ManagerScript : MonoBehaviour
                 data.UnlockedBoons.Add(boon.SysName);
             }
         }
+
+        data.BeatenLevels = BeatenLevels;
     }
 
     public void Load(ManagerSaveData data)
@@ -339,6 +345,8 @@ public class ManagerScript : MonoBehaviour
         {
             BoonData.UnlockBoon(sysName);
         }
+
+        BeatenLevels = data.BeatenLevels;
     }
 
     public string LastLoadName;
@@ -387,7 +395,8 @@ public struct ManagerSaveData
     public int TechCredits;
     public Dictionary<string, bool> PurchasedNodes;
 
-    public List<string> UnlockedBoons;                       
+    public List<string> UnlockedBoons;
+    public List<string> BeatenLevels;
 }
 
 public struct MetaSaveData

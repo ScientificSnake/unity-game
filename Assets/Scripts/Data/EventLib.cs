@@ -14,6 +14,12 @@ public static class EventLib
         Debug.Log("test event. maybe a solar flare that damages");
     }
 
+    public static void SpawnKamikazeAtRad75()
+    {
+        Debug.Log($"<color=5e9bd1> ATTEMPTING TO SPAWN KAMIKAZE AT RAD 75");
+        SpawnPrefabAtRad(75, KamikazeSpawnNeededSpace, ManagerScript.Instance.KamikazePrefab);
+    }
+
     private static readonly float KamikazeSpawnNeededSpace = 20f;
 
     private static void SpawnPrefabAtRad(float radius, float neededSpace, GameObject prefab)
@@ -24,7 +30,7 @@ public static class EventLib
             Vector2 direction = (Vector2)UnityEngine.Random.onUnitSphere;
             Vector2 pos = direction * radius;
 
-            Collider2D HitColldier = Physics2D.OverlapCircle(pos, neededSpace   );
+            Collider2D HitColldier = Physics2D.OverlapCircle(pos, neededSpace);
 
             if (HitColldier != null)
             {

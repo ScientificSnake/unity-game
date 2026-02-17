@@ -37,7 +37,6 @@ public class FragGrenadeScript : ProjectileTemplate
 
         if (timeSinceLastBlink > curblinktime)
         {
-            print($"blinking wtih time {curblinktime}, wait time mult is {blinkWaitTimeMult}");
             StartCoroutine(SingleBlinkCR());
         }
     }
@@ -47,7 +46,6 @@ public class FragGrenadeScript : ProjectileTemplate
         LastBlink = Time.time;
         yield return new WaitForSeconds(blinkTime);
         spriteRenderer.sprite = RegularSprite;
-        
     }
 
     protected void Activate()

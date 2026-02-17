@@ -5,6 +5,7 @@ public class LevelInfoDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_Tmp;
     [SerializeField] private GameObject clickOffBtn;
+    [SerializeField] private GameObject prevLevelsNotMetWarning;
 
     private string selectedSysName;
 
@@ -30,16 +31,37 @@ public class LevelInfoDisplay : MonoBehaviour
         }
         m_Tmp.text = LevelDataStorage.LevelDataDict[boonInfoSysName].Title;
         selectedSysName = boonInfoSysName;
+
+        if (DependentLevelsAreMet())
+        {
+            prevLevelsNotMetWarning.SetActive(false);
+        }
+        else
+        {
+            prevLevelsNotMetWarning.SetActive(true);
+        }
+    }
+
+    private bool DependentLevelsAreMet()
+    {
+        foreach(string level in LevelDataStorage.LevelDataDict[selectedSysName].NeededBeatenLevels)
+        {
+            if (!ManagerScript.Instance.BeatenLevels.Contains(level))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void ClickOffBoonInfo()
     {
         if (_shown)
         {
+            clickOffBtn.SetActive(false);
             void UpdateState()
             {
                 _shown = false;
-                clickOffBtn.SetActive(false);
             }
 
             ObjTools.RunOnDelay(this, UpdateState, 0.7f);

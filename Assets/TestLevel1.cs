@@ -60,6 +60,7 @@ public static class TestLevel1
         Endless: false,
         new Vector2(-3000, -3000),
         new Vector2(3000, 3000),
-        "Xanders Asteroid belt"
+        "Xanders Asteroid belt",
+        new string[] {"Tutorial"}
         );
 }

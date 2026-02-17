@@ -1839,6 +1839,7 @@ MonoBehaviour:
   ExplosionSystem: {fileID: 7482296912053869895, guid: b6af818f340ca594c83433cf9e5f20de, type: 3}
   FragGrenadePrefab: {fileID: 2501069409891822360, guid: 178e5c1aac4ad794e8bc0602ca7250d2, type: 3}
   BasicSparksPrefab: {fileID: 2488660728439479667, guid: 2b737b66f4b26eb4db6edca7a77e2e18, type: 3}
+  KamikazePrefab: {fileID: 282199277103005661, guid: 254b2ab9e0d365f48ad7c971c3a10251, type: 3}
   LynchpinSprite: {fileID: 2278735194727070721, guid: 197fd0fdec9c88d42832a90c318265b2, type: 3}
   ScorpionSprite: {fileID: -3303235448760210217, guid: 7039cd27fed551e4db3f9aa984bbadd3, type: 3}
   SwallowSprite: {fileID: -3384617665269950355, guid: 1f836cb789ab31141bfc04768c1c1f3e, type: 3}

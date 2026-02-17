@@ -23,6 +23,10 @@ public static class TuturialLevelData
             {
                 EventLib.TestEvent,
                 5
+            },
+            {
+                EventLib.SpawnKamikazeAtRad75,
+                5
             }
         },
         new Dictionary<int, Dictionary<int, List<Action>>> // This is the dict of preset level
@@ -35,8 +39,8 @@ public static class TuturialLevelData
                         2, // At second 2 do these actions
                         new List <Action>
                         {
-                            EventLib.SpawnTutorialDummy,
-                            EventLib.TestEvent
+                            EventLib.TestEvent,
+                            EventLib.SpawnKamikazeAtRad75
                         }
                     }
                 }
@@ -60,6 +64,7 @@ public static class TuturialLevelData
         Endless: false,
         new Vector2(-2000, -2000),
         new Vector2(2000, 2000),
-        "Tutorial"
+        "Tutorial",
+        new string[] { }
         );
 }
